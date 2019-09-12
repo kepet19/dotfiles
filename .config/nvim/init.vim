@@ -177,7 +177,8 @@ colorscheme forest-night
 	autocmd FileType java inoremap ,i if(<++>){<Enter><++>}<Esc>F}i
 	autocmd FileType java inoremap ,e else(<++>){<++><Enter>}<Esc>F}i
 	autocmd FileType java inoremap ,ie if(<++>){<++><Enter>}<Enter>Else{<++>}<Esc>F}i
-	autocmd FileType java inoremap ,sout System.out.println("<++>");<Enter><Esc>F}i
+	autocmd FileType java inoremap ,sout System.out.println("<++>");<Esc>F}i
+	autocmd FileType java inoremap ,cc /*<++><Enter>*/<Esc>F}i
 
 """HTML
 	autocmd FileType html inoremap ,b <b></b><Space><++><Esc>FbT>i
