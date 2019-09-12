@@ -21,6 +21,7 @@ Plug 'vifm/vifm.vim'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'sainnhe/vim-color-forest-night'
 Plug 'lervag/vimtex'
+plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
