@@ -167,7 +167,7 @@ colorscheme forest-night
 
 """JAVA
 	autocmd FileType java inoremap ,pm public static void main(String[] args){<Enter><Enter>}<Esc>F}i
-	autocmd FileType java inoremap ,pc public class <++> { <Enter> public static void main(String[] args){<Enter><++><Enter>}<Enter>}<Esc>F}i
+	autocmd FileType java inoremap ,pc public class <++> { <Enter>public static void main(String[] args){<Enter><++><Enter>}<Enter>}<Esc>F}i
 	autocmd FileType java inoremap ,psv public static void <++>(<++>){<++><Enter>}<Esc>F}i
 	autocmd FileType java inoremap ,ps public static <++> <++>(<++>){<++><Enter>}<Esc>F}i
 	autocmd FileType java inoremap ,p public <++> <++>(<++>){<++><Enter>}<Esc>F}i
