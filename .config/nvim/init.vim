@@ -1,5 +1,6 @@
 let mapleader =","
 let g:vimtex_compiler_progname = 'nvr'
+let g:powerline_pycmd="py3"
 
 if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."

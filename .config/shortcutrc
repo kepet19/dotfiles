@@ -1,5 +1,6 @@
 # vim: filetype=sh
 alias h="cd ~/ && ls -a" \
+alias config='/usr/bin/git --git-dir=/home/kkmp/.cfg/ --work-tree=/home/kkmp'\
 d="cd ~/Documents && ls -a" \
 oop="cd ~/Documents/SDU/semester_1/OOP && ls -a" \
 oopp="cd ~/Documents/SDU/semester_1/OOP_projekt && ls -a" \
