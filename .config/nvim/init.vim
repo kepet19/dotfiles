@@ -53,7 +53,7 @@ colorscheme forest-night
 	"map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
 
 " Spell-check set to <leader>o, 'o' for 'orthography':
-	map <leader>o :setlocal spell! spelllang=da_dk<CR>
+	map <leader>o :setlocal spell! spelllang=en_us<CR>
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 	set splitbelow splitright
@@ -171,6 +171,8 @@ colorscheme forest-night
 	autocmd FileType tex inoremap ,rn (\ref{})<++><Esc>F}i
 
 """JAVA
+	autocmd FileType java map <leader>C :w! \| !javac <c-r>%<CR>
+	autocmd FileType java map <leader>R :w! \| !javac *.java <CR>
 	autocmd FileType java inoremap ,pm public static void main(String[] args){<Enter><Enter>}<Esc>F}i
 	autocmd FileType java inoremap ,pc public class <++> { <Enter>public static void main(String[] args){<Enter><++><Enter>}<Enter>}<Esc>F}i
 	autocmd FileType java inoremap ,psv public static void <++>(<++>){<++><Enter>}<Esc>F}i
