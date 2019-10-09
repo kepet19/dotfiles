@@ -1,7 +1,6 @@
 let mapleader =","
 let g:vimtex_compiler_progname = 'nvr'
 let g:powerline_pycmd="py3"
-
 if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."
 	silent !mkdir -p ~/.config/nvim/autoload/
@@ -26,6 +25,9 @@ Plug 'lervag/vimtex'
 Plug 'sheerun/vim-polyglot'
 call plug#end()
 
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
 
 set bg=light
 set go=a
@@ -127,6 +129,17 @@ colorscheme forest-night
 	vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 	map <leader><leader> <Esc>/<++><Enter>"_c4l
 
+"" Disable Arrow keys in Escape mode
+"	map <up> <nop>
+"	map <down> <nop>
+"	map <left> <nop>
+"	map <right> <nop>
+"" Diasble Arrow keys in Insert mode
+"	imap <up> <nop>
+"	imap <down> <nop>
+"	imap <left> <nop>
+"	imap <right> <nop>
+
 " Save file as sudo on files that require root permission
 	cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
@@ -173,7 +186,8 @@ colorscheme forest-night
 """JAVA
 	autocmd FileType java map <leader>C :w! \| !javac <c-r>%<CR>
 	autocmd FileType java map <leader>R :w! \| !javac *.java <CR>
-	autocmd FileType java inoremap ,pm public static void main(String[] args){<Enter><Enter>}<Esc>F}i
+	autocmd FileType java inoremap ,pm public static void main(String[] args){<Enter><++><Enter>}<Esc>F)o
+	autocmd FileType java inoremap ,main public static void main(String[] args){<Enter>}<++><Enter><Esc>F)o
 	autocmd FileType java inoremap ,pc public class <++> { <Enter>public static void main(String[] args){<Enter><++><Enter>}<Enter>}<Esc>F}i
 	autocmd FileType java inoremap ,psv public static void <++>(<++>){<++><Enter>}<Esc>F}i
 	autocmd FileType java inoremap ,ps public static <++> <++>(<++>){<++><Enter>}<Esc>F}i
@@ -257,4 +271,3 @@ colorscheme forest-night
 
 """.xml
 	autocmd FileType xml inoremap ,e <item><Enter><title><++></title><Enter><guid<space>isPermaLink="false"><++></guid><Enter><pubDate><Esc>:put<Space>=strftime('%a, %d %b %Y %H:%M:%S %z')<Enter>kJA</pubDate><Enter><link><++></link><Enter><description><![CDATA[<++>]]></description><Enter></item><Esc>?<title><enter>cit
-	autocmd FileType xml inoremap ,a <a href="<++>"><++></a><++><Esc>F"ci"

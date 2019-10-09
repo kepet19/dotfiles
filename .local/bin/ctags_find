@@ -1,0 +1,4 @@
+#!/bin/bash
+
+truncate --size 0 ctags
+find . -name \*.java -exec ctags --append {} \;
