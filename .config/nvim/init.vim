@@ -1,6 +1,7 @@
 let mapleader =","
 let g:vimtex_compiler_progname = 'nvr'
 let g:powerline_pycmd="py3"
+let g:airline_powerline_fonts = 1
 if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."
 	silent !mkdir -p ~/.config/nvim/autoload/
@@ -23,6 +24,9 @@ Plug 'kovetskiy/sxhkd-vim'
 Plug 'sainnhe/vim-color-forest-night'
 Plug 'lervag/vimtex'
 Plug 'sheerun/vim-polyglot'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
 execute pathogen#infect()

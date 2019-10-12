@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+setbg &		# Set the background
+sxhkd &	# Bind keys
+# Switch to US international with Caps as Mod/Escape
+setxkbmap -option caps:super -variant altgr-intl && killall xcape 2>/dev/null ; xcape -e 'Super_L=Escape' &
+# Properties button extra Mod/Escape
+xmodmap ~/.Xmodmap &
+xset r rate 300 50 &	# Speed xrate up
+unclutter &		# Remove mouse when idle
+compton &
+# compton &		# xcompmgr for transparency
+dunst &			# dunst for notifications
+mpdupdate &
+xsettingsd &
+syncthing -no-browser &
+bluetoothctl power on &
+bluetoothctl connect 2C:41:A1:C3:A6:76 &
+/usr/lib/kdeconnectd &  # started KDE connect deamon
