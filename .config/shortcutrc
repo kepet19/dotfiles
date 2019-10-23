@@ -1,5 +1,8 @@
 # vim: filetype=sh
 alias h="cd ~/ && ls -a" \
+bt="bluetoothctl power on && bluetoothctl connect 2C:41:A1:C3:A6:76 && bluetoothctl connect 2C:41:A1:C3:A6:76" \
+l="ls -alh" \
+la="ls -lh" \
 d="cd ~/Documents && ls -a" \
 oop="cd ~/Documents/SDU/semester_1/OOP && ls -a" \
 oopp="cd ~/Documents/SDU/semester_1/OOP_projekt && ls -a" \

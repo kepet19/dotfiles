@@ -27,11 +27,13 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ycm-core/YouCompleteMe'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'shumphrey/fugitive-gitlab.vim'
+Plug 'tacahiroy/ctrlp-funky'
 call plug#end()
-
 execute pathogen#infect()
-syntax on
-filetype plugin indent on
 
 set bg=light
 set go=a
@@ -44,8 +46,9 @@ colorscheme forest-night
 
 " Some basics:
 	nnoremap c "_c
+	nnoremap <Leader>fu :CtrlPFunkyMulti<Cr>
 	set nocompatible
-	filetype plugin on
+	filetype plugin indent on
 	syntax on
 	set encoding=utf-8
 	set number relativenumber
