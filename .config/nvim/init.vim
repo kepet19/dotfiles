@@ -2,6 +2,19 @@ let mapleader =","
 let g:vimtex_compiler_progname = 'nvr'
 let g:powerline_pycmd="py3"
 let g:airline_powerline_fonts = 1
+
+" vimtex conf
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+" Snippet control for latex
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
 if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."
 	silent !mkdir -p ~/.config/nvim/autoload/
@@ -20,20 +33,22 @@ Plug 'vimwiki/vimwiki'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'vifm/vifm.vim'
+Plug 'sirver/ultisnips'
+Plug 'KeitaNakamura/tex-conceal.vim'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'sainnhe/vim-color-forest-night'
 Plug 'lervag/vimtex'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'ycm-core/YouCompleteMe'
+"Plug 'ycm-core/YouCompleteMe'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'tacahiroy/ctrlp-funky'
 call plug#end()
-execute pathogen#infect()
+"execute pathogen#infect()
 
 set bg=light
 set go=a
@@ -45,9 +60,12 @@ set termguicolors
 colorscheme forest-night
 
 " Some basics:
+	set tabstop=4
+	set softtabstop=0 noexpandtab
+	set shiftwidth=4
 	nnoremap c "_c
 	nnoremap <Leader>fu :CtrlPFunkyMulti<Cr>
-	set nocompatible
+	"set nocompatible
 	filetype plugin indent on
 	syntax on
 	set encoding=utf-8
@@ -59,10 +77,12 @@ colorscheme forest-night
 
 " Goyo plugin makes text more readable when writing prose:
 	map <leader>f :Goyo \| set linebreak<CR>
-	"map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
+	map <leader>f :Goyo \| set bg=dark \| set linebreak<CR>
 
 " Spell-check set to <leader>o, 'o' for 'orthography':
-	map <leader>o :setlocal spell! spelllang=en_us<CR>
+	map <leader>o :setlocal spell! spelllang=da<CR>
+" Spell correction the last word Ctrl + l
+	inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 	set splitbelow splitright
@@ -195,7 +215,7 @@ colorscheme forest-night
 	autocmd FileType java map <leader>R :w! \| !javac *.java <CR>
 	autocmd FileType java inoremap ,pm public static void main(String[] args){<Enter><++><Enter>}<Esc>F)o
 	autocmd FileType java inoremap ,main public static void main(String[] args){<Enter>}<++><Enter><Esc>F)o
-	autocmd FileType java inoremap ,pc public class <++> { <Enter>public static void main(String[] args){<Enter><++><Enter>}<Enter>}<Esc>F}i
+	autocmd FileType java inoremap ,pc public class <++> { <Enter><++><Enter>}<Esc>F}i
 	autocmd FileType java inoremap ,psv public static void <++>(<++>){<++><Enter>}<Esc>F}i
 	autocmd FileType java inoremap ,ps public static <++> <++>(<++>){<++><Enter>}<Esc>F}i
 	autocmd FileType java inoremap ,p public <++> <++>(<++>){<++><Enter>}<Esc>F}i
@@ -205,8 +225,9 @@ colorscheme forest-night
 	autocmd FileType java inoremap ,i if(<++>){<Enter><++>}<Esc>F}i
 	autocmd FileType java inoremap ,e else(<++>){<++><Enter>}<Esc>F}i
 	autocmd FileType java inoremap ,ie if(<++>){<++><Enter>}<Enter>Else{<++>}<Esc>F}i
-	autocmd FileType java inoremap ,sout System.out.println("<++>");<Esc>F}i
+	autocmd FileType java inoremap ,sout System.out.println(<++>);<Esc>F}i
 	autocmd FileType java inoremap ,cc /*<++><Enter>*/<Esc>F}i
+	autocmd FileType java inoremap ,get public <++> get<++>(){<enter><++><enter>}<enter>public void set<++>(<++>){<enter><++><enter>}<Esc>F}i
 
 """HTML
 	autocmd FileType html inoremap ,b <b></b><Space><++><Esc>FbT>i

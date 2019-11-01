@@ -8,6 +8,7 @@ oop="cd ~/Documents/SDU/semester_1/OOP && ls -a" \
 oopp="cd ~/Documents/SDU/semester_1/OOP_projekt && ls -a" \
 sda="cd ~/Documents/SDU/semester_1/SDA && ls -a" \
 cos="cd ~/Documents/SDU/semester_1/COS && ls -a" \
+sdu="cd ~/Documents/SDU/semester_1/ && ls -a" \
 D="cd ~/Downloads && ls -a" \
 m="cd ~/Music && ls -a" \
 pp="cd ~/Pictures && ls -a" \
