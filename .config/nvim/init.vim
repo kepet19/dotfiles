@@ -1,12 +1,15 @@
+let mapleader =","
 autocmd Filetype java set makeprg=javac\ %
 set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
-map <F9> :make<Return>:copen<Return>
-map <F10> :cprevious<Return>
-map <F11> :cnext<Return>
+map <C-S-Up> :make<Return>:copen<Return>
+map <C-PageUp> :cprevious<Return>
+map <C-PageDown> :cnext<Return>
 
-let g:vimtex_compiler_progname = 'nvr'
+
+let g:vimtex_compiler_progname="nvr"
 let g:powerline_pycmd="py3"
 let g:airline_powerline_fonts = 1
+let g:airline_theme="atomic"
 
 " vimtex conf
 let g:tex_flavor='latex'
@@ -52,17 +55,23 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'tacahiroy/ctrlp-funky'
+Plug 'metakirby5/codi.vim'
+Plug 'ajmwagar/vim-deus'
 call plug#end()
 "execute pathogen#infect()
 
-set bg=light
 set go=a
 set mouse=a
 set nohlsearch
 set clipboard=unnamedplus
-set termguicolors
 
-colorscheme forest-night
+" Vim color scheme
+set t_Co=256
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set background=dark    " Setting dark mode
+colorscheme deus
 
 " Some basics:
 	set tabstop=4
@@ -104,10 +113,16 @@ colorscheme forest-night
 	nm <leader>q :call ToggleProse()<CR>
 
 " Shortcutting split navigation, saving a keypress:
-	map <C-h> <C-w>h
-	map <C-j> <C-w>j
-	map <C-k> <C-w>k
-	map <C-l> <C-w>l
+	nmap <C-h> <C-w>h
+	nmap <C-j> <C-w>j
+	nmap <C-k> <C-w>k
+	nmap <C-l> <C-w>l
+
+" Move text around in visual mode with ctrl and hjkl
+	xnoremap <C-k> xkP`[V`]
+	xnoremap <C-j> xp`[V`]
+	xnoremap <C-h> <gv
+	xnoremap <C-l> >gv
 
 " Check file in shellcheck:
 	map <leader>s :!clear && shellcheck %<CR>
