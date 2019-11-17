@@ -1,6 +1,6 @@
 let mapleader =","
-autocmd Filetype java set makeprg=javac\ %
-set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
+"autocmd Filetype java set makeprg=javac\ %
+"set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
 map <C-S-Up> :make<Return>:copen<Return>
 map <C-PageUp> :cprevious<Return>
 map <C-PageDown> :cnext<Return>
@@ -57,6 +57,7 @@ Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'metakirby5/codi.vim'
 Plug 'ajmwagar/vim-deus'
+Plug 'mikelue/vim-maven-plugin'
 call plug#end()
 "execute pathogen#infect()
 
@@ -64,14 +65,6 @@ set go=a
 set mouse=a
 set nohlsearch
 set clipboard=unnamedplus
-
-" Vim color scheme
-set t_Co=256
-set termguicolors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-set background=dark    " Setting dark mode
-colorscheme deus
 
 " Some basics:
 	set tabstop=4
@@ -319,3 +312,13 @@ colorscheme deus
 
 """.xml
 	autocmd FileType xml inoremap ,e <item><Enter><title><++></title><Enter><guid<space>isPermaLink="false"><++></guid><Enter><pubDate><Esc>:put<Space>=strftime('%a, %d %b %Y %H:%M:%S %z')<Enter>kJA</pubDate><Enter><link><++></link><Enter><description><![CDATA[<++>]]></description><Enter></item><Esc>?<title><enter>cit
+
+" Vim color scheme
+	set t_Co=256
+	set termguicolors
+	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+	set background=dark    " Setting dark mode
+	colorscheme deus
+" Makes wim transperrent
+"	hi Normal guibg=NONE ctermbg=NONE
