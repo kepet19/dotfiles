@@ -1,0 +1,175 @@
+#vim:filetype=i3
+set $mod mod4
+set $term --no-startup-id $TERMINAL
+font pango: Input Sans Condensed 8
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+# font Fira Code:pixelsize=12:antialias=true:autohint:true
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+# hide_edge_borders none
+# new_window pixel 0
+# new_float pixel 4
+
+# start a terminal
+bindsym $mod+Return exec $TERMINAL
+# start a nvim session
+bindsym $mod+Shift+s exec --no-startup-id $HOME/.local/bin/tools/switchoutput.sh
+bindsym $mod+z exec zeal
+bindsym $mod+q			[con_id="__focused__" instance="^(?!dropdown_).*$"] kill
+bindsym $mod+Shift+q		[con_id="__focused__" instance="^(?!dropdown_).*$"] exec --no-startup-id kill -9 `xdotool getwindowfocus getwindowpid`
+
+# rofi
+bindsym $mod+d exec rofi -show drun -lines 10 -matching fuzzy -color-enabled -show-icons
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+# Bind for moving windows
+bindsym $mod+h			focus left
+bindsym $mod+Left 		focus left
+bindsym $mod+Shift+h		move left
+bindsym $mod+Ctrl+h		move workspace to output left
+bindsym $mod+Shift+y		exec --no-startup-id i3resize left
+
+bindsym $mod+j			focus down
+bindsym $mod+Down 		focus down
+bindsym $mod+Shift+j		move down
+bindsym $mod+Ctrl+j		move workspace to output down
+bindsym $mod+Shift+u		exec --no-startup-id i3resize down
+
+bindsym $mod+k			focus up
+bindsym $mod+Up 		focus up
+bindsym $mod+Shift+k		move up
+bindsym $mod+Ctrl+k		move workspace to output up
+bindsym $mod+Shift+i		exec --no-startup-id i3resize up
+
+bindsym $mod+l			focus right
+bindsym $mod+Right 		focus right
+bindsym $mod+Shift+l		move right
+bindsym $mod+Ctrl+l		move workspace to output right
+bindsym $mod+Shift+o		exec --no-startup-id i3resize right
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+#bindsym $mod+s layout stacking
+#bindsym $mod+w layout tabbed
+#bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space		focus mode_toggle
+bindsym $mod+t			split toggle
+
+#STOP/HIDE EVERYTHING:
+bindsym $mod+Shift+Delete	exec --no-startup-id lmc truemute ; exec --no-startup-id lmc pause ; exec --no-startup-id pauseallmpv; workspace 0; exec $term -e htop ; exec $term -e $FILE
+
+set $workspace1  1
+set $workspace2  2
+set $workspace3  3
+set $workspace4  4
+set $workspace5  5
+set $workspace6  6
+set $workspace7  7
+set $workspace8  8
+set $workspace9  9
+set $workspace10 10
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+
+bindsym $mod+apostrophe		split horizontal ;; exec $term
+bindsym $mod+slash		split vertical ;; exec $term
+
+# Audio keys
+bindsym XF86AudioMute exec pamixer -t
+bindsym XF86AudioLowerVolume exec pamixer -d 5
+bindsym XF86AudioRaiseVolume exec pamixer -i 5
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+
+# Brightness keys
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
+
+# Setup gaps
+smart_gaps inverse_outer
+gaps top 5
+gaps horizontal 10
+gaps inner 15
+
+default_border pixel 4
+# default_floating_border pixel 4
+for_window [class="^.*"] border pixel 4
+for_window [title="float"] floating enable
+for_window [class="^.float"] floating enable
+
+set $bg-color            #2C323B
+set $bd-color            #98C379
+set $inactive-bg-color   #383C4A
+set $inactive-bd-color   #F4D669
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+
+#                           border          background      text                 indicator  child border
+client.focused              $bd-color       $bg-color       $text-color          $bd-color  $bd-color
+client.unfocused            $bg-color       $bg-color       $inactive-text-color $bg-color  $bg-color
+client.focused_inactive     $bg-color       $bg-color       $inactive-text-color $bg-color  $bg-color
+client.urgent               $bg-color       $bg-color       $text-color          $bg-color  $bg-color
+# client.background                           $bg-color
+
+bar {
+    swaybar_command waybar
+}
+output "*" bg /home/kkmp/.config/sway/fern.jpg fill
+# output * bg #eaeaea solid_color
+
+bindsym $mod+x exec swaylock -i ~/etc/I3/fern.jpg
+
+# Auto start
+exec_always --no-startup-id dunst -conf /home/ajmwagar/etc/DUNST/dunstrc
+exec --no-startup-id batterup # github.com/ajmwagar/batterup
+exec --no-startup-id odriveagent
+exec --no-startup-id jupyter notebook ~s
+exec --no-startup-id syndaemon -i 1 -K -dp
+exec --no-startup-id 'nm-applet --indicator'

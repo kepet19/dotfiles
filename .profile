@@ -15,7 +15,7 @@ export NOTMUCH_CONFIG="$HOME/.config/notmuch-config"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 
 # Rstudio libs
-export R_LIBS_USER="/home/kkmp/.local/bin/bin"
+export R_LIBS_USER="$HOME.local/bin/bin"
 
 # less/man colors
 export LESS=-R
@@ -26,6 +26,7 @@ export LESS_TERMCAP_so="$(printf '%b' '[01;44;33m')"; a="${a%_}"
 export LESS_TERMCAP_se="$(printf '%b' '[0m')"; a="${a%_}"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"; a="${a%_}"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"; a="${a%_}"
+export XKB_DEFAULT_LAYOUT=dk
 
 [ ! -f ~/.config/shortcutrc ] && shortcuts >/dev/null 2>&1
 
