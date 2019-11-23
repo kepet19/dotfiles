@@ -24,6 +24,7 @@ cfa="$EDITOR ~/.config/aliasrc" \
 cfz="$EDITOR ~/.zshrc" \
 cfv="$EDITOR ~/.config/nvim/init.vim" \
 cfi="$EDITOR ~/.config/i3/config" \
+cfy="$EDITOR ~/.config/sway/config" \
 cfm="$EDITOR ~/.config/mutt/muttrc" \
 eb="$EDITOR ~/Documents/LaTeX/uni.bib" \
 cv="$EDITOR ~/Documents/LaTeX/cv.tex" \

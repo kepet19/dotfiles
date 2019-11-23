@@ -3,6 +3,9 @@ set $mod mod4
 set $term --no-startup-id $TERMINAL
 font pango: Input Sans Condensed 8
 
+input keyboard repeat_rate 300
+input keyboard repeat_delay 50
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 # font Fira Code:pixelsize=12:antialias=true:autohint:true
