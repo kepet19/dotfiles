@@ -114,7 +114,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+Escape 	exec --no-startup-id prompt "Exit i3?" "i3-msg exit"
 
 
 
@@ -161,10 +161,9 @@ client.urgent               $bg-color       $bg-color       $text-color         
 bar {
     swaybar_command waybar
 }
-output "*" bg /home/kkmp/.config/sway/fern.jpg fill
-# output * bg #eaeaea solid_color
+output "*" bg /home/kkmp/.config/wall.png fill
 
-bindsym $mod+x exec swaylock -i ~/etc/I3/fern.jpg
+bindsym $mod+x exec swaylock -i ~/.config/wall.png
 
 # Auto start
 exec_always --no-startup-id dunst -conf /home/ajmwagar/etc/DUNST/dunstrc
