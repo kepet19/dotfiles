@@ -15,7 +15,7 @@ export NOTMUCH_CONFIG="$HOME/.config/notmuch-config"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 
 # Rstudio libs
-export R_LIBS_USER="$HOME.local/bin/bin"
+export R_LIBS_USER="$HOME/.local/bin/bin"
 
 # less/man colors
 export LESS=-R
