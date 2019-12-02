@@ -9,6 +9,8 @@ export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput se
 alias config='/usr/bin/git --git-dir=/home/kkmp/.cfg/ --work-tree=/home/kkmp'
 # source ~/.bash-powerline.sh
 
+alias config='/usr/bin/git --git-dir=/home/kkmp/.cfg/ --work-tree=/home/kkmp'
+
 if [ -f /usr/lib/python3.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
     source /usr/lib/python3.7/site-packages/powerline/bindings/bash/powerline.sh
 fi
