@@ -68,7 +68,7 @@ XF86MonBrightnessUp
 Print
 	maim pic-full-$(date '+%y%m%d-%H%M-%S').png
 # Pick screenshot type
-shift + Print
+shift + super + P
 	maimpick
 # Print: Record audio or video; Del: kill recording
 super + Print
@@ -94,7 +94,7 @@ super + {_,shift +} bracketright
 super + {_,shift +} bracketleft
 	mpc seek -{10,120}
 # Increase volume
-super + {equal,plus}
+super {_,shift +} + plus
 	amixer sset Master {5,15}%+; pkill -RTMIN+10 $STATUSBAR
 # Decrease volume
 super {_,shift +} + minus

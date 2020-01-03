@@ -53,12 +53,6 @@ let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
 
-" use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
 inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<Tab>" :
@@ -73,7 +67,8 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
-
+" LukeSmithxyz
+set bg=light
 set go=a
 set mouse=a
 set nohlsearch
@@ -97,10 +92,10 @@ set clipboard+=unnamedplus
 
 " Goyo plugin makes text more readable when writing prose:
 	map <leader>f :Goyo \| set linebreak<CR>
-	map <leader>f :Goyo \| set bg=dark \| set linebreak<CR>
 
 " Spell-check set to <leader>o, 'o' for 'orthography':
 	map <leader>o :setlocal spell! spelllang=da<CR>
+
 " Spell correction the last word Ctrl + l
 	inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
@@ -151,10 +146,6 @@ set clipboard+=unnamedplus
 	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 	autocmd BufRead,BufNewFile *.tex set filetype=tex
 
-" Copy selected text to system clipboard:
-	vnoremap <C-c> "+y
-	map <C-p> "+P
-
 " Save file as sudo on files that require root permission
 	cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
@@ -177,22 +168,6 @@ set clipboard+=unnamedplus
 """JAVA
 	autocmd FileType java map <leader>C :w! \| !javac <c-r>%<CR>
 	autocmd FileType java map <leader>R :w! \| !javac *.java <CR>
-	autocmd FileType java inoremap ,pm public static void main(String[] args){<Enter><++><Enter>}<Esc>F)o
-	autocmd FileType java inoremap ,main public static void main(String[] args){<Enter>}<++><Enter><Esc>F)o
-	autocmd FileType java inoremap ,pc public class <++> { <Enter><++><Enter>}<Esc>F}i
-	autocmd FileType java inoremap ,psv public static void <++>(<++>){<++><Enter>}<Esc>F}i
-	autocmd FileType java inoremap ,ps public static <++> <++>(<++>){<++><Enter>}<Esc>F}i
-	autocmd FileType java inoremap ,p public <++> <++>(<++>){<++><Enter>}<Esc>F}i
-	autocmd FileType java inoremap ,ppsv private static void <++>(<++>){<++><Enter>}<Esc>F}i
-	autocmd FileType java inoremap ,pps private static <++> <++>(<++>){<++><Enter>}<Esc>F}i
-	autocmd FileType java inoremap ,pp private <++> <++>(<++>){<++><Enter>}<Esc>F}i
-	autocmd FileType java inoremap ,i if(<++>){<Enter><++>}<Esc>F}i
-	autocmd FileType java inoremap ,e else(<++>){<++><Enter>}<Esc>F}i
-	autocmd FileType java inoremap ,ie if(<++>){<++><Enter>}<Enter>Else{<++>}<Esc>F}i
-	autocmd FileType java inoremap ,sout System.out.println(<++>);<Esc>F}i
-	autocmd FileType java inoremap ,cc /*<++><Enter>*/<Esc>F}i
-	autocmd FileType java inoremap ,get public <++> get<++>(){<enter><++><enter>}<enter>public void set<++>(<++>){<enter><++><enter>}<Esc>F}i
-
 
 " Vim color scheme
 	set t_Co=256
@@ -202,4 +177,4 @@ set clipboard+=unnamedplus
 	set background=dark    " Setting dark mode
 	colorscheme deus
 " Makes wim transperrent
-"	hi Normal guibg=NONE ctermbg=NONE
+	hi Normal guibg=NONE ctermbg=NONE
