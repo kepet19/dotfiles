@@ -15,3 +15,4 @@ mpd-module-update &	# Check for when to update the mpd module
 syncthing -no-browser &
 /usr/lib/kdeconnectd &
 kdeconnect-indicator &
+redshift &

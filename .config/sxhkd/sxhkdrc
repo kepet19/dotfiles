@@ -71,7 +71,7 @@ Print
 shift + super + P
 	maimpick
 # Print: Record audio or video; Del: kill recording
-super + Print
+super + BackSpace
 	dmenurecord
 super + Delete
 	dmenurecord kill

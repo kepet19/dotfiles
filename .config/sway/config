@@ -3,8 +3,10 @@ set $mod mod4
 set $term --no-startup-id $TERMINAL
 font pango: Input Sans Condensed 8
 
-input keyboard repeat_rate 300
-input keyboard repeat_delay 50
+input * xkb_layout "dk,us"
+input * repeat_rate 50
+input * repeat_delay 150
+input * xkb_file /home/kkmp/.config/sway/keymap.xkb
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -28,8 +30,7 @@ bindsym $mod+Return exec $TERMINAL
 # start a nvim session
 bindsym $mod+Shift+s exec --no-startup-id $HOME/.local/bin/tools/switchoutput.sh
 bindsym $mod+z exec zeal
-bindsym $mod+q			[con_id="__focused__" instance="^(?!dropdown_).*$"] kill
-bindsym $mod+Shift+q		[con_id="__focused__" instance="^(?!dropdown_).*$"] exec --no-startup-id kill -9 `xdotool getwindowfocus getwindowpid`
+bindsym $mod+q kill
 
 # rofi
 bindsym $mod+d exec rofi -show drun -lines 10 -matching fuzzy -color-enabled -show-icons
