@@ -44,7 +44,11 @@ mpd >/dev/null 2>&1 &
 [ ! -f ~/.config/shortcutrc ] && shortcuts >/dev/null 2>&1
 
 # Start graphical server on tty1 if not already running.
-[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x Xorg >/dev/null && exec startx
+#[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x Xorg >/dev/null && exec startx
+# Start Sway on tty1
+if [ "$(tty)" = "/dev/tty1" ]; then
+	exec sway
+fi
 
 # Switch escape and caps if tty and no passwd required:
 sudo -n loadkeys ~/.local/share/larbs/ttymaps.kmap 2>/dev/null

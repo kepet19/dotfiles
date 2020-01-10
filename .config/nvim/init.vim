@@ -41,6 +41,7 @@ map <C-S-Up> :make<Return>:copen<Return>
 map <C-PageUp> :cprevious<Return>
 map <C-PageDown> :cnext<Return>
 
+
 let g:vimtex_compiler_progname="nvr"
 let g:powerline_pycmd="py3"
 let g:airline_powerline_fonts = 1
@@ -52,6 +53,9 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
+
+inoremap <leader><Space> <ESC>
+vnoremap <leader><Space> <ESC>
 
 inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
