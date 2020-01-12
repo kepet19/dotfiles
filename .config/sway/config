@@ -171,7 +171,7 @@ client.urgent               $bg-color       $bg-color       $text-color         
 bar {
     swaybar_command waybar
 }
-output "*" bg /home/kkmp/.config/wall.png fill
+output "*" bg /home/kkmp/.config/wall.jpg fill
 
 bindsym $mod+x exec swaylock-fancy
 exec swayidle -w \
@@ -185,5 +185,4 @@ exec_always --no-startup-id dunst -conf /home/ajmwagar/etc/DUNST/dunstrc
 exec --no-startup-id batterup # github.com/ajmwagar/batterup
 exec --no-startup-id odriveagent
 exec --no-startup-id jupyter notebook ~s
-exec --no-startup-id syndaemon -i 1 -K -dp
 exec --no-startup-id 'nm-applet --indicator'
