@@ -173,12 +173,13 @@ bar {
 }
 output "*" bg /home/kkmp/.config/wall.jpg fill
 
+# https://github.com/Big-B/swaylock-fancy
 bindsym $mod+x exec swaylock-fancy
 exec swayidle -w \
-         timeout 300 'swaylock-fancy -f -c 000000' \
-         timeout 600 'swaymsg "output * dpms off"' \
-              resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock-fance -f -c 000000'
+        timeout 300 'swaylock-fancy' \
+        timeout 600 'swaymsg "output * dpms off"' \
+            resume 'swaymsg "output * dpms on"' \
+        before-sleep 'swaylock-fancy'
 
 # Auto start
 exec_always --no-startup-id dunst -conf /home/ajmwagar/etc/DUNST/dunstrc
