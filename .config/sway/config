@@ -193,7 +193,7 @@ client.urgent               $bg-color       $bg-color       $text-color         
 bar {
     swaybar_command waybar
 }
-output "*" bg /home/kkmp/.config/wall.png fill
+output "*" bg /home/kkmp/.config/wall.jpg fill
 
 # https://github.com/Big-B/swaylock-fancy
 bindsym $mod+x exec swaylock-fancy
