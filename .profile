@@ -5,6 +5,7 @@ export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$
 export PATH="$HOME/.cargo/bin:$PATH"
 export WLC_REPEAT_RATE=600
 export WLC_REPEAT_DELAY=20
+export MOZ_ENABLE_WAYLAND=1
 
 # Get default LARBS WM from ~/.local/share/larbs/wm
 export LARBSWM="$(cat ~/.local/share/larbs/wm 2>/dev/null)" &&

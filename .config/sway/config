@@ -33,15 +33,22 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec $TERMINAL
+
+# https://github.com/ArtsyMacaw/wlogout LOGOUT
+bindsym $mod+F4 exec wlogout
+bindsym $mod+Backspace exec wlogout
+
 # start a nvim session
-bindsym $mod+Shift+s exec --no-startup-id $HOME/.local/bin/tools/switchoutput.sh
 bindsym $mod+z exec zeal
 bindsym $mod+q kill
 
+# Bind Appclications
+bindsym $mod+w			exec $TERMINAL -e nmtui
+bindsym $mod+Shift+w	exec --no-startup-id $BROWSER
+bindsym $mod+e 			exec $TERMINAL -e $FILE
+
 # rofi
 bindsym $mod+d exec rofi -show drun -lines 10 -matching fuzzy -color-enabled -show-icons
-bindsym $mod+Tab workspace next
-bindsym $mod+Shift+Tab workspace prev
 
 # Bind for moving windows
 bindsym $mod+h			focus left
@@ -70,11 +77,28 @@ bindsym $mod+Shift+o		exec --no-startup-id i3resize right
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+bindsym $mod+o sticky toggle
+
+# bind gaps
+bindsym $mod+Shift+t		gaps inner current set 15; gaps outer current set 15
+bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
 
 # change container layout (stacked, tabbed, toggle split)
 #bindsym $mod+s layout stacking
 #bindsym $mod+w layout tabbed
 #bindsym $mod+e layout toggle split
+
+# FLOATING APPS:
+for_window [class="Pinentry"] sticky enable
+for_window [class="sent"] border pixel 0px
+for_window [title="GIMP Startup"] move workspace $workspace5
+for_window [class="Gimp"] move workspace $workspace5
+for_window [class="net-minecraft-launcher-Main"] floating enable
+for_window [window_role="GtkFileChooserDialog"] resize set 800 600
+for_window [window_role="GtkFileChooserDialog"] move position center
+for_window [title="Default - Wine desktop"] floating enable
+for_window [app_id="firefox" title="^Picture-in-Picture$"] \
+    floating enable, move position 877 450, sticky enable
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -96,6 +120,9 @@ set $workspace9  9
 set $workspace10 10
 
 # switch to workspace
+#bindsym $mod+Tab workspace next
+#bindsym $mod+Shift+Tab workspace prev
+bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -121,15 +148,9 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+Escape 	exec --no-startup-id prompt "Exit i3?" "i3-msg exit"
 
-
-
-bindsym $mod+apostrophe		split horizontal ;; exec $term
-bindsym $mod+slash		split vertical ;; exec $term
 
 # Audio keys
 bindsym XF86AudioMute exec pamixer -t
@@ -160,9 +181,10 @@ set $inactive-bg-color   #383C4A
 set $inactive-bd-color   #F4D669
 set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
+set $indicator-color 	 #98f379
 
 #                           border          background      text                 indicator  child border
-client.focused              $bd-color       $bg-color       $text-color          $bd-color  $bd-color
+client.focused              $bd-color       $bg-color       $text-color          $indicator-color  $bd-color
 client.unfocused            $bg-color       $bg-color       $inactive-text-color $bg-color  $bg-color
 client.focused_inactive     $bg-color       $bg-color       $inactive-text-color $bg-color  $bg-color
 client.urgent               $bg-color       $bg-color       $text-color          $bg-color  $bg-color
@@ -175,16 +197,16 @@ output "*" bg /home/kkmp/.config/wall.png fill
 
 # https://github.com/Big-B/swaylock-fancy
 bindsym $mod+x exec swaylock-fancy
+
+
+
+# Auto start
 exec swayidle -w \
         timeout 300 'swaylock-fancy' \
         timeout 600 'swaymsg "output * dpms off"' \
             resume 'swaymsg "output * dpms on"' \
         before-sleep 'swaylock-fancy'
 
-# Auto start
-exec_always --no-startup-id dunst -conf /home/ajmwagar/etc/DUNST/dunstrc
+exec_always --no-startup-id dunst
 exec --no-startup-id batterup # github.com/ajmwagar/batterup
-exec --no-startup-id odriveagent
-exec --no-startup-id jupyter notebook ~s
-exec --no-startup-id syndaemon -i 1 -K -dp
 exec --no-startup-id 'nm-applet --indicator'

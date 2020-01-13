@@ -1,0 +1,22 @@
+[Default Applications]
+x-scheme-handler/magnet=torrent.desktop;
+application/x-bittorrent=torrent.desktop;
+x-scheme-handler/mailto=mail.desktop;
+text/plain=text.desktop;
+text/x-shellscript=text.desktop;
+application/postscript=pdf.desktop;
+application/pdf=pdf.desktop;
+image/png=img.desktop;
+image/jpeg=img.desktop;
+image/gif=img.desktop;
+application/rss+xml=rss.desktop
+inode/directory=org.gnome.Nautilus.desktop
+
+[Added Associations]
+application/x-shellscript=org.gnome.gedit.desktop;
+text/x-arduino=org.gnome.gedit.desktop;userapp-"alacritty -e "-1IVAE0.desktop;alacritty.desktop;userapp-"alacritty -e nvim"-ARP3D0.desktop;userapp-"alacritty -e nvim"-LBHFE0.desktop;userapp-"alacritty -e nvim"-A9E7D0.desktop;userapp-"alacritty -e nvim %"-N7AVD0.desktop;userapp-"alacritty vim %"-GNZ7D0.desktop;
+video/x-matroska=mpv.desktop;
+application/x-ms-dos-executable=wine.desktop;
+text/x-log=org.gnome.gedit.desktop;
+text/x-java=nvim.desktop;
+application/javascript=firefox.desktop;org.gnome.gedit.desktop;
