@@ -10,11 +10,15 @@ image/png=img.desktop;
 image/jpeg=img.desktop;
 image/gif=img.desktop;
 application/rss+xml=rss.desktop
-inode/directory=org.gnome.Nautilus.desktop
+inode/directory=thunar.desktop
+text/html=firefox.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/about=firefox.desktop
+x-scheme-handler/unknown=firefox.desktop
 
 [Added Associations]
 application/x-shellscript=org.gnome.gedit.desktop;
-text/x-arduino=org.gnome.gedit.desktop;userapp-"alacritty -e "-1IVAE0.desktop;alacritty.desktop;userapp-"alacritty -e nvim"-ARP3D0.desktop;userapp-"alacritty -e nvim"-LBHFE0.desktop;userapp-"alacritty -e nvim"-A9E7D0.desktop;userapp-"alacritty -e nvim %"-N7AVD0.desktop;userapp-"alacritty vim %"-GNZ7D0.desktop;
 video/x-matroska=mpv.desktop;
 application/x-ms-dos-executable=wine.desktop;
 text/x-log=org.gnome.gedit.desktop;

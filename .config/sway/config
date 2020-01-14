@@ -193,7 +193,7 @@ client.urgent               $bg-color       $bg-color       $text-color         
 bar {
     swaybar_command waybar
 }
-output "*" bg /home/kkmp/.config/wall.jpg fill
+output "*" bg /home/kkmp/.config/wall.png fill
 
 # https://github.com/Big-B/swaylock-fancy
 bindsym $mod+x exec swaylock-fancy
@@ -210,3 +210,7 @@ exec swayidle -w \
 exec_always --no-startup-id dunst
 exec --no-startup-id batterup # github.com/ajmwagar/batterup
 exec --no-startup-id 'nm-applet --indicator'
+exec syncthing -no-browser
+exec /usr/lib/kdeconnectd
+exec kdeconnect-indicator
+exec redshift

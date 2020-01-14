@@ -326,6 +326,12 @@ live_config_reload: true
 #   program: /bin/bash
 #   args:
 #     - --login
+shell:
+  program: /bin/zsh
+  args:
+    - --login
+    - -c
+    - 'tmux attach -t DEV || tmux new -s DEV'
 
 # Startup directory
 #

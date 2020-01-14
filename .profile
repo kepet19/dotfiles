@@ -16,7 +16,7 @@ export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
 export READER="zathura"
-export FILE="ranger"
+export FILE="nautilus"
 export STATUSBAR="${LARBSWM}blocks"
 
 # ~/ Clean-up:
