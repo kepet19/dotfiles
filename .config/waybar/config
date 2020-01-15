@@ -60,10 +60,10 @@
 		"network": {
 			// "interface": "wlp2s0", // (Optional) To force the use of this interface
 			"format-wifi": "{essid} ({signalStrength}%) ",
-			"format-wifi-alt": "{essid} ({signalStrength}%)  {ipaddr}",
+			"format-alt": "{essid} {ipaddr}",
 			"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
 			"format-disconnected": "Disconnected ⚠",
-			"on-click": "alacritty -e nmtui"
+			"on-click-right": "alacritty -e nmtui"
 		},
 		"pulseaudio": {
 			"scroll-step": 5,
