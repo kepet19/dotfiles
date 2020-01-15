@@ -54,8 +54,6 @@ let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
 
-inoremap <leader><Space> <ESC>
-vnoremap <leader><Space> <ESC>
 
 inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
