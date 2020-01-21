@@ -13,5 +13,6 @@ then
 else
 	echo "Window not detected... spawning."
 	sway "exec --no-startup-id $TERMINAL -t dropdown_$1 -e $1"
+	sleep .2
 	swaymsg "[title=dropdown_$1] scratchpad show"
 fi
