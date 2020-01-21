@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Toggle floating dropdown terminal in i3, or start if non-existing.
+# $1 is	the script run in the terminal.
+# All other args are terminal settings.
+# Terminal names are in dropdown_* to allow easily setting i3 settings.
+
+[ -z "$1" ] && exit
+if swaymsg -t get_tree | grep "dropdown_$1";
+then
+	echo "Window detected."
+	swaymsg "[title=dropdown_$1] scratchpad show"
+else
+	echo "Window not detected... spawning."
+	sway "exec --no-startup-id $TERMINAL -t dropdown_$1 -e $1"
+	swaymsg "[title=dropdown_$1] scratchpad show"
+fi

@@ -15,6 +15,11 @@ accel_profile flat
 xkb_options altwin:escape
 }
 
+# Trackpad input Settings
+input "1739:0:Synaptics_TM2668-002" {
+    tap enabled
+    natural_scroll enabled
+}
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 # font Fira Code:pixelsize=12:antialias=true:autohint:true
@@ -47,6 +52,7 @@ bindsym $mod+q kill
 bindsym $mod+w			exec $TERMINAL -e nmtui
 bindsym $mod+Shift+w	exec --no-startup-id $BROWSER
 bindsym $mod+e 			exec $TERMINAL -e $FILE
+
 
 # rofi
 bindsym $mod+d exec rofi -show drun -lines 10 -matching fuzzy -color-enabled -show-icons
@@ -103,6 +109,24 @@ for_window [window_role="GtkFileChooserDialog"] move position center
 for_window [title="Default - Wine desktop"] floating enable
 for_window [app_id="firefox" title="^Picture-in-Picture$"] \
     floating enable, move position 877 450, sticky enable
+
+# #---Dropdown Windows---# #
+# General dropdown window traits. The order can matter.
+for_window [title="dropdown_*"] floating enable
+for_window [title="dropdown_*"] move scratchpad
+for_window [title="dropdown_*"] sticky enable
+#for_window [title="dropdown_*"] scratchpad show
+for_window [title="dropdown_tmuxdd"] resize set 1800 450
+for_window [title="dropdown_dropdowncalc"] resize set 800 300
+for_window [title="dropdown_tmuxdd"] border pixel 3
+for_window [title="dropdown_dropdowncalc"] border pixel 2
+for_window [title="dropdown_dropdowncalc"] move position center
+for_window [title="dropdown_tmuxdd"] move absolute position 60 0
+
+# FLOATING TERMINAL
+bindsym $mod+u exec ddspawn tmuxdd
+bindsym $mod+a exec ddspawn dropdowncalc
+
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -207,7 +231,7 @@ bindsym $mod+x exec swaylock-fancy
 # Auto start
 exec swayidle -w \
         timeout 300 'swaylock-fancy' \
-        timeout 400 'swaymsg "output * dpms off"' \
+        timeout 350 'swaymsg "output * dpms off"' \
             resume 'swaymsg "output * dpms on"' \
         before-sleep 'swaylock-fancy'
 

@@ -4,7 +4,7 @@
 		"height": 25, // Waybar height
 		// "width": 1280, // Waybar width
 		// Choose the order of the modules
-		"modules-left": ["sway/workspaces","custom/arrow6","sway/mode","custom/mpd"],
+		"modules-left": ["sway/workspaces","custom/arrow6","sway/mode","sway/window","custom/mpd"],
 		"modules-center": ["clock#1"],
 		"modules-right": ["custom/arrow5","pulseaudio","custom/arrow4","network", "custom/arrow3", "clock#2", "custom/arrow3","battery", "custom/arrow3", "cpu", "memory","custom/arrow1","backlight", "idle_inhibitor", "tray","custom/arrow2"],
 		// Modules configuration
@@ -23,6 +23,10 @@
 				"default": ""
 			}
 		},
+    	"sway/window": {
+        "max-length": 80,
+        "tooltip": false
+    },
 		"battery": {
 			"format": "{capacity}% {icon}",
 			"format-alt": "{time} {icon}",
