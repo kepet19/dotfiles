@@ -34,6 +34,7 @@ Plug 'tacahiroy/ctrlp-funky'
 Plug 'metakirby5/codi.vim'
 Plug 'ajmwagar/vim-deus'
 Plug 'mikelue/vim-maven-plugin'
+Plug 'unfog-io/unfog-vim'
 call plug#end()
 
 " Make go next and previus
