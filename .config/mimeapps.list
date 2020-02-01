@@ -26,3 +26,4 @@ text/x-log=org.gnome.gedit.desktop;
 text/x-java=nvim.desktop;
 application/javascript=firefox.desktop;org.gnome.gedit.desktop;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop;
+application/zip=org.gnome.Nautilus.desktop;org.kde.ark.desktop;

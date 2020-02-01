@@ -51,7 +51,8 @@ bindsym $mod+q kill
 # Bind Appclications
 bindsym $mod+w			exec $TERMINAL -e nmtui
 bindsym $mod+Shift+w	exec --no-startup-id $BROWSER
-bindsym $mod+e 			exec $TERMINAL -e $FILE
+bindsym $mod+e 			exec $FILE
+bindsym $mod+i 			exec $TERMINAL -e ytopp
 
 
 # rofi
