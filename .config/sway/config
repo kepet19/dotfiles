@@ -37,6 +37,14 @@ floating_modifier $mod
 # new_window pixel 0
 # new_float pixel 4
 
+# ------------------- dmenu | rofi --------------------
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu_rofi rofi -show drun -lines 10 -matching fuzzy -color-enabled -show-icons
+set $menu_rofi_ssh rofi -show ssh -lines 10 -matching fuzzy -color-enabled -show-icons
+
 # start a terminal
 bindsym $mod+Return exec $TERMINAL
 
@@ -53,11 +61,12 @@ bindsym $mod+w			exec $TERMINAL -e nmtui
 bindsym $mod+Shift+w	exec --no-startup-id $BROWSER
 bindsym $mod+e 			exec $FILE
 bindsym $mod+i 			exec $TERMINAL -e ytopp
+bindsym $mod+r exec $menu
 
 
 # rofi
-bindsym $mod+d exec rofi -show drun -lines 10 -matching fuzzy -color-enabled -show-icons
-bindsym $mod+r dmenu | xargs swaymsg exec --
+bindsym $mod+d exec $menu_rofi
+bindsym $mod+m exec $menu_rofi_ssh
 bindsym $mod+s exec sgtk-menu -f -a
 
 # Bind for moving windows
