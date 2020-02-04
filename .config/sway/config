@@ -10,9 +10,11 @@ repeat_delay 300
 xkb_file /home/kkmp/.config/sway/keymap.xkb
 xkb_numlock enable
 xkb_capslock disable
+xkb_capslock disable
 accel_profile flat
 # input * natural_scroll enabled
 xkb_options altwin:escape
+xkb_options caps:escape
 }
 
 # Trackpad input Settings
@@ -131,7 +133,7 @@ for_window [title="dropdown_dropdowncalc"] resize set 800 300
 for_window [title="dropdown_tmuxdd"] border pixel 3
 for_window [title="dropdown_dropdowncalc"] border pixel 2
 for_window [title="dropdown_dropdowncalc"] move position center
-for_window [title="dropdown_tmuxdd"] move absolute position 60 0
+for_window [title="dropdown_tmuxdd"] move absolute position 60 30
 
 # FLOATING TERMINAL
 bindsym $mod+u exec ddspawn tmuxdd
