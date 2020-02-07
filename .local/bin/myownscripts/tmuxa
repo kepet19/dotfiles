@@ -2,19 +2,19 @@
 
 # Author: Kevin Kamer Meejach Petersen
 # Data: 24-10-2019
-# License: MIT
+# License: GPLv3
 
 # list tmux sessions
-function list {
+list() {
 	nameList=$(tmux list-sessions | awk '{print $1}'  | sed -e 's/://g')
 	nameAttach=$(tmux list-sessions | awk '{print $1 $10}' )
 	nl=$(tmux list-sessions | wc -l)
 	clear
-	echo "there is" $nl "sessions:"
+	echo "there is" "$nl" "sessions:"
 	n=1
 	for i in $nameAttach
 	do
-		echo $n'.' $i
+		echo $n'.' "$i"
 		n=$((n + 1))
 	done
 	echo ""
@@ -28,28 +28,28 @@ function list {
 	}
 
 # Create new tmux session
-function createNew {
+createNew() {
 	clear
 	read -rp "Input new tmux name sessions: " "newName"
-	if [ $TMUX ]
+	if [ "$TMUX" ]
 	then
-		tmux new -s $newName -d
-		tmux switch-client -t $newName
+		tmux new -s "$newName" -d
+		tmux switch-client -t "$newName"
 	fi
-	tmux new -s $newName
+	tmux new -s "$newName"
 }
 
 # we test if we are in a tmux session allready, else we just attach
-function attach {
-	if [ $TMUX ];
+attach() {
+	if [ "$TMUX" ];
 	then
-		tmux switch-client -t $(echo $nameList | cut -d " " -f$num)
+		tmux switch-client -t "$(echo $nameList | cut -d " " -f"$num")"
 	else
-		tmux attach -t $(echo $nameList | cut -d " " -f$num)
+		tmux attach -t "$(echo $nameList | cut -d " " -f"$num")"
 	fi
 }
 
-# The code starts here.
+# --------------------- The code starts here -------------------------
 while :
 do
 
