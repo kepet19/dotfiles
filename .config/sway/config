@@ -64,6 +64,7 @@ bindsym $mod+Shift+w	exec --no-startup-id $BROWSER
 bindsym $mod+e 			exec $FILE
 bindsym $mod+i 			exec $TERMINAL -e ytopp
 bindsym $mod+r exec $menu
+bindsym Ctrl+Shift+r exec wf-recorder-pick
 
 
 # rofi

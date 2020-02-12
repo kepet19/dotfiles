@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+# This is bound to Shift+PrintScreen by default, requires wf-recorder and slurp. It lets you
+# choose the kind of recording to take, including highlighting an area to record.
+
+case "$(printf "a selected area\\nfull screen\\nkill recording " | bemenu -l 3 -i -p "Record which area?")" in
+	"full screen") wf-recorder -f ~/recording_$(date +"%Y-%m-%d_%H:%M:%S.mp4") ;;
+	"a selected area") wf-recorder -g "$(slurp)" -f ~/recording_$(date +"%Y-%m-%d_%H:%M:%S.mp4") ;;
+	"kill recording") killall -s SIGINT wf-recorder ;;
+esac
