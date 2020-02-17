@@ -36,6 +36,7 @@ Plug 'metakirby5/codi.vim'
 Plug 'ajmwagar/vim-deus'
 Plug 'mikelue/vim-maven-plugin'
 Plug 'unfog-io/unfog-vim'
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 call plug#end()
 
 " Make go next and previus
@@ -47,7 +48,7 @@ map <C-PageDown> :cnext<Return>
 let g:vimtex_compiler_progname="nvr"
 let g:powerline_pycmd="py3"
 let g:airline_powerline_fonts = 1
-let g:airline_theme="atomic"
+let g:airline_theme="solarized"
 
 " vimtex conf
 let g:tex_flavor='latex'
@@ -84,6 +85,19 @@ set clipboard+=unnamedplus
 	set shiftwidth=4
 	nnoremap c "_c
 	nnoremap <Leader>fu :CtrlPFunkyMulti<Cr>
+" Mapping to change pwd to the directory of the current buffer.
+	nnoremap cm :cd %:h<CR>:pwd<CR>
+
+" VISUAL --- Mappings
+	" Copy selected lines as CSV
+	xnoremap <silent> <Leader>y :<C-u>call <SID>CopyLinesAsCSV()<CR>
+	fun s:CopyLinesAsCSV() abort
+	    let [_, l1, c1, _] = getpos("'<")
+	    let [_, l2, c2, _] = getpos("'>")
+	    let lines = map(getline(l1, l2), {i, l -> trim(l[c1-1:c2-1])})
+	    call setreg(v:register, join(lines, ', '), 'l')
+	endfun
+
 	set nocompatible
 	filetype plugin on
 	syntax on
@@ -169,9 +183,6 @@ set clipboard+=unnamedplus
 " Update binds when sxhkdrc is updated.
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
 
-"""JAVA
-	autocmd FileType java map <leader>C :w! \| !javac <c-r>%<CR>
-	autocmd FileType java map <leader>R :w! \| !javac *.java <CR>
 
 " Vim color scheme
 	set t_Co=256

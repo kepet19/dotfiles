@@ -11,8 +11,9 @@ xkb_file /home/kkmp/.config/sway/keymap.xkb
 xkb_numlock enable
 xkb_capslock disable
 xkb_capslock disable
+natural_scroll enabled
 accel_profile flat
-# input * natural_scroll enabled
+scroll_factor 0.5
 xkb_options altwin:escape
 xkb_options caps:escape
 }
