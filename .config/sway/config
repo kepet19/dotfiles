@@ -11,7 +11,7 @@ xkb_file /home/kkmp/.config/sway/keymap.xkb
 xkb_numlock enable
 xkb_capslock disable
 xkb_capslock disable
-natural_scroll enabled
+natural_scroll disable
 accel_profile flat
 scroll_factor 0.5
 xkb_options altwin:escape
@@ -66,6 +66,8 @@ bindsym $mod+e 			exec $FILE
 bindsym $mod+i 			exec $TERMINAL -e ytopp
 bindsym $mod+r exec $menu
 bindsym Ctrl+Shift+r exec wf-recorder-pick
+bindsym $mod+p			exec grimselect
+bindsym $mod+shift+p	exec grimpick
 
 
 # rofi

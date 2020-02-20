@@ -5,10 +5,10 @@
 # highlighting an area to copy. scrotcucks on suicidewatch right now.
 
 case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)" | dmenu -l 6 -i -p "Screenshot which area?")" in
-	"a selected area") grim -g "$(slurp)" "$(date '+%y%m%d-%H%M-%S').png" ;;
-	"current window") grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" "$(date '+%y%m%d-%H%M-%S').png" ;;
-	"full screen") grim "$(date '+%y%m%d-%H%M-%S').png" ;;
-	"a selected area (copy)") maim -s | xclip -selection clipboard -t image/png ;;
-	"current window (copy)") maim -i "$(xdotool getactivewindow)" | xclip -selection clipboard -t image/png ;;
-	"full screen (copy)") maim | xclip -selection clipboard -t image/png ;;
+	"a selected area") grim -g "$(slurp)" "$HOME/Pictures/$(date '+%y%m%d-%H%M-%S').png" ;;
+	"current window") grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" "$HOME/Pictures/$(date '+%y%m%d-%H%M-%S').png" ;;
+	"full screen") grim "$HOME/Pictures/$(date '+%y%m%d-%H%M-%S').png" ;;
+	"a selected area (copy)") grim -g "$(slurp)" "tmScreenShot.png"; wl-copy < "tmScreenShot.png"; rm "tmScreenShot.png";;
+	"current window (copy)") grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" "tm.png"; wl-copy < "tmScreenShot.png"; rm "tmScreenShot.png";;
+	"full screen (copy)") grim "tmScreenShot.png"; wl-copy < "tmScreenShot.png"; rm "tmScreenShot.png";;
 esac
