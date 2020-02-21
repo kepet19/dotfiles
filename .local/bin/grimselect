@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+# grimselect bind to mod + p 
+# You can select what to copy too your clipboard
+
+grim -g "$(slurp)" "tmScreenShot.png"; wl-copy < "tmScreenShot.png"; rm "tmScreenShot.png";
