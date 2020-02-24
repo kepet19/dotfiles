@@ -28,3 +28,6 @@ application/javascript=firefox.desktop;org.gnome.gedit.desktop;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop;
 application/zip=org.gnome.Nautilus.desktop;org.kde.ark.desktop;
 video/mp4=mpv.desktop;
+application/epub+zip=calibre-ebook-viewer.desktop;org.kde.ark.desktop;
+application/xml=org.gnome.gedit.desktop;
+text/html=calibre-ebook-edit.desktop;
