@@ -3,6 +3,9 @@ set $mod mod4
 set $term --no-startup-id $TERMINAL
 font pango: Input Sans Condensed 10
 
+# Load pywal colors
+include "$HOME/.cache/wal/colors-sway"
+
 input * {
 xkb_layout "dk,us"
 repeat_rate 50
@@ -226,7 +229,7 @@ for_window [class="^.*"] border pixel 4
 for_window [title="float"] floating enable
 for_window [class="^.float"] floating enable
 
-set $bg-color            #2C323B
+set $bg-color            $background
 set $bd-color            #98C379
 set $inactive-bg-color   #383C4A
 set $inactive-bd-color   #F4D669

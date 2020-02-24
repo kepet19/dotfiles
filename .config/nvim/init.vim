@@ -46,6 +46,7 @@ map <C-PageDown> :cnext<Return>
 
 
 let g:vimtex_compiler_progname="nvr"
+let g:vimtex_view_method = 'zathura'
 let g:powerline_pycmd="py3"
 let g:airline_powerline_fonts = 1
 let g:airline_theme="solarized"

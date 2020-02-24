@@ -74,7 +74,6 @@ lfcd () {
 bindkey -s '^o' 'lfcd\n'  # zsh
 export PATH="$HOME/.cargo/bin:$PATH"
 
-exec screenfetch
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
