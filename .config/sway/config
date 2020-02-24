@@ -13,7 +13,7 @@ xkb_capslock disable
 xkb_capslock disable
 natural_scroll disable
 accel_profile flat
-scroll_factor 0.5
+scroll_factor 1
 xkb_options altwin:escape
 xkb_options caps:escape
 }
@@ -26,6 +26,7 @@ xkb_options caps:escape
 input "2:7:SynPS/2_Synaptics_TouchPad" {
    	# tap enabled
     natural_scroll enabled 
+	scroll_factor 0.5
 }
 # input "2:10:TPPS\/2_IBM_TrackPoint" {
 
