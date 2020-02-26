@@ -237,17 +237,17 @@ set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
 set $indicator-color 	 #98f379
 
-#                           border          background      text                 indicator  child border
-client.focused              $bd-color       $bg-color       $text-color          $indicator-color  $bd-color
-client.unfocused            $bg-color       $bg-color       $inactive-text-color $bg-color  $bg-color
-client.focused_inactive     $bg-color       $bg-color       $inactive-text-color $bg-color  $bg-color
-client.urgent               $bg-color       $bg-color       $text-color          $bg-color  $bg-color
-# client.background                           $bg-color
+##                           border          background      text                 indicator  child border
+#client.focused              $bd-color       $bg-color       $text-color          $indicator-color  $bd-color
+#client.unfocused            $bg-color       $bg-color       $inactive-text-color $bg-color  $bg-color
+#client.focused_inactive     $bg-color       $bg-color       $inactive-text-color $bg-color  $bg-color
+#client.urgent               $bg-color       $bg-color       $text-color          $bg-color  $bg-color
+## client.background                           $bg-color
 
 bar {
     swaybar_command waybar
 }
-output "*" bg /home/kkmp/.config/wall.png fill
+output "*" bg "$wallpaper" fill
 
 # https://github.com/Big-B/swaylock-fancy
 bindsym $mod+x exec swaylock-fancy
@@ -264,9 +264,9 @@ exec swayidle -w \
 #exec_always --no-startup-id dunst
 exec_always --no-startup-id mako
 exec --no-startup-id batterup # github.com/ajmwagar/batterup
-exec --no-startup-id 'nm-applet --indicator'
 exec syncthing -no-browser
 exec /usr/lib/kdeconnectd
 exec kdeconnect-indicator
 exec redshift
 exec blueman-tray
+exec wal -R

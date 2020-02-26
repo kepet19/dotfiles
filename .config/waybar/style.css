@@ -7,11 +7,18 @@
 }
 
 window#waybar {
-	background-color: #282828;
+	background-color: transparent;
 	color: #949494;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#window {
+    padding: 0 5px;
+    background: #4a4a4a;
+    color: #ff8700;
+
+} 
+
 #workspaces button {
     padding: 0 5px;
     background: #4a4a4a;
@@ -23,7 +30,7 @@ window#waybar {
 }
 
 #mode {
-    background: #282828;
+    background: transparent;
     color: #d05c5c;
 
 }
@@ -34,7 +41,8 @@ window#waybar {
 }
 
 #clock.1 {
-    background-color: transparent;
+    background-color: #ff8700;
+    color: white;
     font-size: 19px;
 }
 
@@ -80,7 +88,9 @@ window#waybar {
 }
 
 #custom-mpd {
-    background: transparent;
+    padding: 0 5px;
+    background: #4a4a4a;
+    color: white;
 }
 
 #tray {
@@ -98,34 +108,42 @@ window#waybar {
 }
 
 #custom-arrow1 {
-	font-size: 24px;
+	font-size: 20px;
 	color: #949494;
 	background: #4e4e4e
 }
 #custom-arrow2 {
-	font-size: 24px;
+	font-size: 20px;
 	color: #ff8700;
 	background: #949494
 }
 #custom-arrow3 {
-	font-size: 24px;
+	font-size: 20px;
 	background: #4e4e4e;
 	color: #949494
 }
 #custom-arrow4 {
-	font-size: 24px;
+	font-size: 20px;
 	color: #4e4e4e;
 	background: #3a3a3a
 }
 #custom-arrow5 {
-	font-size: 24px;
+	font-size: 20px;
 	color: #3a3a3a;
 	background: transparent;
 }
 #custom-arrow6 {
-	font-size: 24px;
+	font-size: 20px;
 	color: #4a4a4a;
 	background: transparent;
 }
-
-
+#custom-arrow7 {
+	font-size: 20px;
+	color: #949494;
+	background: #4a4a4a;
+}
+#custom-arrow8 {
+	font-size: 20px;
+    color: white;
+	background: #949494;
+}

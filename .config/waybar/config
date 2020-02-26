@@ -4,9 +4,9 @@
 		"height": 25, // Waybar height
 		// "width": 1280, // Waybar width
 		// Choose the order of the modules
-		"modules-left": ["sway/workspaces","custom/arrow6","sway/mode","sway/window","custom/mpd"],
-		"modules-center": ["clock#1"],
-		"modules-right": ["custom/arrow5","pulseaudio","custom/arrow4","network", "custom/arrow3", "clock#2", "custom/arrow3","battery", "custom/arrow3", "cpu", "memory","custom/arrow1","backlight", "idle_inhibitor", "tray","custom/arrow2"],
+		"modules-left": ["sway/workspaces","custom/arrow7","sway/mode","sway/window","custom/mpd","custom/arrow6"],
+		"modules-center": [],
+		"modules-right": ["custom/arrow5","pulseaudio","custom/arrow4","network", "custom/arrow3", "clock#2", "custom/arrow3","battery", "custom/arrow3", "cpu", "memory","custom/arrow1","backlight", "idle_inhibitor","custom/arrow8", "tray","custom/arrow2","clock#1"],
 		// Modules configuration
 		"sway/workspaces": {
 			"disable-scroll": true,
@@ -24,7 +24,7 @@
 			}
 		},
     	"sway/window": {
-        "max-length": 80,
+        "max-length": 15,
         "tooltip": false
     },
 		"battery": {
@@ -95,10 +95,10 @@
 			"on-click": "termite -e ncmpcpp"
 		},
 		"backlight": {
-			"format": "{icon}",
-			"format-alt": "{percent}% {icon}",
-			"format-alt-click": "click-right",
-			"format-icons": ["", ""],
+			"format": "{percent}% {icon}",
+			"format-alt": "{icon}",
+			"format-alt-click": "click-left",
+			"format-icons": [""],
 			"on-scroll-down": "light -A 1",
 			"on-scroll-up": "light -U 1"
 		},
@@ -111,22 +111,28 @@
 			"tooltip": false
 		},
 		"custom/arrow1": {
-			"format": ""
+			"format": ""
 		},
 		"custom/arrow3": {
-			"format": ""
+			"format": ""
 		},
 		"custom/arrow4": {
-			"format": ""
+			"format": ""
 		},
 		"custom/arrow5": {
-			"format": ""
+			"format": ""
 		},
 		"custom/arrow6": {
-			"format": ""
+			"format": ""
+		},
+		"custom/arrow7": {
+			"format": ""
 		},
 		"custom/arrow2": {
-			"format": ""
+			"format": ""
+		},
+		"custom/arrow8": {
+			"format": ""
 		}
 }
 
