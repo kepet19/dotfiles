@@ -78,6 +78,7 @@ bindsym $mod+r exec $menu
 bindsym Ctrl+Shift+r exec wf-recorder-pick
 bindsym $mod+p			exec grimselect
 bindsym $mod+shift+p	exec grimpick
+bindsym alt+p			exec grimcolor
 
 
 # rofi

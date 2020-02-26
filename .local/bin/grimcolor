@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+# grimcolor bind to alt + p 
+# You can select a pixel and copy that color code to clipboard
+
+grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | awk 'NR==2 {print $3}' | wl-copy
