@@ -4,6 +4,7 @@
     font-family: Dejavu Sans Mono for Powerline;
     font-size: 14px;
     min-height: 0;
+	opacity: 0.93;
 }
 
 window#waybar {
@@ -35,17 +36,23 @@ window#waybar {
 
 }
 
-#clock.1, #clock.2, #battery, #cpu, #memory, #backlight, #network, #pulseaudio, #custom-mpd, #tray, #mode, #idle_inhibitor {
+#clock.time, #clock.date ,#clock.datetime, #battery, #cpu, #memory, #backlight, #network, #pulseaudio, #custom-mpd, #tray, #mode, #idle_inhibitor {
     padding: 0 10px;
     margin: 0 0px;
 }
 
-#clock.1 {
+#clock.time {
     background-color: #ff8700;
     color: white;
-    font-size: 19px;
 }
-
+#clock.date {
+    background-color: #ff8700;
+    color: white;
+}
+#clock.datetime {
+    background-color: #ff8700;
+    color: white;
+}
 @keyframes blink {
     to {
         background-color: #ffffff;
@@ -68,9 +75,13 @@ window#waybar {
 #battery {
     background: #4e4e4e;
 }
-
-#clock.2 {
+#battery.warning {
     background: #4e4e4e;
+	color: #D75F00;
+}
+#battery.critical {
+    background: #4e4e4e;
+	color: #870000;
 }
 
 #network.disconnected {
@@ -83,6 +94,7 @@ window#waybar {
 }
 
 #pulseaudio.muted {
+   /* background: #A75F00; */
     background: #3a3a3a;
     color: #2a5c45;
 }
@@ -105,6 +117,17 @@ window#waybar {
 #backlight {
     background-color: #949494;
     color: #2a5c45;
+}
+#custom-wlogout {
+    padding: 0 5px;
+    padding-right: 8px;
+    background: #A75F00;
+	background: #ff8700;
+	color: white;
+}
+#custom-terminal {
+    background-color: #ff8700;
+    color: white;
 }
 
 #custom-arrow1 {
@@ -146,4 +169,14 @@ window#waybar {
 	font-size: 20px;
     color: white;
 	background: #949494;
+}
+#custom-arrow9 {
+	font-size: 20px;
+	background: transparent;
+	color: #ff8700;
+}
+#custom-arrow10 {
+	font-size: 20px;
+	background: transparent;
+	color: #ff8700;
 }

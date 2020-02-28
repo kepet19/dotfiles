@@ -56,9 +56,9 @@ mopidy >/dev/null 2>&1 &
 #[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x Xorg >/dev/null && exec startx
 # Start Sway on tty1
 
-if [ "$(tty)" = "/dev/tty1" ]; then
-	exec sway
-fi
+#if [ "$(tty)" = "/dev/tty1" ]; then
+#	exec sway
+#fi
 
 # Switch escape and caps if tty and no passwd required:
 sudo -n loadkeys ~/.local/share/larbs/ttymaps.kmap 2>/dev/null

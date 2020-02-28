@@ -5,8 +5,8 @@
 		// "width": 1280, // Waybar width
 		// Choose the order of the modules
 		"modules-left": ["sway/workspaces","custom/arrow7","sway/mode","sway/window","custom/mpd","custom/arrow6"],
-		"modules-center": [],
-		"modules-right": ["custom/arrow5","pulseaudio","custom/arrow4","network", "custom/arrow3", "clock#2", "custom/arrow3","battery", "custom/arrow3", "cpu", "memory","custom/arrow1","backlight", "idle_inhibitor","custom/arrow8", "tray","custom/arrow2","clock#1"],
+		"modules-center": [ "custom/arrow9", "clock#datetime","custom/terminal","custom/arrow10" ],
+		"modules-right": ["custom/arrow5","pulseaudio","custom/arrow4","network", "custom/arrow3","battery", "custom/arrow3", "cpu", "memory","custom/arrow1","backlight", "idle_inhibitor","custom/arrow8", "tray","custom/arrow2","custom/wlogout"],
 		// Modules configuration
 		"sway/workspaces": {
 			"disable-scroll": true,
@@ -48,11 +48,17 @@
 			//"icon-size": 21,
 			"spacing": 10
 		},
-		"clock#1": {
-			"tooltip-format": "{:%Y-%m-%d | %H:%M}"
+		"clock#time": {
+			"tooltip-format": "{:%Y-%m-%d | %H:%M}",
+			"tooltip": false
 		},
-		"clock#2": {
-			"format": "{:%d. %B %Y}"
+		"clock#date": {
+			"format": "{:%d. %B %Y}",
+			"tooltip": false
+		},
+		"clock#datetime": {
+			"format": " {:%d. %B %Y %H:%M} ",
+			"tooltip": false
 		},
 		"cpu": {
 			"format": "{usage}% "
@@ -63,17 +69,19 @@
 		},
 		"network": {
 			// "interface": "wlp2s0", // (Optional) To force the use of this interface
-			"format-wifi": "{essid} ({signalStrength}%) ",
+			"format-wifi": "{signalStrength}% ",
 			"format-alt": "{essid} {ipaddr}",
+			"format-alt-click": "click-right",
 			"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
 			"format-disconnected": "Disconnected ⚠",
-			"on-click-right": "alacritty -e nmtui"
+			"on-click": "alacritty -e nmtui",
+			"tooltip": false
 		},
 		"pulseaudio": {
-			"scroll-step": 5,
+			"scroll-step": 1,
 			"format": "{volume}% {icon}",
 			"format-bluetooth": "{volume}% {icon}",
-			"format-muted": "",
+			"format-muted": "🔇",
 			"format-icons": {
 				"headphones": "",
 				"handsfree": "",
@@ -81,9 +89,11 @@
 				"phone": "",
 				"portable": "",
 				"car": "",
-				"default": ["", ""]
+				"default": ["","", ""]
 			},
-			"on-click": "pavucontrol"
+			"on-click": "amixer -q -D pulse sset Master toggle",
+			"on-click-right": "pavucontrol",
+			"tooltip": false
 		},
 		"custom/mpd": {
 			"format": "♪ {}",
@@ -92,11 +102,11 @@
 			"exec": "echo $(mpc current) – $(mpc status | awk '{print $3}' | sed -n 2p)",
 			"exec-if": "pgrep mpd",
 			"on-click-right": "mpc toggle",
-			"on-click": "termite -e ncmpcpp"
+			"on-click": "firefox http://localhost:6680/musicbox_webclient/index.html#home"
 		},
 		"backlight": {
-			"format": "{percent}% {icon}",
-			"format-alt": "{icon}",
+			"format": "{icon}",
+			"format-alt": "{percent}% {icon}",
 			"format-alt-click": "click-left",
 			"format-icons": [""],
 			"on-scroll-down": "light -A 1",
@@ -110,30 +120,57 @@
 			},
 			"tooltip": false
 		},
+		"custom/wlogout": {
+			"format": "",
+			"on-click": "wlogout",
+			"tooltip": false
+		},
+		"custom/terminal": {
+			"format": "",
+			"on-click": "terminator",
+			"tooltip": false
+		},
 		"custom/arrow1": {
-			"format": ""
-		},
-		"custom/arrow3": {
-			"format": ""
-		},
-		"custom/arrow4": {
-			"format": ""
-		},
-		"custom/arrow5": {
-			"format": ""
-		},
-		"custom/arrow6": {
-			"format": ""
-		},
-		"custom/arrow7": {
-			"format": ""
+			"format": "",
+			"tooltip": false
 		},
 		"custom/arrow2": {
-			"format": ""
+			"format": "",
+			"tooltip": false
+		},
+		"custom/arrow3": {
+			"format": "",
+			"tooltip": false
 		},
 		"custom/arrow8": {
-			"format": ""
+			"format": "",
+			"tooltip": false
+		},
+		"custom/arrow4": {
+			"format": "",
+			"tooltip": false
+		},
+		"custom/arrow5": {
+			"format": "",
+			"tooltip": false
+		},
+		"custom/arrow6": {
+			"format": "",
+			"tooltip": false
+		},
+		"custom/arrow7": {
+			"format": "",
+			"tooltip": false
+		},
+		"custom/arrow9": {
+			"format": "",
+			"tooltip": false
+		}, 
+		"custom/arrow10": {
+			"format": "",
+			"tooltip": false
 		}
+
 }
 
 

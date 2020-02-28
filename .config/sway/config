@@ -50,6 +50,9 @@ floating_modifier $mod
 # new_window pixel 0
 # new_float pixel 4
 
+# Sets bordes on application
+default_border normal
+
 # ------------------- dmenu | rofi --------------------
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -206,7 +209,6 @@ bindsym $mod+Shift+c reload
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+Escape 	exec --no-startup-id prompt "Exit i3?" "i3-msg exit"
 
-
 # Audio keys
 bindsym XF86AudioMute exec pamixer -t
 bindsym XF86AudioLowerVolume exec pamixer -d 5
@@ -270,4 +272,6 @@ exec /usr/lib/kdeconnectd
 exec kdeconnect-indicator
 exec redshift
 exec blueman-tray
+exec nm-applet --indicator
+exec xrdb -load ~/.Xresources
 exec wal -R

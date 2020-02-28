@@ -44,6 +44,7 @@ map <C-S-Up> :make<Return>:copen<Return>
 map <C-PageUp> :cprevious<Return>
 map <C-PageDown> :cnext<Return>
 
+" https://github.com/iamcco/coc-spell-checker
 
 let g:vimtex_compiler_progname="nvr"
 let g:vimtex_view_method = 'zathura'
@@ -59,19 +60,19 @@ set conceallevel=1
 let g:tex_conceal='abdmg'
 
 
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 
-" use <c-space>for trigger completion
-inoremap <silent><expr> <c-space> coc#refresh()
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-"inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+xmap <Tab> <Plug>(coc-snippets-select)
 
 " LukeSmithxyz
 set bg=light
@@ -183,7 +184,13 @@ set clipboard+=unnamedplus
 	autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
 " Update binds when sxhkdrc is updated.
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
-
+" Reload Waybar
+	autocmd BufWritePost ~/.config/waybar/config,~/.config/waybar/style.css !swaymsg "reload"
+" Reload vim When it is changed
+	augroup OnlyReloadOneTimePerWrite
+    	au!
+    	autocmd bufwritepost .vim source ~/.config/nvim/init.vim
+	augroup END
 
 " Vim color scheme
 	set t_Co=256

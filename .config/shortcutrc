@@ -43,3 +43,4 @@ cfmc="$EDITOR ~/.config/ncmpcpp/config" \
 er="$EDITOR ~/Documents/referbib" \
 cfB="$EDITOR ~/.config/i3blocks/config" \
 vii="$EDITOR ~/.vim/init.vim" \
+cfw="$EDITOR ~/.config/waybar/config" \
