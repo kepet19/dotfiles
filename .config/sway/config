@@ -75,7 +75,7 @@ bindsym $mod+q kill
 # Bind Appclications
 bindsym $mod+w			exec $TERMINAL -e nmtui
 bindsym $mod+Shift+w	exec --no-startup-id $BROWSER
-bindsym $mod+e 			exec $FILE
+bindsym $mod+e 			exec $FILE 
 bindsym $mod+i 			exec $TERMINAL -e ytopp
 bindsym $mod+r exec $menu
 bindsym Ctrl+Shift+r exec wf-recorder-pick
@@ -136,6 +136,7 @@ for_window [app_id="pavucontrol"] floating enable, resize set 600 500, move posi
 for_window [class="net-minecraft-launcher-Main"] floating enable
 for_window [window_role="GtkFileChooserDialog"] resize set 800 600
 for_window [window_role="GtkFileChooserDialog"] move position center
+for_window [app_id="org.gnome.Nautilus"] floating enable, resize set 800 600
 for_window [title="Default - Wine desktop"] floating enable
 for_window [app_id="firefox" title="^Picture-in-Picture$"] \
     floating enable, move position 877 450, sticky enable
