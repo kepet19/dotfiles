@@ -1,0 +1,20 @@
+[user]
+	email = kevinmeejach@gmail.com
+	name = kepet19
+	signingkey = 2D3CF82D41B75758
+	mail = kepet19@student.sdu.dk
+[gpg]
+	program = gpg2
+[commit]
+	gpgsign = true
+[core]
+	autocrlf = input
+[filesystem "N/A|13.0.1|/dev/sda2"]
+	timestampResolution = 8000 nanoseconds
+	minRacyThreshold = 4251 microseconds
+[alias]
+	st = status
+	ca = commit -a
+	cam = commit -am
+	ph = push
+	pl = pull
