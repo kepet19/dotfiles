@@ -1,0 +1,11 @@
+session_name: 'DM'
+windows:
+- window_name: Main
+  focus: 'true'
+  layout: main-horizontal
+  options: {}
+  panes:
+  - focus: 'true'
+  - 
+  -
+  start_directory: /home/kkmp/Documents/SDU/semester_2/DM/

@@ -34,6 +34,7 @@ alias \
 	p="sudo pacman" \
 	xi="sudo xbps-install" \
 	xr="sudo xbps-remove -R" \
+	t="tmuxp load" \
 	xq="xbps-query"
 
 # This alias is important. It enables the `pauseallmpv` command.

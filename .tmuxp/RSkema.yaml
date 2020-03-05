@@ -1,0 +1,11 @@
+session_name: 'Skema'
+windows:
+- window_name: Main
+  focus: 'true'
+  layout: main-horizontal
+  options: {}
+  panes:
+  - focus: 'true'
+  - 
+  -
+  start_directory: /home/kkmp/DEV/rust/skema/
