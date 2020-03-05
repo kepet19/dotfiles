@@ -27,7 +27,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'shumphrey/fugitive-gitlab.vim'
@@ -39,6 +38,32 @@ Plug 'unfog-io/unfog-vim'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 call plug#end()
 
+function! CheckIfBufferIsNotEmptyAndWriteGoClapFiles()
+	if filereadable( bufname(1))
+		:w!
+	endif
+	:Clap files
+endfunction
+
+function! CheckIfBufferIsNotEmptyAndWriteGoClapGrep()
+	if filereadable( bufname(1))
+		:w!
+	endif
+	:Clap grep
+endfunction
+
+if has('persistent_undo')      "check if your vim version supports it
+  set undofile                 "turn on the feature  
+  set undodir=$HOME/.config/nvim/undo  "directory where the undo files will be stored
+  endif
+
+" Vim clap Settings
+nnoremap <C-p> :call CheckIfBufferIsNotEmptyAndWriteGoClapFiles()<CR>
+nnoremap <C-b> :Gstatus<CR>
+nnoremap <Leader>fu :call CheckIfBufferIsNotEmptyAndWriteGoClapGrep()<CR> 
+" Visual Vim clap
+let g:clap_theme = 'material_design_dark'
+
 " Make go next and previus
 map <C-S-Up> :make<Return>:copen<Return>
 map <C-PageUp> :cprevious<Return>
@@ -47,7 +72,6 @@ map <C-PageDown> :cnext<Return>
 " https://github.com/iamcco/coc-spell-checker
 
 let g:vimtex_compiler_progname="nvr"
-let g:vimtex_view_method = 'zathura'
 let g:powerline_pycmd="py3"
 let g:airline_powerline_fonts = 1
 let g:airline_theme="solarized"
@@ -86,7 +110,6 @@ set clipboard+=unnamedplus
 	set softtabstop=0 noexpandtab
 	set shiftwidth=4
 	nnoremap c "_c
-	nnoremap <Leader>fu :CtrlPFunkyMulti<Cr>
 " Mapping to change pwd to the directory of the current buffer.
 	nnoremap cm :cd %:h<CR>:pwd<CR>
 
@@ -108,7 +131,7 @@ set clipboard+=unnamedplus
 " Enable autocompletion:
 	set wildmode=longest,list,full
 " Disables automatic commenting on newline:
-	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+"	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Goyo plugin makes text more readable when writing prose:
 	map <leader>f :Goyo \| set linebreak<CR>
