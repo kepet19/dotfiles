@@ -9,9 +9,6 @@
 	gpgsign = true
 [core]
 	autocrlf = input
-[filesystem "N/A|13.0.1|/dev/sda2"]
-	timestampResolution = 8000 nanoseconds
-	minRacyThreshold = 4251 microseconds
 [alias]
 	st = status
 	ca = commit -a
