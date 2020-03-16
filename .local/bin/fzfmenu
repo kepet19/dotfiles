@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+# fzfmenu - fzf as dmenu replacement
+dmenu_path | fzf | xargs swaymsg exec --
+

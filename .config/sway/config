@@ -6,6 +6,9 @@ font pango: Input Sans Condensed 10
 # Load pywal colors
 include "$HOME/.cache/wal/colors-sway"
 
+# hide_cursor
+seat * hide_cursor 4000
+
 input * {
 xkb_layout "dk,us"
 repeat_rate 50
@@ -85,7 +88,6 @@ bindsym alt+p			exec grimcolor
 
 
 # rofi
-bindsym $mod+d exec $menu_rofi
 bindsym $mod+m exec $menu_rofi_ssh
 bindsym $mod+s exec sgtk-menu -f -a
 
@@ -146,17 +148,21 @@ for_window [app_id="firefox" title="^Picture-in-Picture$"] \
 for_window [title="dropdown_*"] floating enable
 for_window [title="dropdown_*"] move scratchpad
 for_window [title="dropdown_*"] sticky enable
-#for_window [title="dropdown_*"] scratchpad show
+#for_window [title="dropdown_*"] scratchpad show 
 for_window [title="dropdown_tmuxdd"] resize set 1800 450
 for_window [title="dropdown_dropdowncalc"] resize set 800 300
 for_window [title="dropdown_tmuxdd"] border pixel 3
 for_window [title="dropdown_dropdowncalc"] border pixel 2
 for_window [title="dropdown_dropdowncalc"] move position center
 for_window [title="dropdown_tmuxdd"] move absolute position 60 30
+# Dropdown for fzfmenu
+for_window [title="fzfmenu"] floating enable, sticky
+for_window [title="fzfmenu"] resize set 600 200
 
 # FLOATING TERMINAL
 bindsym $mod+u exec ddspawn tmuxdd
 bindsym $mod+a exec ddspawn dropdowncalc
+bindsym $mod+d exec $TERMINAL -t "fzfmenu" -e fzfmenu
 
 
 # toggle tiling / floating

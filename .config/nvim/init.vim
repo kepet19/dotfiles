@@ -112,6 +112,8 @@ set clipboard+=unnamedplus
 	nnoremap c "_c
 " Mapping to change pwd to the directory of the current buffer.
 	nnoremap cm :cd %:h<CR>:pwd<CR>
+" Toggle Wrap
+nnoremap <Leader>w :set wrap!<CR>
 
 " VISUAL --- Mappings
 	" Copy selected lines as CSV

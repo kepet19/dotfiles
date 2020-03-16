@@ -47,3 +47,5 @@ alias \
 	weath="less -S ~/.local/share/weatherreport" \
 	config='/usr/bin/git --git-dir=/home/kkmp/.cfg/ --work-tree=/home/kkmp' \
 	zathura="zathura --fork" \
+	lsf="fzf | xargs ls -l" \
+	#vo="v -o `fzf`" \

@@ -5,12 +5,14 @@ export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/Android/Sdk/tools/bin/:$PATH"
 export PATH="$HOME/Android/Sdk/platform-tools/:$PATH"
-export WLC_REPEAT_RATE=600
-export WLC_REPEAT_DELAY=20
+# TODO maybe remove these? 
+#export WLC_REPEAT_RATE=600
+#export WLC_REPEAT_DELAY=20
 export MOZ_ENABLE_WAYLAND=1
 export ANDROID_HOME="$HOME/Android/Sdk"
 export ANDROID_NDK_HOME="$ANDROID_HOME/ndk-bundle"
 export JAVA_HOME="/usr/lib/jvm/default/"
+export _systemd_git_kdbus=--enable-kdbus
 
 
 # Get default LARBS WM from ~/.local/share/larbs/wm
@@ -36,7 +38,7 @@ export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
 # Other program settings:
 export DICS="/usr/share/stardict/dic/"
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
-export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
+export FZF_DEFAULT_OPTS="--layout=reverse --height 90%"
 export LESS=-R
 export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
 export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
