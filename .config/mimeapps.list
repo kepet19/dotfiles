@@ -35,3 +35,4 @@ text/html=calibre-ebook-edit.desktop;
 application/x-krita=org.kde.gwenview.desktop;
 application/octet-stream=org.gnome.font-viewer.desktop;
 application/sql=org.gnome.gedit.desktop;gvim.desktop;
+text/x-tex=org.gnome.gedit.desktop;
