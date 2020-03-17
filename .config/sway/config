@@ -142,6 +142,7 @@ for_window [app_id="org.gnome.Nautilus"] floating enable
 for_window [title="Default - Wine desktop"] floating enable
 for_window [app_id="firefox" title="^Picture-in-Picture$"] \
     floating enable, move position 877 450, sticky enable
+for_window [app_id="blueman-*"] floating enable
 
 # #---Dropdown Windows---# #
 # General dropdown window traits. The order can matter.
