@@ -36,6 +36,7 @@ Plug 'ajmwagar/vim-deus'
 Plug 'mikelue/vim-maven-plugin'
 Plug 'unfog-io/unfog-vim'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
+Plug 'da-h/AirLatex.vim', {'do': ':UpdateRemotePlugins'}
 call plug#end()
 
 function! CheckIfBufferIsNotEmptyAndWriteGoClapFiles()
@@ -63,6 +64,13 @@ nnoremap <C-b> :Gstatus<CR>
 nnoremap <Leader>fu :call CheckIfBufferIsNotEmptyAndWriteGoClapGrep()<CR> 
 " Visual Vim clap
 let g:clap_theme = 'material_design_dark'
+
+
+" optional: set server name
+let g:AirlatexDomain="overleaf.nymann.dev"
+nmap <leader>a :AirLatex<CR>
+" LaTeX-Box is includ with vim-polyglot and may be disabled with: 
+let g:polyglot_disabled = ['latex']
 
 " Make go next and previus
 map <C-S-Up> :make<Return>:copen<Return>
