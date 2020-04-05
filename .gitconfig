@@ -13,5 +13,7 @@
 	st = status
 	ca = commit -a
 	cam = commit -am
+	cm = commit -m
 	ph = push
 	pl = pull
+	rt = restore

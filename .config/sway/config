@@ -10,23 +10,26 @@ include "$HOME/.cache/wal/colors-sway"
 seat * hide_cursor 4000
 
 input * {
-xkb_layout "dk,us"
+xkb_layout "us"
+xkb_variant altgr-intl
 repeat_rate 50
 repeat_delay 300
-xkb_file /home/kkmp/.config/sway/keymap.xkb
+# xkb_file /home/kkmp/.config/sway/keymap.xkb
 xkb_numlock enable
 xkb_capslock disable
 xkb_capslock disable
 natural_scroll disable
 accel_profile flat
 scroll_factor 1
-xkb_options altwin:escape
-xkb_options caps:escape
+# xkb_options super_L:super_L,escape
+# xkb_options caps:escape
 }
+
+
 
 # Trackpad input Settings
 #input "1739:0:Synaptics_TM2668-002" {
-#    tap enabled
+	#    tap enabled
 #    natural_scroll enabled
 #}
 input "2:7:SynPS/2_Synaptics_TouchPad" {
@@ -56,7 +59,15 @@ floating_modifier $mod
 # Sets bordes on application
 default_border normal
 
-# ------------------- dmenu | rofi --------------------
+# ------------------- wayvnc | seat or group --------------------
+# Putting wayvnc in its own seat is done like this:
+# swaymsg seat wayvnc fallback false # create a new seat
+# wayvnc --seat=wayvnc
+
+# Smart keyboard grouping can be turned off like this:
+# swaymsg seat seat0 keyboard_grouping none
+
+# ------------------- dmenu | rofi ------------------------------
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -129,6 +140,10 @@ bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
 #bindsym $mod+w layout tabbed
 #bindsym $mod+e layout toggle split
 
+# Inhibit Idle if a window is fullscreen 
+for_window [class="^.*"] inhibit_idle fullscreen 
+for_window [app_id="^.*"] inhibit_idle fullscreen
+
 # FLOATING APPS:
 for_window [class="Pinentry"] sticky enable
 for_window [class="sent"] border pixel 0px
@@ -141,7 +156,7 @@ for_window [window_role="GtkFileChooserDialog"] move position center
 for_window [app_id="org.gnome.Nautilus"] floating enable
 for_window [title="Default - Wine desktop"] floating enable
 for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable, move position 877 450, sticky enable
-for_window [app_id="firefox"] move workspace $workspace2 
+# for_window [app_id="firefox"] move workspace $workspace2 
 for_window [app_id="blueman-*"] floating enable
 for_window [class="discord"] move workspace $workspace5
 
@@ -160,6 +175,9 @@ for_window [title="dropdown_tmuxdd"] move absolute position 60 30
 # Dropdown for fzfmenu
 for_window [title="fzfmenu"] floating enable, sticky
 for_window [title="fzfmenu"] resize set 600 200
+# 
+for_window [title="console_calender"] floating enable, sticky
+for_window [title="console_calender"] resize set 800 600, move position 800 20
 
 # FLOATING TERMINAL
 bindsym $mod+u exec ddspawn tmuxdd
@@ -257,7 +275,7 @@ set $indicator-color 	 #98f379
 ## client.background                           $bg-color
 
 bar {
-    swaybar_command waybar
+    swaybar_command swaybar
 }
 output "*" bg "$wallpaper" fill
 
@@ -286,3 +304,4 @@ exec xrdb -load ~/.Xresources
 exec wal -R
 exec discord
 exec firefox
+exec alacritty

@@ -59,14 +59,15 @@
 		},
 		"clock#datetime": {
 			"format": " {:%d. %B %Y %H:%M} ",
-			"tooltip": false
+			"tooltip": false,
+			"on-click": "$TERMINAL -t 'console_calender' -e calcurse"
 		},
 		"cpu": {
 			"format": "{usage}% "
 		},
 		"memory": {
 			"format": "{}% ",
-			"on-click": "alacritty -e htop"
+			"on-click": "$TERMINAL -e htop"
 		},
 		"network": {
 			// "interface": "wlp2s0", // (Optional) To force the use of this interface
@@ -75,7 +76,7 @@
 			"format-alt-click": "click-right",
 			"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
 			"format-disconnected": "Disconnected ⚠",
-			"on-click": "alacritty -e nmtui",
+			"on-click": "$TERMINAL -e nmtui",
 			"tooltip": false
 		},
 		"pulseaudio": {
@@ -128,7 +129,7 @@
 		},
 		"custom/terminal": {
 			"format": "",
-			"on-click": "alacritty",
+			"on-click": "$TERMINAL",
 			"tooltip": false
 		},
 		"custom/arrow1": {

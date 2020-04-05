@@ -1,17 +1,22 @@
-# Luke's config for the Zoomer Shell
-
-autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-
+# autoload -U colors && colors
+# PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+#
 # History in cache directory:
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
 
+# Path to your oh-my-zsh installation.
+export ZSH="/home/kkmp/.config/.oh-my-zsh"
+ZSH_THEME="amuse"
+
+plugins=(git cargo pip systemd)
+
+source $ZSH/oh-my-zsh.sh
+#
 # Load aliases and shortcuts if existent.
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
-alias config='/usr/bin/git --git-dir=/home/kkmp/.cfg/ --work-tree=/home/kkmp'
 
 autoload -U compinit
 zstyle ':completion:*' menu select
@@ -27,6 +32,7 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
+bindkey '^R' history-incremental-search-backward
 
 export KEYTIMEOUT=1
 
@@ -72,9 +78,17 @@ lfcd () {
 }
 
 bindkey -s '^o' 'lfcd\n'  # zsh
+
+# Clean Up User VIABELS
+
+# Dot files 
+alias config='/usr/bin/git --git-dir=/home/kkmp/.cfg/ --work-tree=/home/kkmp'
+# Rust PATH
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# https://github.com/Canop/broot
+bindkey -s '^b' 'br -dp\n'  # zsh
+source /home/kkmp/.config/broot/launcher/bash/br
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
-source /home/kkmp/.config/broot/launcher/bash/br

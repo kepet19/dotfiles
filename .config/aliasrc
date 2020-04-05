@@ -48,4 +48,5 @@ alias \
 	config='/usr/bin/git --git-dir=/home/kkmp/.cfg/ --work-tree=/home/kkmp' \
 	zathura="zathura --fork" \
 	lsf="fzf | xargs ls -l" \
+	cal="cal -w" \
 	#vo="v -o `fzf`" \

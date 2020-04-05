@@ -1,8 +1,11 @@
 !! Transparency (0-1):
 st.alpha: 0.85
+*.alpha: 0.85
 
 !! Set a default font and font size as below:
-st.font: Monospace-12;
+st.font: Noto sans mono Nerd Font-10
+*.font: monospace:size=10
+rofi.font: Noto sans mono Nerd Font 10
 
 ! st.termname: st-256color
 ! st.borderpx: 2

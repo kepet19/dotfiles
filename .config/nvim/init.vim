@@ -159,6 +159,9 @@ nnoremap <Leader>w :set wrap!<CR>
 	map <leader>n :NERDTreeToggle<CR>
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" Git go to github homepage
+	map <leader>g :!urlgitf<CR>
+
 " vimling:
 	nm <leader>d :call ToggleDeadKeys()<CR>
 	imap <leader>d <esc>:call ToggleDeadKeys()<CR>a
@@ -184,6 +187,7 @@ nnoremap <Leader>w :set wrap!<CR>
 
 " Compile document, be it groff/LaTeX/markdown/etc.
 	map <leader>c :w! \| !compiler <c-r>%<CR>
+	map <leader>t :w! \| !mvn test <CR>
 
 " Open corresponding .pdf/.html or preview
 	map <leader>p :!opout <c-r>%<CR><CR>
