@@ -275,7 +275,7 @@ set $indicator-color 	 #98f379
 ## client.background                           $bg-color
 
 bar {
-    swaybar_command swaybar
+    swaybar_command waybar
 }
 output "*" bg "$wallpaper" fill
 
