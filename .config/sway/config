@@ -304,4 +304,3 @@ exec xrdb -load ~/.Xresources
 exec wal -R
 exec discord
 exec firefox
-exec alacritty
