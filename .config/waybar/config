@@ -5,9 +5,9 @@
 		"height": 25, // Waybar height
 		// "width": 1280, // Waybar width
 		// Choose the order of the modules
-		"modules-left": ["sway/workspaces","custom/arrow7","sway/mode","sway/window","custom/mpd","custom/arrow6"],
+		"modules-left": ["custom/apps","custom/startLeft","sway/workspaces","custom/arrow7","sway/mode","sway/window","custom/mpd","custom/arrow6"],
 		"modules-center": [ "custom/arrow9", "clock#datetime","custom/arrow10" ],
-		"modules-right": ["custom/arrow5","pulseaudio","custom/arrow4","network", "custom/arrow3","battery", "custom/arrow3", "cpu", "memory","custom/arrow1","backlight", "idle_inhibitor","custom/arrow8", "tray","custom/arrow2","custom/wlogout"],
+		"modules-right": ["custom/arrow5","pulseaudio","custom/arrow4","network", "custom/arrow3","battery", "custom/arrow3", "cpu", "memory","custom/arrow1","backlight", "idle_inhibitor","custom/arrow8", "tray","custom/startRight","custom/wlogout"],
 		// Modules configuration
 		"sway/workspaces": {
 			"disable-scroll": true,
@@ -104,7 +104,7 @@
 			"exec": "echo $(mpc current) – $(mpc status | awk '{print $3}' | sed -n 2p)",
 			"exec-if": "pgrep mpd",
 			"on-click-right": "mpc toggle",
-			"on-click": "firefox http://localhost:6680/musicbox_webclient/index.html#home"
+			"on-click": "~/.config/rofi/scripts/mpd.sh"
 		},
 		"backlight": {
 			"format": "{icon}",
@@ -132,11 +132,20 @@
 			"on-click": "$TERMINAL",
 			"tooltip": false
 		},
-		"custom/arrow1": {
+		"custom/apps": {
+			"format": "",
+			"on-click": "~/.config/rofi/scripts/apps.sh",
+			"tooltip": false
+		},
+		"custom/startRight": {
 			"format": "",
 			"tooltip": false
 		},
-		"custom/arrow2": {
+		"custom/startLeft": {
+			"format": "",
+			"tooltip": false
+		},
+		"custom/arrow1": {
 			"format": "",
 			"tooltip": false
 		},

@@ -60,7 +60,6 @@ if has('persistent_undo')      "check if your vim version supports it
 
 " Vim clap Settings
 nnoremap <C-p> :call CheckIfBufferIsNotEmptyAndWriteGoClapFiles()<CR>
-nnoremap <C-b> :Gstatus<CR>
 nnoremap <Leader>fu :call CheckIfBufferIsNotEmptyAndWriteGoClapGrep()<CR> 
 " Visual Vim clap
 let g:clap_theme = 'material_design_dark'
@@ -112,6 +111,7 @@ set go=a
 set mouse=a
 set nohlsearch
 set clipboard+=unnamedplus
+set scrolloff=999 "Keeps the screecenter
 
 " Some basics:
 	set tabstop=4

@@ -87,7 +87,7 @@ alias config='/usr/bin/git --git-dir=/home/kkmp/.cfg/ --work-tree=/home/kkmp'
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # https://github.com/Canop/broot
-bindkey -s '^b' 'br -dp\n'  # zsh
+bindkey -s '^s' 'br -dp\n'  # zsh
 source /home/kkmp/.config/broot/launcher/bash/br
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

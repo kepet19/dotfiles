@@ -130,15 +130,28 @@ window#waybar {
     color: white;
 }
 
+#custom-apps{
+    padding: 0 5px;
+    padding-right: 8px;
+    background: #A75F00;
+	background: #ff8700;
+	color: white;
+}
+#custom-startRight {
+	font-size: 20px;
+	color: #ff8700;
+	background: #949494
+}
+#custom-startLeft {
+	font-size: 20px;
+	color: #ff8700;
+	background: #4a4a4a;
+}
+
 #custom-arrow1 {
 	font-size: 20px;
 	color: #949494;
 	background: #4e4e4e
-}
-#custom-arrow2 {
-	font-size: 20px;
-	color: #ff8700;
-	background: #949494
 }
 #custom-arrow3 {
 	font-size: 20px;

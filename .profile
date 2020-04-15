@@ -60,7 +60,7 @@ mopidy >/dev/null 2>&1 &
 
 export XDG_CURRENT_DESKTOP=sway
 if [ "$(tty)" = "/dev/tty1" ]; then
-	exec sway
+	exec dbus-run-session sway
 fi
 
 # Switch escape and caps if tty and no passwd required:
