@@ -111,7 +111,7 @@ set go=a
 set mouse=a
 set nohlsearch
 set clipboard+=unnamedplus
-set scrolloff=999 "Keeps the screecenter
+set scrolloff=10 "Keeps the screecenter
 
 " Some basics:
 	set tabstop=4
