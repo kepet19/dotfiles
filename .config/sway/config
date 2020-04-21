@@ -209,6 +209,8 @@ set $workspace10 10
 #bindsym $mod+Tab workspace next
 #bindsym $mod+Shift+Tab workspace prev
 bindsym $mod+Tab workspace back_and_forth
+bindsym Alt+Tab workspace next
+bindsym Alt+Shift+Tab workspace prev
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -302,6 +304,6 @@ exec redshift
 exec blueman-tray
 exec nm-applet --indicator
 exec xrdb -load ~/.Xresources
-exec wal -R
+# exec wal -R
 exec discord
 exec firefox
