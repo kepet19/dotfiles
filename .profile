@@ -59,9 +59,9 @@ mopidy >/dev/null 2>&1 &
 # Start Sway on tty1
 
 export XDG_CURRENT_DESKTOP=sway
-if [ "$(tty)" = "/dev/tty1" ]; then
-	exec dbus-run-session sway
-fi
+#if [ "$(tty)" = "/dev/tty1" ]; then
+#	exec dbus-run-session sway
+#fi
 
 # Switch escape and caps if tty and no passwd required:
 sudo -n loadkeys ~/.local/share/larbs/ttymaps.kmap 2>/dev/null
