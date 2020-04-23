@@ -1,7 +1,8 @@
 #vim:filetype=i3
 set $mod mod4
 set $term --no-startup-id $TERMINAL
-font pango: Input Sans Condensed 10
+# font pango: mononok Nerd Font Mono Regular 11
+font pango:SourceCodePro Medium 11
 
 # Load pywal colors
 include "$HOME/.cache/wal/colors-sway"
@@ -14,6 +15,7 @@ xkb_layout "us"
 xkb_variant altgr-intl
 repeat_rate 50
 repeat_delay 300
+# xkb_options "grp:win_space_toggle"
 # xkb_file /home/kkmp/.config/sway/keymap.xkb
 xkb_numlock enable
 xkb_capslock disable

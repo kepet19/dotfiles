@@ -5,7 +5,7 @@
 		"height": 25, // Waybar height
 		// "width": 1280, // Waybar width
 		// Choose the order of the modules
-		"modules-left": ["custom/apps","custom/startLeft","sway/workspaces","custom/arrow7","sway/mode","sway/window","custom/mpd","custom/arrow6"],
+		"modules-left": ["custom/apps","custom/startLeft","sway/workspaces","custom/arrow7","sway/mode","sway/window","custom/arrow7","mpd","custom/arrow6"],
 		"modules-center": [ "custom/arrow9", "clock#datetime","custom/arrow10" ],
 		"modules-right": ["custom/arrow5","pulseaudio","custom/arrow4","network", "custom/arrow3","battery", "custom/arrow3", "cpu", "memory","custom/arrow1","backlight", "idle_inhibitor","custom/arrow8", "tray","custom/startRight","custom/wlogout"],
 		// Modules configuration
@@ -102,9 +102,36 @@
 			"interval": 1,
 			"max-length": 30,
 			"exec": "echo $(mpc current) – $(mpc status | awk '{print $3}' | sed -n 2p)",
-			"exec-if": "pgrep mpd",
+			"exec-if": "pgrep mopidy",
 			"on-click-right": "mpc toggle",
 			"on-click": "~/.config/rofi/scripts/mpd.sh"
+		},
+		"mpd": {
+			"max-length": 50,
+			"format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}({elapsedTime:%M:%S}/{totalTime:%M:%S}) {title} - {artist}",
+			"format-disconnected": "Disconnected ",
+			"format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+			"interval": 2,
+			"on-click-right": "mpc toggle",
+			"on-click": "~/.config/rofi/scripts/mpd.sh",
+			"consume-icons": {
+				"on": " " // Icon shows only when "consume" is on
+			},
+			"random-icons": {
+				"off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
+				"on": " "
+			},
+			"repeat-icons": {
+				"on": " "
+			},
+			"single-icons": {
+				"on": "1 "
+			},
+			"state-icons": {
+				"paused": "",
+				"playing": ""
+			},
+			"tooltip": false
 		},
 		"backlight": {
 			"format": "{icon}",

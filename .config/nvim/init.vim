@@ -222,7 +222,7 @@ nnoremap <Leader>w :set wrap!<CR>
 " Update binds when sxhkdrc is updated.
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
 " Reload Waybar
-	autocmd BufWritePost ~/.config/waybar/config,~/.config/waybar/style.css !swaymsg "reload"
+	"autocmd BufWritePost ~/.config/waybar/config,~/.config/waybar/style.css !swaymsg "reload"
 " Reload vim When it is changed
 	augroup OnlyReloadOneTimePerWrite
     	au!

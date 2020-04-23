@@ -4,7 +4,7 @@ st.alpha: 0.85
 
 !! Set a default font and font size as below:
 st.font: Noto sans mono Nerd Font-10
-*.font: monospace:size=10
+*.font: Noto sans mono Nerd Font:size=10
 rofi.font: Noto sans mono Nerd Font 10
 
 ! st.termname: st-256color

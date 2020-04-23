@@ -36,7 +36,7 @@ window#waybar {
 
 }
 
-#clock.time, #clock.date ,#clock.datetime, #battery, #cpu, #memory, #backlight, #network, #pulseaudio, #custom-mpd, #tray, #mode, #idle_inhibitor {
+#clock.time, #clock.date ,#clock.datetime, #battery, #cpu, #memory, #backlight, #network, #pulseaudio, #custom-mpd, #mpd #tray, #mode, #idle_inhibitor {
     padding: 0 10px;
     margin: 0 0px;
 }
@@ -100,6 +100,11 @@ window#waybar {
 }
 
 #custom-mpd {
+    padding: 0 5px;
+    background: #4a4a4a;
+    color: white;
+}
+#mpd {
     padding: 0 5px;
     background: #4a4a4a;
     color: white;
