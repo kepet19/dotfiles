@@ -44,3 +44,5 @@ image/x-portable-graymap=org.gnome.eog.desktop;
 text/plain=org.gnome.gedit.desktop;
 text/x-python=text.desktop;
 text/markdown=text.desktop;
+video/quicktime=mpv.desktop;
+application/json=org.gnome.Tau.desktop;
