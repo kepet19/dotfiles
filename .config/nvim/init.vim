@@ -174,6 +174,18 @@ nnoremap <Leader>w :set wrap!<CR>
 	map <C-j> <C-w>j
 	map <C-k> <C-w>k
 	map <C-l> <C-w>l
+" Forresising vim spilts
+	nnoremap <silent> <C-Left> :vertical resize +3<CR> 
+	nnoremap <silent> <C-Right> :vertical resize -3<CR> 	
+	nnoremap <silent> <C-Up> :resize +3<CR> 
+	nnoremap <silent> <C-Down> :resize -3<CR> 
+
+" Change 2 split windows from vert to horiz or horiz to vert
+	map <leader>th <C-w>t<C-w>H
+	map <leader>tk <C-w>t<C-w>K
+
+" Removes pipes | that act as seperators on splits
+	set fillchars+=vert:\ 
 
 " Check file in shellcheck:
 	map <leader>s :!clear && shellcheck %<CR>
