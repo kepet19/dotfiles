@@ -17,3 +17,5 @@
 	ph = push
 	pl = pull
 	rt = restore
+	br = branch
+	co = checkout

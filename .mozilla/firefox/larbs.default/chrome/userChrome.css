@@ -48,13 +48,15 @@
   visibility: visible !important;
 }
 */
+	/*
 	@-moz-document url(chrome://browser/content/browser.xhtml) {
 	/* tabs on bottom of window */
 	/* requires that you set
 	 * toolkit.legacyUserProfileCustomizations.stylesheets = true
 	 * in about:config
 	 */
-	#mainPopupSet ~ box { -moz-box-ordinal-group: 10; }
+		/*
+#mainPopupSet ~ box { -moz-box-ordinal-group: 10; }
 	#titlebar { -moz-box-ordinal-group: 10; }
 	#urlbar {
 		top: unset !important;
