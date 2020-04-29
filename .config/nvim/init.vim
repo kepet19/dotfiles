@@ -1,4 +1,5 @@
 
+		let mapleader =","
 
 
 
@@ -30,6 +31,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dadbod'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-jdaddy'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'metakirby5/codi.vim'
@@ -99,7 +104,6 @@ call plug#end()
 
 " Basic's, Mappings, Leader and stuff {{{ 
 	" Some basics: {{{ 
-		let mapleader =","
 		imap jk <Esc>
 		set tabstop=4
 		set softtabstop=0 noexpandtab

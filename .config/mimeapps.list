@@ -46,3 +46,4 @@ text/x-python=text.desktop;
 text/markdown=text.desktop;
 video/quicktime=mpv.desktop;
 application/json=org.gnome.Tau.desktop;
+text/css=org.gnome.Tau.desktop;
