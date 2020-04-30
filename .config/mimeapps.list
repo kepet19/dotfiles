@@ -47,3 +47,4 @@ text/markdown=text.desktop;
 video/quicktime=mpv.desktop;
 application/json=org.gnome.Tau.desktop;
 text/css=org.gnome.Tau.desktop;
+text/csv=org.gnome.gedit.desktop;

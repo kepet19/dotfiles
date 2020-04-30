@@ -48,4 +48,5 @@ alias \
 	zathura="zathura --fork" \
 	lsf="fzf | xargs ls -l" \
 	cal="cal -w" \
+	mvnc="mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart"
 	#vo="v -o `fzf`" \
