@@ -43,6 +43,8 @@ Plug 'mikelue/vim-maven-plugin'
 Plug 'unfog-io/unfog-vim'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 Plug 'da-h/AirLatex.vim', {'do': ':UpdateRemotePlugins'}
+Plug 'airblade/vim-rooter'
+
 call plug#end()
 
 " }}}
@@ -185,7 +187,7 @@ call plug#end()
 		" Set the cursorline
 		set cursorline
 		" Makes wim transperrent
-			"hi Normal guibg=NONE ctermbg=NONE
+		hi Normal guibg=NONE ctermbg=NONE
 	" }}}
 	" Folding section {{{ 
 		set foldenable

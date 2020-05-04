@@ -297,6 +297,7 @@ exec swayidle -w \
         before-sleep 'swaylock-fancy'
 
 #exec_always --no-startup-id dunst
+exec mopidy >/dev/null 2>&1 &
 exec_always --no-startup-id mako
 exec --no-startup-id batterup # github.com/ajmwagar/batterup
 exec syncthing -no-browser

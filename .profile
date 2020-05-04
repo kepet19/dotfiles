@@ -50,7 +50,6 @@ export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 alias rt='swaymsg resize set 100 ppt 80 ppt;swaymsg move absolute 0 0'
 
 
-mopidy >/dev/null 2>&1 &
 
 [ ! -f ~/.config/shortcutrc ] && shortcuts >/dev/null 2>&1
 
