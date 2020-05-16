@@ -34,7 +34,6 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-jdaddy'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'metakirby5/codi.vim'
@@ -97,6 +96,13 @@ call plug#end()
 	
 	let g:coc_snippet_next = '<tab>'
 	xmap <Tab> <Plug>(coc-snippets-select)
+	" GoTo code navigation.
+	nmap <silent> gd <Plug>(coc-definition)
+	nmap <silent> gy <Plug>(coc-type-definition)
+	nmap <silent> gi <Plug>(coc-implementation)
+	nmap <silent> gr <Plug>(coc-references)
+	nmap <F2> <Plug>(coc-rename)
+	nmap <leader>rn <Plug>(coc-rename)
 	" }}}
 	" VimVikiIndex {{{ 
 		map <leader>v :VimwikiIndex
@@ -149,7 +155,11 @@ call plug#end()
 	" Open my bibliography file in split
 		map <leader>b :vsp<space>$BIB<CR>
 		map <leader>r :vsp<space>$REFER<CR>
+	" Format Json JSON
+		map <leader>ff :%!jq .
 	" }}}
+	" Vim snippets I made {{{ 
+	" }}}	
 	" vim compileing opention {{{ 
 		map <C-S-Up> :make<Return>:copen<Return>
 		map <C-PageUp> :cprevious<Return>

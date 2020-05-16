@@ -3,8 +3,10 @@
 # This is bound to Shift+PrintScreen by default, requires wf-recorder and slurp. It lets you
 # choose the kind of recording to take, including highlighting an area to record.
 
-case "$(printf "a selected area\\nfull screen\\nkill recording " | bemenu -l 3 -i -p "Record which area?")" in
+case "$(printf "a selected area\\nfull screen\\nkill sharing\\nsudo modprobe v4l2loopback\\nwf-recorder --muxer=v4l2 --codec=rawvideo --file=/dev/video7 -x yuv420p\\nkill recording" | bemenu -l 6 -n -i -p "Record which area?")" in
 	"full screen") wf-recorder -f ~/recording_$(date +"%Y-%m-%d_%H:%M:%S.mp4") ;;
 	"a selected area") wf-recorder -g "$(slurp)" -f ~/recording_$(date +"%Y-%m-%d_%H:%M:%S.mp4") ;;
+	"sudo modprobe v4l2loopback") sudo modprobe v4l2loopback video_nr=7 card_label="wf-record-sharing-7" exclusive_caps=1;;
+	"wf-recorder --muxer=v4l2 --codec=rawvideo --file=/dev/video7 -x yuv420p") wf-recorder --muxer=v4l2 --codec=rawvideo --file=/dev/video7 -x yuv420p;;
 	"kill recording") killall -s SIGINT wf-recorder ;;
 esac

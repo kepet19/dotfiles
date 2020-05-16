@@ -19,3 +19,4 @@
 	rt = restore
 	br = branch
 	co = checkout
+	coa = checkout -b 

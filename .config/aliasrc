@@ -25,6 +25,7 @@ alias \
 alias \
 	ka="killall" \
 	g="git" \
+	:q="exit" \
 	trem="transmission-remote" \
 	YT="youtube-viewer" \
 	sdn="sudo shutdown -h now" \

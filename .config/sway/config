@@ -54,17 +54,12 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-# hide_edge_borders none
-# new_window pixel 0
-# new_float pixel 4
-
-# Sets bordes on application
-default_border normal
 
 # ------------------- wayvnc | seat or group --------------------
 # Putting wayvnc in its own seat is done like this:
 # swaymsg seat wayvnc fallback false # create a new seat
-# wayvnc --seat=wayvnc
+# seat wayvnc fallback false 
+# exec wayvnc --seat=wayvnc
 
 # Smart keyboard grouping can be turned off like this:
 # swaymsg seat seat0 keyboard_grouping none
@@ -73,12 +68,13 @@ default_border normal
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu dmenu_path | bemenu -n | xargs swaymsg exec --
 set $menu_rofi rofi -show drun -lines 10 -matching fuzzy -color-enabled -show-icons
 set $menu_rofi_ssh rofi -show ssh -lines 10 -matching fuzzy -color-enabled -show-icons
 
 # start a terminal
 bindsym $mod+Return exec $TERMINAL
+bindsym $mod+shift+Return exec $TERMINAL -e tmux
 
 # https://github.com/ArtsyMacaw/wlogout LOGOUT
 bindsym $mod+F4 exec wlogout
@@ -94,7 +90,7 @@ bindsym $mod+Shift+w	exec --no-startup-id $BROWSER
 bindsym $mod+e 			exec $FILE 
 bindsym $mod+i 			exec $TERMINAL -e ytopp
 bindsym $mod+r exec $menu
-bindsym Ctrl+Shift+r exec wf-recorder-pick
+bindsym $mod+Shift+r exec wf-recorder-pick
 bindsym $mod+p			exec grimselect
 bindsym $mod+shift+p	exec grimpick
 bindsym alt+p			exec grimcolor
@@ -133,14 +129,6 @@ bindsym $mod+Shift+o		exec --no-startup-id i3resize right
 bindsym $mod+f fullscreen toggle
 bindsym $mod+o sticky toggle
 
-# bind gaps
-bindsym $mod+Shift+t		gaps inner current set 15; gaps outer current set 15
-bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
-
-# change container layout (stacked, tabbed, toggle split)
-#bindsym $mod+s layout stacking
-#bindsym $mod+w layout tabbed
-#bindsym $mod+e layout toggle split
 
 # Inhibit Idle if a window is fullscreen 
 for_window [class="^.*"] inhibit_idle fullscreen 
@@ -158,7 +146,8 @@ for_window [window_role="GtkFileChooserDialog"] move position center
 for_window [app_id="org.gnome.Nautilus"] floating enable
 for_window [title="Default - Wine desktop"] floating enable
 for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable, move position 877 450, sticky enable
-for_window [app_id="firefox" title="Messenger - Mozilla Firefox"] floating enable, resize set 800 600, move position 877 450, sticky enable
+for_window [app_id="firefox" title="^Firefox - Sharing Indicator$"] floating enable, move position bottom, move position right, sticky enable
+# for_window [app_id="firefox"] border none
 # for_window [app_id="firefox"] move workspace $workspace2 
 for_window [app_id="blueman-*"] floating enable, sticky enable
 for_window [class="discord"] move workspace $workspace5
@@ -187,6 +176,11 @@ bindsym $mod+u exec ddspawn tmuxdd
 bindsym $mod+a exec ddspawn dropdowncalc
 bindsym $mod+d exec $TERMINAL -t "fzfmenu" -e fzfmenu
 
+
+# change container layout (stacked, tabbed, toggle split)
+#bindsym $mod+s layout stacking
+#bindsym $mod+w layout tabbed
+#bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -253,14 +247,19 @@ bindsym XF86MonBrightnessUp exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
 
 # Setup gaps
-smart_gaps inverse_outer
-gaps top 5
-gaps horizontal 10
-gaps inner 15
+smart_gaps on
+# gaps top 5
+# gaps horizontal 10
+gaps inner 30
+gaps outer 100
 
-default_border pixel 4
+# bind gaps
+bindsym $mod+Shift+t		gaps inner current set 30; gaps outer current set 100
+bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
+
+default_border pixel 1
 # default_floating_border pixel 4
-for_window [class="^.*"] border pixel 4
+for_window [class="^.*"] border pixel 2
 for_window [title="float"] floating enable
 for_window [class="^.float"] floating enable
 
@@ -282,19 +281,17 @@ set $indicator-color 	 #98f379
 bar {
     swaybar_command waybar
 }
-output "*" bg "$wallpaper" fill
+output "*" bg "$HOME/.config/wall.png" fill
 
 # https://github.com/Big-B/swaylock-fancy
-bindsym $mod+x exec swaylock-fancy
-
-
+bindsym $mod+x exec swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 10 --fade-in 0.3
 
 # Auto start
 exec swayidle -w \
-        timeout 300 'swaylock-fancy' \
+        timeout 300 'swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 10 --fade-in 0.3' \
         timeout 350 'swaymsg "output * dpms off"' \
             resume 'swaymsg "output * dpms on"' \
-        before-sleep 'swaylock-fancy'
+        before-sleep 'swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 10 --fade-in 0.3'
 
 #exec_always --no-startup-id dunst
 exec mopidy >/dev/null 2>&1 &

@@ -57,6 +57,7 @@ alias rt='swaymsg resize set 100 ppt 80 ppt;swaymsg move absolute 0 0'
 #[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x Xorg >/dev/null && exec startx
 # Start Sway on tty1
 
+export XDG_SESSION_TYPE=wayland
 export XDG_CURRENT_DESKTOP=sway
 #if [ "$(tty)" = "/dev/tty1" ]; then
 #	exec dbus-run-session sway
