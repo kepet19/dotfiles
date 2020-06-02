@@ -30,7 +30,7 @@
 /* ########### */
 
 #window {
-width: 25%;
+width: 485px;
 /*  height: 19%; */
   yoffset: 50;
 	location: 1;

@@ -14,9 +14,10 @@ editor=""
 browser=""
 music=""
 settings="漣"
+virt=""
 
 # Variable passed to rofi
-options="$terminal\n$files\n$editor\n$browser\n$music\n$settings"
+options="$terminal\n$files\n$editor\n$browser\n$music\n$virt\n$settings"
 
 chosen="$(echo -e "$options" | $rofi_command -p "Most Used" -dmenu -selected-row 0)"
 case $chosen in
@@ -33,7 +34,10 @@ case $chosen in
         firefox &
         ;;
     $music)
-		firefox "http://localhost:6680/musicbox_webclient/" &
+	firefox "http://localhost:6680/musicbox_webclient/" &
+        ;;
+    $virt)
+        virt-manager &
         ;;
     $settings)
         $TERMINAL -e configsettings &

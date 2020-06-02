@@ -32,7 +32,7 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
-bindkey '^R' history-incremental-search-backward
+# bindkey '^R' history-incremental-search-backward
 
 export KEYTIMEOUT=1
 
@@ -90,5 +90,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 bindkey -s '^s' 'br -dp\n'  # zsh
 source /home/kkmp/.config/broot/launcher/bash/br
 # Load zsh-syntax-highlighting; should be last.
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 

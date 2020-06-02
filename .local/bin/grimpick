@@ -5,7 +5,7 @@
 # highlighting an area to copy. scrotcucks on suicidewatch right now.
 # yay -S swappy-git
 
-case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)\\nswappy" | dmenu -l 7 -i -p "Screenshot which area?")" in
+case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)\\nswappy" | bemenu -nl 7 -i -p "Screenshot which area?")" in
 	"a selected area") grim -g "$(slurp)" "$HOME/Pictures/$(date '+%y%m%d-%H%M-%S').png" ;;
 	"current window") grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" "$HOME/Pictures/$(date '+%y%m%d-%H%M-%S').png" ;;
 	"full screen") grim "$HOME/Pictures/$(date '+%y%m%d-%H%M-%S').png" ;;

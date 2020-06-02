@@ -8,5 +8,5 @@ configuration {
 /*  xoffset: -20; */
 	me-select-entry: "MouseSecondary";
 	me-accept-entry: "MousePrimary";
-	kb-cancel: "Escape,Control+g,Control+bracketleft,q";
+	kb-cancel: "Escape,Control+g,Control+bracketleft,q,MouseSecondary";
 }

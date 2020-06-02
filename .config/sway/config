@@ -91,9 +91,10 @@ bindsym $mod+e 			exec $FILE
 bindsym $mod+i 			exec $TERMINAL -e ytopp
 bindsym $mod+r exec $menu
 bindsym $mod+Shift+r exec wf-recorder-pick
-bindsym $mod+p			exec grimselect
-bindsym $mod+shift+p	exec grimpick
-bindsym alt+p			exec grimcolor
+bindsym $mod+p			exec wdisplays
+bindsym $mod+Shift+p	exec grimcolor
+bindsym alt+shift+p	exec grimpick
+bindsym alt+p			exec grimselect
 
 
 # rofi
@@ -150,7 +151,9 @@ for_window [app_id="firefox" title="^Firefox - Sharing Indicator$"] floating ena
 # for_window [app_id="firefox"] border none
 # for_window [app_id="firefox"] move workspace $workspace2 
 for_window [app_id="blueman-*"] floating enable, sticky enable
+for_window [app_id="wdisplays"] floating enable, resize 780 415, move position center, sticky enable
 for_window [class="discord"] move workspace $workspace5
+for_window [app_id="virt-manager"] floating enable, resize set 410 400, sticky enable
 
 # #---Dropdown Windows---# #
 # General dropdown window traits. The order can matter.
@@ -236,9 +239,13 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+Escape 	exec --no-startup-id prompt "Exit i3?" "i3-msg exit"
 
 # Audio keys
-bindsym XF86AudioMute exec pamixer -t
-bindsym XF86AudioLowerVolume exec pamixer -d 5
-bindsym XF86AudioRaiseVolume exec pamixer -i 5
+
+bindsym XF86AudioMute exec pamixer --toggle-mute && ( pamixer --get-mute && echo 0 > $SWAYSOCK.wob ) || pamixer --get-volume > $SWAYSOCK.wob
+bindsym XF86AudioLowerVolume exec pamixer -ud 5 && pamixer --get-volume > $SWAYSOCK.wob
+bindsym XF86AudioRaiseVolume exec pamixer -ui 5 && pamixer --get-volume > $SWAYSOCK.wob
+bindsym $mod+Ctrl+0 exec pamixer --toggle-mute && ( pamixer --get-mute && echo 0 > $SWAYSOCK.wob ) || pamixer --get-volume > $SWAYSOCK.wob
+bindsym $mod+Ctrl+8 exec pamixer -ud 5 && pamixer --get-volume > $SWAYSOCK.wob
+bindsym $mod+Ctrl+9 exec pamixer -ui 5 && pamixer --get-volume > $SWAYSOCK.wob
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl play-pause
 
@@ -307,3 +314,5 @@ exec xrdb -load ~/.Xresources
 # exec wal -R
 exec discord
 exec firefox
+# show volume
+exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob -W 300 -H 30 -a top -a right -M 50 -p 1 -o 0 -b 1

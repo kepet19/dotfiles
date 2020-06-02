@@ -1,9 +1,10 @@
 :root {
 
    /* Minimal Functional Fox variables*/
-  --mff-bg: #00000068;
-  --mff-icon-color: #f2f2f2;
-  --mff-nav-toolbar-padding: 9px;
+  --mff-bg: #2C323B;
+  --mff-bg-secondary: #395261;
+  --mff-icon-color: #e0fbfc;
+  --mff-nav-toolbar-padding: 8px;
   --mff-sidebar-bg: var(--mff-bg);
   --mff-sidebar-color: #e0fbfc;
   --mff-menupopup-bg: var(--mff-bg);
@@ -15,8 +16,8 @@
   --mff-tab-font-weight: 400;
   --mff-tab-height: 32px;
   --mff-tab-pinned-bg: var(--mff-bg);
-  --mff-tab-selected-bg: var(--mff-bg);
-  --mff-tab-soundplaying-bg: #985EFFAA;
+  --mff-tab-selected-bg: var(--mff-bg-secondary);
+  --mff-tab-soundplaying-bg: #343745;
   --mff-urlbar-color: #f2f2f2;
   --mff-urlbar-background-color: var(--mff-bg);
   --mff-urlbar-focused-color: #e0fbfc;
@@ -57,7 +58,7 @@
 
 .tab-background:not[visuallyselected] {
   background: var(--mff-tab-selected-bg) !important;
-  opacity: 0.5 !important;
+  /* opacity: 0.5 !important; */
 }
 
 /* This positions the tabs under the navaigator container */

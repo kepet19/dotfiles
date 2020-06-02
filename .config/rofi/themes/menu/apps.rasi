@@ -96,7 +96,7 @@ textbox-prompt-colon {
 }
 #listview {
   spacing: @option-6-listview-spacing;
-  lines: 6;
+  lines: 7;
 }
 #element {
   font: @icon-font;

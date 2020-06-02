@@ -18,7 +18,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'jreybert/vimagit'
 Plug 'vimwiki/vimwiki'
-Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'KeitaNakamura/tex-conceal.vim'
@@ -43,6 +42,8 @@ Plug 'unfog-io/unfog-vim'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 Plug 'da-h/AirLatex.vim', {'do': ':UpdateRemotePlugins'}
 Plug 'airblade/vim-rooter'
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+" Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
 
@@ -67,6 +68,7 @@ call plug#end()
 		let g:powerline_pycmd="py3"
 		let g:airline_powerline_fonts = 1
 		let g:airline_theme="solarized"
+                let g:airline#extensions#tabline#enabled = 1
 		
 		" vimtex conf
 		let g:tex_flavor='latex'
@@ -103,19 +105,26 @@ call plug#end()
 	nmap <silent> gr <Plug>(coc-references)
 	nmap <F2> <Plug>(coc-rename)
 	nmap <leader>rn <Plug>(coc-rename)
+        nmap <leader>ac  <Plug>(coc-codeaction)
+        nmap <leader>qf  <Plug>(coc-fix-current)
 	" }}}
 	" VimVikiIndex {{{ 
 		map <leader>v :VimwikiIndex
 	" }}}
+        " Git Status {{{ 
+		nnoremap <leader>gs :Gstatus<CR>
+		nnoremap <leader>gc :Gcommit<CR>
+		nnoremap <leader>gp :Gpush<CR>
+        " }}}
 " }}}
 
 
 " Basic's, Mappings, Leader and stuff {{{ 
 	" Some basics: {{{ 
 		imap jk <Esc>
-		set tabstop=4
-		set softtabstop=0 noexpandtab
-		set shiftwidth=4
+		set tabstop=8
+		set softtabstop=0 expandtab
+		set shiftwidth=4 smarttab
 		set hidden " Has the buffer open ind the background
 		set wildmenu " Tab compiltenmenu
 		"set wildmode=longest:list,full
