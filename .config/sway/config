@@ -152,6 +152,8 @@ for_window [app_id="firefox" title="^Firefox - Sharing Indicator$"] floating ena
 # for_window [app_id="firefox"] move workspace $workspace2 
 for_window [app_id="blueman-*"] floating enable, sticky enable
 for_window [app_id="wdisplays"] floating enable, resize 780 415, move position center, sticky enable
+for_window [class="Bitwarden"] floating enable, resize 780 415, move position center, sticky enable
+                
 for_window [class="discord"] move workspace $workspace5
 for_window [app_id="virt-manager"] floating enable, resize set 410 400, sticky enable
 
@@ -316,3 +318,4 @@ exec discord
 exec firefox
 # show volume
 exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob -W 300 -H 30 -a top -a right -M 50 -p 1 -o 0 -b 1
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1

@@ -88,6 +88,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # https://github.com/Canop/broot
 bindkey -s '^s' 'br -dp\n'  # zsh
+bindkey -s '^z' "fg\015"
 source /home/kkmp/.config/broot/launcher/bash/br
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/fzf/completion.zsh

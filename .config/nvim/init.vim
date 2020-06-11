@@ -161,9 +161,6 @@ call plug#end()
 		nnoremap S :%s//g<Left><Left>
 	" Open corresponding .pdf/.html or preview
 		map <leader>p :!opout <c-r>%<CR><CR>
-	" Open my bibliography file in split
-		map <leader>b :vsp<space>$BIB<CR>
-		map <leader>r :vsp<space>$REFER<CR>
 	" Format Json JSON
 		map <leader>ff :%!jq .
 	" }}}

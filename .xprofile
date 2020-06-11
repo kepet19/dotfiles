@@ -16,4 +16,3 @@ syncthing -no-browser &
 /usr/lib/kdeconnectd &
 kdeconnect-indicator &
 redshift &
-notify-send -i /home/kkmp/.local/share/larbs/larbs.png "Welcome to LARBS" "Press super+F1 for the help menu." # LARBSWELCOME
