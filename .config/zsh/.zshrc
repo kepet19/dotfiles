@@ -83,8 +83,6 @@ bindkey -s '^o' 'lfcd\n'  # zsh
 
 # Dot files 
 alias config='/usr/bin/git --git-dir=/home/kkmp/.cfg/ --work-tree=/home/kkmp'
-# Rust PATH
-export PATH="$HOME/.cargo/bin:$PATH"
 
 # https://github.com/Canop/broot
 bindkey -s '^s' 'br -dp\n'  # zsh

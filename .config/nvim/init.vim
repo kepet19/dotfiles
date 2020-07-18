@@ -1,6 +1,4 @@
-
-		let mapleader =","
-
+    let mapleader =","
 
 
 " Pluging PLug {{{
@@ -13,7 +11,7 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-surround'
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'junegunn/goyo.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'jreybert/vimagit'
@@ -43,6 +41,7 @@ Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 Plug 'da-h/AirLatex.vim', {'do': ':UpdateRemotePlugins'}
 Plug 'airblade/vim-rooter'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'hardcoreplayers/dashboard-nvim'
 " Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
@@ -101,12 +100,24 @@ call plug#end()
 	" GoTo code navigation.
 	nmap <silent> gd <Plug>(coc-definition)
 	nmap <silent> gy <Plug>(coc-type-definition)
-	nmap <silent> gi <Plug>(coc-implementation)
+	" nmap <silent> gi <Plug>(coc-implementation)
 	nmap <silent> gr <Plug>(coc-references)
 	nmap <F2> <Plug>(coc-rename)
 	nmap <leader>rn <Plug>(coc-rename)
         nmap <leader>ac  <Plug>(coc-codeaction)
         nmap <leader>qf  <Plug>(coc-fix-current)
+        " Use K to show documentation in preview window.
+        nnoremap <silent> K :call <SID>show_documentation()<CR>
+        
+        function! s:show_documentation()
+          if (index(['vim','help'], &filetype) >= 0)
+            execute 'h '.expand('<cword>')
+          else
+            call CocAction('doHover')
+          endif
+        endfunction
+        " Highlight the symbol and its references when holding the cursor.
+        autocmd CursorHold * silent call CocActionAsync('highlight')
 	" }}}
 	" VimVikiIndex {{{ 
 		map <leader>v :VimwikiIndex
@@ -140,7 +151,7 @@ call plug#end()
 		set nowrap!
 		set nocompatible
 		filetype plugin on
-		syntax on
+		syntax enable
 		set encoding=utf-8
 		set number relativenumber
 	" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
@@ -164,6 +175,14 @@ call plug#end()
 	" Format Json JSON
 		map <leader>ff :%!jq .
 	" }}}
+	" netrw {{{ 
+        let g:netrw_banner=0            " disable banner
+        let g:netrw_browse_split=4      " open in prior window
+        let g:netrw_altv=1              " open splits to the right
+        let g:netrw_liststyle=3         " tree view
+        let g:netrw_list_hide=netrw_gitignore#Hide()    " Hides files that is in gitignore
+        let g:netrw_list_hide.='.class'                 " Hides class 
+	" }}}	
 	" Vim snippets I made {{{ 
 	" }}}	
 	" vim compileing opention {{{ 
