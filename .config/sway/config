@@ -240,7 +240,8 @@ bindsym $mod+Shift+0 move container to workspace 10
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+Escape 	exec --no-startup-id prompt "Exit i3?" "i3-msg exit"
+# bindsym $mod+Shift+Escape 	exec --no-startup-id swaynag "Exit i3?" "swaymsg exit"
+bindsym $mod+Shift+Escape       exec --no-startup-id swaynag -m "Exit sway?" -b "EXIT" "swaymsg exit"
 
 # Audio keys
 
@@ -293,6 +294,8 @@ bar {
     swaybar_command waybar
 }
 output "*" bg "$HOME/.config/wall.png" fill
+output DP-1 mode 2560x1440@143.912003Hz
+# output DP-1 mode 2560x1440@143.912003Hz adaptive_sync on
 
 # https://github.com/Big-B/swaylock-fancy
 bindsym $mod+x exec swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 10 --fade-in 0.3
