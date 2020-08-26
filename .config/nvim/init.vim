@@ -76,10 +76,6 @@ call plug#end()
 		set conceallevel=1
 		let g:tex_conceal='abdmg'
 	" }}}
-	" Nerd tree {{{ 
-		map <leader>n :NERDTreeToggle<CR>
-		autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-	" }}}
 	" Git go to github homepage {{{
 		map <leader>g :!urlgitf<CR>
 	" }}} 
@@ -139,6 +135,9 @@ call plug#end()
 		set hidden " Has the buffer open ind the background
 		set wildmenu " Tab compiltenmenu
 		"set wildmode=longest:list,full
+                " characters to show
+                set listchars=tab:>~,nbsp:_,trail:.
+                set list
 		set wildmode=list:longest,list:full
 		set wildignore+=/node_modules/** "ignore node_modules should add more
 		set path+=** " Add subfolders aswell
@@ -176,6 +175,7 @@ call plug#end()
 		map <leader>ff :%!jq .
 	" }}}
 	" netrw {{{ 
+        map <leader>n e . <CR>
         let g:netrw_banner=0            " disable banner
         let g:netrw_browse_split=4      " open in prior window
         let g:netrw_altv=1              " open splits to the right

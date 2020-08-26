@@ -11,6 +11,7 @@ include "$HOME/.cache/wal/colors-sway"
 seat * hide_cursor 4000
 
 input * {
+# xkb_layout "dk"
 xkb_layout "us"
 xkb_variant altgr-intl
 repeat_rate 50
@@ -155,7 +156,7 @@ for_window [app_id="wdisplays"] floating enable, resize 780 415, move position c
 for_window [class="Bitwarden"] floating enable, resize 780 415, move position center, sticky enable
                 
 for_window [class="discord"] move workspace $workspace5
-for_window [app_id="virt-manager"] floating enable, resize set 410 400, sticky enable
+for_window [app_id="virt-manager"] floating enable, sticky enable
 for_window [app_id="openrgb"] floating enable, sticky enable
 for_window [class="zoom" title="Settings"] floating enable
 
@@ -174,6 +175,9 @@ for_window [title="dropdown_tmuxdd"] move absolute position 60 30
 # Dropdown for fzfmenu
 for_window [title="fzfmenu"] floating enable, sticky
 for_window [title="fzfmenu"] resize set 600 200
+# skim launcher
+for_window [title="^skim launcher$"] floating enable, sticky
+for_window [title="^skim launcher$"] resize set 600 350
 # 
 for_window [title="console_calender"] floating enable, sticky
 for_window [title="console_calender"] resize set 800 600, move position 800 20
@@ -181,7 +185,8 @@ for_window [title="console_calender"] resize set 800 600, move position 800 20
 # FLOATING TERMINAL
 bindsym $mod+u exec ddspawn tmuxdd
 bindsym $mod+a exec ddspawn dropdowncalc
-bindsym $mod+d exec $TERMINAL -t "fzfmenu" -e fzfmenu
+# bindsym $mod+d exec $TERMINAL -t "fzfmenu" -e fzfmenu
+bindsym $mod+d exec $TERMINAL -t "skim launcher" -e skim_switcher
 
 
 # change container layout (stacked, tabbed, toggle split)
@@ -308,11 +313,11 @@ exec swayidle -w \
         before-sleep 'swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 10 --fade-in 0.3'
 
 #exec_always --no-startup-id dunst
-# Services that are rund
+# Services that are run
 exec_always --no-startup-id mako &>/dev/null
 exec mopidy &>/dev/null
 exec --no-startup-id batterup # github.com/ajmwagar/batterup &>/dev/null
-exec syncthing -no-browser 
+exec syncthing -no-browser &>/dev/null
 exec /usr/lib/kdeconnectd &>/dev/null
 exec kdeconnect-indicator &>/dev/null
 exec redshift &>/dev/null
