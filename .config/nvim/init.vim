@@ -42,6 +42,7 @@ Plug 'da-h/AirLatex.vim', {'do': ':UpdateRemotePlugins'}
 Plug 'airblade/vim-rooter'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'hardcoreplayers/dashboard-nvim'
+Plug 'iamcco/markdown-preview.vim'
 " Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()

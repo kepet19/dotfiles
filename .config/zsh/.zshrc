@@ -10,7 +10,7 @@ HISTFILE=~/.cache/zsh/history
 export ZSH="/home/kkmp/.config/.oh-my-zsh"
 ZSH_THEME="amuse"
 
-plugins=(git cargo pip systemd)
+plugins=(git cargo pip systemd zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 #
