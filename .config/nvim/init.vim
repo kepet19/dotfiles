@@ -44,6 +44,7 @@ Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 " Plug 'hardcoreplayers/dashboard-nvim'
 Plug 'iamcco/markdown-preview.vim'
 " Plug 'ctrlpvim/ctrlp.vim'
+Plug 'turbio/bracey.vim'
 
 call plug#end()
 
@@ -123,6 +124,11 @@ call plug#end()
 		nnoremap <leader>gs :Gstatus<CR>
 		nnoremap <leader>gc :Gcommit<CR>
 		nnoremap <leader>gp :Gpush<CR>
+        " }}}
+        " Bracey {{{ 
+		nnoremap <leader>bss :Bracey<CR>
+		nnoremap <leader>bs :BraceyStop<CR>
+		nnoremap <leader>br :BraceyReload<CR>
         " }}}
 " }}}
 
