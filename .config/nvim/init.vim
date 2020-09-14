@@ -38,7 +38,6 @@ Plug 'ajmwagar/vim-deus'
 Plug 'mikelue/vim-maven-plugin'
 Plug 'unfog-io/unfog-vim'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
-Plug 'da-h/AirLatex.vim', {'do': ':UpdateRemotePlugins'}
 Plug 'airblade/vim-rooter'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 " Plug 'hardcoreplayers/dashboard-nvim'
@@ -56,13 +55,6 @@ call plug#end()
 		let g:clap_theme = 'material_design_dark'
 		nnoremap <C-p> :Clap files<CR>
 		nnoremap <Leader>fu :Clap grep<CR>
-	" }}}
-	"  AIR LATEX settings {{{ 
-		" optional: set server name
-			let g:AirlatexDomain="overleaf.nymann.dev"
-			nmap <leader>a :AirLatex<CR>
-		" LaTeX-Box is includ with vim-polyglot and may be disabled with: 
-			let g:polyglot_disabled = ['latex']
 	" }}}
 	" VIMTEX AND AIRLINE {{{ 
 		let g:vimtex_compiler_progname="nvr"
@@ -136,7 +128,7 @@ call plug#end()
 " Basic's, Mappings, Leader and stuff {{{ 
 	" Some basics: {{{ 
 		imap jk <Esc>
-		set tabstop=8
+		set tabstop=4
 		set softtabstop=0 expandtab
 		set shiftwidth=4 smarttab
 		set hidden " Has the buffer open ind the background
