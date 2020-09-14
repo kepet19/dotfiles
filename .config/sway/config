@@ -14,14 +14,14 @@ input * {
 # xkb_layout "dk"
 xkb_layout "us"
 xkb_variant altgr-intl
-repeat_rate 50
+repeat_rate 45
 repeat_delay 300
 # xkb_options "grp:win_space_toggle"
 # xkb_file /home/kkmp/.config/sway/keymap.xkb
 xkb_numlock enable
 xkb_capslock disable
 xkb_capslock disable
-natural_scroll disable
+# natural_scroll disable
 accel_profile flat
 scroll_factor 1
 # xkb_options super_L:super_L,escape
@@ -31,14 +31,15 @@ scroll_factor 1
 
 
 # Trackpad input Settings
-#input "1739:0:Synaptics_TM2668-002" {
-	#    tap enabled
-#    natural_scroll enabled
-#}
+input "1739:0:Synaptics_TM2668-002" {
+tap enabled
+natural_scroll enabled
+scroll_factor 0.3
+}
 input "2:7:SynPS/2_Synaptics_TouchPad" {
    	# tap enabled
-    natural_scroll enabled 
-	scroll_factor 0.5
+natural_scroll enabled 
+scroll_factor 0.3
 }
 # input "2:10:TPPS\/2_IBM_TrackPoint" {
 
