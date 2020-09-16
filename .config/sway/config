@@ -268,8 +268,8 @@ bindsym XF86MonBrightnessDown exec light -U 10
 smart_gaps on
 # gaps top 5
 # gaps horizontal 10
-gaps inner 30
-gaps outer 100
+# gaps inner 30
+# gaps outer 100
 
 # bind gaps
 bindsym $mod+Shift+t		gaps inner current set 30; gaps outer current set 100
