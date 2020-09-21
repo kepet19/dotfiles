@@ -5,12 +5,14 @@
 # highlighting an area to copy. scrotcucks on suicidewatch right now.
 # yay -S swappy-git
 
-case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)\\nswappy" | bemenu -nl 7 -i -p "Screenshot which area?")" in
+case "$(printf "a selected area\\ncurrent window\\nfullscreen\\na selected area (copy)\\ncurrent window (copy)\\nfullscreen (copy)\\nswappy\n5s delay fullscreen (copy)" | bemenu -nl 8 -i -p "Screenshot which area?")" in
 	"a selected area") grim -g "$(slurp)" "$HOME/Pictures/$(date '+%y%m%d-%H%M-%S').png" ;;
 	"current window") grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" "$HOME/Pictures/$(date '+%y%m%d-%H%M-%S').png" ;;
-	"full screen") grim "$HOME/Pictures/$(date '+%y%m%d-%H%M-%S').png" ;;
+	"fullscreen") grim "$HOME/Pictures/$(date '+%y%m%d-%H%M-%S').png" ;;
 	"a selected area (copy)") grim -g "$(slurp)" "tmScreenShot.png"; wl-copy < "tmScreenShot.png"; rm "tmScreenShot.png";;
 	"current window (copy)") grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" "tm.png"; wl-copy < "tmScreenShot.png"; rm "tmScreenShot.png";;
-	"full screen (copy)") grim "tmScreenShot.png"; wl-copy < "tmScreenShot.png"; rm "tmScreenShot.png";;
+	"fullscreen (copy)") grim "tmScreenShot.png"; wl-copy < "tmScreenShot.png"; rm "tmScreenShot.png";;
 	"swappy") swappy -g "$(slurp)";;
+	"5s delay fullscreen (copy)") sleep 5; grim "tmScreenShot.png"; wl-copy < "tmScreenShot.png"; rm "tmScreenShot.png";;
+	*) notify-send "you hit noting";;
 esac
