@@ -8,11 +8,12 @@ alias \
 	cp="cp -iv" \
 	mv="mv -iv" \
 	rm="rm -v" \
-	bc="bc -lq"
+	bc="bc -lq" \
 	mkd="mkdir -pv" \
 	yt="youtube-dl --add-metadata -i" \
 	yta="yt -x -f bestaudio/best" \
-	ffmpeg="ffmpeg -hide_banner"
+	ffmpeg="ffmpeg -hide_banner" \
+	ip="ip -c"
 
 # Colorize commands when possible.
 alias \

@@ -43,7 +43,7 @@ Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 " Plug 'hardcoreplayers/dashboard-nvim'
 Plug 'iamcco/markdown-preview.vim'
 " Plug 'ctrlpvim/ctrlp.vim'
-Plug 'turbio/bracey.vim'
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 
@@ -117,10 +117,11 @@ call plug#end()
 		nnoremap <leader>gc :Gcommit<CR>
 		nnoremap <leader>gp :Gpush<CR>
         " }}}
-        " Bracey {{{ 
-		nnoremap <leader>bss :Bracey<CR>
-		nnoremap <leader>bs :BraceyStop<CR>
-		nnoremap <leader>br :BraceyReload<CR>
+        " Emmet emmet-vim {{{ 
+		let g:user_emmet_mode='n'
+		let g:user_emmet_leader_key='<leader>'
+		let g:user_emmet_install_global = 0
+		autocmd FileType html,css EmmetInstall
         " }}}
 " }}}
 
