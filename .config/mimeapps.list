@@ -52,3 +52,4 @@ application/x-wine-extension-ini=org.gnome.Tau.desktop;
 application/pdf=mupdf.desktop;
 application/xhtml+xml=org.gnome.Epiphany.desktop;firefox.desktop;
 text/x-arduino=text.desktop;org.gnome.Tau.desktop;
+image/jpeg=org.gnome.eog.desktop;

@@ -101,7 +101,7 @@ bindsym alt+p			exec grimselect
 
 # rofi
 bindsym $mod+m exec $menu_rofi_ssh
-bindsym $mod+s exec sgtk-menu -f -a
+bindsym $mod+s exec sirula
 
 # Bind for moving windows
 bindsym $mod+h			focus left
@@ -188,6 +188,8 @@ bindsym $mod+u exec ddspawn tmuxdd
 bindsym $mod+a exec ddspawn dropdowncalc
 # bindsym $mod+d exec $TERMINAL -t "fzfmenu" -e fzfmenu
 bindsym $mod+d exec $TERMINAL -t "skim launcher" -e skim_switcher
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
 
 
 # change container layout (stacked, tabbed, toggle split)
@@ -299,7 +301,7 @@ set $indicator-color 	 #98f379
 bar {
     swaybar_command waybar
 }
-output "*" bg "$HOME/.config/wall.png" fill
+output "*" bg "$HOME/.config/wall.jpg" fill
 output DP-1 mode 2560x1440@143.912003Hz
 # output DP-1 mode 2560x1440@143.912003Hz adaptive_sync on
 
@@ -330,6 +332,7 @@ exec sway-alttab &>/dev/null
 # show volume
 exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob -W 300 -H 30 -a top -a right -M 50 -p 1 -o 0 -b 1
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &>/dev/null
+exec keyring
 
 
 # List of Appclications

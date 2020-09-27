@@ -162,7 +162,7 @@
 		},
 		"custom/apps": {
 			"format": "",
-			"on-click": "~/.config/rofi/scripts/apps.sh",
+			"on-click": "sirula",
 			"tooltip": false
 		},
 		"custom/startRight": {

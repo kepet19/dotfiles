@@ -44,6 +44,7 @@ Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'iamcco/markdown-preview.vim'
 " Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mattn/emmet-vim'
+Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 
 call plug#end()
 
@@ -122,6 +123,12 @@ call plug#end()
 		let g:user_emmet_leader_key='<leader>'
 		let g:user_emmet_install_global = 0
 		autocmd FileType html,css EmmetInstall
+        " }}}
+        " minimap {{{ 
+		let g:minimap_left= 0
+		let g:minimap_width = 20
+		let g:minimap_highlight='Title'
+		let g:minimap_auto_start= 0
         " }}}
 " }}}
 
