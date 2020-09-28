@@ -12,7 +12,7 @@ case "$(printf "a selected area\\ncurrent window\\nfullscreen\\na selected area 
 	"a selected area (copy)") grim -g "$(slurp)" "tmScreenShot.png"; wl-copy < "tmScreenShot.png"; rm "tmScreenShot.png";;
 	"current window (copy)") grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" "tm.png"; wl-copy < "tmScreenShot.png"; rm "tmScreenShot.png";;
 	"fullscreen (copy)") grim "tmScreenShot.png"; wl-copy < "tmScreenShot.png"; rm "tmScreenShot.png";;
-	"swappy") swappy -g "$(slurp)";;
+	"swappy") grim -g "$(slurp)" - | swappy -f - ;;
 	"5s delay fullscreen (copy)") sleep 5; grim "tmScreenShot.png"; wl-copy < "tmScreenShot.png"; rm "tmScreenShot.png";;
 	*) notify-send "you hit noting";;
 esac
