@@ -39,8 +39,9 @@ alias \
 	xr="sudo xbps-remove -R" \
 	t="tmuxp load" \
 	xq="xbps-query" \
-        o="xdg-open" \
-        c="cargo" 
+	o="xdg-open" \
+	c="cargo"  \
+	skf="sk --ansi -i -c 'rg --color=always --line-number \"{}\"'"
 
 # This alias is important. It enables the `pauseallmpv` command.
 alias mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)"
