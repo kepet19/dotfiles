@@ -10,22 +10,17 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'tpope/vim-surround'
 " Plug 'scrooloose/nerdtree'
 Plug 'junegunn/goyo.vim'
-Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'jreybert/vimagit'
 Plug 'vimwiki/vimwiki'
-Plug 'tpope/vim-commentary'
-Plug 'kovetskiy/sxhkd-vim'
 Plug 'KeitaNakamura/tex-conceal.vim'
-Plug 'kovetskiy/sxhkd-vim'
 Plug 'sainnhe/vim-color-forest-night'
 Plug 'lervag/vimtex'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-commentary'
@@ -34,7 +29,6 @@ Plug 'tpope/vim-eunuch'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'metakirby5/codi.vim'
-Plug 'ajmwagar/vim-deus'
 Plug 'mikelue/vim-maven-plugin'
 Plug 'unfog-io/unfog-vim'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }

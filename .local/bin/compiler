@@ -34,5 +34,6 @@ case "$file" in
 	*\.pdf) xdg-open "$file" ;;
 	*\.rs)  cargo run ;;
 	*\.toml)  cargo run ;;
+	*\.ts)  tsc $file ;;
 	*) sed 1q "$file" | grep "^#!/" | sed "s/^#!//" | xargs -r -I % "$file" ;;
 esac

@@ -13,7 +13,7 @@ super + Return
 super + shift + q
 	kill -9 `xdotool getwindowfocus getwindowpid`
 super + d
-	dmenu_run
+	$TERMINAL -t "skim launcher" -e skim_switcher
 super + r
 	$TERMINAL -e $FILE
 super + e
