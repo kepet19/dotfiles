@@ -30,10 +30,8 @@ Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'metakirby5/codi.vim'
 Plug 'mikelue/vim-maven-plugin'
-Plug 'unfog-io/unfog-vim'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 Plug 'airblade/vim-rooter'
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 " Plug 'hardcoreplayers/dashboard-nvim'
 Plug 'iamcco/markdown-preview.vim'
 " Plug 'ctrlpvim/ctrlp.vim'
@@ -117,6 +115,9 @@ call plug#end()
 		let g:user_emmet_leader_key='<leader>'
 		let g:user_emmet_install_global = 0
 		autocmd FileType html,css EmmetInstall
+        " }}}
+        " vim rooter {{{ 
+		let g:rooter_manual_only = 1
         " }}}
         " minimap {{{ 
 		let g:minimap_left= 0
@@ -262,7 +263,8 @@ call plug#end()
 	map <leader>f :Goyo \| set linebreak<CR>
 
 " Spell-check set to <leader>o, 'o' for 'orthography':
-	map <leader>o :setlocal spell! spelllang=da<CR>
+	map <leader>od :setlocal spell! spelllang=da<CR>
+	map <leader>oe :setlocal spell! spelllang=en<CR>
 
 " Spell correction the last word Ctrl + l
 	inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
@@ -302,32 +304,6 @@ call plug#end()
     	au!
     	autocmd bufwritepost .vim source ~/.config/nvim/init.vim
 	augroup END
-" }}}
-
-
-" THING I DON'T NEED ANYMORE {{{
-	" Some Funky goingon? check this? {{{
-	" nnoremap c "_c
-	" }}}
-"
-" function! CheckIfBufferIsNotEmptyAndWriteGoClapFiles()
-" 	if filereadable( bufname(1))
-" 		:w!
-" 	endif
-" 	:Clap files
-" endfunction
-" 
-" function! CheckIfBufferIsNotEmptyAndWriteGoClapGrep()
-" 	if filereadable( bufname(1))
-" 		:w!
-" 	endif
-" 	:Clap grep
-" endfunction
-
-
-" Vim clap Settings
-" nnoremap <C-p> :call CheckIfBufferIsNotEmptyAndWriteGoClapFiles()<CR>
-" nnoremap <Leader>fu :call CheckIfBufferIsNotEmptyAndWriteGoClapGrep()<CR> 
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
