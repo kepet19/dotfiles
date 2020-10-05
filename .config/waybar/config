@@ -6,7 +6,7 @@
 		// "width": 1280, // Waybar width
 		// Choose the order of the modules
 		"modules-left": ["custom/apps","custom/startLeft","sway/workspaces","custom/arrow7","sway/mode","sway/window","custom/arrow7","mpd","custom/arrow6"],
-		"modules-center": [ "custom/arrow9", "clock#datetime","custom/arrow10" ],
+		"modules-center": [ "custom/arrow9", "clock#datetime","custom/terminal","custom/arrow10" ],
 		"modules-right": ["custom/arrow5","pulseaudio","custom/arrow4","network", "custom/arrow3","battery", "custom/arrow3", "cpu", "memory","custom/arrow1","backlight", "idle_inhibitor","custom/arrow8", "tray","custom/startRight","custom/wlogout"],
 		// Modules configuration
 		"sway/workspaces": {
@@ -157,7 +157,7 @@
 		},
 		"custom/terminal": {
 			"format": "",
-			"on-click": "$TERMINAL",
+			"on-click": "alacritty-show",
 			"tooltip": false
 		},
 		"custom/apps": {

@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+swaymsg [title="dropdown_term"] scratchpad show || $(exec $TERMINAL -t 'dropdown_term' -e tmuxdd & sleep 0.2 && swaymsg [title="dropdown_term"] scratchpad show)

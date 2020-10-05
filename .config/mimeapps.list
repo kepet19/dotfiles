@@ -20,6 +20,7 @@ application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoff
 x-scheme-handler/postman=Postman.desktop
 message/rfc822=userapp-Thunderbird-GPGRR0.desktop
 x-scheme-handler/mailspring=mailspring.desktop
+x-scheme-handler/lbry=lbry.desktop
 
 [Added Associations]
 application/x-shellscript=org.gnome.gedit.desktop;

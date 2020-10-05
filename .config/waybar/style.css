@@ -131,6 +131,8 @@ window#waybar {
 	color: white;
 }
 #custom-terminal {
+    padding: 0 12px 0 5px;
+    font-size: 20px;
     background-color: #ff8700;
     color: white;
 }
