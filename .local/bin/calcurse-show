@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+swaymsg [title="console_calender"] scratchpad show || $(exec $TERMINAL -t 'console_calender' -e calcurse & sleep 0.2 && swaymsg [title="console_calender"] scratchpad show)

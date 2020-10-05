@@ -61,7 +61,7 @@
 		"clock#datetime": {
 			"format": " {:%d. %B %Y %H:%M} ",
 			"tooltip": false,
-			"on-click": "$TERMINAL -t 'console_calender' -e calcurse"
+			"on-click": "calcurse-show"
 		},
 		"cpu": {
 			"format": "{usage}% "

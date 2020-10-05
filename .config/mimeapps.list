@@ -57,3 +57,7 @@ text/x-arduino=text.desktop;org.gnome.Tau.desktop;
 image/jpeg=org.gnome.eog.desktop;
 x-scheme-handler/mailto=userapp-Evolution-1CA0R0.desktop;userapp-Thunderbird-GPGRR0.desktop;userapp-Evolution-X56MR0.desktop;
 message/rfc822=userapp-Thunderbird-GPGRR0.desktop;
+image/gif=userapp-notify-send "hello world""-NF54R0.desktop;userapp-"notify-send "hello world""-19QTR0.desktop;userapp-"notify-send "hello world""-ZIC4R0.desktop;userapp-"notify-send "%f""-1OJWR0.desktop;org.gnome.eog.desktop;
+text/x-objcsrc=org.gnome.gedit.desktop;
+application/x-desktop=org.gnome.gedit.desktop;
+application/x-sharedlib=userapp-"%f"-T3FWR0.desktop;userapp-%f"-F8SUR0.desktop;
