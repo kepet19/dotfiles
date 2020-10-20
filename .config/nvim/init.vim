@@ -10,18 +10,21 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-" Plug 'scrooloose/nerdtree'
+Plug 'neovim/nvim-lspconfig'
+Plug 'tjdevries/lsp_extensions.nvim'
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/diagnostic-nvim'
+Plug 'sainnhe/vim-color-forest-night'
+Plug 'arcticicestudio/nord-vim'
+Plug 'itchyny/lightline.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'KeitaNakamura/tex-conceal.vim'
-Plug 'sainnhe/vim-color-forest-night'
 Plug 'lervag/vimtex'
 Plug 'sheerun/vim-polyglot'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dadbod'
@@ -32,9 +35,7 @@ Plug 'metakirby5/codi.vim'
 Plug 'mikelue/vim-maven-plugin'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 Plug 'airblade/vim-rooter'
-" Plug 'hardcoreplayers/dashboard-nvim'
 Plug 'iamcco/markdown-preview.vim'
-" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mattn/emmet-vim'
 Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 
@@ -49,12 +50,17 @@ call plug#end()
 		nnoremap <C-p> :Clap files<CR>
 		nnoremap <Leader>fu :Clap grep<CR>
 	" }}}
-	" VIMTEX AND AIRLINE {{{ 
-		let g:vimtex_compiler_progname="nvr"
-		let g:powerline_pycmd="py3"
-		let g:airline_powerline_fonts = 1
-		let g:airline_theme="solarized"
-                let g:airline#extensions#tabline#enabled = 1
+	" Lightline {{{ 
+		let g:lightline = {
+					\ 'colorscheme': 'nord',
+					\ 'active': {
+					\   'left': [ [ 'mode', 'paste' ],
+					\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+					\ },
+					\ 'component_function': {
+					\   'gitbranch': 'FugitiveHead'
+					\ },
+					\ }
 		
 		" vimtex conf
 		let g:tex_flavor='latex'
@@ -67,40 +73,40 @@ call plug#end()
 		map <leader>g :!urlgitf<CR>
 	" }}} 
 	" CocVim {{{ 
-		inoremap <silent><expr> <TAB>
-	      \ pumvisible() ? coc#_select_confirm() :
-	      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-	      \ <SID>check_back_space() ? "\<TAB>" :
-	      \ coc#refresh()
+		" inoremap <silent><expr> <TAB>
+	      " \ pumvisible() ? coc#_select_confirm() :
+	      " \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+	      " \ <SID>check_back_space() ? "\<TAB>" :
+	      " \ coc#refresh()
 	
-	function! s:check_back_space() abort
-	  let col = col('.') - 1
-	  return !col || getline('.')[col - 1]  =~# '\s'
-	endfunction
+	" function! s:check_back_space() abort
+	  " let col = col('.') - 1
+	  " return !col || getline('.')[col - 1]  =~# '\s'
+	" endfunction
 	
-	let g:coc_snippet_next = '<tab>'
-	xmap <Tab> <Plug>(coc-snippets-select)
-	" GoTo code navigation.
-	nmap <silent> gd <Plug>(coc-definition)
-	nmap <silent> gy <Plug>(coc-type-definition)
-	" nmap <silent> gi <Plug>(coc-implementation)
-	nmap <silent> gr <Plug>(coc-references)
-	nmap <F2> <Plug>(coc-rename)
-	nmap <leader>rn <Plug>(coc-rename)
-        nmap <leader>ac  <Plug>(coc-codeaction)
-        nmap <leader>qf  <Plug>(coc-fix-current)
-        " Use K to show documentation in preview window.
-        nnoremap <silent> K :call <SID>show_documentation()<CR>
+	" let g:coc_snippet_next = '<tab>'
+	" xmap <Tab> <Plug>(coc-snippets-select)
+	" " GoTo code navigation.
+	" nmap <silent> gd <Plug>(coc-definition)
+	" nmap <silent> gy <Plug>(coc-type-definition)
+	" " nmap <silent> gi <Plug>(coc-implementation)
+	" nmap <silent> gr <Plug>(coc-references)
+	" nmap <F2> <Plug>(coc-rename)
+	" nmap <leader>rn <Plug>(coc-rename)
+        " nmap <leader>ac  <Plug>(coc-codeaction)
+        " nmap <leader>qf  <Plug>(coc-fix-current)
+        " " Use K to show documentation in preview window.
+        " nnoremap <silent> K :call <SID>show_documentation()<CR>
         
-        function! s:show_documentation()
-          if (index(['vim','help'], &filetype) >= 0)
-            execute 'h '.expand('<cword>')
-          else
-            call CocAction('doHover')
-          endif
-        endfunction
-        " Highlight the symbol and its references when holding the cursor.
-        autocmd CursorHold * silent call CocActionAsync('highlight')
+        " function! s:show_documentation()
+          " if (index(['vim','help'], &filetype) >= 0)
+            " execute 'h '.expand('<cword>')
+          " else
+            " call CocAction('doHover')
+          " endif
+        " endfunction
+        " " Highlight the symbol and its references when holding the cursor.
+        " autocmd CursorHold * silent call CocActionAsync('highlight')
 	" }}}
 	" VimVikiIndex {{{ 
 		map <leader>v :VimwikiIndex
@@ -187,6 +193,88 @@ call plug#end()
 	" }}}	
 	" Vim snippets I made {{{ 
 	" }}}	
+	" vim-lsp settings {{{ 
+		set completeopt=menuone,noinsert,noselect
+
+		" Set completeopt to have a better completion experience
+		" :help completeopt
+		" menuone: popup even when there's only one match
+		" noinsert: Do not insert text until a selection is made
+		" noselect: Do not select, force user to select one from the menu
+		set completeopt=menuone,noinsert,noselect
+		
+		" Avoid showing extra messages when using completion
+		set shortmess+=c
+		
+		" Configure LSP
+		" https://github.com/neovim/nvim-lspconfig#rust_analyzer
+lua <<EOF
+		
+		-- nvim_lsp object
+		local nvim_lsp = require'nvim_lsp'
+		
+		-- function to attach completion and diagnostics
+		-- when setting up lsp
+		local on_attach = function(client)
+		    require'completion'.on_attach(client)
+		    require'diagnostic'.on_attach(client)
+		end
+		
+		-- Enable rust_analyzer
+		-- Enable jdtls
+		-- Enable html
+		-- Enable gdscript
+		-- Enable tsserver
+		nvim_lsp.rust_analyzer.setup({ on_attach=on_attach })
+		nvim_lsp.jdtls.setup({ on_attach=on_attach })
+		nvim_lsp.html.setup({ on_attach=on_attach })
+		nvim_lsp.gdscript.setup({ on_attach=on_attach })
+		nvim_lsp.tsserver.setup({ on_attach=on_attach })
+		
+EOF
+
+		" Trigger completion with <Tab>
+		inoremap <silent><expr> <TAB>
+		  \ pumvisible() ? "\<C-n>" :
+		  \ <SID>check_back_space() ? "\<TAB>" :
+		  \ completion#trigger_completion()
+		
+		function! s:check_back_space() abort
+		    let col = col('.') - 1
+		    return !col || getline('.')[col - 1]  =~ '\s'
+		endfunction
+
+		" Code navigation shortcuts
+		nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+		nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+		nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+		nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+		nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+		nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+		nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+		nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+		nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+		nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
+
+		" Visualize diagnostics
+		set signcolumn=yes
+		let g:diagnostic_enable_virtual_text = 1
+		let g:diagnostic_trimmed_virtual_text = '40'
+		" Don't show diagnostics while in insert mode
+		let g:diagnostic_insert_delay = 1
+		
+		" Set updatetime for CursorHold
+		" 300ms of no cursor movement to trigger CursorHold
+		set updatetime=300
+		" Show diagnostic popup on cursor hold
+		autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
+		
+		" Goto previous/next diagnostic warning/error
+		nnoremap <silent> g[ <cmd>PrevDiagnosticCycle<cr>
+		nnoremap <silent> g] <cmd>NextDiagnosticCycle<cr>
+		autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
+		\ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
+	" }}}
 	" vim compileing opention {{{ 
 		map <C-S-Up> :make<Return>:copen<Return>
 		map <C-PageUp> :cprevious<Return>
@@ -216,16 +304,6 @@ call plug#end()
 		    call setreg(v:register, join(lines, ', '), 'l')
 		endfun
 	" }}}
-	" SETS the 80 columline, cursorline and Transperrency {{{ 
-		highlight ColorColumn ctermbg=235 guibg=#2c2d27
-		" let &colorcolumn=join(range(81,999),",") " this is all from 81 and unwards
-		" This Change the 80 columline and 120 and unwards
-		let &colorcolumn="80,".join(range(120,999),",") 
-		" Set the cursorline
-		set cursorline
-		" Makes wim transperrent
-		hi Normal guibg=NONE ctermbg=NONE
-	" }}}
 	" Folding section {{{ 
 		set foldenable
 		set foldlevelstart=10
@@ -234,12 +312,18 @@ call plug#end()
 	"	nnoremap <space> za "Open and close folds"
 	" }}}
 	" Vim color scheme {{{ 
-		set t_Co=256
-		set termguicolors
-		let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-		let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-		set background=dark    " Setting dark mode
-		colorscheme forest-night
+		" set t_Co=256
+		" set background=dark    " Setting dark mode
+		" set termguicolors
+		" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+		" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+		colorscheme nord
+		let g:nord_uniform_status_lines = 1
+		" highlight ColorColumn ctermbg=235 guibg=#2c2d27
+		let &colorcolumn="80"
+		set cursorline
+		" Makes wim transperrent
+		hi Normal guibg=None ctermbg=None
 	" }}}
 " }}}
 
@@ -297,8 +381,10 @@ call plug#end()
 	autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
 " Update binds when sxhkdrc is updated.
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
-" Reload Waybar
-	"autocmd BufWritePost ~/.config/waybar/config,~/.config/waybar/style.css !swaymsg "reload"
+" reload waybar
+	autocmd bufwritepost ~/.config/waybar/config,~/.config/waybar/style.css !killall waybar; waybar <cr>
+" reload mako
+	autocmd bufwritepost ~/.config/mako/config !killall mako; mako & disown
 " Reload vim When it is changed
 	augroup OnlyReloadOneTimePerWrite
     	au!

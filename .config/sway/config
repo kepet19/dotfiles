@@ -129,7 +129,7 @@ bindsym $mod+Shift+o		exec --no-startup-id i3resize right
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-bindsym $mod+o sticky toggle
+bindsym $mod+shift+f sticky toggle
 
 # spotify
     for_window [class="Spotify"] {
@@ -153,6 +153,7 @@ bindsym $mod+o sticky toggle
         resize set 780 415
     }
     bindsym $mod+b exec swaymsg [class="Bitwarden"] scratchpad show || $(exec bitwarden & sleep 0.2 && swaymsg [class="Bitwarden"] scratchpad show)
+
 # calcurse
     for_window [title="console_calender"] {
         move scratchpad
@@ -162,6 +163,18 @@ bindsym $mod+o sticky toggle
     }
     bindsym $mod+c exec swaymsg [title="console_calender"] scratchpad show || $(exec $TERMINAL -t 'console_calender' -e calcurse & sleep 0.2 && swaymsg [title="console_calender"] scratchpad show)
 
+set $screenSizeX 2560
+set $screenSizeY 1440
+# pavucontrol
+set $xsize $(echo "$screenSizeX - 630" | bc -l)
+set $xsize 1930
+    for_window [app_id="pavucontrol"] {
+        move scratchpad
+        floating enable
+        resize set 550 1000
+        move position $xsize 20
+    }
+    bindsym $mod+o exec swaymsg [app_id="pavucontrol"] scratchpad show || $(exec pavucontrol & sleep 0.2 && swaymsg [app_id="pavucontrol"] scratchpad show)
 
 # Inhibit Idle if a window is fullscreen 
 for_window [class="^.*"] inhibit_idle fullscreen 
@@ -169,23 +182,22 @@ for_window [app_id="^.*"] inhibit_idle fullscreen
 
 # FLOATING APPS:
 for_window [class="Pinentry"] sticky enable
-for_window [class="sent"] border pixel 0px
 for_window [title="GIMP Startup"] move workspace $workspace5
 for_window [class="Gimp"] move workspace $workspace5
-for_window [app_id="pavucontrol"] floating enable, resize set 800 600, move position 1250 500, sticky enable
 for_window [class="net-minecraft-launcher-Main"] floating enable
 for_window [window_role="GtkFileChooserDialog"] resize set 800 600
 for_window [window_role="GtkFileChooserDialog"] move position center
 for_window [app_id="org.gnome.Nautilus"] floating enable
+for_window [app_id="file-roller"] floating enable
 for_window [title="Default - Wine desktop"] floating enable
 for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable, move position 877 450, sticky enable
 for_window [app_id="firefox" title="^Firefox - Sharing Indicator$"] floating enable, move position bottom, move position right, sticky enable
-# for_window [app_id="firefox"] border none
+for_window [app_id="firefox"] border none
 # for_window [app_id="firefox"] move workspace $workspace2 
 for_window [app_id="blueman-*"] floating enable, sticky enable
 for_window [app_id="wdisplays"] floating enable, resize 780 415, move position center, sticky enable
 for_window [title="dropdown_dropdowncalc"] resize set 800 300
-for_window [title="dropdown_dropdowncalc"] border pixel 2
+for_window [title="dropdown_dropdowncalc"] border csd
 for_window [title="dropdown_dropdowncalc"] move position center
                 
 for_window [class="discord"] move workspace $workspace5
@@ -226,19 +238,22 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space		focus mode_toggle
 bindsym $mod+t			split toggle
 
-#STOP/HIDE EVERYTHING:
-bindsym $mod+Shift+Delete	exec --no-startup-id lmc truemute ; exec --no-startup-id lmc pause ; exec --no-startup-id pauseallmpv; workspace 0; exec $term -e htop ; exec $term -e $FILE
-
-set $workspace1  1
-set $workspace2  2
-set $workspace3  3
-set $workspace4  4
-set $workspace5  5
-set $workspace6  6
-set $workspace7  7
-set $workspace8  8
-set $workspace9  9
+set $workspace1 "1:"
+set $workspace2 "2:2"
+set $workspace3 "3:3"
+set $workspace4 4
+set $workspace5 5
+set $workspace6 6
+set $workspace7 7
+set $workspace8 8
+set $workspace9 9
 set $workspace10 10
+# 				"1": "",
+# 				"2": "",
+# 				"3": "",
+# 				"4": "",
+# 				"5": "",
+# 				"6": "📽",
 
 # switch to workspace
 #bindsym $mod+Tab workspace next
@@ -302,9 +317,11 @@ smart_gaps on
 bindsym $mod+Shift+t		gaps inner current set 30; gaps outer current set 100
 bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
 
-default_border pixel 1
-# default_floating_border pixel 4
-for_window [class="^.*"] border pixel 2
+# Border border
+default_border pixel csd
+for_window [class="^.*"] border csd
+for_window [app_id="^.*"] border csd
+for_window [app_id="Alacritty"] border pixel 1
 for_window [title="float"] floating enable
 for_window [class="^.float"] floating enable
 
@@ -316,18 +333,12 @@ set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
 set $indicator-color 	 #98f379
 
-##                           border          background      text                 indicator  child border
-#client.focused              $bd-color       $bg-color       $text-color          $indicator-color  $bd-color
-#client.unfocused            $bg-color       $bg-color       $inactive-text-color $bg-color  $bg-color
-#client.focused_inactive     $bg-color       $bg-color       $inactive-text-color $bg-color  $bg-color
-#client.urgent               $bg-color       $bg-color       $text-color          $bg-color  $bg-color
-## client.background                           $bg-color
-
 bar {
     swaybar_command waybar
 }
-output "*" bg "$HOME/.config/wall.jpg" fill
+output "*" bg "$HOME/.config/wall.png" fill
 output DP-1 mode 2560x1440@143.912003Hz
+
 # output DP-1 mode 2560x1440@143.912003Hz adaptive_sync on
 
 # https://github.com/Big-B/swaylock-fancy
@@ -340,7 +351,6 @@ exec swayidle -w \
             resume 'swaymsg "output * dpms on"' \
         before-sleep 'swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 10 --fade-in 0.3'
 
-#exec_always --no-startup-id dunst
 # Services that are run
 exec_always --no-startup-id mako &>/dev/null
 exec mopidy &>/dev/null
