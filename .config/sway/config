@@ -87,20 +87,24 @@ bindsym $mod+z exec zeal
 bindsym $mod+q kill
 
 # Bind Appclications
-bindsym $mod+w			exec $TERMINAL -t "float_nmtui" -e nmtui
-bindsym $mod+Shift+w	exec --no-startup-id $BROWSER
-bindsym $mod+e 			exec $FILE 
-bindsym $mod+i 			exec $TERMINAL -t "float_ytopp" -e ytopp
+bindsym $mod+w              exec $TERMINAL -t "float_nmtui" -e nmtui
+bindsym $mod+Shift+w        exec --no-startup-id $BROWSER
+bindsym $mod+e              exec $FILE 
+#bindsym $mod+i              exec $TERMINAL -t "float_ytopp" -e ytopp
 bindsym $mod+r exec $menu
-bindsym $mod+Shift+r exec wf-recorder-pick
-bindsym $mod+p			exec wdisplays
-bindsym $mod+Shift+p	exec grimcolor
-bindsym alt+shift+p	exec grimpick
-bindsym alt+p			exec grimselect
+bindsym $mod+Shift+r        exec wf-recorder-pick
+bindsym $mod+p			    exec wdisplays
+bindsym $mod+Shift+p	    exec grimcolor
+bindsym alt+shift+p	        exec grimpick
+bindsym alt+p               exec grimselect
 
 
 # rofi
-bindsym $mod+s exec sirula
+bindsym $mod+s exec ulauncher-toggle
+for_window [app_id="ulauncher"] {
+        border none
+    }
+
 
 # Bind for moving windows
 bindsym $mod+h			focus left
@@ -139,6 +143,14 @@ bindsym $mod+shift+f sticky toggle
     }
     bindsym $mod+m exec swaymsg [class="Spotify"] scratchpad show || $(exec spotify & sleep 0.2 && swaymsg [class="Spotify"] scratchpad show)
 
+# todos 
+    for_window [title="^Todos - Iced$"] {
+        move scratchpad
+        resize set 400 700
+        move absolute position 1400 600
+    }
+    bindsym $mod+i exec swaymsg '[title="^Todos - Iced$"] scratchpad show' || $(exec todos & sleep 0.2 && swaymsg '[title="^Todos - Iced$"] scratchpad show')
+
 # floating terminal
     for_window [title="dropdown_term"] {
         move scratchpad
@@ -162,6 +174,23 @@ bindsym $mod+shift+f sticky toggle
         move position 800 20
     }
     bindsym $mod+c exec swaymsg [title="console_calender"] scratchpad show || $(exec $TERMINAL -t 'console_calender' -e calcurse & sleep 0.2 && swaymsg [title="console_calender"] scratchpad show)
+
+# calculator
+    for_window [app_id="gnome-calculator"] {
+        move scratchpad
+        floating enable
+        resize set 800 600
+    }
+    bindsym $mod+a exec swaymsg [app_id="gnome-calculator"] scratchpad show || $(exec gnome-calculator & sleep 0.4 && swaymsg [app_id="gnome-calculator"] scratchpad show)
+
+# calculator
+    for_window [app_id="gnome-system-monitor"] {
+        move scratchpad
+        floating enable
+        resize set 800 600
+    }
+    bindsym Ctrl+Shift+Escape exec swaymsg [app_id="gnome-system-monitor"] scratchpad show || $(exec gnome-system-monitor & sleep 0.4 && swaymsg [app_id="gnome-system-monitor"] scratchpad show)
+
 
 set $screenSizeX 2560
 set $screenSizeY 1440
@@ -220,8 +249,6 @@ for_window [title="^skim launcher$"] floating enable, sticky
 for_window [title="^skim launcher$"] resize set 600 350
 
 # FLOATING TERMINAL
-# bindsym $mod+u exec ddspawn tmuxdd
-bindsym $mod+a exec ddspawn dropdowncalc
 # bindsym $mod+d exec $TERMINAL -t "fzfmenu" -e fzfmenu
 bindsym $mod+d exec $TERMINAL -t "skim launcher" -e skim_switcher
 bindsym $mod+Shift+minus move scratchpad
@@ -318,9 +345,11 @@ bindsym $mod+Shift+t		gaps inner current set 30; gaps outer current set 100
 bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
 
 # Border border
-default_border pixel csd
-for_window [class="^.*"] border csd
-for_window [app_id="^.*"] border csd
+default_border pixel pixel 1
+for_window [class="^.*"] pixel 1
+for_window [app_id="^.*"] pixel 1
+# for_window [class="^.*"] border csd
+# for_window [app_id="^.*"] border csd
 for_window [app_id="Alacritty"] border pixel 1
 for_window [title="float"] floating enable
 for_window [class="^.float"] floating enable
@@ -345,11 +374,11 @@ output DP-1 mode 2560x1440@143.912003Hz
 bindsym $mod+x exec swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 10 --fade-in 0.3
 
 # Auto start
-exec swayidle -w \
-        timeout 300 'swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 10 --fade-in 0.3' \
-        timeout 350 'swaymsg "output * dpms off"' \
-            resume 'swaymsg "output * dpms on"' \
-        before-sleep 'swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 10 --fade-in 0.3'
+# exec swayidle -w \
+#         timeout 300 'swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 10 --fade-in 0.3' \
+#         timeout 350 'swaymsg "output * dpms off"' \
+#             resume 'swaymsg "output * dpms on"' \
+#         before-sleep 'swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 10 --fade-in 0.3'
 
 # Services that are run
 exec_always --no-startup-id mako &>/dev/null

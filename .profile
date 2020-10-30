@@ -5,9 +5,6 @@ export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/Android/Sdk/tools/bin/:$PATH"
 export PATH="$HOME/Android/Sdk/platform-tools/:$PATH"
-# TODO maybe remove these? 
-#export WLC_REPEAT_RATE=600
-#export WLC_REPEAT_DELAY=20
 export MOZ_ENABLE_WAYLAND=1
 export ANDROID_HOME="$HOME/Android/Sdk"
 export ANDROID_NDK_HOME="$ANDROID_HOME/ndk-bundle"

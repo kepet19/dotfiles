@@ -38,6 +38,8 @@ Plug 'airblade/vim-rooter'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'mattn/emmet-vim'
 Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -131,6 +133,17 @@ call plug#end()
 		let g:minimap_highlight='Title'
 		let g:minimap_auto_start= 0
         " }}}
+        " UltiSnipsEdit {{{ 
+		" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+		" - https://github.com/Valloric/YouCompleteMe
+		" - https://github.com/nvim-lua/completion-nvim
+		let g:UltiSnipsExpandTrigger="<C-e>"
+		" let g:UltiSnipsListSnippets="<c-tab>"
+		let g:UltiSnipsJumpForwardTrigger="<C-e>"
+		let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+		" If you want :UltiSnipsEdit to split your window.
+		let g:UltiSnipsEditSplit="vertical"
+        " }}}
 " }}}
 
 
@@ -191,11 +204,7 @@ call plug#end()
         let g:netrw_list_hide=netrw_gitignore#Hide()    " Hides files that is in gitignore
         let g:netrw_list_hide.='.class'                 " Hides class 
 	" }}}	
-	" Vim snippets I made {{{ 
-	" }}}	
 	" vim-lsp settings {{{ 
-		set completeopt=menuone,noinsert,noselect
-
 		" Set completeopt to have a better completion experience
 		" :help completeopt
 		" menuone: popup even when there's only one match
@@ -231,6 +240,7 @@ lua <<EOF
 		nvim_lsp.gdscript.setup({ on_attach=on_attach })
 		nvim_lsp.tsserver.setup({ on_attach=on_attach })
 		
+
 EOF
 
 		" Trigger completion with <Tab>
