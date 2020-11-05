@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+mkdir -p /tmp/autolog
+"$@" > /tmp/autolog/"$1.log" 2>&1

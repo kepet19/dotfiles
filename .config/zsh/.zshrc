@@ -87,6 +87,7 @@ alias config='/usr/bin/git --git-dir=/home/kkmp/.cfg/ --work-tree=/home/kkmp'
 # https://github.com/Canop/broot
 bindkey -s '^s' 'br -dp\n'  # zsh
 bindkey -s '^z' "fg\015"
+bindkey -s '^f' "tmuxa\n"
 source /home/kkmp/.config/broot/launcher/bash/br
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/fzf/completion.zsh
