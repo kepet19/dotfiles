@@ -1,0 +1,17 @@
+add_newline = true
+# with basic string
+# format = "\n\\$"
+
+# Replace the "❯" symbol in the prompt with "➜"
+# [character]                            # The name of the module we are configuring is "character"
+# success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+
+# Disable the package module, hiding it from the prompt completely
+
+# Use custom format
+
+# Wait 10 milliseconds for starship to check files under the current directory.
+# scan_timeout = 10
+
+[package]
+disabled = true

@@ -1,8 +1,8 @@
 [user]
 	email = kevinmeejach@gmail.com
-	name = kepet19
 	signingkey = 2D3CF82D41B75758
 	mail = kepet19@student.sdu.dk
+	name = kepet19
 [gpg]
 	program = gpg2
 [commit]
@@ -13,18 +13,14 @@
 [alias]
 	st = status
 	ca = commit -a
-	cam = commit -am
 	cm = commit -m
+	cma = commit -am
 	ph = push
 	pl = pull
+	ft = fetch
 	rt = restore
 	br = branch
 	co = checkout
 	coa = checkout -b 
-[filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
 [pull]
 	rebase = false

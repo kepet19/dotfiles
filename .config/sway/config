@@ -82,15 +82,14 @@ bindsym $mod+shift+Return exec $TERMINAL -e tmux
 bindsym $mod+F4 exec wlogout
 bindsym $mod+Backspace exec wlogout
 
-# start a nvim session
-bindsym $mod+z exec zeal
 bindsym $mod+q kill
 
 # Bind Appclications
 bindsym $mod+w              exec $TERMINAL -t "float_nmtui" -e nmtui
 bindsym $mod+Shift+w        exec --no-startup-id $BROWSER
 bindsym $mod+e              exec $FILE 
-#bindsym $mod+i              exec $TERMINAL -t "float_ytopp" -e ytopp
+bindsym $mod+z exec zeal
+bindsym $mod+n exec makoctl menu bemenu -p 'Select Action'
 bindsym $mod+r exec $menu
 bindsym $mod+Shift+r        exec wf-recorder-pick
 bindsym $mod+p			    exec wdisplays
@@ -365,9 +364,9 @@ set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
 set $indicator-color 	 #98f379
 
-bar {
-    swaybar_command autolog waybar
-}
+# bar {
+#     swaybar_command waybar
+# }
 output "*" bg "$HOME/.config/wall.png" fill
 output DP-1 mode 2560x1440@143.912003Hz
 
@@ -398,6 +397,7 @@ exec autolog sway-alttab
 exec autolog mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob -W 300 -H 30 -a top -a right -M 50 -p 1 -o 0 -b 1
 exec autolog /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec autolog keyring
+exec autolog waybar
 
 
 ## Autostart applications
