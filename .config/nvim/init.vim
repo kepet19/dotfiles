@@ -40,6 +40,7 @@ Plug 'mattn/emmet-vim'
 Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'KabbAmine/vCoolor.vim'
 
 call plug#end()
 
