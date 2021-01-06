@@ -41,18 +41,6 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
 natural_scroll enabled 
 scroll_factor 0.3
 }
-# input "2:10:TPPS\/2_IBM_TrackPoint" {
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-# font Fira Code:pixelsize=12:antialias=true:autohint:true
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -134,13 +122,13 @@ bindsym $mod+Shift+o		exec --no-startup-id i3resize right
 bindsym $mod+f fullscreen toggle
 bindsym $mod+shift+f sticky toggle
 
-# spotify
-    for_window [class="Spotify"] {
+# ncspot
+    for_window [title="dropdown_ncspot"] {
         move scratchpad
         resize set 1024 768
         move absolute position 1400 600
     }
-    bindsym $mod+m exec swaymsg [class="Spotify"] scratchpad show || $(exec spotify & sleep 0.2 && swaymsg [class="Spotify"] scratchpad show)
+    bindsym $mod+m exec swaymsg [title="dropdown_ncspot"] scratchpad show || $(exec $TERMINAL -t 'dropdown_ncspot' -e ncspot & sleep 0.2 && swaymsg '[title="dropdown_ncspot"] scratchpad show')
 
 # todos 
     for_window [title="^Todos - Iced$"] {
@@ -156,7 +144,7 @@ bindsym $mod+shift+f sticky toggle
         resize set 1024 450
         move absolute position 750 60
     }
-    bindsym $mod+u exec swaymsg [title="dropdown_term"] scratchpad show || $(exec $TERMINAL -t 'dropdown_term' -e tmuxdd & sleep 0.2 && swaymsg [title="dropdown_term"] scratchpad show)
+    bindsym $mod+u exec swaymsg [title="dropdown_term"] scratchpad show || $(exec $TERMINAL -t 'dropdown_term' -e tmuxdd & sleep 0.2 && swaymsg '[title="dropdown_term"] scratchpad show')
 
 # bitwarden
     for_window [class="Bitwarden"] {
@@ -218,6 +206,7 @@ for_window [app_id="file-roller"] floating enable
 for_window [title="Default - Wine desktop"] floating enable
 for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable, move position 877 450, sticky enable
 for_window [app_id="firefox" title="^Firefox - Sharing Indicator$"] floating enable, move position bottom, move position right, sticky enable
+for_window [title="discord.com is sharing your screen."] floating enable, move position bottom, move position right, sticky enable
 for_window [app_id="firefox"] border none
 # for_window [app_id="firefox"] move workspace $workspace2 
 for_window [app_id="blueman-*"] floating enable, sticky enable

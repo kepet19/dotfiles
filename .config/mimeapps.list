@@ -96,6 +96,7 @@ image/x-portable-graymap=imv.desktop
 image/x-portable-pixmap=imv.desktop
 image/x-tga=imv.desktop
 image/x-xbitmap=imv.desktop
+x-scheme-handler/discord-402572971681644545=discord-402572971681644545.desktop
 
 [Added Associations]
 application/x-shellscript=org.gnome.gedit.desktop;
@@ -120,7 +121,7 @@ application/x-mpegurl=blackboard.desktop;
 application/vnd.apple.mpegurl=blackboard.desktop;
 image/x-portable-graymap=org.gnome.eog.desktop;imv.desktop;
 text/plain=org.gnome.gedit.desktop;
-text/x-python=org.gnome.Tau.desktop;text.desktop;
+text/x-python=text.desktop;org.gnome.Tau.desktop;
 text/markdown=text.desktop;
 video/quicktime=mpv.desktop;
 application/json=org.gnome.Tau.desktop;

@@ -11,17 +11,19 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'neovim/nvim-lspconfig'
-Plug 'tjdevries/lsp_extensions.nvim'
+Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
 Plug 'sainnhe/vim-color-forest-night'
+Plug 'tjdevries/cyclist.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'itchyny/lightline.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'vimwiki/vimwiki'
-Plug 'KeitaNakamura/tex-conceal.vim'
+" Plug 'junegunn/goyo.vim'
+" Plug 'vimwiki/vimwiki'
+Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
 Plug 'lervag/vimtex'
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -29,10 +31,10 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-dispatch'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'metakirby5/codi.vim'
-Plug 'mikelue/vim-maven-plugin'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 Plug 'airblade/vim-rooter'
 Plug 'iamcco/markdown-preview.vim'
@@ -49,6 +51,7 @@ call plug#end()
 
 " Pluging settings  {{{ 
 	" Visual Vim clap {{{ 
+        let g:clap_disable_run_rooter=1
 		let g:clap_theme = 'material_design_dark'
 		nnoremap <C-p> :Clap files<CR>
 		nnoremap <Leader>fu :Clap grep<CR>
@@ -75,42 +78,17 @@ call plug#end()
 	" Git go to github homepage {{{
 		map <leader>g :!urlgitf<CR>
 	" }}} 
-	" CocVim {{{ 
-		" inoremap <silent><expr> <TAB>
-	      " \ pumvisible() ? coc#_select_confirm() :
-	      " \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-	      " \ <SID>check_back_space() ? "\<TAB>" :
-	      " \ coc#refresh()
-	
-	" function! s:check_back_space() abort
-	  " let col = col('.') - 1
-	  " return !col || getline('.')[col - 1]  =~# '\s'
-	" endfunction
-	
-	" let g:coc_snippet_next = '<tab>'
-	" xmap <Tab> <Plug>(coc-snippets-select)
-	" " GoTo code navigation.
-	" nmap <silent> gd <Plug>(coc-definition)
-	" nmap <silent> gy <Plug>(coc-type-definition)
-	" " nmap <silent> gi <Plug>(coc-implementation)
-	" nmap <silent> gr <Plug>(coc-references)
-	" nmap <F2> <Plug>(coc-rename)
-	" nmap <leader>rn <Plug>(coc-rename)
-        " nmap <leader>ac  <Plug>(coc-codeaction)
-        " nmap <leader>qf  <Plug>(coc-fix-current)
-        " " Use K to show documentation in preview window.
-        " nnoremap <silent> K :call <SID>show_documentation()<CR>
-        
-        " function! s:show_documentation()
-          " if (index(['vim','help'], &filetype) >= 0)
-            " execute 'h '.expand('<cword>')
-          " else
-            " call CocAction('doHover')
-          " endif
-        " endfunction
-        " " Highlight the symbol and its references when holding the cursor.
-        " autocmd CursorHold * silent call CocActionAsync('highlight')
-	" }}}
+	" nvim-treesitter {{{
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = {},  -- list of language that will be disabled
+  },
+}
+EOF
+	" }}} 
 	" VimVikiIndex {{{ 
 		map <leader>v :VimwikiIndex
 	" }}}
@@ -130,9 +108,11 @@ call plug#end()
         " }}}
         " minimap {{{ 
 		let g:minimap_left= 0
-		let g:minimap_width = 20
-		let g:minimap_highlight='Title'
-		let g:minimap_auto_start= 0
+		let g:minimap_width = 10
+		let g:minimap_highlight='TermCursor'
+		let g:minimap_auto_start=0
+		let g:minimap_base_highlight='Title'
+		map mm :MinimapToggle<CR>
         " }}}
         " UltiSnipsEdit {{{ 
 		" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
@@ -149,26 +129,30 @@ call plug#end()
 
 
 " Basic's, Mappings, Leader and stuff {{{ 
+	" Folding section {{{ 
+		set foldenable
+		set foldlevelstart=10
+		set foldnestmax=10
+		set foldmethod=syntax
+	"	nnoremap <space> za "Open and close folds"
+	" }}}
 	" Some basics: {{{ 
 		imap jk <Esc>
 		set tabstop=4
 		set softtabstop=0 expandtab
 		set shiftwidth=4 smarttab
 		set hidden " Has the buffer open ind the background
-		set wildmenu " Tab compiltenmenu
-		"set wildmode=longest:list,full
-                " characters to show
-                set listchars=tab:>~,nbsp:_,trail:.
-                set list
+        " set listchars=tab:>~>,nbsp:_,trail:.
+        set list
 		set wildmode=list:longest,list:full
 		set wildignore+=/node_modules/** "ignore node_modules should add more
 		set path+=** " Add subfolders aswell
-		set bg=light
 		set go=a
 		set mouse=a
-		set nohlsearch
+		" set nohlsearch
+        set inccommand=split
 		set clipboard+=unnamedplus
-		set scrolloff=10 "Keeps the screecenter
+		set scrolloff=5 "Keeps the screecenter
 		set nowrap!
 		set nocompatible
 		filetype plugin on
@@ -179,6 +163,8 @@ call plug#end()
 		set splitbelow splitright
 	" Mapping to change pwd to the directory of the current buffer.
 		nnoremap cm :cd %:h<CR>:pwd<CR>
+        "Enter for clear search!
+        nnoremap <expr> <CR> {-> v:hlsearch ? ":nohl\<CR>" : "\<CR>"}()
 	" Toggle Wrap
 		nnoremap <Leader>w :set wrap!<CR>
 	" Removes pipes | that act as seperators on splits
@@ -195,6 +181,8 @@ call plug#end()
 		map <leader>p :!opout <c-r>%<CR><CR>
 	" Format Json JSON
 		map <leader>ff :%!jq .
+    " Compiler script
+		map <leader>c :w! \| !compiler <c-r>%<CR>
 	" }}}
 	" netrw {{{ 
         map <leader>n e . <CR>
@@ -214,46 +202,45 @@ call plug#end()
 		set completeopt=menuone,noinsert,noselect
 		
 		" Avoid showing extra messages when using completion
-		set shortmess+=c
+		" set shortmess+=c
 		
 		" Configure LSP
 		" https://github.com/neovim/nvim-lspconfig#rust_analyzer
-lua <<EOF
-		
-		-- nvim_lsp object
-		local nvim_lsp = require'nvim_lsp'
-		
-		-- function to attach completion and diagnostics
-		-- when setting up lsp
-		local on_attach = function(client)
-		    require'completion'.on_attach(client)
-		    require'diagnostic'.on_attach(client)
-		end
-		
-		-- Enable rust_analyzer
-		-- Enable jdtls
-		-- Enable html
-		-- Enable gdscript
-		-- Enable tsserver
-		nvim_lsp.rust_analyzer.setup({ on_attach=on_attach })
-		nvim_lsp.jdtls.setup({ on_attach=on_attach })
-		nvim_lsp.html.setup({ on_attach=on_attach })
-		nvim_lsp.gdscript.setup({ on_attach=on_attach })
-		nvim_lsp.tsserver.setup({ on_attach=on_attach })
-		
+:lua <<EOF
+
+-- lspconfig object
+local lspconfig = require'lspconfig'
+
+-- function to attach completion and diagnostics
+-- when setting up lsp
+local on_attach = function(client)
+    require'completion'.on_attach(client)
+end
+
+-- Enable rust_analyzer
+-- Enable html
+-- Enable gdscript
+-- Enable tsserver
+lspconfig.rust_analyzer.setup({ on_attach=on_attach })
+lspconfig.jdtls.setup({ on_attach=on_attach })
+lspconfig.html.setup({ on_attach=on_attach })
+lspconfig.cssls.setup({ on_attach=on_attach })
+lspconfig.gdscript.setup({ on_attach=on_attach })
+lspconfig.tsserver.setup({ on_attach=on_attach })
+lspconfig.jsonls.setup({ on_attach=on_attach })
+lspconfig.vimls.setup({ on_attach=on_attach })
+lspconfig.bashls.setup({ on_attach=on_attach })
+lspconfig.texlab.setup({ on_attach=on_attach })
 
 EOF
 
 		" Trigger completion with <Tab>
-		inoremap <silent><expr> <TAB>
-		  \ pumvisible() ? "\<C-n>" :
-		  \ <SID>check_back_space() ? "\<TAB>" :
-		  \ completion#trigger_completion()
-		
-		function! s:check_back_space() abort
-		    let col = col('.') - 1
-		    return !col || getline('.')[col - 1]  =~ '\s'
-		endfunction
+        inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+        inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+        imap <silent> <c-p> <Plug>(completion_trigger)
+        " imap <tab> <Plug>(completion_smart_tab)
+        " imap <s-tab> <Plug>(completion_smart_s_tab)
+        " let g:completion_enable_auto_popup = 1
 
 		" Code navigation shortcuts
 		nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
@@ -261,7 +248,8 @@ EOF
 		nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 		nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 		nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-		nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+		nnoremap <silent> gr    <cmd>lua vim.lsp.buf.rename()<CR>
+		" nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 		nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 		nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 		nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
@@ -274,24 +262,25 @@ EOF
 		" Don't show diagnostics while in insert mode
 		let g:diagnostic_insert_delay = 1
 		
+        let g:completion_enable_snippet = 'UltiSnips'
 		" Set updatetime for CursorHold
 		" 300ms of no cursor movement to trigger CursorHold
 		set updatetime=300
 		" Show diagnostic popup on cursor hold
-		autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
+		" autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
 		
 		" Goto previous/next diagnostic warning/error
 		nnoremap <silent> g[ <cmd>PrevDiagnosticCycle<cr>
 		nnoremap <silent> g] <cmd>NextDiagnosticCycle<cr>
 		autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 		\ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
-	" }}}
-	" vim compileing opention {{{ 
-		map <C-S-Up> :make<Return>:copen<Return>
-		map <C-PageUp> :cprevious<Return>
-		map <C-PageDown> :cnext<Return>
-		map <leader>c :w! \| !compiler <c-r>%<CR>
-		map <leader>t :w! \| !mvn test <CR>
+
+
+        " Rust specefic stuff
+        " Auto-format *.rs files prior to saving them
+        autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 1000)
+        " Use LSP omni-completion in Python files.
+        autocmd Filetype rust setlocal omnifunc=v:lua.vim.lsp.omnifunc
 	" }}}
 	" Shortcutting split navigation, saving a keypress: {{{ 
 		map <C-h> <C-w>h
@@ -314,13 +303,6 @@ EOF
 		    let lines = map(getline(l1, l2), {i, l -> trim(l[c1-1:c2-1])})
 		    call setreg(v:register, join(lines, ', '), 'l')
 		endfun
-	" }}}
-	" Folding section {{{ 
-		set foldenable
-		set foldlevelstart=10
-		set foldnestmax=10
-		set foldmethod=syntax
-	"	nnoremap <space> za "Open and close folds"
 	" }}}
 	" Vim color scheme {{{ 
 		" set t_Co=256

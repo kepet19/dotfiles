@@ -1,212 +1,214 @@
 {
-	"layer": "top", // Waybar at top layer
-		"gtk-layer-shell": true,
-		//"position": "bottom", // Waybar at the bottom of your screen
-		"height": 25, // Waybar height
-		// "width": 1280, // Waybar width
-		// Choose the order of the modules
-		"modules-left": ["custom/apps","custom/startLeft","sway/workspaces",
-			"custom/arrow7","sway/mode","sway/window","custom/arrow6"],
-		"modules-center": [ "custom/arrow9", "clock#datetime",
-			"custom/terminal","custom/arrow10" ],
-		"modules-right": ["custom/arrow5","pulseaudio","custom/arrow4",
-			"network", "custom/arrow3","battery", "custom/arrow3", "cpu", "memory",
-			"custom/arrow1","backlight", "idle_inhibitor","custom/arrow8", "tray",
-			"custom/startRight","custom/wlogout"],
-		// Modules configuration
-		"sway/workspaces": {
-			"disable-scroll": true,
-			"all-outputs": false,
-			"format": "{name}:{icon}",
-			"format-icons": {
-				"urgent": "",
-				"focused": "",
-				"default": ""
-			}
-		},
-		"sway/window": {
-			"tooltip": false
-		},
-		"battery": {
-			"format": "{capacity}% {icon}",
-			"format-alt": "{time} {icon}",
-			"format-icons": ["", "", "", "", ""],
-			"format-charging": "{capacity}% ",
-			"interval": 30,
-			"states": {
-				"warning": 25,
-				"critical": 10
-			},
-			"tooltip": false
-		},
+    "layer": "top", // Waybar at top layer
+        "gtk-layer-shell": true,
+        //"position": "bottom", // Waybar at the bottom of your screen
+        "height": 25, // Waybar height
+        // "width": 1280, // Waybar width
+        // Choose the order of the modules
+        "modules-left": ["custom/apps","custom/startLeft","sway/workspaces",
+        "custom/arrow7","sway/mode","sway/window","custom/arrow6"],
+
+        "modules-center": [ "custom/arrow9", "clock#datetime",
+        "custom/terminal","custom/arrow10" ],
+
+        "modules-right": ["custom/arrow5","pulseaudio","custom/arrow4",
+        "network", "custom/arrow3","battery", "custom/arrow3", "cpu", "memory",
+        "custom/arrow1","backlight", "idle_inhibitor","custom/arrow8", "tray",
+        "custom/startRight","custom/wlogout"],
+        // Modules configuration
+        "sway/workspaces": {
+            "disable-scroll": true,
+            "all-outputs": false,
+            "format": "{name}:{icon}",
+            "format-icons": {
+                "urgent": "",
+                "focused": "",
+                "default": ""
+            }
+        },
+        "sway/window": {
+            "tooltip": false
+        },
+        "battery": {
+            "format": "{capacity}% {icon}",
+            "format-alt": "{time} {icon}",
+            "format-icons": ["", "", "", "", ""],
+            "format-charging": "{capacity}% ",
+            "interval": 30,
+            "states": {
+                "warning": 25,
+                "critical": 10
+            },
+            "tooltip": false
+        },
 
 
-		"sway/mode": {
-			"format": "<span style=\"italic\">{}</span>"
-		},
-		"tray": {
-			//"icon-size": 21,
-			"spacing": 10
-		},
-		"clock#time": {
-			"tooltip-format": "{:%Y-%m-%d | %H:%M}",
-			"tooltip": false
-		},
-		"clock#date": {
-			"format": "{:%d. %B %Y}",
-			"tooltip": false
-		},
-		"clock#datetime": {
-			"format": " {:%d. %B %Y %H:%M} ",
-			"tooltip": false,
-			"on-click": "calcurse-show"
-		},
-		"cpu": {
-			"format": "{usage}% "
-		},
-		"memory": {
-			"format": "{}% ",
-			"on-click": "$TERMINAL -e htop"
-		},
-		"network": {
-			// "interface": "wlp2s0", // (Optional) To force the use of this interface
-			"format-wifi": "{signalStrength}% ",
-			"format-alt": "{essid} {ipaddr}",
-			"format-alt-click": "click-right",
-			"format-ethernet": "{ifname}: {ipaddr}",
-			"format-disconnected": "Disconnected ⚠",
-			"on-click": "$TERMINAL -e nmtui",
-			"tooltip": false
-		},
-		"pulseaudio": {
-			"scroll-step": 1,
-			"format": "{volume}% {icon}",
-			"format-bluetooth": "{volume}% {icon}",
-			"format-muted": "🔇",
-			"format-icons": {
-				"headphones": "",
-				"handsfree": "",
-				"headset": "🎧",
-				"phone": "",
-				"portable": "",
-				"car": "",
-				"default": ["","", ""]
-			},
-			"on-click": "amixer -q -D pulse sset Master toggle",
-			"on-click-right": "pavucontrol-show",
-			"tooltip": false
-		},
-		"custom/mpd": {
-			"format": "♪ {}",
-			"interval": 1,
-			"max-length": 30,
-			"exec": "echo $(mpc current) – $(mpc status | awk '{print $3}' | sed -n 2p)",
-			"exec-if": "pgrep mopidy",
-			"on-click-right": "mpc toggle",
-			"on-click": "~/.config/rofi/scripts/mpd.sh"
-		},
-		"mpd": {
-			"max-length": 50,
-			"format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}({elapsedTime:%M:%S}/{totalTime:%M:%S}) {title} - {artist}",
-			"format-disconnected": "Disconnected ",
-			"format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-			"interval": 2,
-			"on-click-right": "mpc toggle",
-			"on-click": "~/.config/rofi/scripts/mpd.sh",
-			"consume-icons": {
-				"on": " " // Icon shows only when "consume" is on
-			},
-			"random-icons": {
-				"off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
-				"on": " "
-			},
-			"repeat-icons": {
-				"on": " "
-			},
-			"single-icons": {
-				"on": "1 "
-			},
-			"state-icons": {
-				"paused": "",
-				"playing": ""
-			},
-			"tooltip": false
-		},
-		"backlight": {
-			"format": "{icon}",
-			"format-alt": "{percent}% {icon}",
-			"format-alt-click": "click-left",
-			"format-icons": [""],
-			"on-scroll-down": "light -A 1",
-			"on-scroll-up": "light -U 1"
-		},
-		"idle_inhibitor": {
-			"format": "{icon}",
-			"format-icons": {
-				"activated": "",
-				"deactivated": ""
-			},
-			"tooltip": false
-		},
-		"custom/wlogout": {
-			"format": "",
-			"on-click": "wlogout",
-			"tooltip": false
-		},
-		"custom/terminal": {
-			"format": "",
-			"on-click": "alacritty-show",
-			"tooltip": false
-		},
-		"custom/apps": {
-			"format": "",
-			"on-click": "sirula",
-			"tooltip": false
-		},
-		"custom/startRight": {
-			"format": "",
-			"tooltip": false
-		},
-		"custom/startLeft": {
-			"format": "",
-			"tooltip": false
-		},
-		"custom/arrow1": {
-			"format": "",
-			"tooltip": false
-		},
-		"custom/arrow3": {
-			"format": "",
-			"tooltip": false
-		},
-		"custom/arrow8": {
-			"format": "",
-			"tooltip": false
-		},
-		"custom/arrow4": {
-			"format": "",
-			"tooltip": false
-		},
-		"custom/arrow5": {
-			"format": "",
-			"tooltip": false
-		},
-		"custom/arrow6": {
-			"format": "",
-			"tooltip": false
-		},
-		"custom/arrow7": {
-			"format": "",
-			"tooltip": false
-		},
-		"custom/arrow9": {
-			"format": "",
-			"tooltip": false
-		}, 
-		"custom/arrow10": {
-			"format": "",
-			"tooltip": false
-		}
+        "sway/mode": {
+            "format": "<span style=\"italic\">{}</span>"
+        },
+        "tray": {
+            //"icon-size": 21,
+            "spacing": 10
+        },
+        "clock#time": {
+            "tooltip-format": "{:%Y-%m-%d | %H:%M}",
+            "tooltip": false
+        },
+        "clock#date": {
+            "format": "{:%d. %B %Y}",
+            "tooltip": false
+        },
+        "clock#datetime": {
+            "format": " {:%d. %B %Y %H:%M} ",
+            "tooltip": false,
+            "on-click": "calcurse-show"
+        },
+        "cpu": {
+            "format": "{usage}% "
+        },
+        "memory": {
+            "format": "{}% ",
+            "on-click": "$TERMINAL -e htop"
+        },
+        "network": {
+            // "interface": "wlp2s0", // (Optional) To force the use of this interface
+            "format-wifi": "{signalStrength}% ",
+            "format-alt": "{essid} {ipaddr}",
+            "format-alt-click": "click-right",
+            "format-ethernet": "{ifname}: {ipaddr}",
+            "format-disconnected": "Disconnected ⚠",
+            "on-click": "$TERMINAL -e nmtui",
+            "tooltip": false
+        },
+        "pulseaudio": {
+            "scroll-step": 1,
+            "format": "{volume}% {icon}",
+            "format-bluetooth": "{volume}% {icon}",
+            "format-muted": "🔇",
+            "format-icons": {
+                "headphones": "",
+                "handsfree": "",
+                "headset": "🎧",
+                "phone": "",
+                "portable": "",
+                "car": "",
+                "default": ["","", ""]
+            },
+            "on-click": "amixer -q -D pulse sset Master toggle",
+            "on-click-right": "pavucontrol-show",
+            "tooltip": false
+        },
+        "custom/mpd": {
+            "format": "♪ {}",
+            "interval": 1,
+            "max-length": 30,
+            "exec": "echo $(mpc current) – $(mpc status | awk '{print $3}' | sed -n 2p)",
+            "exec-if": "pgrep mopidy",
+            "on-click-right": "mpc toggle",
+            "on-click": "~/.config/rofi/scripts/mpd.sh"
+        },
+        "mpd": {
+            "max-length": 50,
+            "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}({elapsedTime:%M:%S}/{totalTime:%M:%S}) {title} - {artist}",
+            "format-disconnected": "Disconnected ",
+            "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+            "interval": 2,
+            "on-click-right": "mpc toggle",
+            "on-click": "~/.config/rofi/scripts/mpd.sh",
+            "consume-icons": {
+                "on": " " // Icon shows only when "consume" is on
+            },
+            "random-icons": {
+                "off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
+                "on": " "
+            },
+            "repeat-icons": {
+                "on": " "
+            },
+            "single-icons": {
+                "on": "1 "
+            },
+            "state-icons": {
+                "paused": "",
+                "playing": ""
+            },
+            "tooltip": false
+        },
+        "backlight": {
+            "format": "{icon}",
+            "format-alt": "{percent}% {icon}",
+            "format-alt-click": "click-left",
+            "format-icons": [""],
+            "on-scroll-down": "light -A 1",
+            "on-scroll-up": "light -U 1"
+        },
+        "idle_inhibitor": {
+            "format": "{icon}",
+            "format-icons": {
+                "activated": "",
+                "deactivated": ""
+            },
+            "tooltip": false
+        },
+        "custom/wlogout": {
+            "format": "",
+            "on-click": "wlogout",
+            "tooltip": false
+        },
+        "custom/terminal": {
+            "format": "",
+            "on-click": "alacritty-show",
+            "tooltip": false
+        },
+        "custom/apps": {
+            "format": "",
+            "on-click": "sirula",
+            "tooltip": false
+        },
+        "custom/startRight": {
+            "format": "",
+            "tooltip": false
+        },
+        "custom/startLeft": {
+            "format": "",
+            "tooltip": false
+        },
+        "custom/arrow1": {
+            "format": "",
+            "tooltip": false
+        },
+        "custom/arrow3": {
+            "format": "",
+            "tooltip": false
+        },
+        "custom/arrow8": {
+            "format": "",
+            "tooltip": false
+        },
+        "custom/arrow4": {
+            "format": "",
+            "tooltip": false
+        },
+        "custom/arrow5": {
+            "format": "",
+            "tooltip": false
+        },
+        "custom/arrow6": {
+            "format": "",
+            "tooltip": false
+        },
+        "custom/arrow7": {
+            "format": "",
+            "tooltip": false
+        },
+        "custom/arrow9": {
+            "format": "",
+            "tooltip": false
+        }, 
+        "custom/arrow10": {
+            "format": "",
+            "tooltip": false
+        }
 
 }
 
