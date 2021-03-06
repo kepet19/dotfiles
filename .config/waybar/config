@@ -5,8 +5,7 @@
         "height": 25, // Waybar height
         // "width": 1280, // Waybar width
         // Choose the order of the modules
-        "modules-left": ["custom/apps","custom/startLeft","sway/workspaces",
-        "custom/arrow7","sway/mode","sway/window","custom/arrow6"],
+        "modules-left": ["custom/apps","sway/workspaces","sway/mode","wlr/taskbar","custom/arrow6"],
 
         "modules-center": [ "custom/arrow9", "clock#datetime",
         "custom/terminal","custom/arrow10" ],
@@ -19,15 +18,17 @@
         "sway/workspaces": {
             "disable-scroll": true,
             "all-outputs": false,
-            "format": "{name}:{icon}",
-            "format-icons": {
-                "urgent": "",
-                "focused": "",
-                "default": ""
-            }
+            "format": "{name}",
         },
         "sway/window": {
             "tooltip": false
+        },
+        "wlr/taskbar": {
+            "format": "{icon}",
+            "icon-size": 20,
+            "tooltip": false,
+            "on-click": "activate",
+            "on-click-right": "close"
         },
         "battery": {
             "format": "{capacity}% {icon}",
@@ -73,9 +74,9 @@
         "network": {
             // "interface": "wlp2s0", // (Optional) To force the use of this interface
             "format-wifi": "{signalStrength}% ",
-            "format-alt": "{essid} {ipaddr}",
+            "format-alt": "{ipaddr}",
             "format-alt-click": "click-right",
-            "format-ethernet": "{ifname}: {ipaddr}",
+            "format-ethernet": "{ifname}",
             "format-disconnected": "Disconnected ⚠",
             "on-click": "$TERMINAL -e nmtui",
             "tooltip": false

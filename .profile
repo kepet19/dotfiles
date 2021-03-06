@@ -3,6 +3,7 @@
 # Adds `~/.local/bin` to $PATH
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:$HOME/esp/xtensa-lx106-elf/bin"
 export PATH="$HOME/Android/Sdk/tools/bin/:$PATH"
 export PATH="$HOME/Android/Sdk/platform-tools/:$PATH"
 export MOZ_ENABLE_WAYLAND=1
@@ -21,7 +22,7 @@ export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
 export READER="zathura"
-export FILE="nautilus"
+export FILE="thunar"
 export STATUSBAR="${LARBSWM}blocks"
 
 # ~/ Clean-up:

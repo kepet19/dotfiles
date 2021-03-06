@@ -15,12 +15,16 @@ Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
+Plug 'mfussenegger/nvim-jdtls'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'sainnhe/vim-color-forest-night'
 Plug 'tjdevries/cyclist.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'itchyny/lightline.vim'
-" Plug 'junegunn/goyo.vim'
-" Plug 'vimwiki/vimwiki'
+Plug 'junegunn/goyo.vim'
+Plug 'vimwiki/vimwiki'
 Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
 Plug 'lervag/vimtex'
 " Plug 'sheerun/vim-polyglot'
@@ -34,7 +38,6 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-dispatch'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'tacahiroy/ctrlp-funky'
-Plug 'metakirby5/codi.vim'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 Plug 'airblade/vim-rooter'
 Plug 'iamcco/markdown-preview.vim'
@@ -51,10 +54,22 @@ call plug#end()
 
 " Pluging settings  {{{ 
 	" Visual Vim clap {{{ 
-        let g:clap_disable_run_rooter=1
-		let g:clap_theme = 'material_design_dark'
-		nnoremap <C-p> :Clap files<CR>
-		nnoremap <Leader>fu :Clap grep<CR>
+        " let g:clap_disable_run_rooter=1
+		" let g:clap_theme = 'material_design_dark'
+		" nnoremap <C-p> :Clap files<CR>
+		" nnoremap <Leader>fu :Clap grep<CR>
+	" }}}
+	" nvim-telescope {{{ 
+        " Using lua functions
+        nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+        nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+        nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+        nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+        nnoremap gr <cmd>lua require('telescope.builtin').lsp_references()<cr>
+        " nnoremap ga <cmd>lua require('telescope.builtin').lsp_code_actions()<cr>
+		nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
+        nnoremap g0 <cmd>lua require('telescope.builtin').lsp_document_symbol()<cr>
+        nnoremap gW <cmd>lua require('telescope.builtin').lsp_workspace_symbol()<cr>
 	" }}}
 	" Lightline {{{ 
 		let g:lightline = {
@@ -79,23 +94,23 @@ call plug#end()
 		map <leader>g :!urlgitf<CR>
 	" }}} 
 	" nvim-treesitter {{{
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = {},  -- list of language that will be disabled
-  },
-}
-EOF
+" lua <<EOF
+" require'nvim-treesitter.configs'.setup {
+"   ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+"   highlight = {
+"     enable = true,              -- false will disable the whole extension
+"     disable = {},  -- list of language that will be disabled
+"   },
+" }
+" EOF
 	" }}} 
 	" VimVikiIndex {{{ 
 		map <leader>v :VimwikiIndex
 	" }}}
         " Git Status {{{ 
-		nnoremap <leader>gs :Gstatus<CR>
-		nnoremap <leader>gc :Gcommit<CR>
-		nnoremap <leader>gp :Gpush<CR>
+		nnoremap <leader>gs :G status<CR>
+		nnoremap <leader>gc :G commit<CR>
+		nnoremap <leader>gp :G push<CR>
         " }}}
         " Emmet emmet-vim {{{ 
 		let g:user_emmet_mode='n'
@@ -112,7 +127,7 @@ EOF
 		let g:minimap_highlight='TermCursor'
 		let g:minimap_auto_start=0
 		let g:minimap_base_highlight='Title'
-		map mm :MinimapToggle<CR>
+		map <leader>mm :MinimapToggle<CR>
         " }}}
         " UltiSnipsEdit {{{ 
 		" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
@@ -133,7 +148,10 @@ EOF
 		set foldenable
 		set foldlevelstart=10
 		set foldnestmax=10
-		set foldmethod=syntax
+		"set foldmethod=syntax
+        set foldmethod=expr 
+        set foldexpr=nvim_treesitter#foldexpr()
+
 	"	nnoremap <space> za "Open and close folds"
 	" }}}
 	" Some basics: {{{ 
@@ -180,9 +198,13 @@ EOF
 	" Open corresponding .pdf/.html or preview
 		map <leader>p :!opout <c-r>%<CR><CR>
 	" Format Json JSON
-		map <leader>ff :%!jq .
+		"map <leader>ff :%!jq .
     " Compiler script
 		map <leader>c :w! \| !compiler <c-r>%<CR>
+
+    " Slide navigator
+        nnoremap <Right> :n<CR>
+        nnoremap <Left> :N<CR>
 	" }}}
 	" netrw {{{ 
         map <leader>n e . <CR>
@@ -218,11 +240,12 @@ local on_attach = function(client)
 end
 
 -- Enable rust_analyzer
+-- Enable jdtls
 -- Enable html
 -- Enable gdscript
 -- Enable tsserver
 lspconfig.rust_analyzer.setup({ on_attach=on_attach })
-lspconfig.jdtls.setup({ on_attach=on_attach })
+-- lspconfig.jdtls.setup({ on_attach=on_attach })
 lspconfig.html.setup({ on_attach=on_attach })
 lspconfig.cssls.setup({ on_attach=on_attach })
 lspconfig.gdscript.setup({ on_attach=on_attach })
@@ -248,12 +271,12 @@ EOF
 		nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 		nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 		nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-		nnoremap <silent> gr    <cmd>lua vim.lsp.buf.rename()<CR>
-		" nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-		nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-		nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+		nnoremap <silent> <leader>gr    <cmd>lua vim.lsp.buf.rename()<CR>
 		nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-		nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
+		" nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+		" nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
+		" nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+		" nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 
 		" Visualize diagnostics
 		set signcolumn=yes
@@ -375,7 +398,7 @@ EOF
 " Update binds when sxhkdrc is updated.
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
 " reload waybar
-	autocmd bufwritepost ~/.config/waybar/config,~/.config/waybar/style.css !killall waybar; waybar <cr>
+	autocmd bufwritepost ~/.config/waybar/config,~/.config/waybar/style.css !killall -SIGUSR2 waybar
 " reload mako
 	autocmd bufwritepost ~/.config/mako/config !killall mako; mako & disown
 " Reload vim When it is changed
@@ -384,5 +407,12 @@ EOF
     	autocmd bufwritepost .vim source ~/.config/nvim/init.vim
 	augroup END
 " }}}
+
+if has('nvim-0.5')
+  augroup lsp
+    au!
+    au FileType java lua require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}, root_dir = require('jdtls.setup').find_root({'gradle.build', 'pom.xml'})})
+  augroup end
+endif
 
 " vim:foldmethod=marker:foldlevel=0

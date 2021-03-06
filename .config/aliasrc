@@ -19,6 +19,8 @@ alias \
 alias \
 	ls="ls -hN --color=auto --group-directories-first" \
 	ls="exa --git" \
+    l="ls -l"\
+    la="ls -la"\
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi"
@@ -55,7 +57,7 @@ alias \
 	zathura="zathura --fork" \
 	lsf="fzf | xargs ls -l" \
 	cal="cal -w" \
-	cocker="podman" \
+	rm="trash" \
 	mvnr="mvn exec:java -D\"exec.mainClass\"=" \
 	mvnc="mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart" \
 	mvnc_fxml_javafx="mvn archetype:generate -DarchetypeGroupId=org.openjfx -DarchetypeArtifactId=javafx-archetype-fxml" \
