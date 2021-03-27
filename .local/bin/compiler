@@ -47,6 +47,7 @@ case "$ext" in
 	py) python "$file" ;;
 	[rR]md) Rscript -e "rmarkdown::render('$file', quiet=TRUE)" ;;
 	rs) cargo build ;;
+    mp) mptopdf $file && mv "${file%%.mp}-1.pdf" "${file%%.mp}.pdf" && rm "${file%%.mp}.log" "${file%%.mp}.1";;
 	sass) sassc -a "$file" "$base.css" ;;
 	scad) openscad -o "$base".stl "$file" ;;
 	sent) setsid -f sent "$file" 2>/dev/null ;;

@@ -13,7 +13,7 @@ cp -R /usr/share/java/jdtls/config_linux "${tmp_dir}"
 # and ensure that it is removed on exit
 trap "{ rm -rf ${tmp_dir}; }" EXIT
 
-GRADLE_HOME=$HOME/DEV/gradle java\
+GRADLE_HOME=$HOME/DEV/gradle /usr/lib/jvm/java-15-openjdk/bin/java\
     -Declipse.application=org.eclipse.jdt.ls.core.id1 \
     -Dosgi.bundles.defaultStartLevel=4 \
     -Declipse.product=org.eclipse.jdt.ls.core.product \
@@ -21,7 +21,6 @@ GRADLE_HOME=$HOME/DEV/gradle java\
     -Dlog.level=ALL \
     -Xms1g \
     -Xmx2G \
-    -noverify \
     -jar /usr/share/java/jdtls/plugins/org.eclipse.equinox.launcher_*.jar \
     -configuration "${tmp_dir}/config_linux" \
     -data "${1:-$HOME/DEV/workspace}" \

@@ -1,2 +1,0 @@
-#!/usr/bin/env sh
-ssh kkmp@185.15.74.5 -p 5900

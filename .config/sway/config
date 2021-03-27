@@ -2,7 +2,7 @@
 set $mod mod4
 set $term --no-startup-id $TERMINAL
 # font pango: mononok Nerd Font Mono Regular 11
-font pango:SourceCodePro Medium 11
+font pango:FiraCode Nerd Font 11
 
 # Load pywal colors
 include "$HOME/.cache/wal/colors-sway"
@@ -38,7 +38,7 @@ scroll_factor 0.3
 }
 input "2:7:SynPS/2_Synaptics_TouchPad" {
    	# tap enabled
-natural_scroll enabled 
+natural_scroll enabled
 scroll_factor 0.3
 }
 
@@ -48,7 +48,7 @@ floating_modifier $mod
 # ------------------- wayvnc | seat or group --------------------
 # Putting wayvnc in its own seat is done like this:
 # swaymsg seat wayvnc fallback false # create a new seat
-# seat wayvnc fallback false 
+# seat wayvnc fallback false
 # exec wayvnc --seat=wayvnc
 
 # Smart keyboard grouping can be turned off like this:
@@ -75,7 +75,7 @@ bindsym $mod+q kill
 # Bind Appclications
 bindsym $mod+w              exec $TERMINAL -t "float_nmtui" -e nmtui
 bindsym $mod+Shift+w        exec --no-startup-id $BROWSER
-bindsym $mod+e              exec $FILE 
+bindsym $mod+e              exec $FILE
 bindsym $mod+z exec zeal
 bindsym $mod+n exec makoctl menu bemenu -p 'Select Action'
 bindsym $mod+r exec $menu
@@ -130,7 +130,7 @@ bindsym $mod+shift+f sticky toggle
     }
     bindsym $mod+m exec swaymsg [title="dropdown_ncspot"] scratchpad show || $(exec $TERMINAL -t 'dropdown_ncspot' -e ncspot & sleep 0.2 && swaymsg '[title="dropdown_ncspot"] scratchpad show')
 
-# todos 
+# todos
     for_window [title="^Todos - Iced$"] {
         move scratchpad
         resize set 400 700
@@ -192,8 +192,8 @@ set $xsize 1930
     }
     bindsym $mod+o exec swaymsg [app_id="pavucontrol"] scratchpad show || $(exec pavucontrol & sleep 0.2 && swaymsg [app_id="pavucontrol"] scratchpad show)
 
-# Inhibit Idle if a window is fullscreen 
-for_window [class="^.*"] inhibit_idle fullscreen 
+# Inhibit Idle if a window is fullscreen
+for_window [class="^.*"] inhibit_idle fullscreen
 for_window [app_id="^.*"] inhibit_idle fullscreen
 
 # FLOATING APPS:
@@ -210,13 +210,13 @@ for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable, move
 for_window [app_id="firefox" title="^Firefox - Sharing Indicator$"] floating enable, move position bottom, move position right, sticky enable
 for_window [title="discord.com is sharing your screen."] floating enable, move position bottom, move position right, sticky enable
 for_window [app_id="firefox"] border none
-# for_window [app_id="firefox"] move workspace $workspace2 
+# for_window [app_id="firefox"] move workspace $workspace2
 for_window [app_id="blueman-*"] floating enable, sticky enable
 for_window [app_id="wdisplays"] floating enable, resize 780 415, move position center, sticky enable
 for_window [title="dropdown_dropdowncalc"] resize set 800 300
 for_window [title="dropdown_dropdowncalc"] border csd
 for_window [title="dropdown_dropdowncalc"] move position center
-                
+
 for_window [app_id="virt-manager"] floating enable, sticky enable
 for_window [app_id="openrgb"] floating enable, sticky enable
 for_window [app_id="org.pwmt.zathura"] floating enable, sticky enable, move position bottom
@@ -232,7 +232,7 @@ for_window [title="^float*"] floating enable
 for_window [title="dropdown_*"] floating enable
 for_window [title="dropdown_*"] move scratchpad
 for_window [title="dropdown_*"] sticky enable
-#for_window [title="dropdown_*"] scratchpad show 
+#for_window [title="dropdown_*"] scratchpad show
 # Dropdown for fzfmenu
 for_window [title="fzfmenu"] floating enable, sticky
 for_window [title="fzfmenu"] resize set 600 200
@@ -378,17 +378,17 @@ bindsym $mod+x exec swaylock --screenshots --clock --indicator --indicator-radiu
 ## Services
 exec_always autolog mako
 exec autolog mopidy
-exec autolog syncthing -no-browser
+exec autolog "syncthing -no-browser"
 exec /usr/lib/kdeconnectd > /dev/null 2>&1
 exec autolog kdeconnect-indicator
 exec autolog redshift
 exec autolog blueman-tray
-exec autolog nm-applet --indicator
-exec autolog xrdb -load ~/.config/.Xresources
+exec nm-applet --indicator
+exec xrdb -load ~/.config/.Xresources
 exec autolog sway-alttab
 # # show volume
-exec autolog mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob -W 300 -H 30 -a top -a right -M 50 -p 1 -o 0 -b 1
-exec autolog /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob -W 300 -H 30 -a top -a right -M 50 -p 1 -o 0 -b 1
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec autolog keyring
 exec autolog waybar
 

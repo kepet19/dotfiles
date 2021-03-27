@@ -168,61 +168,89 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-colors:
-  primary:
-    background: '#2e3440'
-    foreground: '#d8dee9'
-    dim_foreground: '#a5abb6'
-  cursor:
-    text: '#2e3440'
-    cursor: '#d8dee9'
-  vi_mode_cursor:
-    text: '#2e3440'
-    cursor: '#d8dee9'
-  selection:
-    text: CellForeground
-    background: '#4c566a'
-  search:
-    matches:
-      foreground: CellBackground
-      background: '#88c0d0'
-    bar:
-      background: '#434c5e'
-      foreground: '#d8dee9'
-  normal:
-    black: '#3b4252'
-    red: '#bf616a'
-    green: '#a3be8c'
-    yellow: '#ebcb8b'
-    blue: '#81a1c1'
-    magenta: '#b48ead'
-    cyan: '#88c0d0'
-    white: '#e5e9f0'
-  bright:
-    black: '#4c566a'
-    red: '#bf616a'
-    green: '#a3be8c'
-    yellow: '#ebcb8b'
-    blue: '#81a1c1'
-    magenta: '#b48ead'
-    cyan: '#8fbcbb'
-    white: '#eceff4'
-  dim:
-    black: '#373e4d'
-    red: '#94545d'
-    green: '#809575'
-    yellow: '#b29e75'
-    blue: '#68809a'
-    magenta: '#8c738c'
-    cyan: '#6d96a5'
-    white: '#aeb3bb'
+# colors:
+  # primary:
+  #   background: '#2e3440'
+  #   foreground: '#d8dee9'
+  #   dim_foreground: '#a5abb6'
+  # cursor:
+  #   text: '#2e3440'
+  #   cursor: '#d8dee9'
+  # vi_mode_cursor:
+  #   text: '#2e3440'
+  #   cursor: '#d8dee9'
+  # selection:
+  #   text: CellForeground
+  #   background: '#4c566a'
+  # search:
+  #   matches:
+  #     foreground: CellBackground
+  #     background: '#88c0d0'
+  #   bar:
+  #     background: '#434c5e'
+  #     foreground: '#d8dee9'
+  # normal:
+  #   black: '#3b4252'
+  #   red: '#bf616a'
+  #   green: '#a3be8c'
+  #   yellow: '#ebcb8b'
+  #   blue: '#81a1c1'
+  #   magenta: '#b48ead'
+  #   cyan: '#88c0d0'
+  #   white: '#e5e9f0'
+  # bright:
+  #   black: '#4c566a'
+  #   red: '#bf616a'
+  #   green: '#a3be8c'
+  #   yellow: '#ebcb8b'
+  #   blue: '#81a1c1'
+  #   magenta: '#b48ead'
+  #   cyan: '#8fbcbb'
+  #   white: '#eceff4'
+  # dim:
+  #   black: '#373e4d'
+  #   red: '#94545d'
+  #   green: '#809575'
+  #   yellow: '#b29e75'
+  #   blue: '#68809a'
+  #   magenta: '#8c738c'
+  #   cyan: '#6d96a5'
+  #   white: '#aeb3bb'
 # Base16 Gruvbox dark, hard 256 - alacritty color config
 # Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
-#colors:
-#  # Default colors
-#  primary:
-#    background: '0x1d2021'
-#    foreground: '0xd5c4a1'
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0x1d2021'
+#     foreground: '0xd5c4a1'
+# Colors (Konsole's Dark Pastels)
+colors:
+  # Default colors
+  primary:
+    background: '0x2C2C2C'
+    foreground: '0xDCDCCC'
+
+  # Normal colors
+  normal:
+    black:   '0x3F3F3F'
+    red:     '0x705050'
+    green:   '0x60B48A'
+    yellow:  '0xDFAF8F'
+    blue:    '0x9AB8D7'
+    magenta: '0xDC8CC3'
+    cyan:    '0x8CD0D3'
+    white:   '0xDCDCCC'
+
+  # Bright colors
+  bright:
+    black:   '0x709080'
+    red:     '0xDCA3A3'
+    green:   '0x72D5A3'
+    yellow:  '0xF0DFAF'
+    blue:    '0x94BFF3'
+    magenta: '0xEC93D3'
+    cyan:    '0x93E0E3'
+    white:   '0xFFFFFF'
 
 #    # Bright and dim foreground colors
 #    #
@@ -337,7 +365,7 @@ bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.95
+background_opacity: 1.0
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"

@@ -10,7 +10,7 @@ image/png=imv.desktop
 image/jpeg=imv.desktop
 image/gif=imv.desktop
 application/rss+xml=rss.desktop
-inode/directory=thunar.desktop
+inode/directory=lf.desktop
 text/html=firefox.desktop
 x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop
@@ -101,7 +101,7 @@ application/zip=org.gnome.FileRoller.desktop
 x-scheme-handler/msteams=teams.desktop
 
 [Added Associations]
-application/x-shellscript=nvim.desktop;org.gnome.gedit.desktop;
+application/x-shellscript=org.gnome.gedit.desktop;nvim.desktop;
 video/x-matroska=mpv.desktop;
 application/x-ms-dos-executable=wine.desktop;org.gnome.FileRoller.desktop;
 text/x-log=org.gnome.gedit.desktop;
@@ -130,7 +130,7 @@ application/json=org.gnome.Tau.desktop;
 text/css=org.gnome.Tau.desktop;
 text/csv=org.gnome.gedit.desktop;
 application/x-wine-extension-ini=org.gnome.Tau.desktop;
-application/pdf=mupdf.desktop;
+application/pdf=firefox-developer-edition.desktop;mupdf.desktop;
 application/xhtml+xml=org.gnome.Epiphany.desktop;firefox.desktop;
 text/x-arduino=text.desktop;org.gnome.Tau.desktop;
 image/jpeg=org.gnome.eog.desktop;img.desktop;
