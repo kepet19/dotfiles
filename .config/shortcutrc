@@ -8,6 +8,7 @@ vv="cd ~/Videos && ls -a" \
 cf="cd ~/.config && ls -a" \
 sc="cd ~/.local/bin && ls -a" \
 mn="cd /mnt && ls -a" \
+dev="cd ~/dev/ && ls -a" \
 sdu="cd ~/Documents/SDU/ && ls -a" \
 sdu1="cd ~/Documents/SDU/semester_1/ && ls -a" \
 sdu2="cd ~/Documents/SDU/semester_2/ && ls -a" \

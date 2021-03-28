@@ -58,7 +58,6 @@ alias \
 	lsf="fzf | xargs ls -l" \
 	cal="cal -w" \
 	rm="trash" \
-	mvnr="mvn exec:java -D\"exec.mainClass\"=" \
 	mvnc="mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart" \
 	mvnc_fxml_javafx="mvn archetype:generate -DarchetypeGroupId=org.openjfx -DarchetypeArtifactId=javafx-archetype-fxml" \
 	mvnc_simple_javafx="mvn archetype:generate -DarchetypeGroupId=org.openjfx -DarchetypeArtifactId=javafx-archetype-simple" \

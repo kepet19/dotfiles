@@ -394,7 +394,7 @@ exec autolog waybar
 
 
 ## Autostart applications
-exec autolog discord
+# exec autolog discord
+# exec autolog evolution
 exec autolog ulauncher
 exec autolog firefox
-exec autolog evolution
