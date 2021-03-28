@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#!/bin/sh
+mvnl=$(grep -r "public static void main" . | \
+    sed -e "s,..src/main/java/,,g;\
+    s,.java: * public static void main(String\[] args) .*,,g; \
+    s,/,\.,g;")
+
+
+some="$(echo $mvnl | tr '\n' ' ')"
+
+options=($some)
+PS3='Please enter your choice: '
+select opt in "${options[@]}"
+do
+    echo "Comping and Running $opt"
+    mvn compile exec:java "-Dexec.mainClass=$opt"
+    break
+done

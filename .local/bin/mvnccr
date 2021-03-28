@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# A tool to find main classes in a maven project.
+# the tool compiles the project and then launch the chosen main class.
+# The script should be launch in a directory with a `pom.xml` file.
+
+# Seperated by spaces
+javaMainClassList=$(grep -r "public static void main" . | \
+    sed -e "s,..src/main/java/,,g;\
+    s,.java: * public static void main(String\[] args) .*,,g; \
+    s,/,\.,g; s,\n, ,g")
+
+# Need word splitting, there is maybe a better way don't know
+options=($javaMainClassList)
+PS3='Please enter your choice: '
+select opt in "${options[@]}"
+do
+    echo "Comping and Running $opt"
+    mvn clean compile exec:java "-Dexec.mainClass=$opt"
+    break
+done
