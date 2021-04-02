@@ -4,18 +4,38 @@
 # the tool compiles the project and then launch the chosen main class.
 # The script should be launch in a directory with a `pom.xml` file.
 
+        # "-h"|"--help"|"help")
+        #     printf '%b ' "Help" "\
+        #         `mvnccr help`    shows this help menu \
+        #         `mvnccr run`     for running the program \
+        #         `mvnccr compile` for compiling the program \
+        #         `mvnccr clean`   for compiling the program "
+        #                     break;
+        #                     ;;
+
 # Seperated by spaces
-javaMainClassList=$(grep -r "public static void main" . | \
+javaMainClassList=$(grep 'public static void main' . -r --exclude-dir target | \
     sed -e "s,..src/main/java/,,g;\
     s,.java: * public static void main(String\[] args) .*,,g; \
-    s,/,\.,g; s,\n, ,g")
+    s,/,\.,g;")
 
-# Need word splitting, there is maybe a better way don't know
-options=($javaMainClassList)
-PS3='Please enter your choice: '
-select opt in "${options[@]}"
+PS3='Please select java class to run: '
+select opt in $javaMainClassList
 do
-    echo "Comping and Running $opt"
-    mvn compile exec:java "-Dexec.mainClass=$opt"
-    break
+    case "$1" in
+        "run")
+            printf '\x1b[31m %b \x1b[m' "\nrunning: $opt \n\n"
+            mvn clean compile exec:java "-Dexec.mainClass=$opt"
+            break
+            ;;
+        "compile")
+            printf '\x1b[34m %b \x1b[m' "\ncompile and running: $opt \n\n"
+            mvn compile exec:java "-Dexec.mainClass=$opt"
+            break
+            ;;
+        "clean"|*)
+            printf '\x1b[35m %b \x1b[m' "\nclean, compile and running: $opt \n\n"
+            mvn clean compile exec:java "-Dexec.mainClass=$opt"
+            break ;;
+    esac
 done

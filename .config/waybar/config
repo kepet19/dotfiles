@@ -1,216 +1,118 @@
 {
     "layer": "top", // Waybar at top layer
-        "gtk-layer-shell": true,
-        //"position": "bottom", // Waybar at the bottom of your screen
-        "height": 25, // Waybar height
-        // "width": 1280, // Waybar width
-        // Choose the order of the modules
-        "modules-left": ["custom/apps","sway/workspaces","sway/mode","wlr/taskbar","custom/arrow6"],
+    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 32, // Waybar height
+    // "width": 120, // Waybar width
+    // Choose the order of the modules
+    "modules-left": ["sway/workspaces", "sway/mode", "wlr/taskbar"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "tray", "clock#datetime"],
+    // Modules configuration
+     "sway/workspaces": {
+         "disable-scroll": true,
+         "disable-markup" : false,
+         "all-outputs": false,
+         "format": "  {icon}  ",
+         //"format":"{icon}",
+         "format-icons": {
+             "2": "",
+             "3": "",
+             "10": "",
+             "4": "",
+             "5": "",
+             "9": "",
+             "focused": "",
+             "default": ""
+         }
+     },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
 
-        "modules-center": [ "custom/arrow9", "clock#datetime",
-        "custom/terminal","custom/arrow10" ],
-
-        "modules-right": ["custom/arrow5","pulseaudio","custom/arrow4",
-        "network", "custom/arrow3","battery", "custom/arrow3", "cpu", "memory",
-        "custom/arrow1","backlight", "idle_inhibitor","custom/arrow8", "tray",
-        "custom/startRight","custom/wlogout"],
-        // Modules configuration
-        "sway/workspaces": {
-            "disable-scroll": true,
-            "all-outputs": false,
-            "format": "{name}",
-        },
-        "sway/window": {
-            "tooltip": false
-        },
-        "wlr/taskbar": {
-            "format": "{icon}",
-            "icon-size": 20,
-            "tooltip": false,
-            "on-click": "activate",
-            "on-click-right": "close"
-        },
-        "battery": {
-            "format": "{capacity}% {icon}",
-            "format-alt": "{time} {icon}",
-            "format-icons": ["", "", "", "", ""],
-            "format-charging": "{capacity}% ",
-            "interval": 30,
-            "states": {
-                "warning": 25,
-                "critical": 10
-            },
-            "tooltip": false
-        },
-
-
-        "sway/mode": {
-            "format": "<span style=\"italic\">{}</span>"
-        },
-        "tray": {
-            //"icon-size": 21,
-            "spacing": 10
-        },
-        "clock#time": {
-            "tooltip-format": "{:%Y-%m-%d | %H:%M}",
-            "tooltip": false
-        },
-        "clock#date": {
-            "format": "{:%d. %B %Y}",
-            "tooltip": false
-        },
-        "clock#datetime": {
-            "format": " {:%d. %B %Y %H:%M} ",
-            "tooltip": false,
-            "on-click": "calcurse-show"
-        },
-        "cpu": {
-            "format": "{usage}% "
-        },
-        "memory": {
-            "format": "{}% ",
-            "on-click": "$TERMINAL -e htop"
-        },
-        "network": {
-            // "interface": "wlp2s0", // (Optional) To force the use of this interface
-            "format-wifi": "{signalStrength}% ",
-            "format-alt": "{ipaddr}",
-            "format-alt-click": "click-right",
-            "format-ethernet": "{ifname}",
-            "format-disconnected": "Disconnected ⚠",
-            "on-click": "$TERMINAL -e nmtui",
-            "tooltip": false
-        },
-        "pulseaudio": {
-            "scroll-step": 1,
-            "format": "{volume}% {icon}",
-            "format-bluetooth": "{volume}% {icon}",
-            "format-muted": "🔇",
-            "format-icons": {
-                "headphones": "",
-                "handsfree": "",
-                "headset": "🎧",
-                "phone": "",
-                "portable": "",
-                "car": "",
-                "default": ["","", ""]
-            },
-            "on-click": "amixer -q -D pulse sset Master toggle",
-            "on-click-right": "pavucontrol-show",
-            "tooltip": false
-        },
-        "custom/mpd": {
-            "format": "♪ {}",
-            "interval": 1,
-            "max-length": 30,
-            "exec": "echo $(mpc current) – $(mpc status | awk '{print $3}' | sed -n 2p)",
-            "exec-if": "pgrep mopidy",
-            "on-click-right": "mpc toggle",
-            "on-click": "~/.config/rofi/scripts/mpd.sh"
-        },
-        "mpd": {
-            "max-length": 50,
-            "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}({elapsedTime:%M:%S}/{totalTime:%M:%S}) {title} - {artist}",
-            "format-disconnected": "Disconnected ",
-            "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-            "interval": 2,
-            "on-click-right": "mpc toggle",
-            "on-click": "~/.config/rofi/scripts/mpd.sh",
-            "consume-icons": {
-                "on": " " // Icon shows only when "consume" is on
-            },
-            "random-icons": {
-                "off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
-                "on": " "
-            },
-            "repeat-icons": {
-                "on": " "
-            },
-            "single-icons": {
-                "on": "1 "
-            },
-            "state-icons": {
-                "paused": "",
-                "playing": ""
-            },
-            "tooltip": false
-        },
-        "backlight": {
-            "format": "{icon}",
-            "format-alt": "{percent}% {icon}",
-            "format-alt-click": "click-left",
-            "format-icons": [""],
-            "on-scroll-down": "light -A 1",
-            "on-scroll-up": "light -U 1"
-        },
-        "idle_inhibitor": {
-            "format": "{icon}",
-            "format-icons": {
-                "activated": "",
-                "deactivated": ""
-            },
-            "tooltip": false
-        },
-        "custom/wlogout": {
-            "format": "",
-            "on-click": "wlogout",
-            "tooltip": false
-        },
-        "custom/terminal": {
-            "format": "",
-            "on-click": "alacritty-show",
-            "tooltip": false
-        },
-        "custom/apps": {
-            "format": "",
-            "on-click": "sirula",
-            "tooltip": false
-        },
-        "custom/startRight": {
-            "format": "",
-            "tooltip": false
-        },
-        "custom/startLeft": {
-            "format": "",
-            "tooltip": false
-        },
-        "custom/arrow1": {
-            "format": "",
-            "tooltip": false
-        },
-        "custom/arrow3": {
-            "format": "",
-            "tooltip": false
-        },
-        "custom/arrow8": {
-            "format": "",
-            "tooltip": false
-        },
-        "custom/arrow4": {
-            "format": "",
-            "tooltip": false
-        },
-        "custom/arrow5": {
-            "format": "",
-            "tooltip": false
-        },
-        "custom/arrow6": {
-            "format": "",
-            "tooltip": false
-        },
-        "custom/arrow7": {
-            "format": "",
-            "tooltip": false
-        },
-        "custom/arrow9": {
-            "format": "",
-            "tooltip": false
-        }, 
-        "custom/arrow10": {
-            "format": "",
-            "tooltip": false
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 18,
+        "tooltip": false,
+        "on-click": "activate",
+        "on-click-right": "close"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
         }
-
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "{:%Y-%m-%d | %H:%M}",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "clock#datetime": {
+        "format": " {:%d. %B %Y %H:%M} ",
+        "tooltip": false,
+        "on-click": "calcurse-show"
+    },
+    "cpu": {
+        "format": "{usage}% "
+    },
+    "memory": {
+        "format": "{}% ",
+        "on-click": "$TERMINAL -e htop"
+        },
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C ",
+        "format": "{temperatureC}°C "
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "states": [0,50],
+        "format-icons": ["", ""]
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "network": {
+        // "interface": "wlp2s0", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-disconnected": "Disconnected ⚠",
+        "interval" : 7
+    },
+    "pulseaudio": {
+        //"scroll-step": 1,
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "amixer -q -D pulse sset Master toggle",
+        "on-click-right": "pavucontrol-show",
+    },
 }
-
-

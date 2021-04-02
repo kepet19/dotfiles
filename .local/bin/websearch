@@ -31,7 +31,7 @@ URLS=(
   ["imdb"]="http://www.imdb.com/find?ref_=nv_sr_fn&q="
   ["rottentomatoes"]="https://www.rottentomatoes.com/search/?search="
   ["piratebay"]="https://thepiratebay.org/search/"
-  ["youtube"]="https://invidio.us/search?q="
+  ["youtube"]="https://youtube.com/search?q="
   ["vimawesome"]="http://vimawesome.com/?q="
   ["invidious"]="https://invidio.us/search?q="
 )

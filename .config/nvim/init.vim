@@ -1,5 +1,4 @@
-    let mapleader =","
-
+    let mapleader =" "
 
 " Pluging PLug {{{
 if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
@@ -22,11 +21,10 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'sainnhe/vim-color-forest-night'
 Plug 'tjdevries/cyclist.vim'
 Plug 'arcticicestudio/nord-vim'
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
-Plug 'lervag/vimtex'
 " Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
@@ -46,11 +44,11 @@ Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'KabbAmine/vCoolor.vim'
-
+Plug 'nanotech/jellybeans.vim'
+Plug 'gruvbox-community/gruvbox'
 call plug#end()
 
 " }}}
-
 
 " Pluging settings  {{{
 	" cyclist {{{
@@ -126,24 +124,17 @@ EOF
         nnoremap gW <cmd>lua require('telescope.builtin').lsp_workspace_symbol()<cr>
 	" }}}
 	" Lightline {{{
-		let g:lightline = {
-					\ 'colorscheme': 'nord',
-					\ 'active': {
-					\   'left': [ [ 'mode', 'paste' ],
-					\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-					\ },
-					\ 'component_function': {
-					\   'gitbranch': 'FugitiveHead'
-					\ },
-					\ }
-
-		" vimtex conf
-		let g:tex_flavor='latex'
-		let g:vimtex_view_method='zathura'
-		let g:vimtex_quickfix_mode=0
-		set conceallevel=0
-		let g:tex_conceal='abdmg'
-	" }}}
+		" let g:lightline = {
+		" 			\ 'colorscheme': 'jellybeans',
+		" 			\ 'active': {
+		" 			\   'left': [ [ 'mode', 'paste' ],
+		" 			\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+		" 			\ },
+		" 			\ 'component_function': {
+		" 			\   'gitbranch': 'FugitiveHead'
+		" 			\ },
+		" 			\ }
+    " }}}
 	" Git go to github homepage {{{
 		map <leader>g :!urlgitf<CR>
 	" }}}
@@ -196,7 +187,6 @@ EOF
         " }}}
 " }}}
 
-
 " Basic's, Mappings, Leader and stuff {{{
 	" Folding section {{{
 		set foldenable
@@ -210,29 +200,41 @@ EOF
 	" }}}
 	" Some basics: {{{
 		imap jk <Esc>
+        set exrc
 		set tabstop=4
-		set softtabstop=0 expandtab
-		set shiftwidth=4 smarttab
+		set softtabstop=0
+        set expandtab
+		set shiftwidth=4
+        set smarttab
 		set hidden " Has the buffer open ind the background
         " set listchars=tab:>~>,nbsp:_,trail:.
         set list
-		set wildmode=list:longest,list:full
+        set title
+        set noswapfile
+        set nobackup
+        if has('persistent_undo')      "check if your vim version supports it
+            set undodir=$HOME/.local/share/nvim/undo  "directory where the undo files will be store
+            set undofile                 "turn on the feature
+        endif
+		set shortmess+=c "Avoid showing extra messages when using completion
+		" set wildmode=list:longest,list:full
 		set wildignore+=/node_modules/** "ignore node_modules should add more
 		set path+=** " Add subfolders aswell
 		set go=a
 		set mouse=a
 		" set nohlsearch
+        set incsearch
+		set signcolumn=yes
         set inccommand=split
 		set clipboard+=unnamedplus
-		set scrolloff=5 "Keeps the screecenter
+		set scrolloff=8 "Keeps the screecenter
 		set nowrap!
 		set nocompatible
-		filetype plugin on
-		syntax enable
 		set encoding=utf-8
 		set number relativenumber
+        set cmdheight=2
 	" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
-		set splitbelow splitright
+		" set splitbelow splitright
 	" Mapping to change pwd to the directory of the current buffer.
 		nnoremap cm :cd %:h<CR>:pwd<CR>
         "Enter for clear search!
@@ -248,7 +250,7 @@ EOF
 		nnoremap <leader>ev :vsp $MYVIMRC<CR>
 		nnoremap <leader>sv :source $MYVIMRC <bar> :doautocmd BufRead<CR>
 	" Replace all is aliased to S.
-		nnoremap S :%s//g<Left><Left>
+		" nnoremap S :%s//g<Left><Left>
 	" Open corresponding .pdf/.html or preview
 		map <leader>p :!opout <c-r>%<CR><CR>
 	" Format Json JSON
@@ -260,6 +262,16 @@ EOF
         nnoremap <Right> :n<CR>
         nnoremap <Left> :N<CR>
 	" }}}
+    " Cheat.sh {{{
+        function Cheat(query)
+            let query = 'cheat.sh/' . a:query
+            execute 'split | term curl ' . query
+            execute 'resize ' . string(&lines/3)
+        endfunction
+
+        command! -nargs=1 CheatSh call Cheat(<q-args>)
+        nnoremap <leader>h :CheatSh <C-R>=&filetype<CR>/
+        " }}}
 	" netrw {{{
         map <leader>n e . <CR>
         let g:netrw_banner=0            " disable banner
@@ -269,6 +281,43 @@ EOF
         let g:netrw_list_hide=netrw_gitignore#Hide()    " Hides files that is in gitignore
         let g:netrw_list_hide.='.class'                 " Hides class
 	" }}}
+	" Copy selected lines as CSV {{{
+		xnoremap <silent> <Leader>y :<C-u>call <SID>CopyLinesAsCSV()<CR>
+		fun s:CopyLinesAsCSV() abort
+		    let [_, l1, c1, _] = getpos("'<")
+		    let [_, l2, c2, _] = getpos("'>")
+		    let lines = map(getline(l1, l2), {i, l -> trim(l[c1-1:c2-1])})
+		    call setreg(v:register, join(lines, ', '), 'l')
+		endfun
+	" }}}
+    " special things {{{
+        " Goyo plugin makes text more readable when writing prose:
+        noremap <leader>f :Goyo \| set linebreak<CR>
+        " Check file in shellcheck:
+        noremap <leader>s :!clear && shellcheck %<CR>
+
+        " Spell-check set to <leader>o, 'o' for 'orthography':
+        nnoremap <leader>od :setlocal spell! spelllang=da<CR>
+        noremap <leader>oe :setlocal spell! spelllang=en<CR>
+
+        " Spell correction the last word Ctrl + l
+        inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+    " }}}
+	" Vim color scheme {{{
+		set t_Co=256
+		" set background=dark    " Setting dark mode
+		set termguicolors
+		let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+		let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+		" colorscheme jellybeans
+		colorscheme gruvbox
+		" let g:nord_uniform_status_lines = 1
+		" highlight ColorColumn ctermbg=235 guibg=#2c2d27
+		let &colorcolumn="80"
+		set cursorline
+		" Makes wim transperrent
+		hi Normal guibg=None ctermbg=None
+	" }}}
 	" vim-lsp settings {{{
 		" Set completeopt to have a better completion experience
 		" :help completeopt
@@ -277,8 +326,6 @@ EOF
 		" noselect: Do not select, force user to select one from the menu
 		set completeopt=menuone,noinsert,noselect
 
-		" Avoid showing extra messages when using completion
-		" set shortmess+=c
 
 		" Configure LSP
 		" https://github.com/neovim/nvim-lspconfig#rust_analyzer
@@ -310,6 +357,7 @@ lspconfig.texlab.setup({ on_attach=on_attach })
 EOF
 
 		" Trigger completion with <Tab>
+
         inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
         inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
         imap <silent> <c-p> <Plug>(completion_trigger)
@@ -331,7 +379,6 @@ EOF
 		" nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 
 		" Visualize diagnostics
-		set signcolumn=yes
 		let g:diagnostic_enable_virtual_text = 1
 		let g:diagnostic_trimmed_virtual_text = '40'
 		" Don't show diagnostics while in insert mode
@@ -357,115 +404,54 @@ EOF
         " Use LSP omni-completion in Python files.
         autocmd Filetype rust setlocal omnifunc=v:lua.vim.lsp.omnifunc
 	" }}}
-	" Shortcutting split navigation, saving a keypress: {{{
-		map <C-h> <C-w>h
-		map <C-j> <C-w>j
-		map <C-k> <C-w>k
-		map <C-l> <C-w>l
-	" }}}
-	" Forresising vim spilts {{{
-		" Does not work ind tmux...
-		nnoremap <silent> <C-Left> :vertical resize +3<CR>
-		nnoremap <silent> <C-Right> :vertical resize -3<CR>
-		nnoremap <silent> <C-Up> :resize +3<CR>
-		nnoremap <silent> <C-Down> :resize -3<CR>
-	" }}}
-	" Copy selected lines as CSV {{{
-		xnoremap <silent> <Leader>y :<C-u>call <SID>CopyLinesAsCSV()<CR>
-		fun s:CopyLinesAsCSV() abort
-		    let [_, l1, c1, _] = getpos("'<")
-		    let [_, l2, c2, _] = getpos("'>")
-		    let lines = map(getline(l1, l2), {i, l -> trim(l[c1-1:c2-1])})
-		    call setreg(v:register, join(lines, ', '), 'l')
-		endfun
-	" }}}
-	" Vim color scheme {{{
-		" set t_Co=256
-		" set background=dark    " Setting dark mode
-		" set termguicolors
-		" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-		" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-		colorscheme nord
-		" let g:nord_uniform_status_lines = 1
-		" highlight ColorColumn ctermbg=235 guibg=#2c2d27
-		let &colorcolumn="80"
-		set cursorline
-		" Makes wim transperrent
-		" hi Normal guibg=None ctermbg=None
-	" }}}
 " }}}
-
-
-" speciel little things for vim {{{
-	if has('persistent_undo')      "check if your vim version supports it
-		set undofile                 "turn on the feature
-		set undodir=$HOME/.local/share/nvim/undo  "directory where the undo files will be store
-	endif
-" Check file in shellcheck:
-	map <leader>s :!clear && shellcheck %<CR>
-" }}}
-
 
 " AUTOCMD -----{{{
+"   Augroup THE_KEVZ {{{
+        augroup THE_KEVZ
+            autocmd!
+            autocmd VimLeave *.tex !texclear %
 
-" Disables automatic commenting on newline:
-"	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+        " Ensure files are read as what I want:
+            " autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
+            " autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
+            " autocmd BufRead,BufNewFile *.tex set filetype=tex
 
-" Goyo plugin makes text more readable when writing prose:
-	map <leader>f :Goyo \| set linebreak<CR>
+        " Save file as sudo on files that require root permission
+            cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
-" Spell-check set to <leader>o, 'o' for 'orthography':
-	map <leader>od :setlocal spell! spelllang=da<CR>
-	map <leader>oe :setlocal spell! spelllang=en<CR>
+        " Enable Goyo by default for mutt writting
+            autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=80
+            autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo | set bg=dark
+            autocmd BufRead,BufNewFile /tmp/neomutt* map ZZ :Goyo\|x!<CR>
+            autocmd BufRead,BufNewFile /tmp/neomutt* map ZQ :Goyo\|q!<CR>
 
-" Spell correction the last word Ctrl + l
-	inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+        " Automatically deletes all trailing whitespace on save.
+            autocmd BufWritePre *.{c,rs} %s/\s\+$//e
 
-" Runs a script that cleans out tex build files whenever I close out of a .tex file.
-	autocmd VimLeave *.tex !texclear %
+        " When shortcut files are updated, renew bash and ranger configs with new material:
+            autocmd BufWritePost files,directories !shortcuts
+        " Run xrdb whenever Xdefaults or Xresources are updated.
+            autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
+        " Update binds when sxhkdrc is updated.
+            autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
+        " reload waybar
+            autocmd bufwritepost ~/.config/waybar/config,~/.config/waybar/style.css !killall -SIGUSR2 waybar
+        " reload mako
+            autocmd bufwritepost ~/.config/mako/config !killall mako; mako & disown
 
-" Ensure files are read as what I want:
-	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-	let g:vimwiki_list = [{'path': '~/Documents/SDU/', 'syntax': 'markdown', 'ext': '.md'}, {'path': '~/SDU/', 'syntax': 'markdown', 'ext': '.md'}]
-	autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
-	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
-	autocmd BufRead,BufNewFile *.tex set filetype=tex
-
-" Save file as sudo on files that require root permission
-	cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
-
-" Enable Goyo by default for mutt writting
-	autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=80
-	autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo | set bg=dark
-	autocmd BufRead,BufNewFile /tmp/neomutt* map ZZ :Goyo\|x!<CR>
-	autocmd BufRead,BufNewFile /tmp/neomutt* map ZQ :Goyo\|q!<CR>
-
-" Automatically deletes all trailing whitespace on save.
-	autocmd BufWritePre * %s/\s\+$//e
-
-" When shortcut files are updated, renew bash and ranger configs with new material:
-	autocmd BufWritePost files,directories !shortcuts
-" Run xrdb whenever Xdefaults or Xresources are updated.
-	autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
-" Update binds when sxhkdrc is updated.
-	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
-" reload waybar
-	autocmd bufwritepost ~/.config/waybar/config,~/.config/waybar/style.css !killall -SIGUSR2 waybar
-" reload mako
-	autocmd bufwritepost ~/.config/mako/config !killall mako; mako & disown
-" Reload vim When it is changed
-	augroup OnlyReloadOneTimePerWrite
-    	au!
-    	autocmd bufwritepost .vim source ~/.config/nvim/init.vim
-	augroup END
+            autocmd bufwritepost .vim source ~/.config/nvim/init.vim
+        augroup END
+    " }}}
+"   Augroup lsp {{{
+        if has('nvim-0.5')
+          augroup lsp
+            au!
+            au FileType java lua require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}, root_dir = require('jdtls.setup').find_root({'gradle.build', 'pom.xml', '.git'})})
+            au FileType java nnoremap ga <cmd>lua require('jdtls').code_action()<CR>
+          augroup end
+        endif
+    " }}}
 " }}}
-
-if has('nvim-0.5')
-  augroup lsp
-    au!
-    au FileType java lua require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}, root_dir = require('jdtls.setup').find_root({'gradle.build', 'pom.xml', '.git'})})
-    au FileType java nnoremap ga <cmd>lua require('jdtls').code_action()<CR>
-  augroup end
-endif
 
 " vim:foldmethod=marker:foldlevel=0
