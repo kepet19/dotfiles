@@ -4,7 +4,7 @@
     "height": 32, // Waybar height
     // "width": 120, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "wlr/taskbar"],
+    "modules-left": ["custom/apps","sway/workspaces", "sway/mode", "custom/space", "wlr/taskbar"],
     "modules-center": ["sway/window"],
     "modules-right": ["pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "tray", "clock#datetime"],
     // Modules configuration
@@ -15,20 +15,28 @@
          "format": "  {icon}  ",
          //"format":"{icon}",
          "format-icons": {
-             "2": "",
-             "3": "",
-             "10": "",
-             "4": "",
-             "5": "",
-             "9": "",
-             "focused": "",
-             "default": ""
+             /* "2": "", */
+             /* "3": "", */
+             /* "10": "", */
+             /* "4": "", */
+             /* "5": "", */
+             /* "9": "", */
+             /* "focused": "", */
+             /* "default": "" */
          }
      },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
-
+    "custom/apps": {
+        "format": "",
+        "on-click": "sirula",
+        "tooltip": false
+    },
+    "custom/space": {
+        "format": " ",
+        "tooltip": false
+    },
     "wlr/taskbar": {
         "format": "{icon}",
         "icon-size": 18,

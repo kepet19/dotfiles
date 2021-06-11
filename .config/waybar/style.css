@@ -12,12 +12,18 @@ window#waybar {
     color: #ffffff;
 }
 
+/* window#waybar { */
+/*     background: @theme_base_color; */
+/*     border-bottom: 1px solid @unfocused_borders; */
+/*     color: @theme_text_color; */
+/* } */
+
 window#waybar.hidden {
     opacity: 0.0;
 }
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button {
-    padding: 0 5px;
+    padding: 0;
     background: transparent;
     color: #ffffff;
     border-bottom: 3px solid transparent;
@@ -35,6 +41,7 @@ window#waybar.hidden {
 #taskbar button {
     background: transparent;
     color: #ffffff;
+    font-size: 17px;
     border-bottom: 3px solid transparent;
 }
 #taskbar button.active {
@@ -51,7 +58,8 @@ window#waybar.hidden {
     border-bottom: 3px solid #ffffff;
 }
 
-#clock, #battery, #cpu, #memory, #temperature, #backlight, #network, #pulseaudio, #custom-media, #tray, #mode, #idle_inhibitor {
+#clock, #battery, #cpu, #memory, #temperature, #backlight, #network,
+#pulseaudio, #custom-media, #tray, #mode, #idle_inhibitor {
     padding: 0 10px;
     margin: 0 5px;
 }
@@ -141,4 +149,18 @@ window#waybar.hidden {
 #idle_inhibitor.activated {
     background-color: #ecf0f1;
     color: #2d3436;
+}
+
+
+#custom-space {
+    padding: 0 3px;
+    color: #ffffff;
+    background: transparent;
+}
+#custom-apps {
+	font-size: 24px;
+    padding: 0 3px;
+    margin: 0px 5px 0px 5px;
+    background: transparent;
+    color: #ffffff;
 }

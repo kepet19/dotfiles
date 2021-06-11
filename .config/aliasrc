@@ -37,13 +37,12 @@ alias \
 	e="$EDITOR" \
 	v="$EDITOR" \
 	p="sudo pacman" \
-	xi="sudo xbps-install" \
-	xr="sudo xbps-remove -R" \
-	t="tmuxp load" \
-	xq="xbps-query" \
 	o="xdg-open" \
 	c="cargo"  \
-	skf="sk --ansi -i -c 'rg --color=always --line-number \"{}\"'"
+	skf="sk --ansi -i -c 'rg --color=always --line-number \"{}\"'" \
+    x='cd "$(xplr)"' \
+    docker-rm='docker images -a -q | xargs docker rmi --force' \
+    sk="sk --preview=\"bat {} --color=always\""
 
 # This alias is important. It enables the `pauseallmpv` command.
 alias mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)"
@@ -61,4 +60,4 @@ alias \
 	mvnc="mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart" \
 	mvnc_fxml_javafx="mvn archetype:generate -DarchetypeGroupId=org.openjfx -DarchetypeArtifactId=javafx-archetype-fxml" \
 	mvnc_simple_javafx="mvn archetype:generate -DarchetypeGroupId=org.openjfx -DarchetypeArtifactId=javafx-archetype-simple" \
-    tree-java="tree -P '*.java' -I '**/workspace **/target'"
+    tree-java="tree -P '*.java' -I '**/target'"

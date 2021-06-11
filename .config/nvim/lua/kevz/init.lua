@@ -1,0 +1,6 @@
+require("kevz.telescope")
+require("kevz.git-worktree")
+require("kevz.lsp")
+require("kevz.rust-lsp")
+require("kevz.statusline")
+require("kevz.nvim-compe")

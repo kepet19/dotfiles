@@ -34,6 +34,9 @@ ignore-timeout=1
 [app-name="Spotify"]
 background-color=#000000E0
 text-color=#1DB954
+[app-name="ncspot"]
+background-color=#000000E0
+text-color=#1DB954
 
 [app-name="discord"]
 background-color=#36393FE0

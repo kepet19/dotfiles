@@ -105,8 +105,9 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
+    # family: "FiraCode Nerd Font"
     family: "Noto sans mono Nerd Font"
-    #family "Source Code Pro"
+    # family: "Source Code Pro"
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -365,7 +366,7 @@ bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.98
+background_opacity: 0.92
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
@@ -512,6 +513,7 @@ mouse:
 # - `mods` (see key bindings)
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
+  # - { mouse: Middle, mods: Shift, action: IncreaseFontSize }
 
 # Key bindings
 #
@@ -521,9 +523,7 @@ mouse_bindings:
 #   `- { key: V, mods: Control|Shift, action: Paste }`
 #
 # Each key binding will specify a:
-#
 # - `key`: Identifier of the key pressed
-#
 #    - A-Z
 #    - F1-F12
 #    - Key0-Key9
@@ -663,11 +663,11 @@ key_bindings:
   #- { key: V,        mods: Control|Shift,    action: Paste               }
   #- { key: C,        mods: Control|Shift,    action: Copy                }
   #- { key: Insert,   mods: Shift,         action: PasteSelection   }
-  #- { key: Key0,     mods: Control,       action: ResetFontSize    }
-  #- { key: Equals,   mods: Control,       action: IncreaseFontSize }
-  #- { key: Add,      mods: Control,       action: IncreaseFontSize }
-  #- { key: Subtract, mods: Control,       action: DecreaseFontSize }
-  #- { key: Minus,    mods: Control,       action: DecreaseFontSize }
+  # - { key: Key0,     mods: Control,       action: ResetFontSize    }
+  # - { key: Equals,   mods: Control,       action: IncreaseFontSize }
+  # - { key: Add,      mods: Control,       action: IncreaseFontSize }
+  # - { key: Subtract, mods: Control,       action: DecreaseFontSize }
+  # - { key: Minus,    mods: Control,       action: DecreaseFontSize }
   #- { key: Return,   mods: Alt,           action: ToggleFullscreen }
 
   # (macOS only)
@@ -794,3 +794,6 @@ key_bindings:
   - { key: F11,      mods: Super,   chars: "\x1b[23;3~"                  }
   - { key: F12,      mods: Super,   chars: "\x1b[24;3~"                  }
   - { key: NumpadEnter,             chars: "\n"                          }
+  - { key: Key0,     mods: Control,       action: ResetFontSize    }
+  - { key: Equals,   mods: Control,       action: IncreaseFontSize }
+  - { key: Minus,    mods: Control,       action: DecreaseFontSize }

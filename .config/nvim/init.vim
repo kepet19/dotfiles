@@ -9,43 +9,74 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
+
+" Plebvim lsp Plugins
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/lsp_extensions.nvim'
+Plug 'tjdevries/nlua.nvim'
 Plug 'nvim-lua/completion-nvim'
+Plug 'simrat39/rust-tools.nvim'
 Plug 'nvim-lua/diagnostic-nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'mfussenegger/nvim-jdtls'
+Plug 'simrat39/symbols-outline.nvim'
+Plug 'hrsh7th/nvim-compe'
+" Plug 'mfussenegger/nvim-jdtls'
+
+
+" Project navigation
+Plug 'ThePrimeagen/harpoon'
+Plug 'ThePrimeagen/git-worktree.nvim'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'https://github.com/preservim/nerdtree'
+
+" telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'sainnhe/vim-color-forest-night'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'tjdevries/cyclist.vim'
-Plug 'arcticicestudio/nord-vim'
 " Plug 'itchyny/lightline.vim'
-Plug 'junegunn/goyo.vim'
+
+" Markdown and website
 Plug 'vimwiki/vimwiki'
-Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
-" Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dadbod'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-dispatch'
-Plug 'shumphrey/fugitive-gitlab.vim'
-Plug 'tacahiroy/ctrlp-funky'
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
-Plug 'airblade/vim-rooter'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'mattn/emmet-vim'
-Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
+
+" Snippets 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'KabbAmine/vCoolor.vim'
+Plug 'ferrine/md-img-paste.vim'
+
+" visual color schemes and stuff
 Plug 'nanotech/jellybeans.vim'
 Plug 'gruvbox-community/gruvbox'
+Plug 'arcticicestudio/nord-vim'
+Plug 'sainnhe/vim-color-forest-night'
+Plug 'ayu-theme/ayu-vim'
+" Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
+Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
+
+" status line
+Plug 'hoob3rt/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+
+" Vim highlighter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'sheerun/vim-polyglot'
+
+" Miss
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
+Plug 'airblade/vim-rooter'
+Plug 'vuciv/vim-bujo'
+
+" Format https://github.com/google/vim-codefmt
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
 call plug#end()
 
 " }}}
@@ -66,96 +97,29 @@ call plug#end()
     " nmap <leader>cn <Plug>CyclistNext
     " nmap <leader>cp <Plug>CyclistPrev
 	" }}}
-	" nvim-telescope {{{
-        " Using lua functions
-lua << EOF
-require('telescope').setup{
-  defaults = {
-    vimgrep_arguments = {
-      'rg',
-      '--color=always',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case'
-    },
-    prompt_position = "bottom",
-    prompt_prefix = "> ",
-    selection_caret = "> ",
-    entry_prefix = "  ",
-    initial_mode = "insert",
-    selection_strategy = "reset",
-    sorting_strategy = "descending",
-    layout_strategy = "horizontal",
-    layout_defaults = {
-      horizontal = {
-        mirror = false,
-      },
-      vertical = {
-        mirror = false,
-      },
-    },
-    file_sorter =  require'telescope.sorters'.get_fuzzy_file,
-    file_ignore_patterns = {},
-    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
-    shorten_path = true,
-    winblend = 0,
-    width = 0.75,
-    preview_cutoff = 120,
-    results_height = 1,
-    results_width = 0.8,
-    border = {},
-    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
-    color_devicons = true,
-    use_less = true,
-  }
-}
-EOF
-
-        nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-        nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-        nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-        nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
-        nnoremap gr <cmd>lua require('telescope.builtin').lsp_references()<cr>
-        nnoremap ga <cmd>lua require('telescope.builtin').lsp_code_actions()<cr>
-		" nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<CR>
-        nnoremap g0 <cmd>lua require('telescope.builtin').lsp_document_symbol()<cr>
-        nnoremap gW <cmd>lua require('telescope.builtin').lsp_workspace_symbol()<cr>
-	" }}}
-	" Lightline {{{
-		" let g:lightline = {
-		" 			\ 'colorscheme': 'jellybeans',
-		" 			\ 'active': {
-		" 			\   'left': [ [ 'mode', 'paste' ],
-		" 			\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-		" 			\ },
-		" 			\ 'component_function': {
-		" 			\   'gitbranch': 'FugitiveHead'
-		" 			\ },
-		" 			\ }
-    " }}}
 	" Git go to github homepage {{{
 		map <leader>g :!urlgitf<CR>
 	" }}}
 	" nvim-treesitter {{{
-" lua <<EOF
-" require'nvim-treesitter.configs'.setup {
-"   ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-"   highlight = {
-"     enable = true,              -- false will disable the whole extension
-"     disable = {},  -- list of language that will be disabled
-"   },
-" }
-" EOF
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = {},  -- list of language that will be disabled
+  },
+}
+EOF
 	" }}}
 	" VimVikiIndex {{{
 		map <leader>v :VimwikiIndex
 	" }}}
         " Git Status {{{
-		nnoremap <leader>gs :G status<CR>
-		nnoremap <leader>gc :G commit<CR>
+		nnoremap <leader>gs :G<CR>
+		nnoremap <leader>gcc :G commit<CR>
 		nnoremap <leader>gp :G push<CR>
+		nnoremap <leader>gj :diffget //3<CR>
+		nnoremap <leader>gf :diffget //2<CR>
         " }}}
         " Emmet emmet-vim {{{
 		let g:user_emmet_mode='n'
@@ -185,7 +149,33 @@ EOF
 		" If you want :UltiSnipsEdit to split your window.
 		let g:UltiSnipsEditSplit="vertical"
         " }}}
+        " md-img-paste {{{
+          " augroup md-img-paste
+          "   au!
+          "   autocmd FileType markdown nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+          " augroup end
+        " there are some defaults for image directory and image name, you can change them
+        " let g:mdip_imgdir = 'img'
+        " let g:mdip_imgname = 'image'
+        " }}}
+        " vuciv/vim-bujo {{{
+        let g:bujo#todo_file_path = $HOME . "/Documents"
+        let g:bujo#window_width = 50
+        " }}}
+        " google/vim-codefmt {{{
+        call glaive#Install()
+        " Optional: Enable codefmt's default mappings on the <Leader>= prefix.
+        Glaive codefmt plugin[mappings]
+        Glaive codefmt google_java_executable="google-java-format -a"
+
+        " }}}
+        " ThePrimeagen/git-worktree.nvim {{{
+        noremap <leader>gw :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
+        noremap <leader>gc :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
+        " }}}
 " }}}
+
+lua require("kevz")
 
 " Basic's, Mappings, Leader and stuff {{{
 	" Folding section {{{
@@ -216,10 +206,19 @@ EOF
             set undodir=$HOME/.local/share/nvim/undo  "directory where the undo files will be store
             set undofile                 "turn on the feature
         endif
-		set shortmess+=c "Avoid showing extra messages when using completion
+		" set shortmess+=c "Avoid showing extra messages when using completion
 		" set wildmode=list:longest,list:full
-		set wildignore+=/node_modules/** "ignore node_modules should add more
-		set path+=** " Add subfolders aswell
+		set path+=.,** " Add subfolders aswell
+        set wildmode=longest,list,full
+        set wildmenu
+        " Ignore files
+        set wildignore+=*.pyc
+        set wildignore+=*_build/*
+        set wildignore+=**/coverage/*
+        set wildignore+=**/node_modules/*
+        set wildignore+=**/android/*
+        set wildignore+=**/ios/*
+        set wildignore+=**/.git/*
 		set go=a
 		set mouse=a
 		" set nohlsearch
@@ -228,7 +227,7 @@ EOF
         set inccommand=split
 		set clipboard+=unnamedplus
 		set scrolloff=8 "Keeps the screecenter
-		set nowrap!
+		set nowrap
 		set nocompatible
 		set encoding=utf-8
 		set number relativenumber
@@ -273,11 +272,14 @@ EOF
         nnoremap <leader>h :CheatSh <C-R>=&filetype<CR>/
         " }}}
 	" netrw {{{
-        map <leader>n e . <CR>
-        let g:netrw_banner=0            " disable banner
-        let g:netrw_browse_split=4      " open in prior window
-        let g:netrw_altv=1              " open splits to the right
-        let g:netrw_liststyle=3         " tree view
+        nnoremap <leader>n :NERDTreeCWD <CR>
+        nnoremap <leader>nn :NERDTreeToggle <CR>
+        let g:netrw_banner = 0            " disable banner
+        " let g:netrw_browse_split=4      " open in prior window
+        let g:netrw_browse_split=0
+        " let g:netrw_winsize = 25
+        let g:netrw_altv= 1              " open splits to the right
+        let g:netrw_liststyle = 3         " tree view
         let g:netrw_list_hide=netrw_gitignore#Hide()    " Hides files that is in gitignore
         let g:netrw_list_hide.='.class'                 " Hides class
 	" }}}
@@ -291,14 +293,12 @@ EOF
 		endfun
 	" }}}
     " special things {{{
-        " Goyo plugin makes text more readable when writing prose:
-        noremap <leader>f :Goyo \| set linebreak<CR>
         " Check file in shellcheck:
-        noremap <leader>s :!clear && shellcheck %<CR>
+        nnoremap <leader>s :!clear && shellcheck %<CR>
 
         " Spell-check set to <leader>o, 'o' for 'orthography':
         nnoremap <leader>od :setlocal spell! spelllang=da<CR>
-        noremap <leader>oe :setlocal spell! spelllang=en<CR>
+        nnoremap <leader>oe :setlocal spell! spelllang=en<CR>
 
         " Spell correction the last word Ctrl + l
         inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
@@ -310,7 +310,8 @@ EOF
 		let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 		let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 		" colorscheme jellybeans
-		colorscheme gruvbox
+        let ayucolor="dark"
+		colorscheme ayu
 		" let g:nord_uniform_status_lines = 1
 		" highlight ColorColumn ctermbg=235 guibg=#2c2d27
 		let &colorcolumn="80"
@@ -328,33 +329,6 @@ EOF
 
 
 		" Configure LSP
-		" https://github.com/neovim/nvim-lspconfig#rust_analyzer
-:lua <<EOF
-
--- lspconfig object
-local lspconfig = require'lspconfig'
-
--- function to attach completion and diagnostics
--- when setting up lsp
-local on_attach = function(client)
-    require'completion'.on_attach(client)
-end
-
--- Enable rust_analyzer
--- Enable html
--- Enable gdscript
--- Enable tsserver
-lspconfig.rust_analyzer.setup({ on_attach=on_attach })
-lspconfig.html.setup({ on_attach=on_attach })
-lspconfig.cssls.setup({ on_attach=on_attach })
-lspconfig.gdscript.setup({ on_attach=on_attach })
-lspconfig.tsserver.setup({ on_attach=on_attach })
-lspconfig.jsonls.setup({ on_attach=on_attach })
-lspconfig.vimls.setup({ on_attach=on_attach })
-lspconfig.bashls.setup({ on_attach=on_attach })
-lspconfig.texlab.setup({ on_attach=on_attach })
-
-EOF
 
 		" Trigger completion with <Tab>
 
@@ -410,6 +384,7 @@ EOF
 "   Augroup THE_KEVZ {{{
         augroup THE_KEVZ
             autocmd!
+            " autocmd VimEnter * NERDTree | wincmd p
             autocmd VimLeave *.tex !texclear %
 
         " Ensure files are read as what I want:
@@ -419,12 +394,6 @@ EOF
 
         " Save file as sudo on files that require root permission
             cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
-
-        " Enable Goyo by default for mutt writting
-            autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=80
-            autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo | set bg=dark
-            autocmd BufRead,BufNewFile /tmp/neomutt* map ZZ :Goyo\|x!<CR>
-            autocmd BufRead,BufNewFile /tmp/neomutt* map ZQ :Goyo\|q!<CR>
 
         " Automatically deletes all trailing whitespace on save.
             autocmd BufWritePre *.{c,rs} %s/\s\+$//e
@@ -444,13 +413,28 @@ EOF
         augroup END
     " }}}
 "   Augroup lsp {{{
-        if has('nvim-0.5')
-          augroup lsp
-            au!
-            au FileType java lua require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}, root_dir = require('jdtls.setup').find_root({'gradle.build', 'pom.xml', '.git'})})
-            au FileType java nnoremap ga <cmd>lua require('jdtls').code_action()<CR>
-          augroup end
-        endif
+        " if has('nvim-0.5')
+        "   augroup lsp
+        "     au!
+        "     au FileType java lua require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}, root_dir = require('jdtls.setup').find_root({'gradle.build', 'pom.xml', '.git'})})
+        "     au FileType java nnoremap ga <cmd>lua require('jdtls').code_action()<CR>
+        "   augroup end
+        " endif
+    " }}}
+    "   Augroup autoformat_settings {{{
+    augroup autoformat_settings
+        autocmd FileType bzl AutoFormatBuffer buildifier
+        autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
+        autocmd FileType dart AutoFormatBuffer dartfmt
+        autocmd FileType go AutoFormatBuffer gofmt
+        autocmd FileType gn AutoFormatBuffer gn
+        autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+        autocmd FileType java AutoFormatBuffer google-java-format
+        autocmd FileType python AutoFormatBuffer yapf
+        " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+        autocmd FileType rust AutoFormatBuffer rustfmt
+        autocmd FileType vue AutoFormatBuffer prettier
+    augroup END
     " }}}
 " }}}
 

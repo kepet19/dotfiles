@@ -1,3 +1,4 @@
-[saved_state]
-volume = 70
-shuffle = true
+gapless = true
+notify = true
+audio_cache = true
+album_column = true

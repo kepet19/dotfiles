@@ -25,7 +25,7 @@ do
     case "$1" in
         "run")
             printf '\x1b[31m %b \x1b[m' "\nrunning: $opt \n\n"
-            mvn clean compile exec:java "-Dexec.mainClass=$opt"
+            mvn exec:java "-Dexec.mainClass=$opt"
             break
             ;;
         "compile")
