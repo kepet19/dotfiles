@@ -20,7 +20,6 @@ repeat_delay 300
 # xkb_file /home/kkmp/.config/sway/keymap.xkb
 xkb_numlock enable
 xkb_capslock disable
-xkb_capslock disable
 # natural_scroll disable
 accel_profile flat
 scroll_factor 1
@@ -48,8 +47,8 @@ floating_modifier $mod
 # ------------------- wayvnc | seat or group --------------------
 # Putting wayvnc in its own seat is done like this:
 # swaymsg seat wayvnc fallback false # create a new seat
-# seat wayvnc fallback false
-# exec wayvnc --seat=wayvnc
+seat wayvnc fallback false
+exec wayvnc --seat=wayvnc
 
 # Smart keyboard grouping can be turned off like this:
 # swaymsg seat seat0 keyboard_grouping none
@@ -85,7 +84,7 @@ bindsym alt+shift+p	        exec grimpick
 bindsym alt+p               exec grimselect
 
 
-# rofi
+# ulauncher
 bindsym $mod+s exec ulauncher-toggle
 for_window [app_id="ulauncher"] {
         border none
@@ -208,7 +207,6 @@ for_window [class="Blender" title="^Blender Preferences$"] floating enable
 for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable, move position 877 450, sticky enable
 for_window [app_id="firefox" title="^Firefox - Sharing Indicator$"] floating enable, move position bottom, move position right, sticky enable
 for_window [title="discord.com is sharing your screen."] floating enable, move position bottom, move position right, sticky enable
-for_window [app_id="firefox"] border none
 # for_window [app_id="firefox"] move workspace $workspace2
 for_window [app_id="blueman-*"] floating enable, sticky enable
 for_window [app_id="wdisplays"] floating enable, resize 780 415, move position center, sticky enable
@@ -338,7 +336,7 @@ smart_gaps on
 # gaps outer 100
 
 # bind gaps
-bindsym $mod+Shift+t		gaps inner current set 10; gaps outer current set 0
+bindsym $mod+Shift+t		gaps inner current set 5; gaps outer current set 0
 bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
 
 # Border border
@@ -390,6 +388,9 @@ exec autolog blueman-tray
 exec autolog nm-applet --indicator
 exec autolog xrdb -load ~/.config/.Xresources
 exec autolog sway-alttab
+# Screen sharing service
+exec autolog /usr/lib/xdg-desktop-portal -r
+exec autolog /usr/lib/xdg-desktop-portal-wlr -r
 # # show volume
 exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob -W 300 -H 30 -a top -a right -M 50 -p 1 -o 0 -b 1
 exec autolog /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -401,5 +402,5 @@ exec autolog sworkstyle
 ## Autostart applications
 # exec autolog discord
 # exec autolog evolution
-exec autolog ulauncher
-exec autolog firefox-developer-edition
+# exec autolog ulauncher
+exec autolog $BROWSER

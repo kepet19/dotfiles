@@ -6,10 +6,20 @@ local lspconfig = require'lspconfig'
 -- when setting up lsp
 vim.lsp.set_log_level("debug")
 local on_attach = function(client)
-    require'completion'.on_attach(client)
+    -- require'completion'.on_attach(client)
 end
 
-lspconfig.rust_analyzer.setup({ on_attach=on_attach })
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+  }
+}
+
+lspconfig.rust_analyzer.setup({ on_attach=on_attach, capabilities = capabilities, })
 lspconfig.html.setup({ on_attach=on_attach })
 lspconfig.cssls.setup({ on_attach=on_attach })
 lspconfig.gdscript.setup({ on_attach=on_attach })

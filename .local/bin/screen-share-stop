@@ -1,0 +1,2 @@
+#!/bin/bash
+notify-send "Screen sharing stopped" "Screen sharing stopped"

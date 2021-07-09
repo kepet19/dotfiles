@@ -1,5 +1,6 @@
     let mapleader =" "
 
+
 " Pluging PLug {{{
 if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."
@@ -14,7 +15,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'tjdevries/nlua.nvim'
-Plug 'nvim-lua/completion-nvim'
+" Plug 'nvim-lua/completion-nvim'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'nvim-lua/diagnostic-nvim'
 Plug 'simrat39/symbols-outline.nvim'
@@ -145,7 +146,7 @@ EOF
 		let g:UltiSnipsExpandTrigger="<C-e>"
 		" let g:UltiSnipsListSnippets="<c-tab>"
 		let g:UltiSnipsJumpForwardTrigger="<C-e>"
-		let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+		let g:UltiSnipsJumpBackwardTrigger="<C-z>"
 		" If you want :UltiSnipsEdit to split your window.
 		let g:UltiSnipsEditSplit="vertical"
         " }}}
@@ -347,6 +348,8 @@ lua require("kevz")
 		nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
 		nnoremap <silent> <leader>gr    <cmd>lua vim.lsp.buf.rename()<CR>
 		nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+    
+        " Rest is implemed in telescope.plugin (not lua)
 		" nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 		" nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
 		" nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>

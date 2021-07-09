@@ -1,4 +1,10 @@
-gapless = true
-notify = true
+use_nerdfont = true
+
 audio_cache = true
+audio_cache_size = 1000
+notify = true
+
+gapless = true
+
 album_column = true
+flip_notification = false
