@@ -73,6 +73,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'airblade/vim-rooter'
 Plug 'vuciv/vim-bujo'
+Plug 'folke/todo-comments.nvim'
+Plug 'folke/trouble.nvim'
 
 " Format https://github.com/google/vim-codefmt
 Plug 'google/vim-maktaba'

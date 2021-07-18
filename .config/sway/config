@@ -84,11 +84,9 @@ bindsym alt+shift+p	        exec grimpick
 bindsym alt+p               exec grimselect
 
 
-# ulauncher
-bindsym $mod+s exec ulauncher-toggle
-for_window [app_id="ulauncher"] {
-        border none
-    }
+# nwg-menu
+bindsym $mod+s exec nwg-menu
+# bindcode 133 exec nwg-menu
 
 
 # Bind for moving windows
@@ -397,6 +395,7 @@ exec autolog /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec autolog keyring
 # exec autolog waybar
 exec autolog sworkstyle
+exec autolog nwg-wrapper -s date-wttr.sh -r 1800000 -c date-wttr.css -p right -mr 200 -a start -mt 200 -j right
 
 
 ## Autostart applications

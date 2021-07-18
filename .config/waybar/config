@@ -30,7 +30,7 @@
     },
     "custom/apps": {
         "format": "",
-        "on-click": "sirula",
+        "on-click": "nwg-menu",
         "tooltip": false
     },
     "custom/space": {
