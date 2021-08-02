@@ -53,6 +53,9 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'arcticicestudio/nord-vim'
 Plug 'sainnhe/vim-color-forest-night'
 Plug 'ayu-theme/ayu-vim'
+Plug 'tjdevries/colorbuddy.vim'
+Plug 'tjdevries/gruvbuddy.nvim'
+Plug 'folke/lsp-colors.nvim'
 " Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
 Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 
@@ -263,6 +266,36 @@ lua require("kevz")
     " Slide navigator
         nnoremap <Right> :n<CR>
         nnoremap <Left> :N<CR>
+    " Yank rest of the lines
+    nnoremap Y yg_
+    " keeping it centered
+    nnoremap n nzzzv
+    nnoremap N Nzzzv
+    nnoremap J mzJ`z
+
+    " add break points
+    inoremap , ,<c-g>u
+    inoremap . .<c-g>u
+    inoremap ! !<c-g>u
+    inoremap ? ?<c-g>u
+    " inoremap [ [<c-g>u
+    " inoremap ( (<c-g>u
+
+    " add to the jump list
+    nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+    nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+
+    " moving text
+    vnoremap J :m '>+1<CR>gv=gv
+    vnoremap K :m '<-2<CR>gv=gv
+    inoremap <C-j> <esc>:m .+1<CR>==
+    inoremap <C-k> <esc>:m .-2<CR>==
+    nnoremap <leader>j :m .+1<CR>==
+    nnoremap <leader>k :m .-2<CR>==
+
+    " some test
+    nnoremap cn *``cgn
+    nnoremap cN *``cgN
 	" }}}
     " Cheat.sh {{{
         function Cheat(query)
@@ -313,8 +346,12 @@ lua require("kevz")
 		let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 		let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 		" colorscheme jellybeans
-        let ayucolor="dark"
-		colorscheme ayu
+        " let ayucolor="dark"
+        
+        lua require('colorbuddy').colorscheme('gruvbuddy')
+        lua require("lsp-colors").setup()
+
+		" colorscheme ayu
 		" let g:nord_uniform_status_lines = 1
 		" highlight ColorColumn ctermbg=235 guibg=#2c2d27
 		let &colorcolumn="80"
@@ -379,9 +416,9 @@ lua require("kevz")
 
         " Rust specefic stuff
         " Auto-format *.rs files prior to saving them
-        autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 1000)
-        " Use LSP omni-completion in Python files.
-        autocmd Filetype rust setlocal omnifunc=v:lua.vim.lsp.omnifunc
+        " autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 1000)
+        " " Use LSP omni-completion in Python files.
+        " autocmd Filetype rust setlocal omnifunc=v:lua.vim.lsp.omnifunc
 	" }}}
 " }}}
 

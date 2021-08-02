@@ -1,9 +1,7 @@
 # Profile file. Runs on login. Environmental variables are set here.
 
 # Adds `~/.local/bin` to $PATH
-export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
-export PATH="$HOME/.cargo/bin:$PATH"
-export MOZ_ENABLE_WAYLAND=1
+export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//'):$HOME/.cargo/bin"
 export ANDROID_SDK_ROOT="$HOME/dev/android/sdk"
 export ANDROID_NDK_ROOT="$ANDROID_SDK_ROOT/ndk/22.1.7171670"
 export JAVA_HOME="/usr/lib/jvm/default/"
@@ -34,6 +32,7 @@ export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
 export TEXINPUTS=".:~/Documents/latex/sty:"
 export DICS="/usr/share/stardict/dic/"
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
+export MOZ_ENABLE_WAYLAND=1
 export FZF_DEFAULT_OPTS="--layout=reverse --height 90%"
 export SKIM_DEFAULT_COMMAND="fd --type f || git ls-tree -r --name-only HEAD || rg --files || find ."
 export LESS=-R
@@ -44,7 +43,6 @@ export LESS_TERMCAP_so="$(printf '%b' '[01;44;33m')"
 export LESS_TERMCAP_se="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
-alias rt='swaymsg resize set 100 ppt 80 ppt;swaymsg move absolute 0 0'
 
 
 

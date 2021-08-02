@@ -7,6 +7,12 @@ font "pango:FiraCode Nerd Font 11"
 # Load pywal colors
 include "$HOME/.cache/wal/colors-sway"
 
+# Remov when chaning do default sway
+border_images.focused "$HOME/.local/share/sway-borders/shadows.png"
+border_images.focused_inactive "$HOME/.local/share/sway-borders/shadows.png"
+border_images.unfocused "$HOME/.local/share/sway-borders/shadows.png"
+border_images.urgent "$HOME/.local/share/sway-borders/shadows_red.png"
+
 # hide_cursor
 seat * hide_cursor 4000
 
@@ -204,12 +210,11 @@ for_window [title="Default - Wine desktop"] floating enable
 for_window [class="Blender" title="^Blender Preferences$"] floating enable
 for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable, move position 877 450, sticky enable
 for_window [app_id="firefox" title="^Firefox - Sharing Indicator$"] floating enable, move position bottom, move position right, sticky enable
-for_window [title="discord.com is sharing your screen."] floating enable, move position bottom, move position right, sticky enable
 # for_window [app_id="firefox"] move workspace $workspace2
 for_window [app_id="blueman-*"] floating enable, sticky enable
 for_window [app_id="wdisplays"] floating enable, resize 780 415, move position center, sticky enable
 for_window [title="dropdown_dropdowncalc"] resize set 800 300
-for_window [title="dropdown_dropdowncalc"] border csd
+# for_window [title="dropdown_dropdowncalc"] border csd
 for_window [title="dropdown_dropdowncalc"] move position center
 
 for_window [app_id="virt-manager"] floating enable, sticky enable
@@ -218,7 +223,7 @@ for_window [app_id="org.pwmt.zathura"] floating enable, sticky enable, move posi
 for_window [app_id="zoom"] floating enable
 
 ## $$$$$$$$$$$$$$$$$$$$$ MOVE TO WORK SPACE $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ ##
-for_window [class="discord"] move workspace $workspace5
+# for_window [class="discord"] move workspace $workspace5
 for_window [app_id="evolution"] move workspace $workspace6
 
 # #---Dropdown Windows---# #
@@ -338,12 +343,12 @@ bindsym $mod+Shift+t		gaps inner current set 5; gaps outer current set 0
 bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
 
 # Border border
-default_border pixel pixel 1
-for_window [class="^.*"] pixel 1
-for_window [app_id="^.*"] pixel 1
+default_border none
+for_window [class="^.*"] pixel 0
+for_window [app_id="^.*"] pixel 0
 # for_window [class="^.*"] border csd
 # for_window [app_id="^.*"] border csd
-for_window [app_id="Alacritty"] border pixel 1
+for_window [app_id="Alacritty"] border pixel 0
 for_window [title="float"] floating enable
 for_window [class="^.float"] floating enable
 
@@ -395,7 +400,7 @@ exec autolog /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec autolog keyring
 # exec autolog waybar
 exec autolog sworkstyle
-exec autolog nwg-wrapper -s date-wttr.sh -r 1800000 -c date-wttr.css -p right -mr 200 -a start -mt 200 -j right
+exec autolog nwg-wrapper -s date-wttr.sh -r 1800000 -c date-wttr.css -p right -mr 200 -a start -mt 50 -j right
 
 
 ## Autostart applications

@@ -20,6 +20,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 }
 
 lspconfig.rust_analyzer.setup({ on_attach=on_attach, capabilities = capabilities, })
+lspconfig.clangd.setup{ on_attach=on_attach }
 lspconfig.html.setup({ on_attach=on_attach })
 lspconfig.cssls.setup({ on_attach=on_attach })
 lspconfig.gdscript.setup({ on_attach=on_attach })

@@ -42,7 +42,8 @@ alias \
 	skf="sk --ansi -i -c 'rg --color=always --line-number \"{}\"'" \
     x='cd "$(xplr)"' \
     docker-rm='docker images -a -q | xargs docker rmi --force' \
-    sk="sk --preview=\"bat {} --color=always\""
+    sk="sk --preview=\"bat {} --color=always\"" \
+    rt='swaymsg resize set 40 ppt 40 ppt;swaymsg move position center'
 
 # This alias is important. It enables the `pauseallmpv` command.
 alias mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)"
