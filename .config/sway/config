@@ -3,6 +3,7 @@ set $mod mod4
 set $term --no-startup-id $TERMINAL
 # font pango: mononok Nerd Font Mono Regular 11
 font "pango:FiraCode Nerd Font 11"
+output * subpixel rgb
 
 # Load pywal colors
 include "$HOME/.cache/wal/colors-sway"
@@ -181,11 +182,7 @@ for_window [app_id="gnome-calculator"] {
 bindsym $mod+a exec swaymsg [app_id="gnome-calculator"] scratchpad show || $(exec gnome-calculator & sleep 0.4 && swaymsg [app_id="gnome-calculator"] scratchpad show)
 
 
-set $screenSizeX 2560
-set $screenSizeY 1440
 # pavucontrol
-set $xsize $(echo "$screenSizeX - 630" | bc -l)
-set $xsize 1930
     for_window [app_id="pavucontrol"] {
         move scratchpad
         floating enable
@@ -215,7 +212,7 @@ for_window [app_id="blueman-*"] floating enable, sticky enable
 for_window [app_id="wdisplays"] floating enable, resize 780 415, move position center, sticky enable
 for_window [title="dropdown_dropdowncalc"] resize set 800 300
 # for_window [title="dropdown_dropdowncalc"] border csd
-for_window [title="dropdown_dropdowncalc"] move position center
+for_window [title="dropdown_dropdowncalc"] move position cursor
 
 for_window [app_id="virt-manager"] floating enable, sticky enable
 for_window [app_id="openrgb"] floating enable, sticky enable
@@ -224,7 +221,7 @@ for_window [app_id="zoom"] floating enable
 
 ## $$$$$$$$$$$$$$$$$$$$$ MOVE TO WORK SPACE $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ ##
 # for_window [class="discord"] move workspace $workspace5
-for_window [app_id="evolution"] move workspace $workspace6
+for_window [app_id="evolution"] move workspace 6
 
 # #---Dropdown Windows---# #
 # General dropdown window traits. The order can matter.

@@ -4,8 +4,8 @@
     "height": 32, // Waybar height
     // "width": 120, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["custom/apps","sway/workspaces", "sway/mode", "custom/space", "wlr/taskbar"],
-    "modules-center": ["sway/window"],
+    "modules-left": ["custom/apps","sway/workspaces", "sway/mode", "custom/space"],
+    "modules-center": ["wlr/taskbar"],
     "modules-right": ["pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "tray", "clock#datetime"],
     // Modules configuration
      "sway/workspaces": {
@@ -39,8 +39,8 @@
     },
     "wlr/taskbar": {
         "format": "{icon}",
-        "icon-size": 18,
-        "tooltip": false,
+        "icon-size": 24,
+        "tooltip": true,
         "on-click": "activate",
         "on-click-right": "close"
     },

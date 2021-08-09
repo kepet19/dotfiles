@@ -2,13 +2,13 @@
     border: none;
     border-radius: 0;
     font-family: Roboto,'Font Awesome 5', 'SFNS Display',  Helvetica, Arial, sans-serif;
-    font-size: 13px;
-    min-height: 0;
+    font-size: 14px;
+    /* min-height: 30px; */
 }
 
 window#waybar {
     background: rgba(43, 48, 59, 0.5);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    border-bottom: 2px solid @unfocused_borders;
     color: #ffffff;
 }
 
@@ -26,36 +26,42 @@ window#waybar.hidden {
     padding: 0;
     background: transparent;
     color: #ffffff;
-    border-bottom: 3px solid transparent;
+    border-bottom: 2px solid transparent;
 }
 
 #workspaces button.focused {
-    background: #64727D;
-    border-bottom: 3px solid #ffffff;
+    background: #606270;
+    border-bottom: 2px solid #0199D7;
 }
 
 #workspaces button.urgent {
     background-color: #eb4d4b;
+    border-bottom: 2px solid #ff6600;
 }
 
+
+#taskbar  {
+    padding: 0 10px;
+    margin: 0 5px;
+}
 #taskbar button {
     background: transparent;
     color: #ffffff;
-    font-size: 17px;
-    border-bottom: 3px solid transparent;
+    font-size: 20px;
+    border-bottom: 2px solid transparent;
 }
 #taskbar button.active {
-    background: #64727D;
-    border-bottom: 3px solid #ffffff;
+    background: #606270;
+    border-bottom: 2px solid #0199D7;
 }
 #taskbar button:hover {
-    background-color: #eb4d4b;
-    border-bottom: 3px solid #ffffff;
+    background-color: #64727D;
+    border-bottom: 2px solid #0080C0;
 }
 
 #mode {
     background: #64727D;
-    border-bottom: 3px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
 }
 
 #clock, #battery, #cpu, #memory, #temperature, #backlight, #network,
@@ -65,28 +71,28 @@ window#waybar.hidden {
 }
 
 #clock {
-    background-color: #64727D;
+    background: transparent;
 }
 
 #battery {
-    background-color: #ffffff;
+    background: transparent;
     color: #000000;
 }
 
 #battery.charging {
+    background: transparent;
     color: #ffffff;
-    background-color: #26A65B;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
+        background: transparent;
         color: #000000;
     }
 }
 
 #battery.critical:not(.charging) {
-    background: #f53c3c;
+    background: transparent;
     color: #ffffff;
     animation-name: blink;
     animation-duration: 0.5s;
@@ -96,58 +102,58 @@ window#waybar.hidden {
 }
 
 #cpu {
-    background: #64727D;
+    background: transparent;
 }
 
 #memory {
-    background: #64727D;
+    background: transparent;
 }
 
 #backlight {
-    background: #64727D;
+    background: transparent;
 }
 
 #network {
-    background: #64727D;
+    background: transparent;
 }
 
 #network.disconnected {
-    background: #f53c3c;
+    background: transparent;
 }
 
 #pulseaudio {
-    background: #64727D;
+    background: transparent;
 }
 
 #pulseaudio.muted {
-    background: #90b1b1;
+    background: transparent;
     color: #2a5c45;
 }
 
 #custom-media {
-    background: #66cc99;
+    background: transparent;
     color: #2a5c45;
 }
 
 
 #temperature {
-    background: #f0932b;
+    background: transparent;
 }
 
 #temperature.critical {
-    background: #eb4d4b;
+    background: transparent;
 }
 
 #tray {
-    background-color: #64727D;
+    background: transparent;
 }
 
 #idle_inhibitor {
-    background-color: #2d3436;
+    background: transparent;
 }
 
 #idle_inhibitor.activated {
-    background-color: #ecf0f1;
+    background: transparent;
     color: #2d3436;
 }
 

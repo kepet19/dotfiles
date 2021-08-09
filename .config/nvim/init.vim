@@ -447,7 +447,7 @@ lua require("kevz")
         " Update binds when sxhkdrc is updated.
             autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
         " reload waybar
-            autocmd bufwritepost ~/.config/waybar/config,~/.config/waybar/style.css !killall -SIGUSR2 waybar
+            " autocmd bufwritepost ~/.config/waybar/config,~/.config/waybar/style.css !killall -SIGUSR2 waybar
         " reload mako
             autocmd bufwritepost ~/.config/mako/config !killall mako; mako & disown
 
