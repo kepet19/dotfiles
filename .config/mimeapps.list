@@ -242,3 +242,5 @@ application/vnd.rar=xarchiver.desktop;
 application/x-executable=neovide.desktop;
 text/x-chdr=neovide.desktop;
 text/x-csrc=neovide.desktop;
+application/x-bittorrent=transmission-gtk.desktop;
+audio/x-m4b=vlc.desktop;mpv.desktop;
