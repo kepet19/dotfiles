@@ -11,9 +11,5 @@ bind '"\C-f" "tmuxa\n"'
 
 alias config='/usr/bin/git --git-dir=/home/kkmp/.cfg/ --work-tree=/home/kkmp'
 
-if [ -f /usr/lib/python3.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
-    source /usr/lib/python3.7/site-packages/powerline/bindings/bash/powerline.sh
-fi
-
 source /home/kkmp/.config/broot/launcher/bash/br
 eval "$(starship init bash)"

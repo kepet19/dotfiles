@@ -41,6 +41,7 @@ Plug 'tjdevries/cyclist.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'mattn/emmet-vim'
+Plug 'ferrine/md-img-paste.vim'
 
 " Snippets 
 Plug 'SirVer/ultisnips'
@@ -88,6 +89,12 @@ call plug#end()
 " }}}
 
 " Pluging settings  {{{
+    " md-img-paste {{{
+    autocmd FileType markdown nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+    " there are some defaults for image directory and image name, you can change them
+    " let g:mdip_imgdir = 'img'
+    " let g:mdip_imgname = 'image'
+    " }}}
 	" cyclist {{{
     call cyclist#add_listchar_option_set('limited', {
                 \ 'eol': '↲',
