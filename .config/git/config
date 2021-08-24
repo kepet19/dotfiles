@@ -20,9 +20,10 @@
 	ft = fetch
 	rt = restore
 	br = branch
-	co = checkout
-	coa = checkout -b 
+	sc = switch
+	scc = switch -c
     logp = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lol = log --oneline --graph --all
 [pull]
 	rebase = false
 [filter "lfs"]

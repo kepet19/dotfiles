@@ -6,7 +6,7 @@
     // Choose the order of the modules
     "modules-left": ["custom/apps","sway/workspaces", "sway/mode", "custom/space"],
     "modules-center": ["wlr/taskbar"],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "tray", "clock#datetime"],
+    "modules-right": ["pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery" , "tray", "clock#datetime"],
     // Modules configuration
      "sway/workspaces": {
          "disable-scroll": true,
@@ -75,7 +75,7 @@
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
+        "critical-threshold": 65,
         // "format-critical": "{temperatureC}°C ",
         "format": "{temperatureC}°C "
     },

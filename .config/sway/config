@@ -9,10 +9,10 @@ output * subpixel rgb
 include "$HOME/.cache/wal/colors-sway"
 
 # Remov when chaning do default sway
-border_images.focused "$HOME/.local/share/sway-borders/shadows.png"
-border_images.focused_inactive "$HOME/.local/share/sway-borders/shadows.png"
-border_images.unfocused "$HOME/.local/share/sway-borders/shadows.png"
-border_images.urgent "$HOME/.local/share/sway-borders/shadows_red.png"
+# border_images.focused "$HOME/.local/share/sway-borders/shadows.png"
+# border_images.focused_inactive "$HOME/.local/share/sway-borders/shadows.png"
+# border_images.unfocused "$HOME/.local/share/sway-borders/shadows.png"
+# border_images.urgent "$HOME/.local/share/sway-borders/shadows_red.png"
 
 # hide_cursor
 seat * hide_cursor 4000

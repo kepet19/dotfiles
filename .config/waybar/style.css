@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: Roboto,'Font Awesome 5', 'SFNS Display',  Helvetica, Arial, sans-serif;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
     font-size: 14px;
     /* min-height: 30px; */
 }
@@ -75,12 +75,12 @@ window#waybar.hidden {
 
 #battery {
     background: transparent;
-    color: #000000;
+    color: #10EE10;
 }
 
 #battery.charging {
     background: transparent;
-    color: #ffffff;
+    color: #ff7700;
 }
 
 @keyframes blink {
@@ -92,7 +92,7 @@ window#waybar.hidden {
 
 #battery.critical:not(.charging) {
     background: transparent;
-    color: #ffffff;
+    color: #ff1010;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -122,11 +122,12 @@ window#waybar.hidden {
 
 #pulseaudio {
     background: transparent;
+    color: #ffffff;
 }
 
 #pulseaudio.muted {
     background: transparent;
-    color: #2a5c45;
+    color: #675852;
 }
 
 #custom-media {
