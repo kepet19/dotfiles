@@ -20,6 +20,7 @@ Plug 'simrat39/rust-tools.nvim'
 Plug 'nvim-lua/diagnostic-nvim'
 Plug 'simrat39/symbols-outline.nvim'
 Plug 'hrsh7th/nvim-compe'
+Plug 'mfussenegger/nvim-dap'
 " Plug 'mfussenegger/nvim-jdtls'
 
 

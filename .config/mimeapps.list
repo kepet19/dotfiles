@@ -2,7 +2,7 @@
 x-scheme-handler/magnet=torrent.desktop;
 application/x-bittorrent=torrent.desktop;
 x-scheme-handler/mailto=userapp-Evolution-X56MR0.desktop
-text/plain=text.desktop;
+text/plain=neovide.desktop
 text/x-shellscript=text.desktop;
 application/postscript=pdf.desktop;
 application/pdf=pdf.desktop;
@@ -109,6 +109,7 @@ application/x-extension-xht=firefox.desktop
 application/x-compressed-tar=org.gnome.FileRoller.desktop
 application/x-tar=org.gnome.FileRoller.desktop
 text/x-chdr=neovide.desktop
+application/json=neovide.desktop
 
 [Added Associations]
 application/x-shellscript=neovide.desktop;org.gnome.gedit.desktop;nvim.desktop;
@@ -132,11 +133,11 @@ application/x-java-jnlp-file=javaws.desktop;
 application/x-mpegurl=blackboard.desktop;
 application/vnd.apple.mpegurl=blackboard.desktop;
 image/x-portable-graymap=org.gnome.eog.desktop;imv.desktop;
-text/plain=org.gnome.gedit.desktop;
+text/plain=org.gnome.gedit.desktop;neovide.desktop;
 text/x-python=text.desktop;org.gnome.Tau.desktop;
 text/markdown=neovide.desktop;nvim.desktop;text.desktop;
 video/quicktime=mpv.desktop;
-application/json=firefox-developer-edition.desktop;org.gnome.Tau.desktop;
+application/json=neovide.desktop;firefox-developer-edition.desktop;org.gnome.Tau.desktop;
 text/css=org.gnome.Tau.desktop;
 text/csv=org.gnome.gedit.desktop;
 application/x-wine-extension-ini=org.gnome.Tau.desktop;

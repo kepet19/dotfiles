@@ -4,7 +4,7 @@ local lspconfig = require'lspconfig'
 
 -- function to attach completion and diagnostics
 -- when setting up lsp
-vim.lsp.set_log_level("debug")
+vim.lsp.set_log_level("info")
 local on_attach = function(client)
     -- require'completion'.on_attach(client)
 end
