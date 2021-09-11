@@ -1,0 +1,2 @@
+#!/bin/sh
+git config --get "remote.${1:-origin}.url" | sed "s,:,/,g; s,git@,https://,g; s/\.git//g"
