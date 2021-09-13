@@ -204,7 +204,6 @@ lua require("kevz")
 	"	nnoremap <space> za "Open and close folds"
 	" }}}
 	" Some basics: {{{
-		imap jk <Esc>
         set exrc
 		set tabstop=4
 		set softtabstop=0

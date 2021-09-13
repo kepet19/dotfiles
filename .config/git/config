@@ -16,6 +16,7 @@
 	cm = commit -m
 	cma = commit -am
 	ph = push
+    phf = push --force
 	pl = pull
 	ft = fetch
 	rt = restore
