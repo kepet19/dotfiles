@@ -411,9 +411,9 @@ lua require("kevz")
         let g:completion_enable_snippet = 'UltiSnips'
 		" Set updatetime for CursorHold
 		" 300ms of no cursor movement to trigger CursorHold
-		set updatetime=300
+		set updatetime=200
 		" Show diagnostic popup on cursor hold
-		" autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
+		" autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics(10)
 
 		" Goto previous/next diagnostic warning/error
 		nnoremap <silent> g[ <cmd>PrevDiagnosticCycle<cr>
@@ -462,15 +462,6 @@ lua require("kevz")
             autocmd bufwritepost .vim source ~/.config/nvim/init.vim
         augroup END
     " }}}
-"   Augroup lsp {{{
-        " if has('nvim-0.5')
-        "   augroup lsp
-        "     au!
-        "     au FileType java lua require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}, root_dir = require('jdtls.setup').find_root({'gradle.build', 'pom.xml', '.git'})})
-        "     au FileType java nnoremap ga <cmd>lua require('jdtls').code_action()<CR>
-        "   augroup end
-        " endif
-    " }}}
     "   Augroup autoformat_settings {{{
     augroup autoformat_settings
         autocmd FileType bzl AutoFormatBuffer buildifier
@@ -482,7 +473,7 @@ lua require("kevz")
         autocmd FileType java AutoFormatBuffer google-java-format
         autocmd FileType python AutoFormatBuffer yapf
         " Alternative: autocmd FileType python AutoFormatBuffer autopep8
-        autocmd FileType rust AutoFormatBuffer rustfmt
+        " autocmd FileType rust AutoFormatBuffer rustfmt
         autocmd FileType vue AutoFormatBuffer prettier
     augroup END
     " }}}
