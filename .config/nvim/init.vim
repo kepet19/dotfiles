@@ -67,6 +67,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 " Vim highlighter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'p00f/nvim-ts-rainbow'
 Plug 'ron-rs/ron.vim'
 " Plug 'sheerun/vim-polyglot'
 
