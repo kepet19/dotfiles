@@ -22,6 +22,8 @@ Plug 'simrat39/symbols-outline.nvim'
 Plug 'hrsh7th/nvim-compe'
 Plug 'mfussenegger/nvim-dap'
 " Plug 'mfussenegger/nvim-jdtls'
+" Plug 'kosayoda/nvim-lightbulb'
+" Plug 'weilbith/nvim-code-action-menu'
 
 
 " Project navigation
@@ -43,6 +45,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'mattn/emmet-vim'
 Plug 'ferrine/md-img-paste.vim'
+Plug 'voldikss/vim-translator'
 
 " Snippets 
 Plug 'SirVer/ultisnips'
@@ -92,6 +95,28 @@ call plug#end()
 " }}}
 
 " Pluging settings  {{{
+    " vim-translator {{{
+    " Echo translation in the cmdline
+    nmap <silent> <leader>tg :!xdg-open "https://translate.google.com"<CR>
+    nmap <silent> <leader>tt <Plug>Translate
+    vmap <silent> <leader>tt <Plug>TranslateV
+    " Display translation in a window
+    " nmap <silent> <Leader>w <Plug>TranslateW
+    " vmap <silent> <Leader>w <Plug>TranslateWV
+    " Replace the text with translation
+    " nmap <silent> <Leader>r <Plug>TranslateR
+    " vmap <silent> <Leader>r <Plug>TranslateRV
+    " Translate the text in clipboard
+    " nmap <silent> <Leader>x <Plug>TranslateX
+    let g:translator_target_lang='en'
+    " Defaults
+    "let g:translator_source_lang="auto"
+    "let g:translator_default_engines="google" " bing, haici, iciba
+    "let g:translator_proxy_url=""
+    "let g:translator_history_enable=false
+    " omfang
+    "
+    " }}}
     " md-img-paste {{{
     autocmd FileType markdown nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
     " there are some defaults for image directory and image name, you can change them
@@ -474,7 +499,7 @@ lua require("kevz")
         autocmd FileType java AutoFormatBuffer google-java-format
         autocmd FileType python AutoFormatBuffer yapf
         " Alternative: autocmd FileType python AutoFormatBuffer autopep8
-        " autocmd FileType rust AutoFormatBuffer rustfmt
+        autocmd FileType rust AutoFormatBuffer rustfmt
         autocmd FileType vue AutoFormatBuffer prettier
     augroup END
     " }}}

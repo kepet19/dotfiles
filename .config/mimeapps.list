@@ -246,3 +246,4 @@ text/x-csrc=neovide.desktop;
 application/x-bittorrent=transmission-gtk.desktop;
 audio/x-m4b=vlc.desktop;mpv.desktop;
 text/x-java-source=neovide.desktop;
+application/x-tgif=blender.desktop;
