@@ -128,7 +128,7 @@ bindsym $mod+shift+f sticky toggle
 # todo
 for_window [title="dropdown_todo"] {
     move scratchpad
-    resize set 1024 450
+    # resize set 1024 450
     move absolute position 750 60
 }
 bindsym $mod+n exec swaymsg [title="dropdown_todo"] scratchpad show || $(exec $TERMINAL -t 'dropdown_todo' -e nvim "$HOME/Documents/sdu/todo.md" & sleep 0.2 && swaymsg '[title="dropdown_todo"] scratchpad show')
