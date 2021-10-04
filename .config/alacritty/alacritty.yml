@@ -106,7 +106,7 @@ font:
     #   - (Linux) monospace
     #   - (Windows) Consolas
     # family: "FiraCode Nerd Font"
-    family: "Noto sans mono Nerd Font"
+    family: "Noto sans mono"
     # family: "Source Code Pro"
 
     # The `style` can be specified to pick a specific face.

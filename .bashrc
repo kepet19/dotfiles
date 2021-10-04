@@ -13,3 +13,4 @@ alias config='/usr/bin/git --git-dir=/home/kkmp/.cfg/ --work-tree=/home/kkmp'
 
 source /home/kkmp/.config/broot/launcher/bash/br
 eval "$(starship init bash)"
+. "$HOME/.cargo/env"

@@ -30,7 +30,7 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'ThePrimeagen/harpoon'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'https://github.com/preservim/nerdtree'
+Plug 'preservim/nerdtree'
 
 " telescope
 Plug 'nvim-lua/popup.nvim'
@@ -72,6 +72,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'ron-rs/ron.vim'
+Plug 'elkowar/yuck.vim'
 " Plug 'sheerun/vim-polyglot'
 
 " Miss
@@ -220,10 +221,9 @@ lua require("kevz")
 
 " Basic's, Mappings, Leader and stuff {{{
 	" Folding section {{{
-		set foldenable
-		set foldlevelstart=10
-		set foldnestmax=10
-		"set foldmethod=syntax
+        set foldenable
+        set foldlevelstart=10
+        set foldnestmax=10
         set foldmethod=expr
         set foldexpr=nvim_treesitter#foldexpr()
 
@@ -262,7 +262,8 @@ lua require("kevz")
 		set go=a
 		set mouse=a
 		" set nohlsearch
-        set incsearch
+        set ignorecase      " Do case insensitive search unless there are capital letters
+        set incsearch       " Perform incremental searching
 		set signcolumn=yes
         set inccommand=split
 		set clipboard+=unnamedplus
