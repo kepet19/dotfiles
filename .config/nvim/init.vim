@@ -61,6 +61,7 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'tjdevries/colorbuddy.vim'
 Plug 'tjdevries/gruvbuddy.nvim'
 Plug 'folke/lsp-colors.nvim'
+Plug 'Yagua/nebulous.nvim'
 " Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
 Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 
