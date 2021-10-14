@@ -5,6 +5,7 @@ export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$
 export ANDROID_SDK_ROOT="$HOME/dev/android/sdk"
 export ANDROID_NDK_ROOT="$ANDROID_SDK_ROOT/ndk/22.1.7171670"
 export JAVA_HOME="/usr/lib/jvm/default/"
+export JDTLS_HOME="$HOME/.config/jdtls"
 export _systemd_git_kdbus=--enable-kdbus
 
 # Default programs:

@@ -29,10 +29,11 @@ lspconfig.jsonls.setup({ on_attach=on_attach })
 lspconfig.vimls.setup({ on_attach=on_attach })
 lspconfig.bashls.setup({ on_attach=on_attach })
 lspconfig.texlab.setup({ on_attach=on_attach })
-lspconfig.java_language_server.setup({
-    cmd = {"/home/kkmp/dev/java-language-server/dist/lang_server_linux.sh"};
-    on_attach=on_attach
-})
+lspconfig.jdtls.setup{ cmd = { 'java-lsp.sh' } }
+-- lspconfig.java_language_server.setup({
+--     cmd = {"/home/kkmp/dev/java-language-server/dist/lang_server_linux.sh"};
+--     on_attach=on_attach
+-- })
 
 local opts = {
     -- whether to highlight the currently hovered symbol

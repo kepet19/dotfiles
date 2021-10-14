@@ -13,7 +13,7 @@ cp -R /usr/share/java/jdtls/config_linux "${tmp_dir}"
 # and ensure that it is removed on exit
 trap "{ rm -rf ${tmp_dir}; }" EXIT
 
-GRADLE_HOME=$HOME/dev/gradle /usr/lib/jvm/java-15-openjdk/bin/java\
+GRADLE_HOME=$HOME/dev/gradle /usr/lib/jvm/java-17-openjdk/bin/java\
     -Declipse.application=org.eclipse.jdt.ls.core.id1 \
     -Dosgi.bundles.defaultStartLevel=4 \
     -Declipse.product=org.eclipse.jdt.ls.core.product \

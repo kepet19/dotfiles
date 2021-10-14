@@ -288,7 +288,8 @@ lua require("kevz")
 		map <leader>th <C-w>t<C-w>H
 		map <leader>tk <C-w>t<C-w>K
 	" VIMRC
-		nnoremap <leader>ev :vsp $MYVIMRC<CR>
+		nnoremap <leader>ev :lua require('kevz.telescope').search_vimfiles()<CR>
+		nnoremap <leader>ef :lua require('kevz.telescope').search_dotfiles()<CR>
 		nnoremap <leader>sv :source $MYVIMRC <bar> :doautocmd BufRead<CR>
 	" Replace all is aliased to S.
 		" nnoremap S :%s//g<Left><Left>
