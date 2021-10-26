@@ -29,6 +29,7 @@ export TEXINPUTS=".:~/Documents/latex/sty:"
 export DICS="/usr/share/stardict/dic/"
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export MOZ_ENABLE_WAYLAND=1
+export MOZ_DBUS_REMOTE=1 # Delete later https://mastransky.wordpress.com/2020/03/16/wayland-x11-how-to-run-firefox-in-mixed-environment/
 export FZF_DEFAULT_OPTS="--layout=reverse --height 90%"
 export SKIM_DEFAULT_COMMAND="fd --type f || git ls-tree -r --name-only HEAD || rg --files || find ."
 export LESS=-R

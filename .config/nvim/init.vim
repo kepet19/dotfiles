@@ -19,11 +19,25 @@ Plug 'tjdevries/nlua.nvim'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'nvim-lua/diagnostic-nvim'
 Plug 'simrat39/symbols-outline.nvim'
-Plug 'hrsh7th/nvim-compe'
+" Plug 'hrsh7th/nvim-compe'
 Plug 'mfussenegger/nvim-dap'
 " Plug 'mfussenegger/nvim-jdtls'
 " Plug 'kosayoda/nvim-lightbulb'
 " Plug 'weilbith/nvim-code-action-menu'
+Plug 'onsails/lspkind-nvim'
+
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-nvim-lsp'
+" Plug 'hrsh7th/cmp-nvim-lua'
+
+" For ultisnips users.
+Plug 'SirVer/ultisnips'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+" Snippets 
+Plug 'honza/vim-snippets'
+Plug 'ferrine/md-img-paste.vim'
 
 
 " Project navigation
@@ -47,10 +61,6 @@ Plug 'mattn/emmet-vim'
 Plug 'ferrine/md-img-paste.vim'
 Plug 'voldikss/vim-translator'
 
-" Snippets 
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'ferrine/md-img-paste.vim'
 
 " visual color schemes and stuff
 Plug 'nanotech/jellybeans.vim'
@@ -180,17 +190,6 @@ EOF
 		let g:minimap_auto_start=0
 		let g:minimap_base_highlight='Title'
 		map <leader>mm :MinimapToggle<CR>
-        " }}}
-        " UltiSnipsEdit {{{
-		" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
-		" - https://github.com/Valloric/YouCompleteMe
-		" - https://github.com/nvim-lua/completion-nvim
-		let g:UltiSnipsExpandTrigger="<C-e>"
-		" let g:UltiSnipsListSnippets="<c-tab>"
-		let g:UltiSnipsJumpForwardTrigger="<C-e>"
-		let g:UltiSnipsJumpBackwardTrigger="<C-z>"
-		" If you want :UltiSnipsEdit to split your window.
-		let g:UltiSnipsEditSplit="vertical"
         " }}}
         " md-img-paste {{{
           " augroup md-img-paste
@@ -407,23 +406,15 @@ lua require("kevz")
 
 		" Configure LSP
 
-		" Trigger completion with <Tab>
-
-        inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-        inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-        imap <silent> <c-p> <Plug>(completion_trigger)
-        " imap <tab> <Plug>(completion_smart_tab)
-        " imap <s-tab> <Plug>(completion_smart_s_tab)
-        " let g:completion_enable_auto_popup = 1
 
 		" Code navigation shortcuts
 		nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-		nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 		nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-		nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 		nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-		nnoremap <silent> <leader>gr    <cmd>lua vim.lsp.buf.rename()<CR>
 		nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+		nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+		nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+		nnoremap <silent> <leader>gr    <cmd>lua vim.lsp.buf.rename()<CR>
     
         " Rest is implemed in telescope.plugin (not lua)
 		" nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
@@ -437,9 +428,6 @@ lua require("kevz")
 		" Don't show diagnostics while in insert mode
 		let g:diagnostic_insert_delay = 1
 
-        let g:completion_enable_snippet = 'UltiSnips'
-		" Set updatetime for CursorHold
-		" 300ms of no cursor movement to trigger CursorHold
 		set updatetime=200
 		" Show diagnostic popup on cursor hold
 		" autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics(10)
