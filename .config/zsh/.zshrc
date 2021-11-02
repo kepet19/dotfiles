@@ -176,10 +176,13 @@ alias config='/usr/bin/git --git-dir=/home/kkmp/.cfg/ --work-tree=/home/kkmp'
 
 bindkey -s '^z' "fg\015"
 bindkey -s '^f' "tmuxa\n"
+
 # Make the same bind as bash
+# https://unix.stackexchange.com/questions/6620/how-to-edit-command-line-in-full-screen-editor-in-zsh/34251#34251
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
+
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
