@@ -169,7 +169,8 @@ de() {
   fi
 }
 
-# Clean Up User VIABELS
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Dot files 
 alias config='/usr/bin/git --git-dir=/home/kkmp/.cfg/ --work-tree=/home/kkmp'
@@ -187,6 +188,7 @@ bindkey -M vicmd v edit-command-line
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+
 eval "$(navi widget zsh)"
 eval "$(_kn init zsh)"
 eval "$(starship init zsh)"

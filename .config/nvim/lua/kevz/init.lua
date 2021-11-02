@@ -56,6 +56,16 @@ require('symbols-outline').setup {
     show_guides = true,
 }
 
+-- local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+-- parser_config.wgsl = {
+--   install_info = {
+--     url = "$HOME/dev/tree-sitter-wgsl", -- local path or git repo
+--     files = {"src/parser.c"}
+--   },
+--   filetype = "wgsl", -- if filetype does not agrees with parser name
+--   used_by = {} -- additional filetypes that use this parser
+-- }
+
 require'nvim-treesitter.configs'.setup {
   rainbow = {
     enable = true,

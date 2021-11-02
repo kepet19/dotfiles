@@ -72,8 +72,8 @@ Plug 'tjdevries/colorbuddy.vim'
 Plug 'tjdevries/gruvbuddy.nvim'
 Plug 'folke/lsp-colors.nvim'
 Plug 'Yagua/nebulous.nvim'
+Plug 'sainnhe/sonokai'
 " Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
-Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 
 " status line
 Plug 'hoob3rt/lualine.nvim'
@@ -324,8 +324,8 @@ lua require("kevz")
     " moving text
     vnoremap J :m '>+1<CR>gv=gv
     vnoremap K :m '<-2<CR>gv=gv
-    inoremap <C-j> <esc>:m .+1<CR>==
     inoremap <C-k> <esc>:m .-2<CR>==
+    inoremap <C-j> <esc>:m .+1<CR>==
     nnoremap <leader>j :m .+1<CR>==
     nnoremap <leader>k :m .-2<CR>==
 
@@ -371,6 +371,9 @@ lua require("kevz")
         " Spell-check set to <leader>o, 'o' for 'orthography':
         nnoremap <leader>od :setlocal spell! spelllang=da<CR>
         nnoremap <leader>oe :setlocal spell! spelllang=en<CR>
+
+        nnoremap <leader>d "_d
+        vnoremap <leader>d "_d
 
         " Spell correction the last word Ctrl + l
         inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
@@ -482,17 +485,24 @@ lua require("kevz")
     "   Augroup autoformat_settings {{{
     augroup autoformat_settings
         autocmd FileType bzl AutoFormatBuffer buildifier
-        autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
+        autocmd FileType c,cpp,proto,arduino AutoFormatBuffer clang-format
         autocmd FileType dart AutoFormatBuffer dartfmt
         autocmd FileType go AutoFormatBuffer gofmt
         autocmd FileType gn AutoFormatBuffer gn
-        autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+        " autocmd FileType javascript AutoFormatBuffer clang-format
+        " autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
         autocmd FileType java AutoFormatBuffer google-java-format
         autocmd FileType python AutoFormatBuffer yapf
         " Alternative: autocmd FileType python AutoFormatBuffer autopep8
         autocmd FileType rust AutoFormatBuffer rustfmt
-        autocmd FileType vue AutoFormatBuffer prettier
+        " autocmd FileType vue AutoFormatBuffer prettier
     augroup END
+    " }}}
+    " Augroup highlight_yank
+        augroup highlight_yank
+            autocmd!
+            autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 70})
+        augroup END
     " }}}
 " }}}
 
