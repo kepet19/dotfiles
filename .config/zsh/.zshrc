@@ -176,6 +176,10 @@ alias config='/usr/bin/git --git-dir=/home/kkmp/.cfg/ --work-tree=/home/kkmp'
 
 bindkey -s '^z' "fg\015"
 bindkey -s '^f' "tmuxa\n"
+# Make the same bind as bash
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
