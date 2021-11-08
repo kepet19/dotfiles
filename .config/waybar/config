@@ -2,27 +2,26 @@
     "layer": "top", // Waybar at top layer
     "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 32, // Waybar height
-    // "width": 120, // Waybar width
-    // Choose the order of the modules
+
     "modules-left": ["custom/apps","sway/workspaces", "sway/mode", "custom/space"],
     "modules-center": ["wlr/taskbar"],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery" , "tray", "clock#datetime"],
-    // Modules configuration
+    "modules-right": ["custom/github","pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery" , "tray", "clock#datetime"],
+
+
      "sway/workspaces": {
          "disable-scroll": true,
          "disable-markup" : false,
          "all-outputs": false,
-         "format": "  {icon}  ",
-         //"format":"{icon}",
+         "format": "{icon}",
          "format-icons": {
-             /* "2": "", */
-             /* "3": "", */
-             /* "10": "", */
-             /* "4": "", */
-             /* "5": "", */
-             /* "9": "", */
-             /* "focused": "", */
-             /* "default": "" */
+             "2": "", 
+             "3": "", 
+             "10": "",
+             "4": "", 
+             "5": "", 
+             "9": "", 
+             "focused": "",
+             "default": ""
          }
      },
     "sway/mode": {
@@ -33,6 +32,13 @@
         "on-click": "nwg-menu",
         "tooltip": false
     },
+    "custom/github": {
+    "format": "{} ",
+    "return-type": "json",
+    "interval": 60,
+    "exec": "github",
+    "on-click": "xdg-open https://github.com/notifications"
+    },
     "custom/space": {
         "format": " ",
         "tooltip": false
@@ -42,7 +48,8 @@
         "icon-size": 24,
         "tooltip": true,
         "on-click": "activate",
-        "on-click-right": "close"
+        "on-click-middle": "close",
+        "on-click-right": "minimize"
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -68,19 +75,19 @@
         "format": "{usage}% "
     },
     "memory": {
-        "format": "{}% ",
+        "format": "{used:0.1f}G/{total:0.1f}G ",
         "on-click": "$TERMINAL -e htop"
         },
     },
     "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "thermal-zone": 2,
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 65,
-        // "format-critical": "{temperatureC}°C ",
+        "format-critical": "{temperatureC}°C ",
         "format": "{temperatureC}°C "
     },
     "backlight": {
-        // "device": "acpi_video1",
+        "device": "acpi_video1",
         "format": "{percent}% {icon}",
         "states": [0,50],
         "format-icons": ["", ""]
@@ -92,22 +99,21 @@
             "critical": 15
         },
         "format": "{capacity}% {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
+        "format-good": "",
+        "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
     "battery#bat2": {
         "bat": "BAT2"
     },
     "network": {
-        // "interface": "wlp2s0", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
         "format-disconnected": "Disconnected ⚠",
         "interval" : 7
     },
     "pulseaudio": {
-        //"scroll-step": 1,
+        "scroll-step": 1,
         "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon}",
         "format-muted": "",
@@ -121,6 +127,6 @@
             "default": ["", ""]
         },
         "on-click": "amixer -q -D pulse sset Master toggle",
-        "on-click-right": "pavucontrol-show",
+        "on-click-right": "pavucontrol-show"
     },
 }
