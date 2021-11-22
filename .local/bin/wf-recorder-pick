@@ -1,8 +1,5 @@
 #!/usr/bin/env sh
 
-# This is bound to Shift+PrintScreen by default, requires wf-recorder and slurp. It lets you
-# choose the kind of recording to take, including highlighting an area to record.
-
 case "$(printf "a selected area\\nfull screen\\nsudo modprobe v4l2loopback\\nwf-recorder --muxer=v4l2 --codec=rawvideo --file=/dev/video7 -x yuv420p\\nkill recording" | bemenu -nil 5 -p "Record which area?")" in
 	"full screen") wf-recorder -a -f ~/recording_$(date +"%Y-%m-%d_%H:%M:%S.mp4") ;;
 	"a selected area") wf-recorder -a -g "$(slurp)" -f ~/recording_$(date +"%Y-%m-%d_%H:%M:%S.mp4") ;;

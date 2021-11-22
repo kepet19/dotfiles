@@ -97,6 +97,7 @@ Plug 'airblade/vim-rooter'
 Plug 'vuciv/vim-bujo'
 Plug 'folke/todo-comments.nvim'
 Plug 'folke/trouble.nvim'
+Plug 'NTBBloodbath/rest.nvim'
 
 " Format https://github.com/google/vim-codefmt
 Plug 'google/vim-maktaba'
@@ -109,6 +110,8 @@ call plug#end()
 " Pluging settings  {{{
     " vim-translator {{{
     " Echo translation in the cmdline
+    nmap <leader>rr <Plug>RestNvim
+    nmap <leader>rp <Plug>RestNvimPreview
     nmap <silent> <leader>tg :!xdg-open "https://translate.google.com"<CR>
     nmap <silent> <leader>tt <Plug>Translate
     vmap <silent> <leader>tt <Plug>TranslateV
