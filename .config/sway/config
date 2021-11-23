@@ -101,25 +101,25 @@ bindsym $mod+h			focus left
 bindsym $mod+Left 		focus left
 bindsym $mod+Shift+h		move left
 bindsym $mod+Ctrl+h		move workspace to output left
-bindsym $mod+Shift+y		exec --no-startup-id i3resize left
+bindsym $mod+Shift+y    exec --no-startup-id swayresize left
 
 bindsym $mod+j			focus down
 bindsym $mod+Down 		focus down
 bindsym $mod+Shift+j		move down
 bindsym $mod+Ctrl+j		move workspace to output down
-bindsym $mod+Shift+u		exec --no-startup-id i3resize down
+bindsym $mod+Shift+u    exec --no-startup-id swayresize down
 
 bindsym $mod+k			focus up
 bindsym $mod+Up 		focus up
 bindsym $mod+Shift+k		move up
 bindsym $mod+Ctrl+k		move workspace to output up
-bindsym $mod+Shift+i		exec --no-startup-id i3resize up
+bindsym $mod+Shift+i    exec --no-startup-id swayresize up
 
 bindsym $mod+l			focus right
 bindsym $mod+Right 		focus right
 bindsym $mod+Shift+l		move right
 bindsym $mod+Ctrl+l		move workspace to output right
-bindsym $mod+Shift+o		exec --no-startup-id i3resize right
+bindsym $mod+Shift+o    exec --no-startup-id swayresize right
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
