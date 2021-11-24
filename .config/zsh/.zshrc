@@ -104,8 +104,6 @@ lfcd () {
         fi
     fi
 }
-bindkey -s '^o' 'lfcd\n'  # zsh
-# bindkey -s '^o' 'cd "$(xplr)"\n'  # zsh
 
 # $1 (Optionally) - if present (value doesn't matter), this test checks if any containers exist. Else, if active (running) containers exis
 __docker_pre_test() {
@@ -175,8 +173,11 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # Dot files 
 alias config='/usr/bin/git --git-dir=/home/kkmp/.cfg/ --work-tree=/home/kkmp'
 
+bindkey -s '^o' 'lfcd\n'  # zsh
+# bindkey -s '^o' 'cd "$(xplr)"\n'  # zsh
 bindkey -s '^z' "fg\015"
 bindkey -s '^f' "tmuxa\n"
+bindkey -s '^t' "tmuxs\n"
 
 # Make the same bind as bash
 # https://unix.stackexchange.com/questions/6620/how-to-edit-command-line-in-full-screen-editor-in-zsh/34251#34251
@@ -186,7 +187,8 @@ bindkey -M vicmd v edit-command-line
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/fzf/completion.zsh
-source /usr/share/fzf/key-bindings.zsh
+# Remove Bind T
+# source /usr/share/fzf/key-bindings.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
 eval "$(navi widget zsh)"
