@@ -192,5 +192,5 @@ source /usr/share/fzf/completion.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
 eval "$(navi widget zsh)"
-eval "$(_kn init zsh)"
+eval "$(_kn init --shell zsh)"
 eval "$(starship init zsh)"
