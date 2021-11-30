@@ -275,7 +275,7 @@ lua require("kevz")
 		set nocompatible
 		set encoding=utf-8
 		set number relativenumber
-        set cmdheight=2
+        " set cmdheight=1
 	" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 		" set splitbelow splitright
 	" Mapping to change pwd to the directory of the current buffer.
