@@ -7,6 +7,8 @@ export ANDROID_NDK_ROOT="$ANDROID_SDK_ROOT/ndk/22.1.7171670"
 export JAVA_HOME="/usr/lib/jvm/default/"
 export JDTLS_HOME="$HOME/.config/jdtls"
 export _systemd_git_kdbus=--enable-kdbus
+export LARBSWM="i3"
+
 
 # Default programs:
 export EDITOR="nvim"

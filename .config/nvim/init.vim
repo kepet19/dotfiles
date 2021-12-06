@@ -239,8 +239,6 @@ lua require("kevz")
         set expandtab
 		set shiftwidth=4
         set smarttab
-		set hidden " Has the buffer open ind the background
-        " set listchars=tab:>~>,nbsp:_,trail:.
         set list
         set title
         set noswapfile
@@ -305,8 +303,6 @@ lua require("kevz")
     " Slide navigator
         nnoremap <Right> :n<CR>
         nnoremap <Left> :N<CR>
-    " Yank rest of the lines
-    nnoremap Y yg_
     " keeping it centered
     nnoremap n nzzzv
     nnoremap N Nzzzv
