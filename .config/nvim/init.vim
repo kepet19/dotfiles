@@ -67,6 +67,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'arcticicestudio/nord-vim'
 Plug 'sainnhe/vim-color-forest-night'
+Plug 'marko-cerovac/material.nvim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'tjdevries/colorbuddy.vim'
 Plug 'tjdevries/gruvbuddy.nvim'
@@ -386,8 +387,11 @@ lua require("kevz")
 		" colorscheme jellybeans
         " let ayucolor="dark"
         
-        lua require('colorbuddy').colorscheme('gruvbuddy')
-        lua require("lsp-colors").setup()
+        " lua require('colorbuddy').colorscheme('gruvbuddy')
+        " lua require("lsp-colors").setup()
+        " darker, lighter, oceanic, palenight, deep ocean,
+        let g:material_style = 'deep ocean' 
+        colorscheme material
 
 		" colorscheme ayu
 		" let g:nord_uniform_status_lines = 1

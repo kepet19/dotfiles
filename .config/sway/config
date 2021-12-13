@@ -207,6 +207,7 @@ for_window [title="Default - Wine desktop"] floating enable
 for_window [class="Blender" title="^Blender Preferences$"] floating enable
 for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable, move position 877 450, sticky enable
 for_window [app_id="firefox" title="^Firefox - Sharing Indicator$"] floating enable, move position bottom, move position right, sticky enable
+for_window [app_id="firefox" title="^Firefox — Sharing Indicator$"] floating enable, move position bottom, move position right, sticky enable
 # for_window [app_id="firefox"] move workspace $workspace2
 for_window [app_id="blueman-*"] floating enable, sticky enable
 for_window [app_id="wdisplays"] floating enable, resize 780 415, move position center, sticky enable
