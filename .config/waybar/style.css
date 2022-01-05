@@ -7,8 +7,7 @@
 }
 
 window#waybar {
-    background: rgba(43, 48, 59, 0.85);
-    color: #ffffff;
+    background: rgba(100, 100, 255, 0.18);
 }
 
 window#waybar.hidden {
@@ -23,12 +22,14 @@ window#waybar.hidden {
 }
 
 #workspaces button.focused {
-    background: #606270;
+    background: rgba(150, 150, 150, 0.8);
     border-bottom: 2px solid #0199D7;
 }
-
+#workspaces button:hover {
+    border-bottom: 2px solid #0080C0;
+}
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    background: rgba(255, 90, 90, 0.8);
     border-bottom: 2px solid #ff6600;
 }
 
@@ -37,6 +38,7 @@ window#waybar.hidden {
     padding: 0 10px;
     margin: 0 5px;
 }
+
 #taskbar button {
     background: transparent;
     color: #ffffff;
@@ -44,11 +46,10 @@ window#waybar.hidden {
     border-bottom: 2px solid transparent;
 }
 #taskbar button.active {
-    background: #606270;
+    background: rgba(150, 150, 150, 0.4);
     border-bottom: 2px solid #0199D7;
 }
 #taskbar button:hover {
-    background-color: #64727D;
     border-bottom: 2px solid #0080C0;
 }
 
@@ -61,31 +62,27 @@ window#waybar.hidden {
 #pulseaudio, #custom-media, #tray, #mode, #idle_inhibitor {
     padding: 0 10px;
     margin: 0 5px;
+    background: rgba(150, 150, 150, 0.4);
 }
 
 #clock {
-    background: transparent;
 }
 
 #battery {
-    background: transparent;
     color: #10EE10;
 }
 
 #battery.charging {
-    background: transparent;
     color: #ff7700;
 }
 
 @keyframes blink {
     to {
-        background: transparent;
         color: #000000;
     }
 }
 
 #battery.critical:not(.charging) {
-    background: transparent;
     color: #ff1010;
     animation-name: blink;
     animation-duration: 0.5s;
@@ -95,66 +92,52 @@ window#waybar.hidden {
 }
 
 #cpu {
-    background: transparent;
 }
 
 #memory {
-    background: transparent;
 }
 
 #backlight {
-    background: transparent;
 }
 
 #network {
-    background: transparent;
 }
 
 #network.disconnected {
-    background: transparent;
 }
 
 #pulseaudio {
-    background: transparent;
     color: #ffffff;
 }
 
 #pulseaudio.muted {
-    background: transparent;
     color: #675852;
 }
 
 #custom-media {
-    background: transparent;
     color: #2a5c45;
 }
 
 
 #temperature {
-    background: transparent;
 }
 
 #temperature.critical {
-    background: transparent;
 }
 
 #tray {
-    background: transparent;
 }
 
 #idle_inhibitor {
-    background: transparent;
 }
 
 #idle_inhibitor.activated {
-    background: transparent;
     color: #2d3436;
 }
 
 
 #custom-space {
     padding: 0 3px;
-    color: #ffffff;
     background: transparent;
 }
 #custom-apps {

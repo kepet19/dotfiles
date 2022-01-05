@@ -58,6 +58,7 @@ alias \
 	lsf="fzf | xargs ls -l" \
 	cal="cal -w" \
 	rm="trash" \
+    asway="autolog sway" \
 	mvnc="mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart" \
 	mvnc_fxml_javafx="mvn archetype:generate -DarchetypeGroupId=org.openjfx -DarchetypeArtifactId=javafx-archetype-fxml" \
 	mvnc_simple_javafx="mvn archetype:generate -DarchetypeGroupId=org.openjfx -DarchetypeArtifactId=javafx-archetype-simple" \

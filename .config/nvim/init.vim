@@ -37,7 +37,6 @@ Plug 'SirVer/ultisnips'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 " Snippets 
 Plug 'honza/vim-snippets'
-Plug 'ferrine/md-img-paste.vim'
 
 
 " Project navigation
@@ -134,7 +133,13 @@ call plug#end()
     "
     " }}}
     " md-img-paste {{{
-    autocmd FileType markdown nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+    function! g:LatexPasteImage2(relpath)
+    execute "normal! i\\includegraphics[width=1\\linewidth]{" . a:relpath . "}"
+    endfunction
+
+    autocmd FileType markdown,tex nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+    autocmd FileType markdown let g:PasteImageFunction = 'g:MarkdownPasteImage'
+    autocmd FileType tex let g:PasteImageFunction = 'g:LatexPasteImage2'
     " there are some defaults for image directory and image name, you can change them
     " let g:mdip_imgdir = 'img'
     " let g:mdip_imgname = 'image'
@@ -399,7 +404,7 @@ lua require("kevz")
 		let &colorcolumn="80"
 		set cursorline
 		" Makes wim transperrent
-		hi Normal guibg=None ctermbg=None
+		" hi Normal guibg=None ctermbg=None
 	" }}}
 	" vim-lsp settings {{{
 		" Set completeopt to have a better completion experience

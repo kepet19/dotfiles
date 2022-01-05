@@ -88,7 +88,8 @@ bindsym $mod+Shift+r        exec wf-recorder-pick
 bindsym $mod+p			    exec wdisplays
 bindsym $mod+Shift+p	    exec grimcolor
 bindsym alt+shift+p	        exec grimpick
-bindsym alt+p               exec grimselect
+bindsym $mod+alt+p          exec grimselect
+bindsym print               exec grim -c $HOME/Pictures/$(date '+%y%m%d-%H%M-%S').png
 
 
 # nwg-menu
@@ -267,10 +268,10 @@ set $workspace8 8
 set $workspace9 9
 set $workspace10 10
 
-workspace 1 output DP-1
-workspace 2 output DP-1
-workspace 3 output DP-1
-workspace 4 output DP-1
+workspace 1 output DP-2
+workspace 2 output DP-2
+workspace 3 output DP-2
+workspace 4 output DP-2
 
 workspace 5 output HDMI-A-1
 workspace 6 output HDMI-A-1
@@ -364,8 +365,8 @@ bar {
 }
 output "*" bg "$HOME/.config/wall.png" fill
 # output DP-1 mode 2560x1440@143.912003Hz
-output DP-1 mode 2560x1440@143.912003Hz adaptive_sync off
-output DP-1 pos 0 0
+output DP-2 mode 2560x1440@143.912003Hz adaptive_sync off
+output DP-2 pos 0 0
 output HDMI-A-1 pos 2560 0
 
 
@@ -401,6 +402,7 @@ exec autolog keyring
 # exec autolog waybar
 exec autolog sworkstyle
 exec autolog nwg-wrapper -s date-wttr.sh -r 1800000 -c date-wttr.css -p right -mr 200 -a start -mt 50 -j right
+exec autolog corectrl
 
 
 ## Autostart applications
