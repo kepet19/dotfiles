@@ -5,6 +5,7 @@ if [[ $# -eq 1 ]]; then
 else
     selected=$(find ~/ ~/dev \
     ~/Documents/sdu/sem_1 \
+    ~/.config \
     ~/Documents/sdu/sem_2 \
     ~/Documents/sdu/sem_3 \
     ~/Documents/sdu/sem_4 \

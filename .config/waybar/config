@@ -5,15 +5,15 @@
 
     "modules-left": ["custom/apps","sway/workspaces", "sway/mode", "custom/space"],
     "modules-center": ["wlr/taskbar"],
-    "modules-right": ["custom/github","pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery" , "tray", "clock#datetime"],
+    "modules-right": ["custom/github","pulseaudio", "network", "cpu", "custom/gpu-usage", "memory", "temperature", "backlight", "battery" , "tray", "clock#datetime"],
 
 
-     "sway/workspaces": {
-         "disable-scroll": true,
-         "disable-markup" : false,
-         "all-outputs": false,
-         "format": "{icon}"
-     },
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "disable-markup" : false,
+        "all-outputs": false,
+        "format": "{icon}"
+    },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
@@ -22,12 +22,18 @@
         "on-click": "nwg-menu",
         "tooltip": false
     },
+    "custom/gpu-usage": {
+        "exec": "cat /sys/class/hwmon/hwmon3/device/gpu_busy_percent",
+        "format": " {}%",
+        "return-type": "",
+        "interval": 1
+    },
     "custom/github": {
-    "format": "{} ",
-    "return-type": "json",
-    "interval": 60,
-    "exec": "github",
-    "on-click": "xdg-open https://github.com/notifications"
+        "format": "{} ",
+        "return-type": "json",
+        "interval": 60,
+        "exec": "github",
+        "on-click": "xdg-open https://github.com/notifications"
     },
     "custom/space": {
         "format": " ",
@@ -62,12 +68,15 @@
         "on-click": "calcurse-show"
     },
     "cpu": {
-        "format": "{usage}% "
+        "format": "<span font_family='Material Icons' rise='-4000' size='large'></span> {usage}%"
     },
     "memory": {
-        "format": "{used:0.1f}G/{total:0.1f}G ",
-        "on-click": "$TERMINAL -e htop"
+        "format": " {used:0.2f} GiB",
+        "states": {
+            "warning": 70,
+            "critical": 90
         },
+        "on-click": "$TERMINAL -e htop"
     },
     "temperature": {
         "thermal-zone": 2,
@@ -84,17 +93,24 @@
     },
     "battery": {
         "states": {
-            "good": 95,
+            "full": 95,
+            "good": 70,
             "warning": 30,
             "critical": 15
         },
         "format": "{capacity}% {icon}",
-        "format-good": "",
-        "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
-    "battery#bat2": {
-        "bat": "BAT2"
+    "battery": {
+        "adapter": "hidpp_battery_0",
+        "states": {
+            "full": 95,
+            "good": 70,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": " {capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""]
     },
     "network": {
         "format-wifi": "{essid} ({signalStrength}%) ",
@@ -106,17 +122,17 @@
         "scroll-step": 1,
         "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon}",
-        "format-muted": "",
+        "format-muted": "🔇",
         "format-icons": {
-            "headphones": "",
-            "handsfree": "",
-            "headset": "",
+            "headphones": "🎧",
+            "handsfree": "🎧",
+            "headset": "🎧",
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", ""]
+            "default": ["","", ""]
         },
         "on-click": "amixer -q -D pulse sset Master toggle",
         "on-click-right": "pavucontrol-show"
-    },
+    }
 }

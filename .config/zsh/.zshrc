@@ -173,6 +173,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # Dot files 
 alias config='/usr/bin/git --git-dir=/home/kkmp/.cfg/ --work-tree=/home/kkmp'
 
+source /usr/share/fzf/key-bindings.zsh
 bindkey -s '^o' 'lfcd\n'  # zsh
 # bindkey -s '^o' 'cd "$(xplr)"\n'  # zsh
 bindkey -s '^z' "fg\015"
@@ -185,11 +186,7 @@ autoload -z edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
-# Load zsh-syntax-highlighting; should be last.
 source /usr/share/fzf/completion.zsh
-# Remove Bind T
-# source /usr/share/fzf/key-bindings.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
 eval "$(navi widget zsh)"
 eval "$(_kn init --shell zsh)"

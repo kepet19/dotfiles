@@ -19,9 +19,7 @@ Plug 'tjdevries/nlua.nvim'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'nvim-lua/diagnostic-nvim'
 Plug 'simrat39/symbols-outline.nvim'
-" Plug 'hrsh7th/nvim-compe'
 Plug 'mfussenegger/nvim-dap'
-" Plug 'mfussenegger/nvim-jdtls'
 " Plug 'kosayoda/nvim-lightbulb'
 " Plug 'weilbith/nvim-code-action-menu'
 Plug 'onsails/lspkind-nvim'
@@ -30,6 +28,8 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 " Plug 'hrsh7th/cmp-nvim-lua'
 
 " For ultisnips users.
@@ -50,6 +50,7 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'tjdevries/cyclist.vim'
 " Plug 'itchyny/lightline.vim'
 
@@ -84,7 +85,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'ron-rs/ron.vim'
 Plug 'elkowar/yuck.vim'
-" Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 
 " Miss
 Plug 'tpope/vim-surround'
@@ -99,10 +100,9 @@ Plug 'folke/todo-comments.nvim'
 Plug 'folke/trouble.nvim'
 Plug 'NTBBloodbath/rest.nvim'
 
-" Format https://github.com/google/vim-codefmt
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
-Plug 'google/vim-glaive'
+" Format 
+Plug 'sbdchd/neoformat'
+
 call plug#end()
 
 " }}}
@@ -162,17 +162,6 @@ call plug#end()
 	" Git go to github homepage {{{
 		map <leader>g :!urlgitf<CR>
 	" }}}
-	" nvim-treesitter {{{
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = {},  -- list of language that will be disabled
-  },
-}
-EOF
-	" }}}
 	" VimVikiIndex {{{
 		map <leader>v :VimwikiIndex
 	" }}}
@@ -213,16 +202,8 @@ EOF
         let g:bujo#todo_file_path = $HOME . "/Documents"
         let g:bujo#window_width = 50
         " }}}
-        " google/vim-codefmt {{{
-        call glaive#Install()
-        " Optional: Enable codefmt's default mappings on the <Leader>= prefix.
-        Glaive codefmt plugin[mappings]
-        Glaive codefmt google_java_executable="google-java-format -a"
-
-        " }}}
-        " ThePrimeagen/git-worktree.nvim {{{
-        noremap <leader>gw :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
-        noremap <leader>gc :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
+        "  sbdchd/neoformat {{{
+        let g:neoformat_enabled_lua = ['stylua']
         " }}}
 " }}}
 
@@ -406,107 +387,31 @@ lua require("kevz")
 		" Makes wim transperrent
 		" hi Normal guibg=None ctermbg=None
 	" }}}
-	" vim-lsp settings {{{
-		" Set completeopt to have a better completion experience
-		" :help completeopt
-		" menuone: popup even when there's only one match
-		" noinsert: Do not insert text until a selection is made
-		" noselect: Do not select, force user to select one from the menu
-		set completeopt=menuone,noinsert,noselect
-
-
-		" Configure LSP
-
-
-		" Code navigation shortcuts
-		nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-		nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-		nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-		nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-		nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-		nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-		nnoremap <silent> <leader>gr    <cmd>lua vim.lsp.buf.rename()<CR>
-    
-        " Rest is implemed in telescope.plugin (not lua)
-		" nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-		" nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
-		" nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-		" nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-
-		" Visualize diagnostics
-		let g:diagnostic_enable_virtual_text = 1
-		let g:diagnostic_trimmed_virtual_text = '40'
-		" Don't show diagnostics while in insert mode
-		let g:diagnostic_insert_delay = 1
-
-		set updatetime=200
-		" Show diagnostic popup on cursor hold
-		" autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics(10)
-
-		" Goto previous/next diagnostic warning/error
-		nnoremap <silent> g[ <cmd>PrevDiagnosticCycle<cr>
-		nnoremap <silent> g] <cmd>NextDiagnosticCycle<cr>
-		autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
-		\ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
-
-
-        " Rust specefic stuff
-        " Auto-format *.rs files prior to saving them
-        " autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 1000)
-        " " Use LSP omni-completion in Python files.
-        " autocmd Filetype rust setlocal omnifunc=v:lua.vim.lsp.omnifunc
-	" }}}
 " }}}
 
 " AUTOCMD -----{{{
-"   Augroup THE_KEVZ {{{
+    " FORMAT FMT {{{
+    augroup fmt
+      autocmd!
+      " autocmd BufWritePre * undojoin | Neoformat
+      " autocmd BufWritePre *\(^java\) Neoformat
+      autocmd BufWritePre *\(^yaml\) Neoformat
+    augroup END
+    " }}}
+    " Augroup THE_KEVZ {{{
         augroup THE_KEVZ
             autocmd!
             " autocmd VimEnter * NERDTree | wincmd p
             autocmd VimLeave *.tex !texclear %
-
-        " Ensure files are read as what I want:
-            " autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
-            " autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
-            " autocmd BufRead,BufNewFile *.tex set filetype=tex
 
         " Save file as sudo on files that require root permission
             cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
         " Automatically deletes all trailing whitespace on save.
             autocmd BufWritePre *.{c,rs} %s/\s\+$//e
-
-        " When shortcut files are updated, renew bash and ranger configs with new material:
-            autocmd BufWritePost files,directories !shortcuts
-        " Run xrdb whenever Xdefaults or Xresources are updated.
-            autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
-        " Update binds when sxhkdrc is updated.
-            autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
-        " reload waybar
-            " autocmd bufwritepost ~/.config/waybar/config,~/.config/waybar/style.css !killall -SIGUSR2 waybar
-        " reload mako
-            autocmd bufwritepost ~/.config/mako/config !killall mako; mako & disown
-
-            autocmd bufwritepost .vim source ~/.config/nvim/init.vim
         augroup END
     " }}}
-    "   Augroup autoformat_settings {{{
-    augroup autoformat_settings
-        autocmd FileType bzl AutoFormatBuffer buildifier
-        autocmd FileType c,cpp,proto,arduino AutoFormatBuffer clang-format
-        autocmd FileType dart AutoFormatBuffer dartfmt
-        autocmd FileType go AutoFormatBuffer gofmt
-        autocmd FileType gn AutoFormatBuffer gn
-        " autocmd FileType javascript AutoFormatBuffer clang-format
-        " autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
-        autocmd FileType java AutoFormatBuffer google-java-format
-        autocmd FileType python AutoFormatBuffer yapf
-        " Alternative: autocmd FileType python AutoFormatBuffer autopep8
-        autocmd FileType rust AutoFormatBuffer rustfmt
-        " autocmd FileType vue AutoFormatBuffer prettier
-    augroup END
-    " }}}
-    " Augroup highlight_yank
+    " Augroup highlight_yank {{{
         augroup highlight_yank
             autocmd!
             autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 70})

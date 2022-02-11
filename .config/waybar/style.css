@@ -58,7 +58,7 @@ window#waybar.hidden {
     border-bottom: 1px solid #ffffff;
 }
 
-#clock, #battery, #cpu, #memory, #temperature, #backlight, #network,
+#clock, #battery, #cpu, #custom-gpu-usage , #memory, #temperature, #backlight, #network,
 #pulseaudio, #custom-media, #tray, #mode, #idle_inhibitor {
     padding: 0 10px;
     margin: 0 5px;
