@@ -2,8 +2,4 @@
 
 include ~/.config/sway/sway.d/*.conf
 
-
-# Load pywal colors
-include "$HOME/.cache/wal/colors-sway"
-
 output * subpixel rgb
