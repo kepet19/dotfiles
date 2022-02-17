@@ -1,15 +1,46 @@
-    let mapleader =" "
+let mapleader =" "
+
+if !exists("g:os")
+	if has("win64") || has("win32") || has("win16")
+		let g:os = "Windows"
+	else
+		let g:os = substitute(system('uname'), '\n', '', '')
+	endif
+endif
+
+
+" if has("gui_running")
+" 	if g:os == "Darwin"
+" 		set guifont=Fira\ Mono:h12
+" 	elseif g:os == "Linux"
+" 		set guifont=Fira\ Mono\ 10
+" 	elseif g:os == "Windows"
+" 		set guifont=Fira_Mono:h12:cANSI
+" 	endif
+" endif
+
+
+if g:os == "Windows"
+	let g:config_path = '~/AppData/Local/nvim/'
+	set shell=powershell
+	set shellcmdflag=-command
+endif
+
+if g:os == "Linux" 
+	let g:config_path = '~/.config/nvim/'
+endif
+
 
 
 " Pluging PLug {{{
-if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
-	echo "Downloading junegunn/vim-plug to manage plugins..."
-	silent !mkdir -p ~/.config/nvim/autoload/
-	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ~/.config/nvim/autoload/plug.vim
+if ! filereadable(expand(g:config_path . "autoload/plug.vim"))
+	echo "Downloading junegunn/vim-plug to manage plugins... at: " . expand(a:path . "plug.vim")
+	silent execute '!mkdir -p' . expand(g:config_path . "autoload")
+	silent execute '!curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"> ' . expand(g:config_path . "autoload/plug.vim")
 	autocmd VimEnter * PlugInstall
 endif
 
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin(g:config_path . "plugged")
 
 " Plebvim lsp Plugins
 Plug 'neovim/nvim-lspconfig'
