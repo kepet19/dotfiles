@@ -61,13 +61,6 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
-" Plug 'hrsh7th/cmp-nvim-lua'
-
-" For ultisnips users.
-Plug 'SirVer/ultisnips'
-Plug 'quangnguyen30192/cmp-nvim-ultisnips'
-" Snippets 
-Plug 'honza/vim-snippets'
 
 
 " Project navigation
