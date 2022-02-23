@@ -51,7 +51,6 @@ local servers = {
   "gdscript",
   "html",
   "clangd",
-  "sharp_ls",
 }
 
 for _, lsp in ipairs(servers) do
@@ -109,7 +108,6 @@ cmp.setup {
     { name = "nvim_lsp" }, --
     { name = "path" }, --
     { name = "luasnip" }, -- For luasnip users.
-    { name = "ultisnips" }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
   }, { { name = "buffer", keyword_length = 3 } }),
 
