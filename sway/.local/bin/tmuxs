@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/ ~/dev \
+    selected=$(find -L ~/ ~/dev \
     ~/Documents/sdu/sem_1 \
     ~/.config \
     ~/Documents/sdu/sem_2 \
