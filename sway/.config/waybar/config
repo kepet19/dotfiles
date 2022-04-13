@@ -22,12 +22,12 @@
         "on-click": "nwg-menu",
         "tooltip": false
     },
-    "custom/gpu-usage": {
-        "exec": "cat /sys/class/hwmon/hwmon3/device/gpu_busy_percent",
-        "format": " {}%",
-        "return-type": "",
-        "interval": 1
-    },
+    //"custom/gpu-usage": {
+    //    "exec": "cat /sys/class/hwmon/hwmon3/device/gpu_busy_percent",
+    //    "format": " {}%",
+    //    "return-type": "",
+    //    "interval": 1
+    //},
     "custom/github": {
         "format": "{} ",
         "return-type": "json",
