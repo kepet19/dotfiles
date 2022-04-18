@@ -1,2 +1,3 @@
 .zcompdump
 nvim/.config/nvim/plugged/
+sway/.local/bin/amdgpu-pptable-editor-qt
