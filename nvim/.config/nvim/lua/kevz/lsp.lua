@@ -51,7 +51,7 @@ local servers = {
   "gdscript",
   "html",
   "clangd",
-  "sharp_ls",
+  "csharp_ls",
 }
 
 for _, lsp in ipairs(servers) do

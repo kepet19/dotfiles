@@ -21,20 +21,21 @@ endif
 
 
 if g:os == "Windows"
-	let g:config_path = '~/AppData/Local/nvim/'
+	let g:config_path = '$USERPROFILE/AppData/Local/nvim/'
 	set shell=powershell
 	set shellcmdflag=-command
 endif
 
 if g:os == "Linux" 
-	let g:config_path = '~/.config/nvim/'
+	let g:config_path = '$HOME/.config/nvim/'
 endif
 
+echo g:config_path
 
 
 " Pluging PLug {{{
 if ! filereadable(expand(g:config_path . "autoload/plug.vim"))
-	echo "Downloading junegunn/vim-plug to manage plugins... at: " . expand(a:path . "plug.vim")
+	echo "Downloading junegunn/vim-plug to manage plugins... at: " . expand(g:config_path . "plug.vim")
 	silent execute '!mkdir -p' . expand(g:config_path . "autoload")
 	silent execute '!curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"> ' . expand(g:config_path . "autoload/plug.vim")
 	autocmd VimEnter * PlugInstall
