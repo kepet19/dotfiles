@@ -1,8 +1,5 @@
 .zcompdump
 nvim/.config/nvim/plugged/
-<<<<<<< HEAD
 windows/WindowsPowerShell/Modules/
 *.spl
-=======
 sway/.local/bin/amdgpu-pptable-editor-qt
->>>>>>> c2dab416c319bf7c806da43b28d906e5903e362f
