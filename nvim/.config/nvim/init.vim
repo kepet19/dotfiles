@@ -88,6 +88,8 @@ Plug 'voldikss/vim-translator'
 
 
 " visual color schemes and stuff
+Plug 'folke/lsp-colors.nvim'
+Plug 'folke/tokyonight.nvim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'arcticicestudio/nord-vim'
@@ -96,7 +98,6 @@ Plug 'marko-cerovac/material.nvim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'tjdevries/colorbuddy.vim'
 Plug 'tjdevries/gruvbuddy.nvim'
-Plug 'folke/lsp-colors.nvim'
 Plug 'Yagua/nebulous.nvim'
 Plug 'sainnhe/sonokai'
 " Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
@@ -107,6 +108,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 " Vim highlighter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'ron-rs/ron.vim'
 Plug 'elkowar/yuck.vim'
@@ -124,6 +126,7 @@ Plug 'vuciv/vim-bujo'
 Plug 'folke/todo-comments.nvim'
 Plug 'folke/trouble.nvim'
 Plug 'NTBBloodbath/rest.nvim'
+Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " Format 
 Plug 'sbdchd/neoformat'
@@ -402,7 +405,7 @@ lua require("kevz")
         " lua require("lsp-colors").setup()
         " darker, lighter, oceanic, palenight, deep ocean,
         let g:material_style = 'deep ocean' 
-        colorscheme material
+        colorscheme tokyonight
 
 		" colorscheme ayu
 		" let g:nord_uniform_status_lines = 1

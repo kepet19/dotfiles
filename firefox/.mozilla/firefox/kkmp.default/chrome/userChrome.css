@@ -1,3 +1,14 @@
+/* hides the native tabs */
+#TabsToolbar {
+  visibility: collapse;
+}
+#titlebar {
+  visibility: collapse;
+}
+#sidebar-header {
+  visibility: collapse !important;
+}
+
 /* 
  * For Setting up firefox to use chrome stylesheets
  * toolkit.legacyUserProfileCustomizations.stylesheets 
