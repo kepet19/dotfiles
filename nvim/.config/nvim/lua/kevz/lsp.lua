@@ -223,3 +223,6 @@ local opts = {
 }
 
 require("rust-tools").setup(opts)
+-- require("lspconfig").rust_analyzer.setup(config({
+--   cmd = { "rustup", "run", "nightly", "rust-analyzer"}
+-- }))
