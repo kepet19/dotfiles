@@ -22,15 +22,15 @@ endif
 
 if g:os == "Windows"
 	let g:config_path = '$USERPROFILE/AppData/Local/nvim/'
-	set shell=powershell
-	set shellcmdflag=-command
+	"set shell=powershell
+	"set shellcmdflag=-command
 endif
 
 if g:os == "Linux" 
 	let g:config_path = '$HOME/.config/nvim/'
 endif
 
-echo g:config_path
+" echo g:config_path
 
 
 " Pluging PLug {{{

@@ -24,14 +24,14 @@ local M = {}
 M.search_vimfiles = function()
     require("telescope.builtin").find_files({
         prompt_title = "< VimRC >",
-        cwd = "$HOME/.config/nvim/",
+        cwd = vim.g.config_path,
     })
 end
 
 M.search_dotfiles = function()
     require("telescope.builtin").find_files({
         prompt_title = "< ConfigFiles >",
-        cwd = "$HOME/.config/",
+        cwd = vim.g.config_path,
     })
 end
 
