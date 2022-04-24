@@ -1,0 +1,3 @@
+#!/bin/sh
+# Name: rust-analyzer
+rustup run nightly rust-analyzer

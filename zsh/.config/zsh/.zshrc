@@ -190,4 +190,5 @@ source /usr/share/fzf/completion.zsh
 
 eval "$(navi widget zsh)"
 eval "$(_kn init --shell zsh)"
+eval "$(fnm env --use-on-cd)"
 eval "$(starship init zsh)"

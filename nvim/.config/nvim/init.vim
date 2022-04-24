@@ -101,6 +101,7 @@ Plug 'tjdevries/gruvbuddy.nvim'
 Plug 'Yagua/nebulous.nvim'
 Plug 'sainnhe/sonokai'
 Plug 'navarasu/onedark.nvim'
+Plug 'bennypowers/nvim-regexplainer'
 " Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
 
 " status line
