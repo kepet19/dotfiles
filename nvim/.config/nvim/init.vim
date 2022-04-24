@@ -100,6 +100,7 @@ Plug 'tjdevries/colorbuddy.vim'
 Plug 'tjdevries/gruvbuddy.nvim'
 Plug 'Yagua/nebulous.nvim'
 Plug 'sainnhe/sonokai'
+Plug 'navarasu/onedark.nvim'
 " Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
 
 " status line
@@ -117,6 +118,7 @@ Plug 'sheerun/vim-polyglot'
 " Miss
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'sindrets/diffview.nvim'
 Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-commentary'

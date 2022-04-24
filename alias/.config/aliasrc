@@ -17,10 +17,11 @@ alias \
 
 # Colorize commands when possible.
 alias \
-	ls="ls -hN --color=auto --group-directories-first" \
-	ls="exa --git" \
-    l="ls -l"\
-    la="ls -la"\
+	\ # ls="ls -hN --color=auto --group-directories-first" \
+    l="lsd -l --group-dirs first --date '+%H:%M %d-%m-%Y'"\
+	ls="lsd -lat --group-dirs first --date '+%H:%M %d-%m-%Y'" \
+    la="lsd -la --group-dirs first --date '+%H:%M %d-%m-%Y'"\
+    ll="lsd -lat --group-dirs first --date relative"\
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi"
