@@ -108,10 +108,13 @@ Plug 'bennypowers/nvim-regexplainer'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 
-" Vim highlighter
+" Tree Sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
+Plug 'romgrk/nvim-treesitter-context'
 Plug 'p00f/nvim-ts-rainbow'
+
+" Vim highlighter
 Plug 'ron-rs/ron.vim'
 Plug 'elkowar/yuck.vim'
 Plug 'sheerun/vim-polyglot'
