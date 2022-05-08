@@ -20,15 +20,18 @@ endif
 " endif
 
 
+let install_path_script = './install.sh'
+let g:config_path = '$HOME/.config/nvim/'
+
 if g:os == "Windows"
-	let g:config_path = '$USERPROFILE/AppData/Local/nvim/'
+    let g:config_path = '$USERPROFILE/AppData/Local/nvim/'
+    let install_path_script = 'powershell ./install.ps1'
 	"set shell=powershell
 	"set shellcmdflag=-command
 endif
 
-if g:os == "Linux" 
-	let g:config_path = '$HOME/.config/nvim/'
-endif
+" if g:os == "Linux" 
+" endif
 
 " echo g:config_path
 
@@ -60,8 +63,11 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'kdheepak/cmp-latex-symbols'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'tzachar/cmp-tabnine', { 'do': install_path_script }
 
 
 " Project navigation
