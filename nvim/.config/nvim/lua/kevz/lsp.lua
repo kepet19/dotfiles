@@ -42,130 +42,129 @@ local lspkind = require("lspkind")
 local cmp = require("cmp")
 local compare = require("cmp.config.compare")
 local t = function(str)
-    return vim.api.nvim_replace_termcodes(str, true, true, true)
+	return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-cmp.setup.cmdline(':', {
-  sources = {
-    { name = 'cmdline' }
-  }
+cmp.setup.cmdline(":", {
+	sources = {
+		{ name = "cmdline" },
+	},
 })
 
-cmp.setup.cmdline('/', {
-  sources = {
-    { name = 'buffer' }
-  }
+cmp.setup.cmdline("/", {
+	sources = {
+		{ name = "buffer" },
+	},
 })
 
 cmp.setup({
 	snippet = {
 		expand = function(args)
 			-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+			require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
 			-- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
 		end,
 	},
 	mapping = {
-        ["<Tab>"] = cmp.mapping({
-            c = function()
-                if cmp.visible() then
-                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-                else
-                    cmp.complete()
-                end
-            end,
-            i = function(fallback)
-                if cmp.visible() then
-                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-                else
-                    fallback()
-                end
-            end,
-            s = function(fallback)
+		["<Tab>"] = cmp.mapping({
+			c = function()
+				if cmp.visible() then
+					cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+				else
+					cmp.complete()
+				end
+			end,
+			i = function(fallback)
+				if cmp.visible() then
+					cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+				else
+					fallback()
+				end
+			end,
+			s = function(fallback)
 				fallback()
-            end
-        }),
-        ["<S-Tab>"] = cmp.mapping({
-            c = function()
-                if cmp.visible() then
-                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-                else
-                    cmp.complete()
-                end
-            end,
-            i = function(fallback)
-                if cmp.visible() then
-                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-                else
-                    fallback()
-                end
-            end,
-            s = function(fallback)
-                    fallback()
-            end
-        }),
-        ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
-        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'}),
-        ['<C-e>'] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
-        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
+			end,
+		}),
+		["<S-Tab>"] = cmp.mapping({
+			c = function()
+				if cmp.visible() then
+					cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+				else
+					cmp.complete()
+				end
+			end,
+			i = function(fallback)
+				if cmp.visible() then
+					cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+				else
+					fallback()
+				end
+			end,
+			s = function(fallback)
+				fallback()
+			end,
+		}),
+		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+		["<C-e>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
+		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 		-- ["<c-y>"] = cmp.mapping.confirm({
 		-- 	behavior = cmp.ConfirmBehavior.Insert,
 		-- 	select = true,
 		-- }),
-    ['<C-y>'] = {
-        i = cmp.mapping.confirm({ select = false }),
-    },
-        ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
-        ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
-        ['<C-n>'] = cmp.mapping({
-            c = function()
-                if cmp.visible() then
-                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-                else
-                    vim.api.nvim_feedkeys(t('<Down>'), 'n', true)
-                end
-            end,
-            i = function(fallback)
-                if cmp.visible() then
-                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-                else
-                    fallback()
-                end
-            end
-        }),
-        ['<C-p>'] = cmp.mapping({
-            c = function()
-                if cmp.visible() then
-                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-                else
-                    vim.api.nvim_feedkeys(t('<Up>'), 'n', true)
-                end
-            end,
-            i = function(fallback)
-                if cmp.visible() then
-                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-                else
-                    fallback()
-                end
-            end
-        }),
-        -- ['<CR>'] = cmp.mapping({
-        --     i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
-        --     c = function(fallback)
-        --         if cmp.visible() then
-        --             cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-        --         else
-        --             fallback()
-        --         end
-        --     end
-        -- }),
-
+		["<C-y>"] = {
+			i = cmp.mapping.confirm({ select = true }),
+		},
+		["<Down>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
+		["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
+		["<C-n>"] = cmp.mapping({
+			c = function()
+				if cmp.visible() then
+					cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+				else
+					vim.api.nvim_feedkeys(t("<Down>"), "n", true)
+				end
+			end,
+			i = function(fallback)
+				if cmp.visible() then
+					cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+				else
+					fallback()
+				end
+			end,
+		}),
+		["<C-p>"] = cmp.mapping({
+			c = function()
+				if cmp.visible() then
+					cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+				else
+					vim.api.nvim_feedkeys(t("<Up>"), "n", true)
+				end
+			end,
+			i = function(fallback)
+				if cmp.visible() then
+					cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+				else
+					fallback()
+				end
+			end,
+		}),
+		-- ['<CR>'] = cmp.mapping({
+		--     i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+		--     c = function(fallback)
+		--         if cmp.visible() then
+		--             cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+		--         else
+		--             fallback()
+		--         end
+		--     end
+		-- }),
 	},
 
 	sources = cmp.config.sources({
 		{ name = "cmp_tabnine" },
 		{ name = "nvim_lua" }, --
-		{ name = "luasnip", options = { use_show_conditions = false }}, -- For luasnip users.
+		{ name = "luasnip", options = { use_show_conditions = false } }, -- For luasnip users.
 		{ name = "zsh" }, --
 		{ name = "nvim_lsp" }, --
 		{ name = "path" }, --
@@ -253,37 +252,36 @@ lspconfig.omnisharp.setup({
 	flags = { debounce_text_changes = 150 },
 })
 
-local runtime_path = vim.split(package.path, ';')
+local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-lspconfig.sumneko_lua.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-        -- Setup your lua path
-        path = runtime_path,
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-}
-
+lspconfig.sumneko_lua.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	settings = {
+		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = "LuaJIT",
+				-- Setup your lua path
+				path = runtime_path,
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = { "vim" },
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+			-- Do not send telemetry data containing a randomized but unique identifier
+			telemetry = {
+				enable = false,
+			},
+		},
+	},
+})
 
 -- lspconfig.jdtls.setup {
 --   on_attach = on_attach,
