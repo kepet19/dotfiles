@@ -40,6 +40,7 @@ end
 
 local lspkind = require("lspkind")
 local cmp = require("cmp")
+local types = require("cmp.types")
 local compare = require("cmp.config.compare")
 local t = function(str)
 	return vim.api.nvim_replace_termcodes(str, true, true, true)
@@ -107,14 +108,16 @@ cmp.setup({
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 		["<C-e>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
-		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-		-- ["<c-y>"] = cmp.mapping.confirm({
-		-- 	behavior = cmp.ConfirmBehavior.Insert,
-		-- 	select = true,
-		-- }),
-		["<C-y>"] = {
-			i = cmp.mapping.confirm({ select = true }),
-		},
+		["<C-Space>"] = { i = cmp.mapping.complete() },
+		["<c-y>"] = {
+            i = cmp.mapping.confirm({ select = false}),
+        },
+		-- ["<c-y>"] = {
+            -- i = cmp.mapping.confirm({ behavior = types.ConfirmBehavior.confirm }),
+        -- },
+		-- ["<C-y>"] = {
+		-- 	i = cmp.mapping.confirm({ behavior = cmp.Confi}),
+		-- },
 		["<Down>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
 		["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
 		["<C-n>"] = cmp.mapping({
