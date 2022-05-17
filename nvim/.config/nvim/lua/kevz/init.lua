@@ -3,6 +3,7 @@ require "kevz.git-worktree"
 require "kevz.lsp"
 require "kevz.statusline"
 require "kevz.luasnip"
+require "kevz.vimgui"
 
 -- nvim-treesitter
 require("nvim-treesitter.configs").setup {

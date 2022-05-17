@@ -1,4 +1,5 @@
 Function mvc {Set-Location -Path ~/dev/mvc_dev/MVCPortal/MVCPortal/}
+Function mvcd {Set-Location -Path ~/dev/mvc_deploy/MVCPortal/MVCPortal/}
 Function dev {Set-Location -Path ~/dev/}
 
 
@@ -28,6 +29,13 @@ function co
 Function Edit-Profile
 {
     vim $profile
+}
+
+# for editing dot files
+Function Edit-Dotfiles
+{
+    cd ~/dev/dotfiles
+    neovide .
 }
 
 # for editing your Vim settings
