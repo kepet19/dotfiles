@@ -1,7 +1,7 @@
 Function mvc {Set-Location -Path ~/dev/mvc_dev/MVCPortal/MVCPortal/}
 Function mvcd {Set-Location -Path ~/dev/mvc_deploy/MVCPortal/MVCPortal/}
 Function dev {Set-Location -Path ~/dev/}
-Function ser {Set-Location -Path ~/dev/serverportal/}
+Function ser {Set-Location -Path ~/dev/serverportal/ServerPortal/}
 
 
 function co
