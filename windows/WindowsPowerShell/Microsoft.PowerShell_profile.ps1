@@ -1,6 +1,7 @@
 Function mvc {Set-Location -Path ~/dev/mvc_dev/MVCPortal/MVCPortal/}
 Function mvcd {Set-Location -Path ~/dev/mvc_deploy/MVCPortal/MVCPortal/}
 Function dev {Set-Location -Path ~/dev/}
+Function ser {Set-Location -Path ~/dev/serverportal/}
 
 
 function co
@@ -28,7 +29,7 @@ function co
 # for editing your PowerShell profile
 Function Edit-Profile
 {
-    vim $profile
+    nvim $profile
 }
 
 # for editing dot files
@@ -58,7 +59,6 @@ Set-PSReadLineOption -EditMode vi
 Set-PSReadlineKeyHandler -Chord Tab -Function Complete
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadlineOption -ShowToolTips -BellStyle Visual
-
 
 
 Invoke-Expression (&starship init powershell)
