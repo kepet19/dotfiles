@@ -85,6 +85,10 @@ Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-ui-select.nvim'
 Plug 'tjdevries/cyclist.vim'
 
+" Nvim special UI
+Plug 'rcarriga/nvim-notify'
+Plug 'stevearc/dressing.nvim'
+
 " Markdown and website
 Plug 'vimwiki/vimwiki'
 Plug 'iamcco/markdown-preview.vim'

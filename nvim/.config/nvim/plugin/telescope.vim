@@ -11,3 +11,6 @@ nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 noremap <leader>gw :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
 noremap <leader>gc :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
 " }}}
+
+" Notifications notify
+nnoremap <leader>n <cmd>Telescope notify<CR>

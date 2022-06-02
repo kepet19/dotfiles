@@ -19,7 +19,12 @@ require('telescope').setup {
 require("telescope").load_extension("git_worktree")
 require('telescope').load_extension('fzy_native')
 require("telescope").load_extension("file_browser")
-require("telescope").load_extension("ui-select")
+if (IsModuleAvailable("ui-select")) then
+        require("telescope").load_extension("ui-select")
+end
+if (IsModuleAvailable("notify")) then
+    require("telescope").load_extension("notify")
+end
 
 local M = {}
 M.search_vimfiles = function()
@@ -52,7 +57,7 @@ end
             --   :h telescope.layout ->
             --   :h telescope.actions
             --
-function set_background(content)
+local function set_background(content)
     vim.fn.system(
         "setbg " .. content)
 end
@@ -60,7 +65,7 @@ end
 local function select_background(prompt_bufnr, map)
     local function set_the_background(close)
         local content =
-        require('telescope.actions.state').get_selected_entry(prompt_bufnr)
+        require('telescope.actions.state').get_selected_entry()
         set_background(content.cwd .. "/" .. content.value)
         if close then
             require('telescope.actions').close(prompt_bufnr)
