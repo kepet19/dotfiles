@@ -82,8 +82,8 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
+Plug 'nvim-telescope/telescope-ui-select.nvim'
 Plug 'tjdevries/cyclist.vim'
-" Plug 'itchyny/lightline.vim'
 
 " Markdown and website
 Plug 'vimwiki/vimwiki'

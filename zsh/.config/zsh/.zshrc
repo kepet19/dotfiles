@@ -188,6 +188,7 @@ bindkey -M vicmd v edit-command-line
 
 source /usr/share/fzf/completion.zsh
 
+eval "$(broot --print-shell-function zsh)"
 eval "$(navi widget zsh)"
 eval "$(_kn init --shell zsh)"
 eval "$(fnm env --use-on-cd)"

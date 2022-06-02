@@ -9,16 +9,17 @@ require('telescope').setup {
         -- grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
         -- qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
 
-        mappings = {
-            i = {
-            },
-        }
+        -- mappings = {
+        --     i = {
+        --     },
+        -- }
     },
 }
 
 require("telescope").load_extension("git_worktree")
 require('telescope').load_extension('fzy_native')
 require("telescope").load_extension("file_browser")
+require("telescope").load_extension("ui-select")
 
 local M = {}
 M.search_vimfiles = function()
