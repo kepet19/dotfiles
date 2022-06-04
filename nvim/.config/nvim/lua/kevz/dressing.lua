@@ -1,4 +1,4 @@
-if (IsModuleAvailable('dressing')) then
+if (not IsModuleAvailable('dressing')) then
     return
 end
 

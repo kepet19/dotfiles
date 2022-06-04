@@ -54,11 +54,11 @@ Plug 'tjdevries/nlua.nvim'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'nvim-lua/diagnostic-nvim'
 Plug 'simrat39/symbols-outline.nvim'
-Plug 'mfussenegger/nvim-dap'
-" Plug 'kosayoda/nvim-lightbulb'
-" Plug 'weilbith/nvim-code-action-menu'
+Plug 'kosayoda/nvim-lightbulb'
+Plug 'weilbith/nvim-code-action-menu'
 Plug 'onsails/lspkind-nvim'
 
+" Completions
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -70,11 +70,18 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'tzachar/cmp-tabnine', { 'do': install_path_script }
 
 
+" Debug Adapter Protocol DAP
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'theHamsta/nvim-dap-virtual-text'
+Plug 'nvim-telescope/telescope-dap.nvim'
+" Plug 'leoluz/nvim-dap-go' "No  Go at the Moment
+
+
 " Project navigation
 Plug 'ThePrimeagen/harpoon'
 Plug 'ThePrimeagen/git-worktree.nvim'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'preservim/nerdtree'
+
 
 " telescope
 Plug 'nvim-lua/popup.nvim'
@@ -252,6 +259,7 @@ call plug#end()
 " }}}
 
 lua require("kevz")
+nnoremap <M-CR> <cmd>CodeActionMenu<cr>
 
 " Basic's, Mappings, Leader and stuff {{{
 	" Folding section {{{
@@ -339,13 +347,13 @@ lua require("kevz")
     nnoremap N Nzzzv
     nnoremap J mzJ`z
 
-    " add break points
+    " add break points (For when undoing stuff)
     inoremap , ,<c-g>u
     inoremap . .<c-g>u
     inoremap ! !<c-g>u
     inoremap ? ?<c-g>u
-    " inoremap [ [<c-g>u
-    " inoremap ( (<c-g>u
+    inoremap [ [<c-g>u
+    inoremap ( (<c-g>u
 
     " add to the jump list
     nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
@@ -374,9 +382,7 @@ lua require("kevz")
         nnoremap <leader>h :CheatSh <C-R>=&filetype<CR>/
         " }}}
 	" netrw {{{
-        nnoremap <leader>n :NERDTreeCWD <CR>
-        nnoremap <leader>nn :NERDTreeToggle <CR>
-        let g:netrw_banner = 0            " disable banner
+        " let g:netrw_banner = 0            " disable banner
         " let g:netrw_browse_split=4      " open in prior window
         let g:netrw_browse_split=0
         " let g:netrw_winsize = 25
@@ -445,7 +451,6 @@ lua require("kevz")
     " Augroup THE_KEVZ {{{
         augroup THE_KEVZ
             autocmd!
-            " autocmd VimEnter * NERDTree | wincmd p
             autocmd VimLeave *.tex !texclear %
 
         " Save file as sudo on files that require root permission

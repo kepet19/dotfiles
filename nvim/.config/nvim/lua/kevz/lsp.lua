@@ -110,11 +110,11 @@ cmp.setup({
 		["<C-e>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
 		["<C-Space>"] = { i = cmp.mapping.complete() },
 		["<c-y>"] = {
-            i = cmp.mapping.confirm({ select = false}),
-        },
+			i = cmp.mapping.confirm({ select = false }),
+		},
 		-- ["<c-y>"] = {
-            -- i = cmp.mapping.confirm({ behavior = types.ConfirmBehavior.confirm }),
-        -- },
+		-- i = cmp.mapping.confirm({ behavior = types.ConfirmBehavior.confirm }),
+		-- },
 		-- ["<C-y>"] = {
 		-- 	i = cmp.mapping.confirm({ behavior = cmp.Confi}),
 		-- },
