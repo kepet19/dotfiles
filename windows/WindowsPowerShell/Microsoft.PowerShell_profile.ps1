@@ -60,5 +60,7 @@ Set-PSReadlineKeyHandler -Chord Tab -Function Complete
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadlineOption -ShowToolTips -BellStyle Visual
 
-
-Invoke-Expression (&starship init powershell)
+try {
+    Invoke-Expression (&starship init powershell)
+}
+Catch {}
