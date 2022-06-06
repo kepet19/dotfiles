@@ -16,8 +16,8 @@ alias \
 	ip="ip -c"
 
 # Colorize commands when possible.
+# ls="ls -hN --color=auto --group-directories-first" \
 alias \
-	\ # ls="ls -hN --color=auto --group-directories-first" \
     l="lsd -l --group-dirs first --date '+%H:%M %d-%m-%Y'"\
 	ls="lsd -lat --group-dirs first --date '+%H:%M %d-%m-%Y'" \
     la="lsd -la --group-dirs first --date '+%H:%M %d-%m-%Y'"\

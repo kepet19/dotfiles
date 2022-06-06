@@ -362,10 +362,10 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
     " moving text
     vnoremap J :m '>+1<CR>gv=gv
     vnoremap K :m '<-2<CR>gv=gv
-    inoremap <C-k> <esc>:m .-2<CR>==
-    inoremap <C-j> <esc>:m .+1<CR>==
-    nnoremap <leader>j :m .+1<CR>==
-    nnoremap <leader>k :m .-2<CR>==
+    " inoremap <C-k> <esc>:m .-2<CR>==
+    " inoremap <C-j> <esc>:m .+1<CR>==
+    " nnoremap <leader>j :m .+1<CR>==
+    " nnoremap <leader>k :m .-2<CR>==
 
     " some test
     nnoremap cn *``cgn
