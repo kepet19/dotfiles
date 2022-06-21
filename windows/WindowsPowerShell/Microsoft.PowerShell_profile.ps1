@@ -5,6 +5,7 @@ Function ser {Set-Location -Path ~/dev/serverportal/ServerPortal/}
 Function sql {Set-Location -Path ~/dev/sql/SQLAutomationProject/}
 Function fire {Set-Location -Path ~/dev/firewall-portal/}
 Function pmain {Set-Location -Path ~/dev/main-portal/MainPortalUI/}
+Function dotfiles {Set-Location -Path ~/dev/dotfiles}
 
 $DOTNET_CLI_TELEMETRY_OPTOUT=1
 
