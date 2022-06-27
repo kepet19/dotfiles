@@ -165,7 +165,7 @@ cmp.setup({
 	},
 
 	sources = cmp.config.sources({
-		{ name = "cmp_tabnine" },
+		-- { name = "cmp_tabnine" },
 		{ name = "nvim_lua" }, --
 		{ name = "luasnip", options = { use_show_conditions = false } }, -- For luasnip users.
 		{ name = "zsh" }, --
@@ -181,7 +181,7 @@ cmp.setup({
 			menu = {
 				buffer = "[buf]",
 				nvim_lsp = "[LSP]",
-				cmp_tabnine = "[TN]",
+				-- cmp_tabnine = "[TN]",
 				nvim_lua = "[api]",
 				path = "[path]",
 				luasnip = "[snip]",
@@ -192,7 +192,7 @@ cmp.setup({
 	sorting = {
 		priority_weight = 2,
 		comparators = {
-			require("cmp_tabnine.compare"),
+			-- require("cmp_tabnine.compare"),
 			compare.offset,
 			compare.exact,
 			compare.score,

@@ -67,7 +67,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'kdheepak/cmp-latex-symbols'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'tzachar/cmp-tabnine', { 'do': install_path_script }
+" Plug 'tzachar/cmp-tabnine', { 'do': install_path_script }
 
 
 " Debug Adapter Protocol DAP
