@@ -1,0 +1,1 @@
+net use \\file.nchosting.dk\Temp /DELETE
