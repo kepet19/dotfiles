@@ -33,7 +33,7 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 	buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action() <CR>", opts)
-	buf_set_keymap("n", "gr", "<cmd>lua require'telescope.builtin'.lsp_references()<CR>", opts)
+	buf_set_keymap("n", "gr", "<cmd>lua require'telescope.builtin'.lsp_references({layout_strategy='vertical', layout_config = {width = 0.9}})<CR>", opts)
 	buf_set_keymap("n", "g0", "<cmd>lua require'telescope.builtin'.lsp_document_symbols()<CR>", opts)
 	buf_set_keymap("n", "gW", "<cmd>lua require'telescope.builtin'.lsp_workspace_symbols()<CR>", opts)
 end

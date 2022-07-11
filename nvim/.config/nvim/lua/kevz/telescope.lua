@@ -1,3 +1,5 @@
+local Remap = require("kevz.keymap")
+local nnoremap = Remap.nnoremap
 local actions = require "telescope.actions"
 local action_layout = require "telescope.actions.layout"
 
@@ -6,10 +8,18 @@ require("telescope").setup {
     file_sorter = require("telescope.sorters").get_fzy_sorter,
     prompt_prefix = " >",
     color_devicons = true,
+    layout_config = {
+      vertical = { width = 0.9 }
+    },
 
     -- file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
     -- grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
     -- qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+    pickers = {
+      lsp_references = {
+        theme = "dropdown",
+      }
+    },
 
     mappings = {
       i = {
@@ -27,6 +37,10 @@ require("telescope").setup {
     },
   },
 }
+
+nnoremap("<leader>ps", function()
+    require('telescope.builtin').grep_string({layout_strategy='vertical', layout_config = {width = 0.9} ,search = vim.fn.input("Grep For > ")})
+end)
 
 require("telescope").load_extension "git_worktree"
 require("telescope").load_extension "fzy_native"
