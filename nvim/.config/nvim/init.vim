@@ -82,6 +82,8 @@ Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'ThePrimeagen/git-worktree.nvim'
 
+" Util
+Plug 'mbbill/undotree'
 
 " telescope
 Plug 'nvim-lua/popup.nvim'
@@ -162,6 +164,7 @@ call plug#end()
     " vim-translator {{{
     " Echo translation in the cmdline
     nmap <leader>rr <Plug>RestNvim
+    nmap <leader>rl <Plug>RestNvimLast
     nmap <leader>rp <Plug>RestNvimPreview
     nmap <silent> <leader>tg :!xdg-open "https://translate.google.com"<CR>
     nmap <silent> <leader>tt <Plug>Translate

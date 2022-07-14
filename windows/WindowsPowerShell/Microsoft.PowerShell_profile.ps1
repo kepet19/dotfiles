@@ -7,6 +7,7 @@ Function fire {Set-Location -Path ~/dev/firewall-portal/}
 Function pmain {Set-Location -Path ~/dev/main-portal/MainPortalUI/}
 Function dotfiles {Set-Location -Path ~/dev/dotfiles}
 
+Del alias:curl
 $DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 function co
