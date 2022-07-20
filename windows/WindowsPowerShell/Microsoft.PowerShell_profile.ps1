@@ -1,6 +1,7 @@
 Function dev {Set-Location -Path ~/dev/}
 Function mvc {Set-Location -Path ~/dev/mvc_dev/MVCPortal/MVCPortal/}
 Function mvcd {Set-Location -Path ~/dev/mvc_deploy/MVCPortal/MVCPortal/}
+Function adportal {Set-Location -Path ~/dev/adportalmodule/}
 Function ser {Set-Location -Path ~/dev/serverportal/ServerPortal/}
 Function sql {Set-Location -Path ~/dev/sql/SQLAutomationProject/}
 Function fire {Set-Location -Path ~/dev/firewall-portal/}
