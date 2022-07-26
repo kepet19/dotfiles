@@ -21,7 +21,6 @@ autoload -U compinit
 setopt autocd
 # zstyle ':completion:*' menu select
 zstyle ':completion:*' menu select 'm:{a-z}={A-Z}'
-set completion-ignore-case on
 zmodload zsh/complist
 compinit
 
