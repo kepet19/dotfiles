@@ -7,6 +7,10 @@ require "kevz.luasnip"
 require "kevz.vimgui"
 require "kevz.dressing"
 
+local Remap = require("kevz.keymap")
+local nnoremap = Remap.nnoremap
+local inoremap = Remap.inoremap
+
 -- nvim-treesitter
 require("nvim-treesitter.configs").setup {
   ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -92,3 +96,32 @@ require("nvim-treesitter.configs").setup {
     -- termcolors = {} -- table of colour name strings
   },
 }
+require("rest-nvim").setup({
+      -- Open request results in a horizontal split
+      result_split_horizontal = false,
+      -- Keep the http file buffer above|left when split horizontal|vertical
+      result_split_in_place = false,
+      -- Skip SSL verification, useful for unknown certificates
+      skip_ssl_verification = true,
+      -- Highlight request on run
+      highlight = {
+        enabled = true,
+        timeout = 150,
+      },
+      result = {
+        -- toggle showing URL, HTTP info, headers at top the of result window
+        show_url = true,
+        show_http_info = true,
+        show_headers = true,
+      },
+      -- Jump to request line on run
+      jump_to_request = false,
+      env_file = '.env',
+      custom_dynamic_variables = {},
+      yank_dry_run = true,
+    })
+
+nnoremap("<leader>u", ":UndotreeShow<CR>")
+inoremap("<C-c>", "<Esc>")
+nnoremap("<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+nnoremap("<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")

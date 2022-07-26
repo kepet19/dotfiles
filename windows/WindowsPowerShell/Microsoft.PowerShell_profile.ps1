@@ -1,8 +1,15 @@
+Function dev {Set-Location -Path ~/dev/}
 Function mvc {Set-Location -Path ~/dev/mvc_dev/MVCPortal/MVCPortal/}
 Function mvcd {Set-Location -Path ~/dev/mvc_deploy/MVCPortal/MVCPortal/}
-Function dev {Set-Location -Path ~/dev/}
+Function adportal {Set-Location -Path ~/dev/adportalmodule/}
 Function ser {Set-Location -Path ~/dev/serverportal/ServerPortal/}
+Function sql {Set-Location -Path ~/dev/sql/SQLAutomationProject/}
+Function fire {Set-Location -Path ~/dev/firewall-portal/}
+Function pmain {Set-Location -Path ~/dev/main-portal/MainPortalUI/}
+Function dotfiles {Set-Location -Path ~/dev/dotfiles}
 
+Del alias:curl
+$DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 function co
 {
@@ -24,6 +31,12 @@ function co
     )
 
     git checkout $branch;
+}
+
+# For editing Microsoft SQL alias and stuff
+Function Edit-SQL-Alias
+{
+    C:\Windows\SysWOW64\SQLServerManager15.msc
 }
 
 # for editing your PowerShell profile
@@ -55,6 +68,7 @@ Function Edit-Nu
     vim $home\AppData\Roaming\nushell\nu\config\config.toml
 }
 
+Import-Module posh-git
 Set-PSReadLineOption -EditMode vi
 Set-PSReadlineKeyHandler -Chord Tab -Function Complete
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete

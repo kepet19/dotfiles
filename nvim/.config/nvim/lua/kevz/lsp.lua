@@ -33,7 +33,7 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 	buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action() <CR>", opts)
-	buf_set_keymap("n", "gr", "<cmd>lua require'telescope.builtin'.lsp_references()<CR>", opts)
+	buf_set_keymap("n", "gr", "<cmd>lua require'telescope.builtin'.lsp_references({layout_strategy='vertical', layout_config = {width = 0.9}})<CR>", opts)
 	buf_set_keymap("n", "g0", "<cmd>lua require'telescope.builtin'.lsp_document_symbols()<CR>", opts)
 	buf_set_keymap("n", "gW", "<cmd>lua require'telescope.builtin'.lsp_workspace_symbols()<CR>", opts)
 end
@@ -165,7 +165,7 @@ cmp.setup({
 	},
 
 	sources = cmp.config.sources({
-		{ name = "cmp_tabnine" },
+		-- { name = "cmp_tabnine" },
 		{ name = "nvim_lua" }, --
 		{ name = "luasnip", options = { use_show_conditions = false } }, -- For luasnip users.
 		{ name = "zsh" }, --
@@ -181,7 +181,7 @@ cmp.setup({
 			menu = {
 				buffer = "[buf]",
 				nvim_lsp = "[LSP]",
-				cmp_tabnine = "[TN]",
+				-- cmp_tabnine = "[TN]",
 				nvim_lua = "[api]",
 				path = "[path]",
 				luasnip = "[snip]",
@@ -192,7 +192,7 @@ cmp.setup({
 	sorting = {
 		priority_weight = 2,
 		comparators = {
-			require("cmp_tabnine.compare"),
+			-- require("cmp_tabnine.compare"),
 			compare.offset,
 			compare.exact,
 			compare.score,

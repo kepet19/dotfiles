@@ -1,11 +1,11 @@
 let mapleader =" "
 
 if !exists("g:os")
-	if has("win64") || has("win32") || has("win16")
-		let g:os = "Windows"
-	else
-		let g:os = substitute(system('uname'), '\n', '', '')
-	endif
+    if has("win64") || has("win32") || has("win16")
+        let g:os = "Windows"
+    else
+        let g:os = substitute(system('uname'), '\n', '', '')
+    endif
 endif
 
 
@@ -67,7 +67,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'kdheepak/cmp-latex-symbols'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'tzachar/cmp-tabnine', { 'do': install_path_script }
+" Plug 'tzachar/cmp-tabnine', { 'do': install_path_script }
 
 
 " Debug Adapter Protocol DAP
@@ -82,6 +82,8 @@ Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'ThePrimeagen/git-worktree.nvim'
 
+" Util
+Plug 'mbbill/undotree'
 
 " telescope
 Plug 'nvim-lua/popup.nvim'
@@ -162,6 +164,7 @@ call plug#end()
     " vim-translator {{{
     " Echo translation in the cmdline
     nmap <leader>rr <Plug>RestNvim
+    nmap <leader>rl <Plug>RestNvimLast
     nmap <leader>rp <Plug>RestNvimPreview
     nmap <silent> <leader>tg :!xdg-open "https://translate.google.com"<CR>
     nmap <silent> <leader>tt <Plug>Translate
@@ -271,12 +274,12 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
 
 	"	nnoremap <space> za "Open and close folds"
 	" }}}
-	" Some basics: {{{
+    " Some basics: {{{
         set exrc
-		set tabstop=4
-		set softtabstop=0
+        set tabstop=4
+        set softtabstop=0
         set expandtab
-		set shiftwidth=4
+        set shiftwidth=4
         set smarttab
         set list
         set title
@@ -286,9 +289,9 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
             set undodir=$HOME/.local/share/nvim/undo  "directory where the undo files will be store
             set undofile                 "turn on the feature
         endif
-		" set shortmess+=c "Avoid showing extra messages when using completion
-		" set wildmode=list:longest,list:full
-		set path+=.,** " Add subfolders aswell
+        " set shortmess+=c "Avoid showing extra messages when using completion
+        " set wildmode=list:longest,list:full
+        set path+=.,** " Add subfolders aswell
         set wildmode=longest,list,full
         set wildmenu
         " Ignore files
@@ -299,45 +302,45 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
         set wildignore+=**/android/*
         set wildignore+=**/ios/*
         set wildignore+=**/.git/*
-		set go=a
-		set mouse=a
-		" set nohlsearch
+        set go=a
+        set mouse=a
+        " set nohlsearch
         set ignorecase      " Do case insensitive search unless there are capital letters
         set incsearch       " Perform incremental searching
-		set signcolumn=yes
+        set signcolumn=yes
         set inccommand=split
-		set clipboard+=unnamedplus
-		set scrolloff=8 "Keeps the screecenter
-		set nowrap
-		set nocompatible
-		set encoding=utf-8
-		set number relativenumber
+        set clipboard+=unnamedplus
+        set scrolloff=8 "Keeps the screecenter
+        set nowrap
+        set nocompatible
+        set encoding=utf-8
+        set number relativenumber
         " set cmdheight=1
-	" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
-		" set splitbelow splitright
-	" Mapping to change pwd to the directory of the current buffer.
-		nnoremap cm :cd %:h<CR>:pwd<CR>
+        " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
+        " set splitbelow splitright
+        " Mapping to change pwd to the directory of the current buffer.
+        nnoremap cm :cd %:h<CR>:pwd<CR>
         "Enter for clear search!
         nnoremap <expr> <CR> {-> v:hlsearch ? ":nohl\<CR>" : "\<CR>"}()
-	" Toggle Wrap
-		nnoremap <Leader>w :set wrap!<CR>
-	" Removes pipes | that act as seperators on splits
-		set fillchars+=vert:\
-	" Change 2 split windows from vert to horiz or horiz to vert
-		map <leader>th <C-w>t<C-w>H
-		map <leader>tk <C-w>t<C-w>K
-	" VIMRC
-		nnoremap <leader>ev :lua require('kevz.telescope').search_vimfiles()<CR>
-		nnoremap <leader>ef :lua require('kevz.telescope').search_dotfiles()<CR>
-		nnoremap <leader>sv :source $MYVIMRC <bar> :doautocmd BufRead<CR>
-	" Replace all is aliased to S.
-		" nnoremap S :%s//g<Left><Left>
-	" Open corresponding .pdf/.html or preview
-		map <leader>p :!opout <c-r>%<CR><CR>
-	" Format Json JSON
-		"map <leader>ff :%!jq .
-    " Compiler script
-		map <leader>c :w! \| !compiler <c-r>%<CR>
+        " Toggle Wrap
+        nnoremap <Leader>w :set wrap!<CR>
+        " Removes pipes | that act as seperators on splits
+        set fillchars+=vert:\
+        " Change 2 split windows from vert to horiz or horiz to vert
+        map <leader>th <C-w>t<C-w>H
+        map <leader>tk <C-w>t<C-w>K
+        " VIMRC
+        nnoremap <leader>ev :lua require('kevz.telescope').search_vimfiles()<CR>
+        nnoremap <leader>ef :lua require('kevz.telescope').search_dotfiles()<CR>
+        nnoremap <leader>sv :source $MYVIMRC <bar> :doautocmd BufRead<CR>
+        " Replace all is aliased to S.
+        " nnoremap S :%s//g<Left><Left>
+        " Open corresponding .pdf/.html or preview
+        map <leader>p :!opout <c-r>%<CR><CR>
+        " Format Json JSON
+        "map <leader>ff :%!jq .
+        " Compiler script
+        map <leader>c :w! \| !compiler <c-r>%<CR>
 
     " Slide navigator
         nnoremap <Right> :n<CR>
@@ -370,7 +373,6 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
     " some test
     nnoremap cn *``cgn
     nnoremap cN *``cgN
-	" }}}
     " Cheat.sh {{{
         function Cheat(query)
             let query = 'cheat.sh/' . a:query
@@ -390,16 +392,16 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
         let g:netrw_liststyle = 3         " tree view
         let g:netrw_list_hide=netrw_gitignore#Hide()    " Hides files that is in gitignore
         let g:netrw_list_hide.='.class'                 " Hides class
-	" }}}
-	" Copy selected lines as CSV {{{
-		xnoremap <silent> <Leader>y :<C-u>call <SID>CopyLinesAsCSV()<CR>
-		fun s:CopyLinesAsCSV() abort
-		    let [_, l1, c1, _] = getpos("'<")
-		    let [_, l2, c2, _] = getpos("'>")
-		    let lines = map(getline(l1, l2), {i, l -> trim(l[c1-1:c2-1])})
-		    call setreg(v:register, join(lines, ', '), 'l')
-		endfun
-	" }}}
+        " }}}
+        " Copy selected lines as CSV {{{
+        xnoremap <silent> <Leader>y :<C-u>call <SID>CopyLinesAsCSV()<CR>
+        fun s:CopyLinesAsCSV() abort
+            let [_, l1, c1, _] = getpos("'<")
+            let [_, l2, c2, _] = getpos("'>")
+            let lines = map(getline(l1, l2), {i, l -> trim(l[c1-1:c2-1])})
+            call setreg(v:register, join(lines, ', '), 'l')
+        endfun
+        " }}}
     " special things {{{
         " Check file in shellcheck:
         nnoremap <leader>s :!clear && shellcheck %<CR>
@@ -414,30 +416,31 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
         " Spell correction the last word Ctrl + l
         inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
     " }}}
-	" Vim color scheme {{{
-		set t_Co=256
-		" set background=dark    " Setting dark mode
-		set termguicolors
-		let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-		let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-		" colorscheme jellybeans
+       " Vim color scheme {{{
+       set t_Co=256
+       " set background=dark    " Setting dark mode
+       set termguicolors
+       let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+       let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+        " colorscheme jellybeans
         " let ayucolor="dark"
         
         " lua require('colorbuddy').colorscheme('gruvbuddy')
         " lua require("lsp-colors").setup()
         " darker, lighter, oceanic, palenight, deep ocean,
         let g:material_style = 'deep ocean' 
-        colorscheme tokyonight
+        " colorscheme tokyonight
+        colorscheme jellybeans
 
-		" colorscheme ayu
-		" let g:nord_uniform_status_lines = 1
-		" highlight ColorColumn ctermbg=235 guibg=#2c2d27
-		let &colorcolumn="80"
-		set cursorline
-		" Makes wim transperrent
-		" hi Normal guibg=None ctermbg=None
-	" }}}
-" }}}
+        " colorscheme ayu
+        " let g:nord_uniform_status_lines = 1
+        " highlight ColorColumn ctermbg=235 guibg=#2c2d27
+        let &colorcolumn="80"
+        set cursorline
+        " Makes wim transperrent
+        " hi Normal guibg=None ctermbg=None
+        " }}}
+    " }}}
 
 " AUTOCMD -----{{{
     " FORMAT FMT {{{
