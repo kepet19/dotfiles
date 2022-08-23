@@ -40,17 +40,16 @@ end
 
 local lspkind = require("lspkind")
 local cmp = require("cmp")
-local types = require("cmp.types")
 local compare = require("cmp.config.compare")
 local t = function(str)
 	return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-cmp.setup.cmdline(":", {
-	sources = {
-		{ name = "cmdline" },
-	},
-})
+-- cmp.setup.cmdline(":", {
+-- 	sources = {
+-- 		{ name = "cmdline" },
+-- 	},
+-- })
 
 cmp.setup.cmdline("/", {
 	sources = {
@@ -108,7 +107,7 @@ cmp.setup({
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 		["<C-e>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
-		["<C-Space>"] = { i = cmp.mapping.complete() },
+		["<C-Space>"] = { i = cmp.mapping.complete({}) },
 		["<c-y>"] = {
 			i = cmp.mapping.confirm({ select = false }),
 		},
@@ -237,24 +236,24 @@ for _, lsp in ipairs(servers) do
 	})
 end
 
--- lspconfig.csharp_ls.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   flags = { debounce_text_changes = 150 },
---   init_options = { AutomaticWorkspaceInit = false }
--- }
+lspconfig.csharp_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = { debounce_text_changes = 150 },
+  init_options = { AutomaticWorkspaceInit = false }
+}
 
-lspconfig.omnisharp.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	cmd = {
-		"C:/Users/kkmp/dev/omnisharp-win-x64/OmniSharp.exe",
-		"--languageserver",
-		"--hostPID",
-		tostring(vim.fn.getpid()),
-	},
-	flags = { debounce_text_changes = 150 },
-})
+-- lspconfig.omnisharp.setup({
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities,
+-- 	cmd = {
+-- 		"C:/Users/kkmp/dev/omnisharp-win-x64/OmniSharp.exe",
+-- 		"--languageserver",
+-- 		"--hostPID",
+-- 		tostring(vim.fn.getpid()),
+-- 	},
+-- 	flags = { debounce_text_changes = 150 },
+-- })
 
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
@@ -300,10 +299,10 @@ lspconfig.sumneko_lua.setup({
 --   cmd = { "/home/kkmp/dev/java-language-server/dist/lang_server_linux.sh" },
 -- }
 
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
+-- vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 -- Don't show the dumb matching stuff.
-vim.opt.shortmess:append("c")
+-- vim.opt.shortmess:append("c")
 
 local opts = {
 	tools = { -- rust-tools options
@@ -313,11 +312,6 @@ local opts = {
 		-- the hints or just run :RustSetInlayHints.
 		-- default: true
 		autoSetHints = true,
-
-		-- whether to show hover actions inside the hover window
-		-- this overrides the default hover handler
-		-- default: true
-		hover_with_actions = true,
 
 		runnables = {
 			-- whether to use telescope for selection menu or not
