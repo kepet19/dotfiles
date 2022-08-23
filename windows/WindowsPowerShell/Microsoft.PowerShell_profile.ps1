@@ -68,6 +68,18 @@ Function Edit-Nu
     vim $home\AppData\Roaming\nushell\nu\config\config.toml
 }
 
+function Get-PublicTokenFromDll
+{
+    [CmdLetBinding()]
+    [OutPutType([PSCustomObject])]
+    param( 
+    [Parameter(Mandatory)] 
+    [string] $FilePath
+    )
+    ([system.reflection.assembly]::loadfile($FilePath)).FullName
+}
+
+
 Import-Module posh-git
 Set-PSReadLineOption -EditMode vi
 Set-PSReadlineKeyHandler -Chord Tab -Function Complete

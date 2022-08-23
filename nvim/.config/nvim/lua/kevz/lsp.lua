@@ -375,6 +375,9 @@ local opts = {
 }
 
 require("rust-tools").setup(opts)
--- require("lspconfig").rust_analyzer.setup(config({
---   cmd = { "rustup", "run", "nightly", "rust-analyzer"}
--- }))
+require("lspconfig").rust_analyzer.setup({
+  cmd = { "rustup", "run", "nightly", "rust-analyzer"},
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = { debounce_text_changes = 150 }
+})
