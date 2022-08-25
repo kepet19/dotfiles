@@ -2,7 +2,7 @@
 	email = kevinmeejach@gmail.com
 	signingkey = 2D3CF82D41B75758
 	mail = kepet19@student.sdu.dk
-	name = kepet19
+	name = kkmp
 [gpg]
 	program = gpg2
 [commit]
@@ -11,20 +11,25 @@
 	autocrlf = input
 	excludesfile = /home/kkmp/.config/git/.gitignore
 [alias]
-	st = status
-	ca = commit -a
-	cm = commit -m
-	cma = commit -am
-	ph = push
+    st = status
+    ca = commit -a
+    cm = commit -m
+    cma = commit -am
+    ph = push
     phf = push --force
-	pl = pull
-	ft = fetch
-	rt = restore
-	br = branch
-	sc = switch
-	scc = switch -c
+    pl = pull
+    ft = fetch
+    rt = restore
+    br = branch
+    sc = switch
+    scc = switch -c
+    sl = stash list
+    sp = stash pop
+    sclear = stash clear
     logp = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     lol = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    d = !git --no-pager diff
+	ls = ls-files
 [pull]
 	rebase = false
 [filter "lfs"]
