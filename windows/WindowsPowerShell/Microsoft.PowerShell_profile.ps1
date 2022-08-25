@@ -1,11 +1,11 @@
 Function dev {Set-Location -Path ~/dev/}
 Function mvc {Set-Location -Path ~/dev/mvc_dev/MVCPortal/MVCPortal/}
-Function mvcd {Set-Location -Path ~/dev/mvc_deploy/MVCPortal/MVCPortal/}
+Function mvcd {Set-Location -Path ~/dev/ad-portal/}
 Function adportal {Set-Location -Path ~/dev/adportalmodule/}
-Function ser {Set-Location -Path ~/dev/serverportal/ServerPortal/}
-Function sql {Set-Location -Path ~/dev/sql/SQLAutomationProject/}
+Function ser {Set-Location -Path ~/dev/server-portal/}
+Function sql {Set-Location -Path ~/dev/sql-portal/}
 Function fire {Set-Location -Path ~/dev/firewall-portal/}
-Function pmain {Set-Location -Path ~/dev/main-portal/MainPortalUI/}
+Function pmain {Set-Location -Path ~/dev/main-portal/}
 Function dotfiles {Set-Location -Path ~/dev/dotfiles}
 
 Del alias:curl

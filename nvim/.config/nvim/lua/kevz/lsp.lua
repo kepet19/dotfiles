@@ -236,24 +236,23 @@ for _, lsp in ipairs(servers) do
 	})
 end
 
-lspconfig.csharp_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  flags = { debounce_text_changes = 150 },
-  init_options = { AutomaticWorkspaceInit = false }
-}
-
--- lspconfig.omnisharp.setup({
--- 	on_attach = on_attach,
--- 	capabilities = capabilities,
--- 	cmd = {
--- 		"C:/Users/kkmp/dev/omnisharp-win-x64/OmniSharp.exe",
--- 		"--languageserver",
--- 		"--hostPID",
--- 		tostring(vim.fn.getpid()),
--- 	},
--- 	flags = { debounce_text_changes = 150 },
--- })
+-- lspconfig.csharp_ls.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   flags = { debounce_text_changes = 150 },
+--   init_options = { AutomaticWorkspaceInit = false }
+-- }
+lspconfig.omnisharp.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	cmd = {
+		"C:/Users/kkmp/scoop/apps/omnisharp/current/OmniSharp.exe",
+		"--languageserver",
+		"--hostPID",
+		tostring(vim.fn.getpid()),
+	},
+	flags = { debounce_text_changes = 150 },
+})
 
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
