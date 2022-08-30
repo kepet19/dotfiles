@@ -45,11 +45,11 @@ local t = function(str)
 	return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
--- cmp.setup.cmdline(":", {
--- 	sources = {
--- 		{ name = "cmdline" },
--- 	},
--- })
+cmp.setup.cmdline(":", {
+	sources = {
+		{ name = "cmdline" },
+	},
+})
 
 cmp.setup.cmdline("/", {
 	sources = {
@@ -135,6 +135,14 @@ cmp.setup({
 				end
 			end,
 		}),
+		["<C-N>"] = cmp.mapping({
+			c = function()
+				vim.api.nvim_feedkeys(t("<Down>"), "n", true)
+			end,
+			i = function(fallback)
+				fallback()
+			end,
+		}),
 		["<C-p>"] = cmp.mapping({
 			c = function()
 				if cmp.visible() then
@@ -149,6 +157,14 @@ cmp.setup({
 				else
 					fallback()
 				end
+			end,
+		}),
+		["<C-P>"] = cmp.mapping({
+			c = function()
+				vim.api.nvim_feedkeys(t("<Up>"), "n", true)
+			end,
+			i = function(fallback)
+				fallback()
 			end,
 		}),
 		-- ['<CR>'] = cmp.mapping({
