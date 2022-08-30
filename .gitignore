@@ -3,3 +3,4 @@ nvim/.config/nvim/plugged/
 windows/WindowsPowerShell/Modules/
 *.spl
 sway/.local/bin/amdgpu-pptable-editor-qt
+.luarc.json
