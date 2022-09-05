@@ -262,7 +262,7 @@ lspconfig.omnisharp.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	cmd = {
-		"C:/Users/kkmp/scoop/apps/omnisharp/current/OmniSharp.exe",
+		"C:/Users/kkmp/scoop/shims/omnisharp.exe",
 		"--languageserver",
 		"--hostPID",
 		tostring(vim.fn.getpid()),
