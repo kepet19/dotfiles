@@ -26,6 +26,7 @@ let g:config_path = '$HOME/.config/nvim/'
 if g:os == "Windows"
     let g:config_path = '$USERPROFILE/AppData/Local/nvim/'
     let install_path_script = 'powershell ./install.ps1'
+    let $PATH = expand('$USERPROFILE/scoop/shims/;' . $PATH)
 	"set shell=powershell
 	"set shellcmdflag=-command
 endif
@@ -430,7 +431,7 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
         " darker, lighter, oceanic, palenight, deep ocean,
         let g:material_style = 'deep ocean' 
         " colorscheme tokyonight
-        colorscheme jellybeans
+        colorscheme sonokai
 
         " colorscheme ayu
         " let g:nord_uniform_status_lines = 1
