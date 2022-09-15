@@ -1,7 +1,10 @@
-vim.g.gui_font_default_size = 10
+vim.g.gui_font_default_size = 12
 vim.g.gui_font_size = vim.g.gui_font_default_size
--- vim.g.gui_font_face = "Fira Code Retina"
-vim.g.gui_font_face = "Comic mono"
+vim.ggui_font_face = "Fira Code Retina"
+
+if (vim.g.os == "windows") then
+  vim.g.gui_font_face = "Cascadia Code PL"
+end
 
 RefreshGuiFont = function()
   vim.opt.guifont = string.format("%s:h%s",vim.g.gui_font_face, vim.g.gui_font_size)

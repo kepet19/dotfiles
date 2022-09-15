@@ -9,6 +9,8 @@ Function pmain {Set-Location -Path ~/dev/main-portal/}
 Function dotfiles {Set-Location -Path ~/dev/dotfiles}
 
 Del alias:curl
+# Del alias:ls
+# set-alias ls -Value lsd
 $DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 function co
@@ -85,6 +87,8 @@ Set-PSReadLineOption -EditMode vi
 Set-PSReadlineKeyHandler -Chord Tab -Function Complete
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadlineOption -ShowToolTips -BellStyle Visual
+Set-PSReadLineKeyHandler -Chord Ctrl+o -ScriptBlock { lfcd }
+
 
 try {
     Invoke-Expression (&starship init powershell)

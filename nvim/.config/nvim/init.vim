@@ -3,6 +3,7 @@ let mapleader =" "
 if !exists("g:os")
     if has("win64") || has("win32") || has("win16")
         let g:os = "Windows"
+        set guifont=Cascadia\ Code\ PL:h10
     else
         let g:os = substitute(system('uname'), '\n', '', '')
     endif
