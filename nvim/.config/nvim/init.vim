@@ -351,7 +351,11 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
     nnoremap n nzzzv
     nnoremap N Nzzzv
     nnoremap J mzJ`z
+
     nnoremap <leader>p "_Dp
+    nnoremap <leader>d "_d
+    vnoremap <leader>d "_d
+
     nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
     " add break points (For when undoing stuff)
@@ -413,9 +417,6 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
         " Spell-check set to <leader>o, 'o' for 'orthography':
         nnoremap <leader>od :setlocal spell! spelllang=da<CR>
         nnoremap <leader>oe :setlocal spell! spelllang=en<CR>
-
-        nnoremap <leader>d "_d
-        vnoremap <leader>d "_d
 
         " Spell correction the last word Ctrl + l
         inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
