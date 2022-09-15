@@ -1,12 +1,11 @@
 [user]
 	email = kevinmeejach@gmail.com
 	signingkey = 2D3CF82D41B75758
-	mail = kepet19@student.sdu.dk
 	name = kkmp
-[gpg]
-	program = gpg2
+
 [commit]
-	gpgsign = true
+	gpgsign = false
+
 [core]
 	autocrlf = input
 	excludesfile = /home/kkmp/.config/git/.gitignore
