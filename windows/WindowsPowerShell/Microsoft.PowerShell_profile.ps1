@@ -51,7 +51,6 @@ Function Edit-Profile
 Function Edit-Dotfiles
 {
     cd ~/dev/dotfiles
-    neovide .
 }
 
 # for editing your Vim settings

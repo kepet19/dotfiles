@@ -412,7 +412,7 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
         " }}}
     " special things {{{
         " Check file in shellcheck:
-        nnoremap <leader>s :!clear && shellcheck %<CR>
+        " nnoremap <leader>s :!clear && shellcheck %<CR>
 
         " Spell-check set to <leader>o, 'o' for 'orthography':
         nnoremap <leader>od :setlocal spell! spelllang=da<CR>
