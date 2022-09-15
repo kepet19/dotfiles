@@ -172,7 +172,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # Dot files 
 alias config='/usr/bin/git --git-dir=/home/kkmp/.cfg/ --work-tree=/home/kkmp'
 
-source /usr/share/fzf/key-bindings.zsh
+# source /usr/share/fzf/key-bindings.zsh
 bindkey -s '^o' 'lfcd\n'  # zsh
 # bindkey -s '^o' 'cd "$(xplr)"\n'  # zsh
 bindkey -s '^z' "fg\015"
@@ -185,7 +185,7 @@ autoload -z edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
-source /usr/share/fzf/completion.zsh
+# source /usr/share/fzf/completion.zsh
 
 eval "$(broot --print-shell-function zsh)"
 eval "$(navi widget zsh)"

@@ -1,13 +1,15 @@
 # Profile file. Runs on login. Environmental variables are set here.
 
 # Adds `~/.local/bin` to $PATH
-local_bin=$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')
+local_bin=$(du "$HOME/.local/bin" | cut -f2 | tr '\n' ':' | sed 's/:*$//')
 export PATH="$PATH:$local_bin"
 export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$PATH:$HOME/dev/go/bin/"
+export PATH="$PATH:$HOME/dev/go/bin"
+export PATH="$PATH:/usr/local/go/bin"
 export ANDROID_SDK_ROOT="$HOME/dev/android/sdk"
 export ANDROID_NDK_ROOT="$ANDROID_SDK_ROOT/ndk/22.1.7171670"
 export JAVA_HOME="/usr/lib/jvm/default/"
+export GOPATH="$HOME/dev/go"
 export JDTLS_HOME="$HOME/.config/jdtls"
 export _systemd_git_kdbus=--enable-kdbus
 export LARBSWM="i3"

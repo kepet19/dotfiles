@@ -351,6 +351,8 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
     nnoremap n nzzzv
     nnoremap N Nzzzv
     nnoremap J mzJ`z
+    nnoremap <leader>p "_Dp
+    nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
     " add break points (For when undoing stuff)
     inoremap , ,<c-g>u
