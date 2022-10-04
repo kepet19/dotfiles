@@ -47,6 +47,11 @@ Function Edit-Profile
     nvim $profile
 }
 
+Function Edit-Starship
+{
+    nvim $home\.config\starship.toml
+}
+
 # for editing dot files
 Function Edit-Dotfiles
 {
@@ -82,12 +87,21 @@ function Get-PublicTokenFromDll
 
 
 Import-Module posh-git
+$GitPromptSettings.EnableFileStatus = $false
+
 Set-PSReadLineOption -EditMode vi
 Set-PSReadlineKeyHandler -Chord Tab -Function Complete
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadlineOption -ShowToolTips -BellStyle Visual
-Set-PSReadLineKeyHandler -Chord Ctrl+o -ScriptBlock { lfcd }
+Set-PSReadLineKeyHandler -Chord Ctrl+o -ScriptBlock {
+    lfcd
+    [Microsoft.PowerShell.PSConsoleReadLine]::Insert('cls;')
+    [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
+    [Microsoft.PowerShell.PSConsoleReadLine]::Insert('ls;')
+    [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
+}
 
+$env:path = "$env:userprofile\scoop\shims\;$env:path"
 
 try {
     Invoke-Expression (&starship init powershell)

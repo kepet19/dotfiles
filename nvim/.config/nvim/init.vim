@@ -49,6 +49,7 @@ endif
 call plug#begin(g:config_path . "plugged")
 
 " Plebvim lsp Plugins
+Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'tjdevries/nlua.nvim'
@@ -353,7 +354,6 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
     nnoremap J mzJ`z
 
     nnoremap <leader>p "_Dp
-    nnoremap <leader>d "_d
     vnoremap <leader>d "_d
 
     nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
@@ -378,7 +378,7 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
     " nnoremap <leader>j :m .+1<CR>==
     " nnoremap <leader>k :m .-2<CR>==
 
-    " some test
+    " When replacing word with c then make it a search
     nnoremap cn *``cgn
     nnoremap cN *``cgN
     " Cheat.sh {{{
