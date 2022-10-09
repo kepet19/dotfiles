@@ -1,0 +1,66 @@
+#!/bin/sh
+
+# Use neovim for vim if present.
+command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
+
+# Verbosity and settings that you pretty much just always are going to want.
+alias \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm="rm -v" \
+	bc="bc -lq" \
+	mkd="mkdir -pv" \
+	yt="youtube-dl --add-metadata -i" \
+	yta="yt -x -f bestaudio/best" \
+	ffmpeg="ffmpeg -hide_banner" \
+	ip="ip -c"
+
+# Colorize commands when possible.
+# ls="ls -hN --color=auto --group-directories-first" \
+alias \
+    l="lsd -l --group-dirs first --date '+%H:%M %d-%m-%Y'"\
+	ls="lsd -lat --group-dirs first --date '+%H:%M %d-%m-%Y'" \
+    la="lsd -la --group-dirs first --date '+%H:%M %d-%m-%Y'"\
+    ll="lsd -lat --group-dirs first --date relative"\
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	ccat="highlight --out-format=ansi"
+
+# These common commands are just too long! Abbreviate them.
+alias \
+	ka="killall" \
+	g="git" \
+	:q="exit" \
+	trem="transmission-remote" \
+	YT="youtube-viewer" \
+	sdn="sudo shutdown -h now" \
+	f="$FILE" \
+	e="$EDITOR" \
+	v="$EDITOR" \
+	p="sudo pacman" \
+	o="xdg-open" \
+	c="cargo"  \
+	skf="sk --ansi -i -c 'rg --color=always --line-number \"{}\"'" \
+    x='cd "$(xplr)"' \
+    docker-rm='docker images -a -q | xargs docker rmi --force' \
+    sk="sk --preview=\"bat {} --color=always\"" \
+    rt='swaymsg resize set 40 ppt 40 ppt;swaymsg move position center'
+
+# This alias is important. It enables the `pauseallmpv` command.
+alias mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)"
+
+# Some other stuff
+alias \
+	magit="nvim -c MagitOnly" \
+	ref="shortcuts >/dev/null; source ~/.config/shortcutrc" \
+	weath="less -S ~/.local/share/weatherreport" \
+	config='/usr/bin/git --git-dir=/home/kkmp/.cfg/ --work-tree=/home/kkmp' \
+	zathura="zathura --fork" \
+	lsf="fzf | xargs ls -l" \
+	cal="cal -w" \
+	rm="trash" \
+    asway="autolog sway" \
+	mvnc="mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart" \
+	mvnc_fxml_javafx="mvn archetype:generate -DarchetypeGroupId=org.openjfx -DarchetypeArtifactId=javafx-archetype-fxml" \
+	mvnc_simple_javafx="mvn archetype:generate -DarchetypeGroupId=org.openjfx -DarchetypeArtifactId=javafx-archetype-simple" \
+    tree-java="tree -P '*.java' -I '**/target'"
