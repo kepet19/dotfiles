@@ -1,0 +1,274 @@
+/* hides the native tabs */
+#TabsToolbar {
+  visibility: collapse;
+}
+#titlebar {
+  visibility: collapse;
+}
+#sidebar-header {
+  visibility: collapse !important;
+}
+
+/* 
+ * For Setting up firefox to use chrome stylesheets
+ * toolkit.legacyUserProfileCustomizations.stylesheets 
+*/
+
+#webrtcIndicator { display: none !important; }
+
+/* Remove left space of toolbar  */
+
+.titlebar-spacer[type="pre-tabs"] {
+
+    display: none !important;
+
+}
+
+ 
+
+ 
+
+/* Customize window action buttons ( Close, Min, Max ) */
+
+.titlebar-button {
+
+    margin: 7px !important;
+
+    margin-left: 0 !important;
+
+    margin-right: 5px !important;
+
+    border-radius: 4px !important;
+
+}
+
+ 
+
+ 
+
+/* Apply dimmed background for inactive tabs */
+
+.tabbrowser-tab:hover>.tab-stack>.tab-background:not([selected], [multiselected]) {
+
+    background-color: color-mix(in srgb, currentColor 12%, transparent);
+
+}
+
+.tabbrowser-tab>.tab-stack>.tab-background:not([selected], [multiselected]) {
+
+    background-color: color-mix(in srgb, currentColor 6%, transparent);
+
+}
+
+ 
+
+ 
+
+/* Make all tabs small except selected one */
+
+.tabbrowser-tab[fadein]:not([selected]):not([pinned]) {  
+
+    max-width: 145px !important;
+
+    min-width: 115px !important;
+
+}
+
+ 
+
+ 
+
+/* Selected tabs width */
+
+.tabbrowser-tab[selected][fadein]:not([pinned]) {  
+
+    /*max-width: 225px !important;*/
+
+    min-width: 205px !important;
+
+}
+
+ 
+
+ 
+
+/* Hide tab close button */
+
+#TabsToolbar .close-icon {
+
+    display: none !important;
+
+}
+
+ 
+
+ 
+
+/* Unhide close button when it is selected tab and not pinned */
+
+#TabsToolbar .tabbrowser-tab[selected=true]:not([pinned]) .close-icon {
+
+    display: -moz-box !important;
+
+}
+
+ 
+
+ 
+
+/* Show close button even when mouse hover on inactive tabs */
+
+#TabsToolbar .tabbrowser-tab:not([selected="true"]):not([pinned]):hover .close-icon{
+
+    display: -moz-box !important;
+
+}
+
+ 
+
+ 
+
+/* Reduce spacing between pinned and regular tabs */
+
+#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab[first-visible-unpinned-tab] { 
+
+    margin-inline-start: initial !important; 
+
+}
+
+ 
+
+ 
+
+/* Menu items border and padding */
+
+menupopup > menuitem,
+
+menupopup > menu {
+
+    border-radius: 4px !important;
+
+    margin-left: 4px !important;
+
+    margin-right: 4px !important;
+
+}
+
+ 
+
+ 
+
+/* context menu top left button padding */
+
+menugroup > menuitem:first-child {  
+
+    padding-left: 4px !important;
+
+}
+
+ 
+
+ 
+
+/* context menu top right button padding */
+
+menugroup > menuitem:last-child {  
+
+    padding-right: 4px !important;
+
+}
+
+ 
+
+ 
+
+/* context menu top buttons radius */
+
+menugroup > menuitem {
+
+    border-radius: 4px !important;
+
+}
+
+menugroup > menuitem > hbox > image {  
+
+    border-radius: 4px !important;
+
+}
+
+ 
+
+ 
+
+/* Popup Menu background color */
+
+/*menupopup{
+
+    --menu-background-color: rgb(66,65,77) !important;
+
+}*/
+
+
+/* userChrome.css for a cleaner looking navBar in FireFox. This is experimental */
+/* Made by Tim Krief https://links.timkrief.com */
+
+/* Preventing the tabs from changing on hover */
+.tabbrowser-tab:not([visuallyselected="true"]):hover .tab-background {
+    background: transparent !important;
+}
+.tabbrowser-tab:not([visuallyselected="true"]) label {
+    opacity: 0.75 !important;
+}
+
+.tabbrowser-tab, .tabbrowser-tab[visuallyselected="true"]:hover{
+    --tab-label-mask-size: 1em !important;
+}
+
+.tab-close-button {
+    width: 24px !important;
+    padding: 7px !important;
+}
+
+/* Removing tab's margins and adapting corners */
+:root {
+    --tab-border-radius: 10px !important;
+    --tab-block-margin: 0 !important;
+}
+.tab-background {
+    border-radius: 0px 0px var(--tab-border-radius) var(--tab-border-radius)  !important;
+    box-shadow: inset 0 2px var(--identity-tab-color, transparent) !important;
+}
+
+/* Making the all the toolbars transparent */
+/* /!\ This can have strange effect when using "native style", in that case you'll have to find and use the native color of the titlebar instead of "transparent" */
+.browser-toolbar:not(.titlebar-color) {
+    background: transparent !important;
+}
+
+/* Removing the second text line in tabs */
+.tab-secondary-label{
+    display: none;
+}
+
+/* Making the extended URL bar background color match and removing borders and shadows */
+#urlbar-background, #searchbar {
+    border: none !important;
+    background-color: transparent !important;
+    animation-name: none !important;
+    box-shadow: none !important;
+}
+
+#urlbar[breakout][breakout-extend] > #urlbar-background{
+    background-color: var(--lwt-accent-color) !important;
+    background-image: var(--lwt-additional-images)!important;
+    background-repeat: var(--lwt-background-tiling)!important;
+    background-position: var(--lwt-background-alignment)!important;
+}
+
+#urlbar[open] > .urlbarView > .urlbarView-body-outer > .urlbarView-body-inner {
+    border: none !important;
+}
+
+#nav-bar:not([tabs-hidden="true"]) {
+    box-shadow: none !important;
+}
