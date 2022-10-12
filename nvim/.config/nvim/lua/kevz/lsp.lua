@@ -1,4 +1,7 @@
-require("nvim-lsp-installer").setup {}
+require("nvim-lsp-installer").setup {
+	ensure_installed = {"rust_analyzer", "sumneko_lua", "vimls", "taplo", "slint_lsp", "texlab", "gopls", "bashls",
+	"tsserver", "pyright", "html", "jsonls", "clangd", "gdscript"},
+}
 
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local lspconfig = require("lspconfig")
@@ -234,7 +237,6 @@ cmp.setup({
 -- map buffer local keybindings when the language server attaches
 local servers = {
 	"pyright",
-	"tsserver",
 	"tsserver",
 	"bashls",
 	"texlab",

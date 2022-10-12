@@ -1,10 +1,10 @@
+require "kevz.vimgui"
 require "kevz.util"
 require "kevz.telescope"
 require "kevz.git-worktree"
 require "kevz.lsp"
 require "kevz.statusline"
 require "kevz.luasnip"
-require "kevz.vimgui"
 require "kevz.dressing"
 
 local Remap = require("kevz.keymap")
@@ -24,7 +24,7 @@ if (IsModuleAvailable("notify")) then
   local notify = require("notify")
   vim.notify = notify
   notify.setup({
-      stages = "slide" -- fade_in_slide_out, fade, slide, static
+      stages = "static", -- fade_in_slide_out, fade, slide, static
     })
 
 end
