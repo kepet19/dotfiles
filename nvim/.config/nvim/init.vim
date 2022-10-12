@@ -435,7 +435,7 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
         " darker, lighter, oceanic, palenight, deep ocean,
         let g:material_style = 'deep ocean' 
         " colorscheme tokyonight
-        colorscheme sonokai
+        colorscheme gruvbox
 
         " colorscheme ayu
         " let g:nord_uniform_status_lines = 1

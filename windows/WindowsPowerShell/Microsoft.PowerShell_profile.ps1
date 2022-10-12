@@ -35,6 +35,12 @@ function co
     git checkout $branch;
 }
 
+Function Find-History { 
+  $find = $args;
+  Write-Host "Finding in full history using {`$_ -like `"*$find*`"}";
+  Get-Content (Get-PSReadlineOption).HistorySavePath | ? {$_ -like "*$find*"} | Get-Unique | more
+}
+
 # For editing Microsoft SQL alias and stuff
 Function Edit-SQL-Alias
 {
