@@ -75,7 +75,7 @@ cmp.setup.cmdline(":", {
   sources = {
     { name = "path" },
     { name = "cmdline_history" },
-    { name = "cmdline", keyword_pattern=[=[[^[:blank:]\!]*]=], keyword_length=3 },
+    { name = "cmdline", keyword_pattern = [=[[^[:blank:]\!]*]=], keyword_length = 3 },
     { name = "buffer" },
   },
 })
@@ -95,109 +95,11 @@ cmp.setup {
       -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
     end,
   },
-  mapping = {
-    ["<Tab>"] = cmp.mapping {
-      c = function()
-        if cmp.visible() then
-          cmp.select_next_item { behavior = cmp.SelectBehavior.Insert }
-        else
-          cmp.complete()
-        end
-      end,
-      i = function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item { behavior = cmp.SelectBehavior.Insert }
-        else
-          fallback()
-        end
-      end,
-      s = function(fallback)
-        fallback()
-      end,
-    },
-    ["<S-Tab>"] = cmp.mapping {
-      c = function()
-        if cmp.visible() then
-          cmp.select_prev_item { behavior = cmp.SelectBehavior.Insert }
-        else
-          cmp.complete()
-        end
-      end,
-      i = function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item { behavior = cmp.SelectBehavior.Insert }
-        else
-          fallback()
-        end
-      end,
-      s = function(fallback)
-        fallback()
-      end,
-    },
-    ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-    ["<C-e>"] = cmp.mapping { i = cmp.mapping.abort(), c = cmp.mapping.close() },
-    ["<C-Space>"] = { i = cmp.mapping.complete {} },
-    ["<c-y>"] = {
-      i = cmp.mapping.confirm { select = false },
-    },
-    -- ["<c-y>"] = {
-    -- i = cmp.mapping.confirm({ behavior = types.ConfirmBehavior.confirm }),
-    -- },
-    -- ["<C-y>"] = {
-    -- 	i = cmp.mapping.confirm({ behavior = cmp.Confi}),
-    -- },
-    ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert }, { "i" }),
-    ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert }, { "i" }),
-    ["<C-n>"] = cmp.mapping {
-      c = function()
-        if cmp.visible() then
-          cmp.select_next_item { behavior = cmp.SelectBehavior.Insert }
-        else
-          vim.api.nvim_feedkeys(t "<Down>", "n", true)
-        end
-      end,
-      i = function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item { behavior = cmp.SelectBehavior.Insert }
-        else
-          fallback()
-        end
-      end,
-    },
-    ["<C-p>"] = cmp.mapping {
-      c = function()
-        if cmp.visible() then
-          cmp.select_prev_item { behavior = cmp.SelectBehavior.Select }
-        else
-          vim.api.nvim_feedkeys(t "<Up>", "n", true)
-        end
-      end,
-      i = function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item { behavior = cmp.SelectBehavior.Insert }
-        else
-          fallback()
-        end
-      end,
-    },
-
-    ["<C-N>"] = cmp.mapping {
-      c = function()
-        vim.api.nvim_feedkeys(t "<Down>", "n", true)
-      end,
-      i = function(fallback)
-        fallback()
-      end,
-    },
-    ["<C-P>"] = cmp.mapping {
-      c = function()
-        vim.api.nvim_feedkeys(t "<Up>", "n", true)
-      end,
-      i = function(fallback)
-        fallback()
-      end,
-    },
+  mapping = cmp.mapping.preset.insert {
+    ["<C-y>"] = cmp.mapping.confirm { select = true },
+    ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-d>"] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
   },
 
   sources = cmp.config.sources({
