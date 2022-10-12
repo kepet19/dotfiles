@@ -1,20 +1,22 @@
+local servers = {
+  "rust_analyzer",
+  "sumneko_lua",
+  "vimls",
+  "taplo",
+  "slint_lsp",
+  "texlab",
+  "gopls",
+  "bashls",
+  "tsserver",
+  "pyright",
+  "html",
+  "jsonls",
+  "clangd",
+  "gdscript",
+}
+
 require("nvim-lsp-installer").setup {
-  ensure_installed = {
-    "rust_analyzer",
-    "sumneko_lua",
-    "vimls",
-    "taplo",
-    "slint_lsp",
-    "texlab",
-    "gopls",
-    "bashls",
-    "tsserver",
-    "pyright",
-    "html",
-    "jsonls",
-    "clangd",
-    "gdscript",
-  },
+  ensure_installed = servers,
 }
 
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -71,12 +73,16 @@ end
 
 cmp.setup.cmdline(":", {
   sources = {
-    { name = "cmdline" },
+    { name = "path" },
+    { name = "cmdline_history" },
+    { name = "cmdline", keyword_pattern=[=[[^[:blank:]\!]*]=], keyword_length=3 },
+    { name = "buffer" },
   },
 })
 
 cmp.setup.cmdline("/", {
   sources = {
+    { name = "cmdline_history" },
     { name = "buffer" },
   },
 })
@@ -141,8 +147,8 @@ cmp.setup {
     -- ["<C-y>"] = {
     -- 	i = cmp.mapping.confirm({ behavior = cmp.Confi}),
     -- },
-    ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select }, { "i" }),
-    ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select }, { "i" }),
+    ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert }, { "i" }),
+    ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert }, { "i" }),
     ["<C-n>"] = cmp.mapping {
       c = function()
         if cmp.visible() then
@@ -159,18 +165,10 @@ cmp.setup {
         end
       end,
     },
-    ["<C-N>"] = cmp.mapping {
-      c = function()
-        vim.api.nvim_feedkeys(t "<Down>", "n", true)
-      end,
-      i = function(fallback)
-        fallback()
-      end,
-    },
     ["<C-p>"] = cmp.mapping {
       c = function()
         if cmp.visible() then
-          cmp.select_prev_item { behavior = cmp.SelectBehavior.Insert }
+          cmp.select_prev_item { behavior = cmp.SelectBehavior.Select }
         else
           vim.api.nvim_feedkeys(t "<Up>", "n", true)
         end
@@ -183,6 +181,15 @@ cmp.setup {
         end
       end,
     },
+
+    ["<C-N>"] = cmp.mapping {
+      c = function()
+        vim.api.nvim_feedkeys(t "<Down>", "n", true)
+      end,
+      i = function(fallback)
+        fallback()
+      end,
+    },
     ["<C-P>"] = cmp.mapping {
       c = function()
         vim.api.nvim_feedkeys(t "<Up>", "n", true)
@@ -191,16 +198,6 @@ cmp.setup {
         fallback()
       end,
     },
-    -- ['<CR>'] = cmp.mapping({
-    --     i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
-    --     c = function(fallback)
-    --         if cmp.visible() then
-    --             cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-    --         else
-    --             fallback()
-    --         end
-    --     end
-    -- }),
   },
 
   sources = cmp.config.sources({
@@ -254,25 +251,16 @@ cmp.setup {
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = {
-  "pyright",
-  "tsserver",
-  "bashls",
-  "texlab",
-  "vimls",
-  "jsonls",
-  "gdscript",
-  "html",
-  "clangd",
-  "gopls",
-}
 
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = { debounce_text_changes = 150 },
-  }
+  if lsp == "rust_analyzer" or lsp == "sumneko_lua" then
+  else
+    lspconfig[lsp].setup {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      flags = { debounce_text_changes = 150 },
+    }
+  end
 end
 
 -- lspconfig.csharp_ls.setup {
