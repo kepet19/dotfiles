@@ -16,6 +16,8 @@ export HISTIGNORE="clear:bg:fg:cd:cd -:cd ..:exit:date:w:* --help:ls:l:ll:lll"
 
 alias config='/usr/bin/git --git-dir=/home/kkmp/.cfg/ --work-tree=/home/kkmp'
 
+
 source /home/kkmp/.config/broot/launcher/bash/br
 eval "$(starship init bash)"
 . "$HOME/.cargo/env"
+
