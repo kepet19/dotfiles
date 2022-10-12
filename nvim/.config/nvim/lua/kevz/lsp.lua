@@ -168,7 +168,7 @@ cmp.setup {
     ["<C-p>"] = cmp.mapping {
       c = function()
         if cmp.visible() then
-          cmp.select_prev_item { behavior = cmp.SelectBehavior.Select }
+          cmp.select_prev_item { behavior = cmp.SelectBehavior.Insert }
         else
           vim.api.nvim_feedkeys(t "<Up>", "n", true)
         end
