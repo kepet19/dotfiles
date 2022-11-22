@@ -6,6 +6,7 @@ require "kevz.lsp"
 require "kevz.statusline"
 require "kevz.luasnip"
 require "kevz.dressing"
+require('gitsigns').setup()
 
 local Remap = require("kevz.keymap")
 local nnoremap = Remap.nnoremap
@@ -120,6 +121,7 @@ require("rest-nvim").setup({
       custom_dynamic_variables = {},
       yank_dry_run = true,
     })
+
 
 nnoremap("<leader>u", ":UndotreeShow<CR>")
 inoremap("<C-c>", "<Esc>")

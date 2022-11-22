@@ -8,7 +8,9 @@ Function fire {Set-Location -Path ~/dev/firewall-portal/}
 Function pmain {Set-Location -Path ~/dev/main-portal/}
 Function dotfiles {Set-Location -Path ~/dev/dotfiles}
 
-Del alias:curl
+if ($PSVersionTable.PSVersion.Major -le 5) {
+    Del alias:curl
+}
 # Del alias:ls
 # set-alias ls -Value lsd
 $DOTNET_CLI_TELEMETRY_OPTOUT=1

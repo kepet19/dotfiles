@@ -13,13 +13,14 @@ local servers = {
   "jsonls",
   "clangd",
   "gdscript",
+  "powershell_es",
 }
 
 require("nvim-lsp-installer").setup {
   ensure_installed = servers,
 }
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local lspconfig = require "lspconfig"
 
 local on_attach = function(client, bufnr)

@@ -7,10 +7,11 @@ vim.g.neovide_refresh_rate = 60
 
 vim.g.gui_font_default_size = 12
 vim.g.gui_font_size = vim.g.gui_font_default_size
-vim.g.gui_font_face = "Fira Code Retina"
 
-if (vim.g.os == "windows") then
-  vim.g.gui_font_face = "Cascadia Code PL"
+if (vim.g.os == "Windows") then
+  vim.g.gui_font_face = "FuraMono Nerd Font Mono"
+else
+  vim.g.gui_font_face = "Fira Code Retina"
 end
 
 RefreshGuiFont = function()
