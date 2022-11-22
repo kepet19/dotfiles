@@ -4,6 +4,7 @@ nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>F <cmd>lua require('telescope').extensions.file_browser.file_browser()<cr>
 
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep({layout_strategy='vertical', layout_config = {width = 0.9}})<cr>
+nnoremap <leader>fp <cmd>lua require('telescope').extensions.projects.projects{}<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 

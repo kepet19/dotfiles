@@ -1,16 +1,27 @@
 require "kevz.vimgui"
 require "kevz.util"
+
+vim.g.git_worktree_log_level = "trace" -- trace, debug, info, warn, error, fatal
+
 require "kevz.telescope"
 require "kevz.git-worktree"
 require "kevz.lsp"
 require "kevz.statusline"
 require "kevz.luasnip"
 require "kevz.dressing"
-require('gitsigns').setup()
-
 local Remap = require("kevz.keymap")
 local nnoremap = Remap.nnoremap
 local inoremap = Remap.inoremap
+
+require('gitsigns').setup()
+require("project_nvim").setup {
+  -- your configuration comes here
+  -- or leave it empty to use the default settings
+  -- refer to the configuration section below
+}
+require('telescope').load_extension('projects')
+-- nnoremap("", 'require'telescope'.extensions.projects.projects{}')
+
 
 -- nvim-treesitter
 require("nvim-treesitter.configs").setup {
