@@ -21,3 +21,8 @@ source /home/kkmp/.config/broot/launcher/bash/br
 eval "$(starship init bash)"
 . "$HOME/.cargo/env"
 
+
+# pnpm
+export PNPM_HOME="/home/kkmp/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
