@@ -1,50 +1,20 @@
-local Remap = require("kevz.keymap")
+local Remap = require "kevz.keymap"
 local nnoremap = Remap.nnoremap
 local actions = require "telescope.actions"
-local action_layout = require "telescope.actions.layout"
 
 require("telescope").setup {
   defaults = {
     file_sorter = require("telescope.sorters").get_fzy_sorter,
     prompt_prefix = " >",
     color_devicons = true,
-    layout_config = {
-      vertical = { width = 0.9 }
-    },
-
-    -- file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
-    -- grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
-    -- qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
-    pickers = {
-      lsp_references = {
-        theme = "dropdown",
-      }
-    },
-
-    mappings = {
-      i = {
-        ["<C-j>"] = {
-          action = actions.move_selection_next,
-        },
-        ["<C-k>"] = {
-          action = actions.move_selection_previous,
-        },
-        ["<M-P>"] = action_layout.toggle_preview,
-      },
-      n = {
-        ["<M-P>"] = action_layout.toggle_preview,
-      },
-    },
   },
 }
-
-nnoremap("<leader>ps", function()
-    require('telescope.builtin').grep_string({layout_strategy='vertical', layout_config = {width = 0.9} ,search = vim.fn.input("Grep For > ")})
-end)
 
 require("telescope").load_extension "git_worktree"
 require("telescope").load_extension "fzy_native"
 require("telescope").load_extension "file_browser"
+require("telescope").load_extension "projects"
+
 -- require('telescope').load_extension('dap')
 
 if IsModuleAvailable "ui-select" then
@@ -70,21 +40,6 @@ M.search_dotfiles = function()
   }
 end
 
--- map(mode, key, lua function to call)
---
--- good place to look: telescope.actions (init.lua)
--- lua function to call:  (gets bufnr, not necessarily needed)
---   require('telescope.actions.state').get_selected_entry(bufnr)
---   Actions just take the bufnr and give out information
---   require('telescope.actions').close(bufnr)
---
---   check out telescope.actions for _all the available_ supported
---   actions.
---
---   :h telescope.setup ->
---   :h telescope.builtin ->
---   :h telescope.layout ->
---   :h telescope.actions
 --
 local function set_background(content)
   vim.fn.system("setbg " .. content)
@@ -136,5 +91,24 @@ M.git_branches = function()
     end,
   }
 end
+
+nnoremap("<leader>ps", function()
+  require("telescope.builtin").grep_string { search = vim.fn.input "Grep For > " }
+end)
+
+nnoremap("<leader>fr", require("telescope.builtin").resume)
+nnoremap("<leader>ff", require("telescope.builtin").find_files)
+--nnoremap("<leader>F", require('telescope.builtin').find_files)
+nnoremap("<leader>F", require("telescope").extensions.file_browser.file_browser)
+nnoremap("<leader>fb", require("telescope.builtin").buffers)
+nnoremap("<leader>fh", require("telescope.builtin").help_tags)
+nnoremap("<leader>fg", function()
+  require("telescope.builtin").live_grep { layout_strategy = "vertical", layout_config = { width = 0.9 } }
+end)
+
+nnoremap("<leader>fp", require("telescope").extensions.projects.projects)
+nnoremap("<leader>gw", require("telescope").extensions.git_worktree.git_worktrees)
+nnoremap("<leader>gc", require("telescope").extensions.git_worktree.create_git_worktree)
+nnoremap("<leader>n", require("telescope").extensions.notify.notify)
 
 return M
