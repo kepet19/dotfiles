@@ -82,6 +82,36 @@ Function Edit-Nu
     vim $home\AppData\Roaming\nushell\nu\config\config.toml
 }
 
+Function Open-Toolkit ([string] $unparsedTypeAndId)
+{
+    function parseTypeAndId ([string] $unparsedTypeAndId)
+    {
+        $id = $unparsedTypeAndId.Split('_')[0]
+
+        if($id.StartsWith("W", 'CurrentCultureIgnoreCase'))
+        {
+            return $("WorkPackages", $id.SubString(1))
+        }
+
+        return $("Tasks", $id)
+    }
+
+    if(!$unparsedTypeAndId)
+    {
+        $unparsedTypeAndId = git branch --show-current
+        if (!$?)
+        {
+            throw "The command did not recive any input or it is not in any valid git repo"
+        }
+    }
+
+    $type, $id = parseTypeAndId($unparsedTypeAndId)
+    $link = "https://goto.netcompany.com/cases/GTO399/NCOBAD/Lists/$type/DispForm.aspx?ID=$id"
+
+    Write-Output $link
+    Start-Process $link
+}
+
 function Get-PublicTokenFromDll
 {
     [CmdLetBinding()]
