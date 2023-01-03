@@ -63,7 +63,7 @@ Function Edit-Starship
 # for editing dot files
 Function Edit-Dotfiles
 {
-    cd ~/dev/dotfiles
+    Set-Location ~/dev/dotfiles
 }
 
 # for editing your Vim settings
@@ -82,7 +82,10 @@ Function Edit-Nu
     vim $home\AppData\Roaming\nushell\nu\config\config.toml
 }
 
-Function Open-Toolkit ([string] $unparsedTypeAndId)
+function Open-Toolkit (
+        [Parameter(Mandatory)]
+        [string] $UnparsedTypeAndId
+        )
 {
     function parseTypeAndId ([string] $unparsedTypeAndId)
     {
@@ -92,20 +95,21 @@ Function Open-Toolkit ([string] $unparsedTypeAndId)
         {
             return $("WorkPackages", $id.SubString(1))
         }
-
-        return $("Tasks", $id)
+        # Returns a tuple
+        return $("Tasks", $id) # Return a tuple
     }
 
-    if(!$unparsedTypeAndId)
+    if(!$UnparsedTypeAndId)
     {
-        $unparsedTypeAndId = git branch --show-current
+        $UnparsedTypeAndId = git branch --show-current
         if (!$?)
         {
-            throw "The command did not recive any input or it is not in any valid git repo"
+            throw "The command did not receive any input or it is not in any valid git repo"
         }
     }
 
-    $type, $id = parseTypeAndId($unparsedTypeAndId)
+    # Destructuring the tuple here
+    $type, $id = parseTypeAndId($UnparsedTypeAndId)
     $link = "https://goto.netcompany.com/cases/GTO399/NCOBAD/Lists/$type/DispForm.aspx?ID=$id"
 
     Write-Output $link
