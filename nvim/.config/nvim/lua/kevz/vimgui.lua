@@ -2,7 +2,7 @@ vim.opt.termguicolors = true
 
 vim.g.neovide_cursor_vfx_mode = ""
 vim.g.neovide_cursor_animation_length=0
-vim.g.neovide_refresh_rate = 60
+-- vim.g.neovide_refresh_rate = 60
 -- vim.g.neovide_refresh_rate_idle = 5
 
 vim.g.gui_font_default_size = 12
@@ -12,6 +12,7 @@ if (vim.g.os == "Windows") then
   vim.g.gui_font_face = "FuraMono Nerd Font Mono"
 else
   vim.g.gui_font_face = "Fira Code Retina"
+  vim.g.gui_font_face = "FuraMono Nerd Font Mono"
 end
 
 RefreshGuiFont = function()

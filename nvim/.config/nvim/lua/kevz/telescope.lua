@@ -92,7 +92,7 @@ M.git_branches = function()
   }
 end
 
-nnoremap("<leader>ps", function()
+nnoremap("<leader>fs", function()
   require("telescope.builtin").grep_string { search = vim.fn.input "Grep For > " }
 end)
 

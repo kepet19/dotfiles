@@ -197,7 +197,7 @@ call plug#end()
     execute "normal! i\\includegraphics[width=1\\linewidth]{" . a:relpath . "}"
     endfunction
 
-    autocmd FileType markdown,tex nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+    autocmd FileType markdown,tex nmap <buffer><silent> <leader>i :call mdip#MarkdownClipboardImage()<CR>
     autocmd FileType markdown let g:PasteImageFunction = 'g:MarkdownPasteImage'
     autocmd FileType tex let g:PasteImageFunction = 'g:LatexPasteImage2'
     " there are some defaults for image directory and image name, you can change them
@@ -342,7 +342,7 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
         " Replace all is aliased to S.
         " nnoremap S :%s//g<Left><Left>
         " Open corresponding .pdf/.html or preview
-        map <leader>p :!opout <c-r>%<CR><CR>
+        " map <leader>p :!opout <c-r>%<CR><CR>
         " Format Json JSON
         "map <leader>ff :%!jq .
         " Compiler script
@@ -419,7 +419,7 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
 
         " Spell-check set to <leader>o, 'o' for 'orthography':
         nnoremap <leader>od :setlocal spell! spelllang=da<CR>
-        nnoremap <leader>oe :setlocal spell! spelllang=en<CR>
+        nnoremap <leader>oe :setlocal spell! spelllang=en_gb<CR>
 
         " Spell correction the last word Ctrl + l
         inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
