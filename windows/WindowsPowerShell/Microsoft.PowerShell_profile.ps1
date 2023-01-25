@@ -9,7 +9,7 @@ Function pmain {Set-Location -Path ~/dev/main-portal/}
 Function dotfiles {Set-Location -Path ~/dev/dotfiles}
 
 if ($PSVersionTable.PSVersion.Major -le 5) {
-    Del alias:curl
+    Remove-Item alias:curl
 }
 # Del alias:ls
 # set-alias ls -Value lsd
@@ -35,6 +35,10 @@ function co
     )
 
     git checkout $branch;
+}
+
+Function Repair-WSLNetwork {
+    Get-NetAdapter | Where-Object {$_.InterfaceDescription -Match 'Cisco AnyConnect'} | Set-NetIPInterface -InterfaceMetric 6000
 }
 
 Function Find-History { 
@@ -83,7 +87,6 @@ Function Edit-Nu
 }
 
 function Open-Toolkit (
-        [Parameter(Mandatory)]
         [string] $UnparsedTypeAndId
         )
 {
