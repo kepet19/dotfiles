@@ -1,6 +1,6 @@
 local servers = {
   "rust_analyzer",
-  "sumneko_lua",
+  "lua_ls",
   "vimls",
   "taplo",
   "slint_lsp",
@@ -92,7 +92,7 @@ cmp.setup {
   snippet = {
     expand = function(args)
       -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+      -- require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
       -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
     end,
   },
@@ -106,7 +106,7 @@ cmp.setup {
   sources = cmp.config.sources({
     -- { name = "cmp_tabnine" },
     { name = "nvim_lua" }, --
-    { name = "luasnip", options = { use_show_conditions = false } }, -- For luasnip users.
+    -- { name = "luasnip", options = { use_show_conditions = false } }, -- For luasnip users.
     { name = "zsh" }, --
     { name = "nvim_lsp" }, --
     { name = "path" }, --
@@ -123,8 +123,8 @@ cmp.setup {
         -- cmp_tabnine = "[TN]",
         nvim_lua = "[api]",
         path = "[path]",
-        luasnip = "[snip]",
-        gh_issues = "[issues]",
+        -- luasnip = "[snip]",
+        -- gh_issues = "[issues]",
       },
     },
   },
@@ -156,7 +156,7 @@ cmp.setup {
 -- map buffer local keybindings when the language server attaches
 
 for _, lsp in ipairs(servers) do
-  if lsp == "rust_analyzer" or lsp == "sumneko_lua" then
+  if lsp == "rust_analyzer" or lsp == "lua_ls" then
   else
     lspconfig[lsp].setup {
       on_attach = on_attach,
@@ -188,7 +188,7 @@ local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
   capabilities = capabilities,
   on_attach = on_attach,
   settings = {

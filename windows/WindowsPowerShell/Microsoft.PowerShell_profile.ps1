@@ -1,3 +1,4 @@
+Function ldev {Set-Location -Path "\\wsl$\Ubuntu\home\kkmp\dev\"}
 Function dev {Set-Location -Path ~/dev/}
 Function mvc {Set-Location -Path ~/dev/mvc_dev/MVCPortal/MVCPortal/}
 Function mvcd {Set-Location -Path ~/dev/ad-portal/}
@@ -8,9 +9,12 @@ Function fire {Set-Location -Path ~/dev/firewall-portal/}
 Function pmain {Set-Location -Path ~/dev/main-portal/}
 Function dotfiles {Set-Location -Path ~/dev/dotfiles}
 
+
 if ($PSVersionTable.PSVersion.Major -le 5) {
     Remove-Item alias:curl
 }
+
+Remove-Item alias:mv
 # Del alias:ls
 # set-alias ls -Value lsd
 $DOTNET_CLI_TELEMETRY_OPTOUT=1

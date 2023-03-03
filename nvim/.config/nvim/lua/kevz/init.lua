@@ -7,7 +7,7 @@ require "kevz.telescope"
 require "kevz.git-worktree"
 require "kevz.lsp"
 require "kevz.statusline"
-require "kevz.luasnip"
+-- require "kevz.k_luasnip"
 require "kevz.dressing"
 local Remap = require("kevz.keymap")
 local nnoremap = Remap.nnoremap
@@ -20,15 +20,9 @@ require("project_nvim").setup {
   -- refer to the configuration section below
 }
 
-
--- nvim-treesitter
-require("nvim-treesitter.configs").setup {
-  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true, -- false will disable the whole extension
-    disable = {}, -- list of language that will be disabled
-  },
-}
+if (IsModuleAvailable("tokyonight")) then
+  require("tokyonight")
+end
 
 if (IsModuleAvailable("notify")) then
   local notify = require("notify")
@@ -87,25 +81,29 @@ require("symbols-outline").setup {
   show_guides = true,
 }
 
--- local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
--- parser_config.wgsl = {
---   install_info = {
---     url = "$HOME/dev/tree-sitter-wgsl", -- local path or git repo
---     files = {"src/parser.c"}
---   },
---   filetype = "wgsl", -- if filetype does not agrees with parser name
---   used_by = {} -- additional filetypes that use this parser
--- }
 
 require("nvim-treesitter.configs").setup {
+  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true, -- false will disable the whole extension
+    use_languagetree = false,
+    disable = function(_, bufnr)
+      local buf_name = vim.api.nvim_buf_get_name(bufnr)
+      local file_size = vim.api.nvim_call_function("getfsize", { buf_name })
+      return file_size > 256 * 1024
+    end,
+  },
+
   rainbow = {
     enable = true,
+    additional_vim_regex_highlighting = false,
     extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-    max_file_lines = nil, -- Do not enable for files with more than n lines, int
+    max_file_lines = 10000, -- Do not enable for files with more than n lines, int
     -- colors = {}, -- table of hex strings
     -- termcolors = {} -- table of colour name strings
   },
 }
+
 require("rest-nvim").setup({
       -- Open request results in a horizontal split
       result_split_horizontal = false,

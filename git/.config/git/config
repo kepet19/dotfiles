@@ -15,7 +15,6 @@
     cm = commit -m
     cma = commit -am
     ph = push
-    phf = push --force
     pl = pull
     ft = fetch
     rt = restore
@@ -30,8 +29,11 @@
     lol = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
     d = !git --no-pager diff
 	ls = ls-files
+	rbc = rebase --continue
+[push]
+	autoSetupRemote = true
 [pull]
-	rebase = false
+	rebase = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -39,5 +41,3 @@
 	required = true
 [rerere]
 	enabled = true
-[push]
-	autoSetupRemote = true

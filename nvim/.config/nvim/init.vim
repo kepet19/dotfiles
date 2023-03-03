@@ -69,8 +69,8 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'dmitmel/cmp-cmdline-history'
 Plug 'kdheepak/cmp-latex-symbols'
-Plug 'L3MON4D3/LuaSnip'
-Plug 'saadparwaiz1/cmp_luasnip'
+" Plug 'L3MON4D3/LuaSnip' TODO: Check if I want luasnip back
+" Plug 'saadparwaiz1/cmp_luasnip'
 " Plug 'tzachar/cmp-tabnine', { 'do': install_path_script }
 
 
@@ -112,7 +112,7 @@ Plug 'voldikss/vim-translator'
 
 " visual color schemes and stuff
 Plug 'folke/lsp-colors.nvim'
-Plug 'folke/tokyonight.nvim'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'nanotech/jellybeans.vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'arcticicestudio/nord-vim'
@@ -145,6 +145,7 @@ Plug 'sheerun/vim-polyglot'
 " Miss
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'ahmedkhalf/project.nvim'
 Plug 'sindrets/diffview.nvim'
@@ -167,6 +168,10 @@ call plug#end()
 " }}}
 
 " Pluging settings  {{{
+
+    " fugitive-gitlab {{{
+    let g:fugitive_gitlab_domains = ['https://gitlab.nchosting.dk']
+    " }}}
     " vim-translator {{{
     " Echo translation in the cmdline
     nmap <leader>rr <Plug>RestNvim
@@ -348,6 +353,7 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
         " Compiler script
         map <leader>c :w! \| !compiler <c-r>%<CR>
 
+        let g:html_use_css=1
     " Slide navigator
         nnoremap <Right> :n<CR>
         nnoremap <Left> :N<CR>
