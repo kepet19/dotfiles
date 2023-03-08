@@ -320,7 +320,7 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
         set incsearch       " Perform incremental searching
         set signcolumn=yes
         set inccommand=split
-        set clipboard+=unnamedplus
+        " set clipboard+=unnamedplus
         set scrolloff=8 "Keeps the screecenter
         set nowrap
         set nocompatible
