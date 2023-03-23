@@ -461,6 +461,12 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
     " }}}
 
 " AUTOCMD -----{{{
+    " Comentary Comment {{{
+    augroup comment
+      autocmd!
+      autocmd FileType mermaid setlocal commentstring=\%\%\ %s
+    augroup END
+    " }}}
     " FORMAT FMT {{{
     augroup fmt
       autocmd!
