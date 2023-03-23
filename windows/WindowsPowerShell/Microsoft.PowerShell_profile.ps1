@@ -9,6 +9,13 @@ Function fire {Set-Location -Path ~/dev/firewall-portal/}
 Function pmain {Set-Location -Path ~/dev/main-portal/}
 Function dotfiles {Set-Location -Path ~/dev/dotfiles}
 
+# Active Direcotry stuff
+Function GAR([string] $name) {Get-ADGroup -Properties Members $name}
+Function GAM([string] $name) {Get-ADGroup -Properties MemberOf $name}
+Function UM([string] $name) {Get-ADUser -Properties MemberOf $name}
+Set-Alias G Get-ADGroup
+Set-Alias U Get-ADUser
+
 
 if ($PSVersionTable.PSVersion.Major -le 5) {
     Remove-Item alias:curl

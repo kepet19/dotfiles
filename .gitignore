@@ -4,3 +4,4 @@ windows/WindowsPowerShell/Modules/
 *.spl
 sway/.local/bin/amdgpu-pptable-editor-qt
 .luarc.json
+*.sug
