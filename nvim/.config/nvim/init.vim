@@ -160,6 +160,11 @@ Plug 'folke/trouble.nvim'
 Plug 'NTBBloodbath/rest.nvim'
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
+" PlantUML
+Plug 'aklt/plantuml-syntax'
+Plug 'tyru/open-browser.vim'
+Plug 'weirongxu/plantuml-previewer.vim'
+
 " Format 
 Plug 'sbdchd/neoformat'
 
