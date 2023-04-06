@@ -237,7 +237,6 @@ call plug#end()
 	" }}}
         " Git Status {{{
 		nnoremap <leader>gs :G<CR>
-		nnoremap <leader>gcc :G commit<CR>
 		nnoremap <leader>gp :G push<CR>
 		nnoremap <leader>gj :diffget //3<CR>
 		nnoremap <leader>gf :diffget //2<CR>
@@ -324,7 +323,6 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
         set ignorecase      " Do case insensitive search unless there are capital letters
         set incsearch       " Perform incremental searching
         set signcolumn=yes
-        set inccommand=split
         " set clipboard+=unnamedplus
         set scrolloff=8 "Keeps the screecenter
         set nowrap
@@ -334,6 +332,7 @@ nnoremap <M-CR> <cmd>CodeActionMenu<cr>
         " set cmdheight=1
         " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
         " set splitbelow splitright
+        " set inccommand=split
         " Mapping to change pwd to the directory of the current buffer.
         nnoremap cm :cd %:h<CR>:pwd<CR>
         "Enter for clear search!
