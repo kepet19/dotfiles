@@ -240,5 +240,18 @@ let-env config = {
         ]
       }
     }
+    {
+      name: lfcd
+      modifier: control
+      keycode: char_y
+      mode: [vi_insert, vi_normal, emacs]
+      event: {
+        send: executehostcommand
+        cmd: "lfcd"
+      }
+    }
   ]
 }
+
+
+source lfcd.nu
