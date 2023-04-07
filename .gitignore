@@ -1,6 +1,7 @@
 .zcompdump
 nvim/.config/*/plugged/
 nvim/.config/*/undodir/
+nushell/.config/nushell/history.txt
 windows/WindowsPowerShell/Modules/
 *.spl
 sway/.local/bin/amdgpu-pptable-editor-qt
