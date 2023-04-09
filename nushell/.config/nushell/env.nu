@@ -76,3 +76,8 @@ let-env NU_PLUGIN_DIRS = [
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
+
+let script_dir = ($nu.config-path | path dirname | path join 'scripts')
+
+# For now disabe startship generation of init script
+# starship init nu | save -f ($script_dir | path join 'starship_init.nu')

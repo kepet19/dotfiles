@@ -7,3 +7,4 @@ windows/WindowsPowerShell/Modules/
 sway/.local/bin/amdgpu-pptable-editor-qt
 .luarc.json
 *.sug
+nushell/.config/nushell/scripts/starship_init.nu
