@@ -19,8 +19,8 @@ vim.keymap.set("n", "<leader>pe", function()
 end)
 
 vim.keymap.set("n", "<leader>pd", function()
-    builtin.find_files {
+    builtin.git_files {
         prompt_title = "< ConfigFiles >",
-        cwd = vim.g.config_path,
+        cwd = vim.g.dotfiles_path,
     }
 end)

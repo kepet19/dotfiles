@@ -6,7 +6,7 @@ if vim.g.os == nil then
     end
 end
 
-vim.g.dotfiles_path = "$HOME/.config/nvim"
+vim.g.dotfiles_path = "$HOME/.dotfiles/"
 
 if vim.g.os == "Windows" then
     vim.g.dotfiles_path = "$USERPROFILE/dev/Dotfiles/"
