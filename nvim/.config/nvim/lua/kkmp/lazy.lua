@@ -26,6 +26,7 @@ require("lazy").setup({
 	},
 	"theprimeagen/harpoon",
 	"mbbill/undotree",
+    "tpope/vim-commentary",
 	"tpope/vim-fugitive",
 
 	{
