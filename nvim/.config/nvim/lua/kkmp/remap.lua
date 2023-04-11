@@ -33,3 +33,19 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+vim.keymap.set("n", "<leader>od", function()
+    vim.opt_local.spelllang="da"
+    vim.opt_local.spell = not vim.opt_local.spell._value
+end)
+vim.keymap.set("n", "<leader>oe", function()
+    vim.opt_local.spelllang="en_gb"
+    vim.opt_local.spell = not vim.opt_local.spell._value
+end)
+vim.keymap.set("i", "<C-l>", "c-g>u<Esc>[s1z=`]a<c-g>u")
+        -- " Spell-check set to <leader>o, 'o' for 'orthography':
+        -- nnoremap <leader>od :setlocal spell! spelllang=da<CR>
+        -- nnoremap <leader>oe :setlocal spell! spelllang=en_gb<CR>
+
+        -- " Spell correction the last word Ctrl + l
+        -- inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u

@@ -1,6 +1,7 @@
 .zcompdump
 nvim/.config/*/plugged/
 nvim/.config/*/undodir/
+nvim/.config/*/spell/
 nushell/.config/nushell/history.txt
 windows/WindowsPowerShell/Modules/
 *.spl
