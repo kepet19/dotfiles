@@ -18,6 +18,7 @@ require("lazy").setup({
 	"rose-pine/neovim",
 	-- Color scheme helpers
 	{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
+    "MTDL9/vim-log-highlighting",
 
 	-- functionally
 	{
@@ -28,7 +29,6 @@ require("lazy").setup({
 	"mbbill/undotree",
     "tpope/vim-commentary",
 	"tpope/vim-fugitive",
-
 	{
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v2.x',
