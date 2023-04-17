@@ -15,6 +15,14 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	-- Color schemes
 	"folke/tokyonight.nvim",
+    {"folke/todo-comments.nvim",
+    config = function()
+        require("todo-comments").setup({
+        }
+
+        )
+    end
+},
 	"rose-pine/neovim",
 	-- Color scheme helpers
 	{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},

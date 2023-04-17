@@ -31,3 +31,17 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 vim.g.mapleader = " "
+
+-- -- TODO: message
+-- -- TODO (Dave): message
+-- -- TODO(ABC-123): message
+
+-- require("plenary.reload").reload_module("todo-comments")
+-- package.loaded["todo-comments"] = nil
+-- require("todo-comments").setup({
+--   search = {
+--     -- pattern = [[.*<(KEYWORDS)\s*:]], -- pattern or table of patterns, used for highlightng (vim regex)
+--     pattern = [[\b(KEYWORDS\b)]]
+--   }
+-- })
+
