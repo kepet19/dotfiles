@@ -51,7 +51,7 @@ require("lazy").setup({
             -- LSP Support
             { 'neovim/nvim-lspconfig' }, -- Required
             {
-                              -- Optional
+                -- Optional
                 'williamboman/mason.nvim',
                 build = function()
                     pcall(vim.cmd, 'MasonUpdate')
@@ -74,9 +74,35 @@ require("lazy").setup({
             },
 
             -- Autocompletion
-            { 'hrsh7th/nvim-cmp' }, -- Required
+            { 'hrsh7th/nvim-cmp' },     -- Required
             { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' }, -- Required
+            { 'L3MON4D3/LuaSnip' },     -- Required
         }
-    }
+    },
+
+    -- PlanetUml
+    {
+        'weirongxu/plantuml-previewer.vim',
+        config = function()
+            vim.g.plantuml_previewer = 'pdf' --Default png
+        end
+        ,
+
+        dependencies = {
+            { 'tyru/open-browser.vim' }, -- Required
+            { 'aklt/plantuml-syntax' }, -- Optional
+        },
+    },
+
+    -- PlanetUml Preview inside .uml files
+    -- {
+    --     'scrooloose/vim-slumlord',
+    --     config = function()
+    --     end
+    --     ,
+
+    --     dependencies = {
+    --         { 'aklt/plantuml-syntax' }, -- Optional
+    --     },
+    -- },
 }, opts)
