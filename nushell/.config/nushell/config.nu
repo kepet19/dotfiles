@@ -14,6 +14,7 @@ def create_right_prompt [] {
     $time_segment
 }
 
+let-env EDITOR = "nvim"
 # Use nushell functions to define your right and left prompt
 let-env PROMPT_COMMAND = {|| create_left_prompt }
 let-env PROMPT_COMMAND_RIGHT = {|| create_right_prompt }
@@ -170,6 +171,7 @@ let default_theme = {
     shape_nothing: light_cyan
 }
 
+
 # The default config record. This is where much of your global configuration is setup.
 let-env config = {
   ls: {
@@ -182,20 +184,27 @@ let-env config = {
   cd: {
     abbreviations: true # allows `cd s/o/f` to expand to `cd some/other/folder`
   }
-  filesize_metric: false
-  table_mode: rounded # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
-  use_ls_colors: true
-  rm_always_trash: false
+  history: {
+    max_size: 10000
+  }
+  filesize: {
+    metric: false
+    format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, zb, zib, auto
+  }
+  completions: {
+    quick: true  # set this to false to prevent auto-selecting completions when only one remains
+    partial: true  # set this to false to prevent partial filling of the prompt
+  }
+  table: {
+    mode: rounded # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
+  }
   color_config: $default_theme
   use_grid_icons: true
+  show_banner: false
   footer_mode: "25" # always, never, number_of_rows, auto
-  quick_completions: true  # set this to false to prevent auto-selecting completions when only one remains
-  partial_completions: true  # set this to false to prevent partial filling of the prompt
   float_precision: 2
   use_ansi_coloring: true
-  filesize_format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, zb, zib, auto
   edit_mode: vi # emacs, vi
-  max_history_size: 10000
   keybindings: [
     {
       name: completion_menu
@@ -253,6 +262,7 @@ let-env config = {
   ]
 }
 
-
 source lfcd.nu
+source util.nu
+source alias.nu
 source starship_init.nu

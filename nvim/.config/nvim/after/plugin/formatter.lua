@@ -1,0 +1,2 @@
+-- vim.keymap.set("n", "<leader>f", "<cmd>Format<CR>")
+-- vim.keymap.set("n", "<leader>F", "<cmd>FormatWrite<CR>")

@@ -67,7 +67,8 @@ require("lazy").setup({
                             -- null_ls.builtins.diagnostics.cspell, null_ls.builtins.code_actions.cspell
                             null_ls.builtins.formatting.xmllint.with({
                                 timeout = 10000
-                            })
+                            }),
+                            null_ls.builtins.formatting.sql_formatter,
                         }
                     })
                 end
@@ -78,6 +79,17 @@ require("lazy").setup({
             { 'hrsh7th/cmp-nvim-lsp' }, -- Required
             { 'L3MON4D3/LuaSnip' },     -- Required
         }
+    },
+    -- nushell stuff
+    {
+        'LhKipp/nvim-nu',
+        config = function()
+            local nu = require("nu")
+            nu.setup({
+                use_lsp_features = true,
+                all_cmd_names = [[nu -c 'help commands | get name | str join "\n"']]
+            })
+        end
     },
 
     -- PlanetUml
