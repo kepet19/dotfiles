@@ -8,7 +8,7 @@
 
 [core]
 	autocrlf = input
-	excludesfile = /home/kkmp/.config/git/.gitignore
+	; excludesfile = /home/kkmp/.config/git/.gitignore
 [alias]
     st = status
     ca = commit -a
@@ -30,6 +30,9 @@
     d = !git --no-pager diff
 	ls = ls-files
 	rbc = rebase --continue
+	edit = config --global --edit
+    br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) %(color:blue)<%(authorname)>' --sort=-committerdate
+
 [push]
 	autoSetupRemote = true
 [pull]
