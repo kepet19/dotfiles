@@ -19,8 +19,7 @@
     ft = fetch
     rt = restore
     br = branch
-    sc = switch
-    scc = switch -c
+    sw = switch
     sl = stash list
     sp = stash pop
     sclear = stash clear
