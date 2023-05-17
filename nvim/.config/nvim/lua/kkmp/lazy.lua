@@ -104,7 +104,9 @@ require("lazy").setup({
     {
         'weirongxu/plantuml-previewer.vim',
         config = function()
-            vim.g.plantuml_previewer = 'pdf' --Default png
+            vim.g['plantuml_previewer#save_format'] = 'pdf' --Default png
+            vim.g['plantuml_previewer#debug_mode'] = 1 --Default 0
+
         end
         ,
 

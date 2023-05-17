@@ -42,7 +42,7 @@ vim.keymap.set("n", "<leader>oe", function()
     vim.opt_local.spelllang="en_gb"
     vim.opt_local.spell = not vim.opt_local.spell._value
 end)
-vim.keymap.set("i", "<C-l>", "c-g>u<Esc>[s1z=`]a<c-g>u")
+vim.keymap.set("i", "<C-l>", "<C-g>u<Esc>[s1z=`]a<C-g>u")
         -- " Spell-check set to <leader>o, 'o' for 'orthography':
         -- nnoremap <leader>od :setlocal spell! spelllang=da<CR>
         -- nnoremap <leader>oe :setlocal spell! spelllang=en_gb<CR>
