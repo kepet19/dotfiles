@@ -28,9 +28,10 @@
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     d = !git --no-pager diff
 	ls = ls-files
-	rbc = rebase --continue
 	edit = config --global --edit
     br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) %(color:blue)<%(authorname)>' --sort=-committerdate
+	rbc = rebase --continue
+	wt = worktree
 
 [push]
 	autoSetupRemote = true

@@ -115,6 +115,19 @@ require("lazy").setup({
             { 'aklt/plantuml-syntax' }, -- Optional
         },
     },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        dependencies = {
+            {
+                "pfeiferj/nvim-hurl",
+                branch="main",
+            }
+        },
+        config = function()
+            -- add hurl to the nvim-treesitter config
+            require("hurl").setup()
+        end
+    };
 
     -- PlanetUml Preview inside .uml files
     -- {
