@@ -16,3 +16,7 @@ def config_edit [config_file?: string@get_config_files] {
         ^$env.EDITOR
     }
 }
+
+export def tail [file_path: path] {
+	pwsh -Command Get-Content -Wait $file_path
+}

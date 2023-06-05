@@ -49,10 +49,10 @@ function co
 }
 
 Function Repair-WSLNetwork {
-    Get-NetAdapter | Where-Object {$_.InterfaceDescription -Match 'Cisco AnyConnect'} | Set-NetIPInterface -InterfaceMetric 6000
+    Get-NetAdapter | Where-Object {$_.InterfaceDescription -Like 'Cisco AnyConnect*'} | Set-NetIPInterface -InterfaceMetric 6000
 }
 
-Function Find-History { 
+Function Find-History {
   $find = $args;
   Write-Host "Finding in full history using {`$_ -like `"*$find*`"}";
   Get-Content (Get-PSReadlineOption).HistorySavePath | ? {$_ -like "*$find*"} | Get-Unique | more
@@ -134,8 +134,8 @@ function Get-PublicTokenFromDll
 {
     [CmdLetBinding()]
     [OutPutType([PSCustomObject])]
-    param( 
-    [Parameter(Mandatory)] 
+    param(
+    [Parameter(Mandatory)]
     [string] $FilePath
     )
     ([system.reflection.assembly]::loadfile($FilePath)).FullName
