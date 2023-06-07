@@ -210,7 +210,7 @@ let-env config = {
       name: completion_menu
       modifier: none
       keycode: tab
-      mode: emacs # Options: emacs vi_normal vi_insert
+      mode: [emacs, vi_normal, vi_insert] # Options: emacs vi_normal vi_insert
       event: {
         until: [
           { send: menu name: completion_menu }
@@ -218,6 +218,26 @@ let-env config = {
         ]
       }
     }
+    {
+      name: completion_menu
+      modifier: CONTROL
+      keycode: char_n
+      mode: [vi_normal, vi_insert] # Options: emacs vi_normal vi_insert
+      event: {
+        until: [
+          { send: menu name: completion_menu }
+          { send: menunext }
+        ]
+      }
+    }
+    {
+      name: completion_previous
+      modifier: CONTROL
+      keycode: char_p
+      mode: [vi_normal, vi_insert] # Note: You can add the same keybinding to all modes by using a list
+      event: { send: menuprevious }
+    }
+
     {
       name: completion_previous
       modifier: shift

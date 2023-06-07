@@ -130,6 +130,26 @@ function Open-Toolkit (
     Start-Process $link
 }
 
+
+function Add-DeployAccount {
+    [CmdletBinding()]
+    param ()
+
+    Write-Host (Get-Location)
+    $null = Read-Host "Press enter if the above location is correct else Ctrl+C"
+
+    $cred = Get-Credential -UserName "deployAccount"
+
+    $passwordBytes = [System.Text.Encoding]::Unicode.GetBytes($cred.GetNetworkCredential().Password)
+    $encryptedPassword = [System.Security.Cryptography.ProtectedData]::Protect($passwordBytes, $null, [System.Security.Cryptography.DataProtectionScope]::CurrentUser)
+
+    New-Item -Type Directory DeployAccounts\ -ErrorAction Ignore
+
+    Set-Content DeployAccounts\B5C41083-67F7-4A27-AFCB-8E7CC64D35A1 -AsByteStream -Value $encryptedPassword
+    Set-Content DeployAccounts\1A5A14D6-67ED-4543-95E5-1D55CEBB9C7B -AsByteStream -Value $encryptedPassword
+}
+
+
 function Get-PublicTokenFromDll
 {
     [CmdLetBinding()]
