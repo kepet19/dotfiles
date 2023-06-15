@@ -1,23 +1,50 @@
-Function ldev {Set-Location -Path "\\wsl$\Ubuntu\home\kkmp\dev\"}
-Function dev {Set-Location -Path ~/dev/}
-Function mvc {Set-Location -Path ~/dev/mvc_dev/MVCPortal/MVCPortal/}
-Function mvcd {Set-Location -Path ~/dev/ad-portal/}
-Function adportal {Set-Location -Path ~/dev/adportalmodule/}
-Function ser {Set-Location -Path ~/dev/server-portal/}
-Function sql {Set-Location -Path ~/dev/sql-portal/}
-Function fire {Set-Location -Path ~/dev/firewall-portal/}
-Function pmain {Set-Location -Path ~/dev/main-portal/}
-Function dotfiles {Set-Location -Path ~/dev/dotfiles}
+Function ldev
+{Set-Location -Path "\\wsl$\Ubuntu\home\kkmp\dev\"
+}
+Function dev
+{Set-Location -Path ~/dev/
+}
+Function mvc
+{Set-Location -Path ~/dev/mvc_dev/MVCPortal/MVCPortal/
+}
+Function mvcd
+{Set-Location -Path ~/dev/ad-portal/
+}
+Function adportal
+{Set-Location -Path ~/dev/adportalmodule/
+}
+Function ser
+{Set-Location -Path ~/dev/server-portal/
+}
+Function sql
+{Set-Location -Path ~/dev/sql-portal/
+}
+Function fire
+{Set-Location -Path ~/dev/firewall-portal/
+}
+Function pmain
+{Set-Location -Path ~/dev/main-portal/
+}
+Function dotfiles
+{Set-Location -Path ~/dev/dotfiles
+}
 
 # Active Direcotry stuff
-Function GAR([string] $name) {Get-ADGroup -Properties Members $name}
-Function GAM([string] $name) {Get-ADGroup -Properties MemberOf $name}
-Function UM([string] $name) {Get-ADUser -Properties MemberOf $name}
+Function GAR([string] $name)
+{Get-ADGroup -Properties Members $name
+}
+Function GAM([string] $name)
+{Get-ADGroup -Properties MemberOf $name
+}
+Function UM([string] $name)
+{Get-ADUser -Properties MemberOf $name
+}
 Set-Alias G Get-ADGroup
 Set-Alias U Get-ADUser
 
 
-if ($PSVersionTable.PSVersion.Major -le 5) {
+if ($PSVersionTable.PSVersion.Major -le 5)
+{
     Remove-Item alias:curl
 }
 
@@ -32,30 +59,54 @@ function co
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
         [ArgumentCompleter({
-            param($pCmd, $pParam, $pWord, $pAst, $pFakes)
+                param($pCmd, $pParam, $pWord, $pAst, $pFakes)
 
-            $branchList = (git branch --format='%(refname:short)')
+                $branchList = (git branch --format='%(refname:short)')
 
-            if ([string]::IsNullOrWhiteSpace($pWord)) {
-                return $branchList;
-            }
+                if ([string]::IsNullOrWhiteSpace($pWord))
+                {
+                    return $branchList;
+                }
 
-            $branchList | Select-String "$pWord"
-        })]
+                $branchList | Select-String "$pWord"
+            })]
         [string] $branch
     )
 
     git checkout $branch;
 }
 
-Function Repair-WSLNetwork {
+Function Repair-WSLNetwork
+{
     Get-NetAdapter | Where-Object {$_.InterfaceDescription -Like 'Cisco AnyConnect*'} | Set-NetIPInterface -InterfaceMetric 6000
 }
 
-Function Find-History {
-  $find = $args;
-  Write-Host "Finding in full history using {`$_ -like `"*$find*`"}";
-  Get-Content (Get-PSReadlineOption).HistorySavePath | ? {$_ -like "*$find*"} | Get-Unique | more
+Function Find-History
+{
+    $find = $args;
+    Write-Host "Finding in full history using {`$_ -like `"*$find*`"}";
+    Get-Content (Get-PSReadlineOption).HistorySavePath | Where-Object {$_ -like "*$find*"} | Get-Unique | more
+}
+
+Function New-Shortcut
+{
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory)]
+        [System.IO.FileInfo]$Source,
+        [string]$Arguments,
+        [Parameter(Mandatory)]
+        [System.IO.FileInfo]$DestinationPath
+    )
+
+    $WshShell = New-Object -comObject WScript.Shell
+    $Shortcut = $WshShell.CreateShortcut($DestinationPath.FullName)
+    $Shortcut.TargetPath = $Source.FullName
+    if ($Arguments)
+    {
+        $Shortcut.Arguments = $Arguments
+    }
+    $Shortcut.Save()
 }
 
 # For editing Microsoft SQL alias and stuff
@@ -98,8 +149,8 @@ Function Edit-Nu
 }
 
 function Open-Toolkit (
-        [string] $UnparsedTypeAndId
-        )
+    [string] $UnparsedTypeAndId
+)
 {
     function parseTypeAndId ([string] $unparsedTypeAndId)
     {
@@ -131,7 +182,8 @@ function Open-Toolkit (
 }
 
 
-function Add-DeployAccount {
+function Add-DeployAccount
+{
     [CmdletBinding()]
     param ()
 
@@ -155,8 +207,8 @@ function Get-PublicTokenFromDll
     [CmdLetBinding()]
     [OutPutType([PSCustomObject])]
     param(
-    [Parameter(Mandatory)]
-    [string] $FilePath
+        [Parameter(Mandatory)]
+        [string] $FilePath
     )
     ([system.reflection.assembly]::loadfile($FilePath)).FullName
 }
@@ -179,7 +231,9 @@ Set-PSReadLineKeyHandler -Chord Ctrl+o -ScriptBlock {
 
 $env:path = "$env:userprofile\scoop\shims\;$env:path"
 
-try {
+try
+{
     Invoke-Expression (&starship init powershell)
+} Catch
+{
 }
-Catch {}
