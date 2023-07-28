@@ -37,6 +37,7 @@ require("lazy").setup({
     "mbbill/undotree",
     -- "tpope/vim-commentary",
     "tpope/vim-fugitive",
+    "tpope/vim-surround",
     {
         "lewis6991/gitsigns.nvim",
         config = function()
