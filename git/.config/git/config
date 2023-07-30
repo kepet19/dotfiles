@@ -32,6 +32,7 @@
     br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) %(color:blue)<%(authorname)>' --sort=-committerdate
 	rbc = rebase --continue
 	wt = worktree
+	sb = submodule
 
 [push]
 	autoSetupRemote = true
