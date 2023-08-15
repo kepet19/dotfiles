@@ -6,7 +6,13 @@ $List = @(
 foreach ($item in $list) {
         $name = $item.name
         $source = Resolve-Path("./*/*/${name}/")
-        $dest = $item.isLocal ? $env:LOCALAPPDATA : $env:APPDATA
+
+	if ($item.isLocal) {
+		$dest = $env:LOCALAPPDATA
+	} else {
+		$dest = $env:APPDATA
+	}
+
         $dest = $(Join-Path -Path $dest -ChildPath $name)
         $dest
         $isValidPath = Test-Path $dest
