@@ -27,12 +27,15 @@
     lol = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     d = !git --no-pager diff
-	ls = ls-files
-	edit = config --global --edit
+    ls = ls-files
+    edit = config --global --edit
     br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) %(color:blue)<%(authorname)>' --sort=-committerdate
-	rbc = rebase --continue
-	wt = worktree
-	sb = submodule
+    rbc = rebase --continue
+    wt = worktree
+    sb = submodule
+    brclean = "!branch=$(git get-origin-head); git branch --merged $branch | grep -v \"\\($branch\\|\\*\\)\" | xargs -r git branch -d"
+    # Plumbing alias'
+    get-origin-head = "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
 
 [push]
 	autoSetupRemote = true
