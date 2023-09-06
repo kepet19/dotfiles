@@ -48,7 +48,15 @@ if ($PSVersionTable.PSVersion.Major -le 5)
     Remove-Item alias:curl
 }
 
-Remove-Item alias:mv
+if ($alias:mv)
+{
+    Remove-Item alias:mv
+}
+
+if ($alias:rm)
+{
+    Remove-Item alias:rm
+}
 # Del alias:ls
 # set-alias ls -Value lsd
 $DOTNET_CLI_TELEMETRY_OPTOUT=1
@@ -118,7 +126,7 @@ Function Edit-SQL-Alias
 # for editing your PowerShell profile
 Function Edit-Profile
 {
-    nvim $profile
+    nvim $PROFILE
 }
 
 Function Edit-Starship
@@ -202,6 +210,80 @@ function Add-DeployAccount
 }
 
 
+Enum Scope {
+    CurrentUser
+    Machine
+}
+
+Function Get-PasswordCrypt
+{
+    [CmdletBinding()]
+        param (
+                [Scope]$Scope
+              )
+        $securePassword = Read-Host -Prompt "Enter your password" -AsSecureString
+        Add-Type -AssemblyName System.Security
+
+        switch($scope) {
+                Scope::Machine {
+                    $Scope = [System.Security.Cryptography.DataProtectionScope]::LocalMachine
+                }
+                Scope::CurrentUser {
+                    $Scope = [System.Security.Cryptography.DataProtectionScope]::CurrentUser
+                }
+                Default {
+                    $Scope = [System.Security.Cryptography.DataProtectionScope]::CurrentUser
+                }
+            }
+
+    $password = [System.Net.NetworkCredential]::new("", $securePassword).Password
+    $passwordBytes = [System.Text.Encoding]::Unicode.GetBytes($password)
+    $encryptedPassword = [System.Security.Cryptography.ProtectedData]::Protect($passwordBytes, $null, $Scope)
+    $base64Password = [System.Convert]::ToBase64String($encryptedPassword)
+
+    $base64Password
+}
+
+function Add-PasswordFile
+{
+    [CmdletBinding()]
+        param (
+                [parameter(mandatory=$true)][string]$file,
+                [Scope]$Scope
+              )
+        $securePassword = Read-Host -Prompt "Enter your password" -AsSecureString
+        Add-Type -AssemblyName System.Security
+
+        switch($Scope) {
+                Scope::Machine {
+                    $Scope = [System.Security.Cryptography.DataProtectionScope]::LocalMachine
+                }
+                Scope::CurrentUser {
+                    $Scope = [System.Security.Cryptography.DataProtectionScope]::CurrentUser
+                }
+                Default {
+                    $Scope = [System.Security.Cryptography.DataProtectionScope]::CurrentUser
+                }
+            }
+
+    $password = [System.Net.NetworkCredential]::new("", $securePassword).Password
+    $passwordBytes = [System.Text.Encoding]::Unicode.GetBytes($password)
+    $encryptedPassword = [System.Security.Cryptography.ProtectedData]::Protect($passwordBytes, $null, $Scope)
+
+    Set-Content $file -Value $encryptedPassword -Encoding Byte
+}
+
+Function EncryptPasswordTo-Base64 {
+    $password = Read-Host -Prompt "Enter your password" -AsSecureString
+    $encryptedPassword = $password | ConvertFrom-SecureString
+
+    $encryptedBytes = [System.Text.Encoding]::Unicode.GetBytes($encryptedPassword)
+    $base64Encoded = [Convert]::ToBase64String($encryptedBytes)
+
+    $base64Encoded
+}
+
+
 function Get-PublicTokenFromDll
 {
     [CmdLetBinding()]
@@ -237,3 +319,4 @@ try
 } Catch
 {
 }
+
