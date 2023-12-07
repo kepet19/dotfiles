@@ -27,6 +27,7 @@
     lol = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     d = !git --no-pager diff
+    dfs = diff --staged
     ls = ls-files
     edit = config --global --edit
     br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) %(color:blue)<%(authorname)>' --sort=-committerdate
@@ -52,3 +53,17 @@
 	required = true
 [rerere]
 	enabled = true
+
+[pager]
+	branch = false
+	diff = delta
+	log = delta
+	reflog = delta
+	show = delta
+[delta]
+	line-numbers = true
+	minus-style = red
+	plus-style = green
+	side-by-side = false
+
+       zero-style = omit

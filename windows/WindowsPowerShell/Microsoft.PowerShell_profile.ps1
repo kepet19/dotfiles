@@ -1,3 +1,6 @@
+Function Mount-Ncop {
+ssh -L 636:localhost:636 kkmp@ncop-ldpd-add01.dev.ldp.ncop.nchosting.dk -J kkmp@ssh.nchosting.dk
+}
 Function ldev
 {Set-Location -Path "\\wsl$\Ubuntu\home\kkmp\dev\"
 }
@@ -285,6 +288,21 @@ Function EncryptPasswordTo-Base64 {
 
 
 function Get-PublicTokenFromDll
+{
+    [CmdLetBinding()]
+    [OutPutType([PSCustomObject])]
+    param(
+        [Parameter(Mandatory)]
+        [string] $Path
+    )
+    $file = Get-Item -Path $Path
+    $fullPath = $file.VersionInfo.FileName
+    Write-Output $fullPath
+
+    ([system.reflection.assembly]::loadfile($fullPath)).FullName
+}
+
+function Get-PublicTokenFromDll1
 {
     [CmdLetBinding()]
     [OutPutType([PSCustomObject])]
