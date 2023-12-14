@@ -1,3 +1,5 @@
+$adServer = "nclan.netcompany.dk"
+
 Function Mount-Ncop {
 ssh -L 636:localhost:636 kkmp@ncop-ldpd-add01.dev.ldp.ncop.nchosting.dk -J kkmp@ssh.nchosting.dk
 }
@@ -34,16 +36,48 @@ Function dotfiles
 
 # Active Direcotry stuff
 Function GAR([string] $name)
-{Get-ADGroup -Properties Members $name
+{Get-ADGroup -Properties Members $name -Server $adServer
 }
 Function GAM([string] $name)
-{Get-ADGroup -Properties MemberOf $name
+{Get-ADGroup -Properties MemberOf $name -Server $adServer
 }
 Function UM([string] $name)
-{Get-ADUser -Properties MemberOf $name
+{Get-ADUser -Properties MemberOf $name -Server $adServer
 }
+
+Function U {
+   param(
+       [Parameter(Position=0)]
+       [string]$Identity,
+       [string]$Filter
+   )
+   $parameters = @{
+       'Server' = $adServer
+       'Properties' = 'EmailAddress',
+                       'WhenChanged',
+                       'WhenCreated',
+                       'ObjectGuid',
+                       'OfficePhone',
+                       'Company',
+                       'Office',
+                       'Department',
+                       'Title',
+                       'Description'
+   }
+
+   if ($Identity) {
+       $parameters['Identity'] = $Identity
+   }
+
+   if ($Filter) {
+       $parameters['Filter'] = $Filter
+   }
+
+   Get-ADUser @parameters
+}
+
+
 Set-Alias G Get-ADGroup
-Set-Alias U Get-ADUser
 
 
 if ($PSVersionTable.PSVersion.Major -le 5)
