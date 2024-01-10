@@ -1,4 +1,12 @@
-$adServer = "nclan.netcompany.dk"
+$env:path = "$env:userprofile\scoop\shims\;$env:path"
+$env:path = "$env:userprofile\.bin\;$env:path"
+
+if (Get-Module -ListAvailable -Name ActiveDirectory) {
+    $adServer = (Get-ADDomain).DNSRoot
+} else {
+    Write-Host "Try install: `RSAT-AD-PowerShell` for active directory stuff"
+}
+
 
 Function Mount-Ncop {
 ssh -L 636:localhost:636 kkmp@ncop-ldpd-add01.dev.ldp.ncop.nchosting.dk -J kkmp@ssh.nchosting.dk
@@ -348,8 +356,11 @@ function Get-PublicTokenFromDll1
 }
 
 
-Import-Module posh-git
-$GitPromptSettings.EnableFileStatus = $false
+if (Get-Module -ListAvailable -Name Posh-Git) {
+    Import-Module posh-git
+    $GitPromptSettings.EnableFileStatus = $false
+}
+
 
 Set-PSReadLineOption -EditMode vi
 Set-PSReadlineKeyHandler -Chord Tab -Function Complete
@@ -363,12 +374,9 @@ Set-PSReadLineKeyHandler -Chord Ctrl+o -ScriptBlock {
     [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
 }
 
-$env:path = "$env:userprofile\scoop\shims\;$env:path"
-
 try
 {
     Invoke-Expression (&starship init powershell)
 } Catch
 {
 }
-
