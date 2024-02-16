@@ -329,8 +329,7 @@ Function EncryptPasswordTo-Base64 {
 }
 
 
-function Get-PublicTokenFromDll
-{
+function Get-Assembly {
     [CmdLetBinding()]
     [OutPutType([PSCustomObject])]
     param(
@@ -341,7 +340,18 @@ function Get-PublicTokenFromDll
     $fullPath = $file.VersionInfo.FileName
     Write-Output $fullPath
 
-    ([system.reflection.assembly]::loadfile($fullPath)).FullName
+    return [system.reflection.assembly]::loadfile($fullPath)
+}
+
+function Get-PublicTokenFromDll
+{
+    [CmdLetBinding()]
+    [OutPutType([PSCustomObject])]
+    param(
+        [Parameter(Mandatory)]
+        [string] $Path
+    )
+    return (Get-Assembly -Path $Path).FullName
 }
 
 function Get-PublicTokenFromDll1
